@@ -1,4 +1,4 @@
-# FrontendAngularJwtAuth
+# Frontend Recruitment Process
 
 Made to work with Spring Boot backend with jwt 
 
