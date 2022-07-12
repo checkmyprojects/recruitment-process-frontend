@@ -5,11 +5,11 @@
     <a class="navbar-brand" href="#">
       <img src="/assets/img/NTT_DATA_logo.png" alt="" width="150" height="45" class="d-inline-block align-text-top bg-navbar">
     </a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+    <ul class="navbar-nav mr-auto botones" routerLinkActive="active">
       <li class="nav-item">
         <a href="/home" class="nav-link bg-navbar" routerLink="home">Inicio</a>
       </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
+      <!-- <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
       <li class="nav-item" *ngIf="showModeratorBoard">
@@ -17,13 +17,13 @@
       </li>
       <li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-      </li>
+      </li> -->
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <!-- <li class="nav-item">
         <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
       </li> -->
-      <li class="nav-item bg-navbar">
+      <li class="nav-item bg-navbar" style="color:#E7E9E8;">
         <a href="/login" class="nav-link" routerLink="login">Entrar</a>
       </li>
     </ul>
@@ -42,13 +42,7 @@
 </div>
 
 <footer class="d-flex flex-wrap justify-content-between align-items-center bg-navbar py-3 my-4 border-top">
-  <div class="col-md-4 d-flex align-items-center bg-navbar">
-    <span class="mb-3 mb-md-0 text-muted bg-navbar">©Copyright 2022 EntiTeam</span>
+  <div class="col-md-4 d-flex align-items-center bg-navbar" style="color:#E7E9E8;">
+    <p class="mb-3 mb-md-0 copyright bg-navbar">©Copyright 2022 EntiTeam</p>
   </div>
-
-  <ul class="nav col-md-4 justify-content-end list-unstyled d-flex bg-navbar">
-    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-    <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-  </ul>
 </footer>
