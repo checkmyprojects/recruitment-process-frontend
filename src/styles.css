@@ -3,7 +3,6 @@
 *{
     background-color: #9FC6E9;
     font-family: 'Titillium Web', sans-serif;
-
 }
 
 .nav-link {
@@ -20,5 +19,5 @@
 }
 
 footer {
-    position: fixed; bottom:0; width: 100%;
+    position: absolute; bottom:0; width: 100%;
 }
