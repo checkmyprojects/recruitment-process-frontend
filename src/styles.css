@@ -17,3 +17,7 @@
     color: #E7E9E8;
     font-size: 1.3rem;
 }
+
+footer {
+    position: fixed; bottom:0; width: 100%;
+}
