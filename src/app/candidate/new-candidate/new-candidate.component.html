@@ -1,0 +1,111 @@
+<div class="col-md-12">
+    <div class="card card-container">
+        <form #f="ngForm" novalidate name="newCandidateForm" (ngSubmit)="f.newCandidateForm.valid && submit()">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" [(ngModel)]="newCandidateForm.name" #name="ngModel" minlength="3" maxlength="20" required>
+                <div class="alert-danger" *ngIf="name.errors && f.submitted">
+                    <div *ngIf="name.errors['required']">
+                        Name is required
+                    </div>
+                    <div *ngIf="name.errors['minlength']">
+                        Name must be at least 3 characters
+                    </div>
+                    <div *ngIf="name.errors['maxlength']">
+                        Name must be at most 20 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname</label>
+                <input class="form-control" type="text" name="surname" [(ngModel)]="newCandidateForm.surname" #name="ngModel" minlength="3" maxlength="20" required>
+                <div class="alert-danger" *ngIf="surname.errors && f.submitted">
+                    <div *ngIf="surname.errors['required']">
+                        Surname is required
+                    </div>
+                    <div *ngIf="surname.errors['minlength']">
+                        Surname must be at least 3 characters
+                    </div>
+                    <div *ngIf="surname.errors['maxlength']">
+                        Surname must be at most 20 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" [(ngModel)]="newCandidateForm.email" #name="ngModel" minlength="5" maxlength="50" required>
+                <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors['required']">
+                        Email is required
+                    </div>
+                    <div *ngIf="email.errors['minlength']">
+                        Email must be at least 5 characters
+                    </div>
+                    <div *ngIf="email.errors['maxlength']">
+                        Email must be at most 50 characters
+                    </div>
+                    <div *ngIf="email.errors['email']">
+                        Email must be a valid email address
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills</label>
+                <input class="form-control" type="text" name="skills" [(ngModel)]="newCandidateForm.skills" #name="ngModel" minlength="3" required>
+                <div class="alert-danger" *ngIf="skills.errors && f.submitted">
+                    <div *ngIf="skills.errors['required']">
+                        Skills are required
+                    </div>
+                    <div *ngIf="skills.errors['minlength']">
+                        Must be at least an skill with at least 3 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="studies">Studies</label>
+                <input class="form-control" type="text" name="studies" [(ngModel)]="newCandidateForm.studies" #name="ngModel" minlength="3" required>
+                <div class="alert-danger" *ngIf="studies.errors && f.submitted">
+                    <div *ngIf="studies.errors['required']">
+                        Studies are required
+                    </div>
+                    <div *ngIf="studies.errors['minlength']">
+                        Must be at least an study with at least 3 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input class="form-control" type="text" name="location" [(ngModel)]="newCandidateForm.location" #name="ngModel" minlength="3" required>
+                <div class="alert-danger" *ngIf="location.errors && f.submitted">
+                    <div *ngIf="location.errors['required']">
+                        Location is required
+                    </div>
+                    <div *ngIf="location.errors['minlength']">
+                        Location must be at least 3 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <input class="form-control" type="number" name="experience" [(ngModel)]="newCandidateForm.experience" #name="ngModel" min="0" required>
+                <div class="alert-danger" *ngIf="experience.errors && f.submitted">
+                    <div *ngIf="experience.errors['required']">
+                        Experience is required
+                    </div>
+                    <div *ngIf="experience.errors['min']">
+                        Experience must be at least 0 years
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Submit</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && newCandidateFailed">
+                Creating a candidate failed!<br/>{{ errorMessage }}
+            </div>
+            <div class="alert alert-success" *ngIf="newCandidateSuccess">
+                Your candidate is successful!
+            </div>
+        </form>
+    </div>
+</div>
