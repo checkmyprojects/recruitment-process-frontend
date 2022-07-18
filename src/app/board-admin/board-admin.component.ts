@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { AdminService } from '../_services/admin.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-board-admin',
@@ -17,7 +19,7 @@ export class BoardAdminComponent implements OnInit {
 
   content?: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.userService.getAdminBoard().subscribe({
@@ -28,6 +30,19 @@ export class BoardAdminComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     });
+    this.getAllAppUsers();
+  }
+
+  public getAllAppUsers(): void{
+    this.adminService.getAllAppUsers().subscribe({
+      next: (response: Object[]) => {
+        
+        console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    })
   }
 
 }
