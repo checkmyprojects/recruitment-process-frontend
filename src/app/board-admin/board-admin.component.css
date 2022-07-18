@@ -10,8 +10,11 @@ body{
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 0 solid transparent;
-    border-radius: 0;
+    /* border: 0 solid transparent; */
+    /* border-radius: 0; */
+    border-radius: 44px;
+    border: 3px solid #1C5B92;
+    overflow: hidden;
 }
 .btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
     width: 50px;
@@ -43,4 +46,20 @@ td *{
 
 tr > *{
     background-color: white;
+}
+
+.card-body, .card-body *{
+    background-color: #1C5B92;
+}
+.card-title{
+    color: white;
+}
+/* .card-body{
+    border-radius: 50px 50px 0 0;
+} */
+/* table{
+    border-radius: 0 0 50px 50px;
+} */
+.table-responsive{
+    border-radius: 0 0 50px 50px;
 }
