@@ -37,15 +37,16 @@ body{
 }
 .user-table tbody tr .category-select {
     max-width: 150px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
 
-td *{
-    background-color: white;
+td > span, td > h5{
+    background-color: #B9D2E8;
+    font-weight: bold;
 }
 
 tr > *{
-    background-color: white;
+    background-color: #B9D2E8;
 }
 
 .card-body, .card-body *{
@@ -60,6 +61,13 @@ tr > *{
 /* table{
     border-radius: 0 0 50px 50px;
 } */
-.table-responsive{
+/* .table-responsive{
     border-radius: 0 0 50px 50px;
+} */
+thead *{
+    background-color: #1C5B92;
+    color: white;
+}
+tbody{
+    border-top: 2px solid #9FC6E9!important;
 }
