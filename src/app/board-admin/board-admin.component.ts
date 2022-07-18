@@ -19,6 +19,8 @@ export class BoardAdminComponent implements OnInit {
 
   content?: string;
 
+  public usersList: any[] = [];
+
   constructor(private userService: UserService, private adminService: AdminService) { }
 
   ngOnInit(): void {
@@ -36,13 +38,23 @@ export class BoardAdminComponent implements OnInit {
   public getAllAppUsers(): void{
     this.adminService.getAllAppUsers().subscribe({
       next: (response: Object[]) => {
-        
+        this.usersList = response;
         console.log(response);
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
       }
     })
+  }
+
+  public arrayToString(roles: any[]){
+    // let string : String = '';
+    let rolesList: any[] = [];
+    roles.forEach((role)=>rolesList.push(role.name));
+    // roles.forEach((role)=>string+=role.name.toString());
+    // console.log(string);
+    console.log(rolesList.join(", "));
+    return rolesList.join(", ");
   }
 
 }
