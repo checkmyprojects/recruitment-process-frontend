@@ -16,4 +16,8 @@ export class AdminService {
     return this.http.get<Object[]>(`${this.apiServerUrl}/api/admin/users`);
   }
 
+  public getAppUserById(id: string): Observable<Object>{
+    return this.http.get<Object>(`${this.apiServerUrl}/api/admin/id/${id}`);
+  }
+
 }
