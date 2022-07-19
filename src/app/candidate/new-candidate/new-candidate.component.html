@@ -1,10 +1,10 @@
 <div class="col-md-12 pt-5">
     <div class="card card-container">
-        <form #f="ngForm" novalidate name="newCandidateForm" (ngSubmit)="newCandidateForm.valid && submit()">
+        <form name="newCandidateForm">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input class="form-control" type="text" name="name" [(ngModel)]="newCandidateForm.name" #name="ngModel" minlength="3" maxlength="20" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.name.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.name.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.name.errors['required']">
                         Name is required
                     </div>
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="surname">Surname</label>
                 <input class="form-control" type="text" name="surname" [(ngModel)]="newCandidateForm.surname" #name="ngModel" minlength="3" maxlength="20" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.surname.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.surname.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.surname.errors['required']">
                         Surname is required
                     </div>
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control" type="email" name="email" [(ngModel)]="newCandidateForm.email" #name="ngModel" minlength="5" maxlength="50" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.email.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.email.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.email.errors['required']">
                         Email is required
                     </div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <label for="skills">Skills</label>
                 <input class="form-control" type="text" name="skills" [(ngModel)]="newCandidateForm.skills" #name="ngModel" minlength="3" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.skills.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.skills.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.skills.errors['required']">
                         Skills are required
                     </div>
@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="studies">Studies</label>
                 <input class="form-control" type="text" name="studies" [(ngModel)]="newCandidateForm.studies" #name="ngModel" minlength="3" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.studies.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.studies.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.studies.errors['required']">
                         Studies are required
                     </div>
@@ -76,7 +76,7 @@
             <div class="form-group">
                 <label for="location">Location</label>
                 <input class="form-control" type="text" name="location" [(ngModel)]="newCandidateForm.location" #name="ngModel" minlength="3" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.location.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.location.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.location.errors['required']">
                         Location is required
                     </div>
@@ -88,7 +88,7 @@
             <div class="form-group">
                 <label for="experience">Experience</label>
                 <input class="form-control" type="number" name="experience" [(ngModel)]="newCandidateForm.experience" #name="ngModel" min="0" required>
-                <div class="alert-danger" *ngIf="newCandidateForm.experience.errors && f.submitted">
+                <div class="alert-danger" *ngIf="newCandidateForm.experience.errors && newCandidateForm.submitted">
                     <div *ngIf="newCandidateForm.experience.errors['required']">
                         Experience is required
                     </div>
@@ -98,9 +98,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block">Submit</button>
+                <button class="btn btn-primary btn-block" type="submit" (click)="onSubmit()">Submit</button>
             </div>
-            <div class="alert alert-warning" *ngIf="f.submitted && newCandidateFailed">
+            <div class="alert alert-warning" *ngIf="newCandidateForm.submitted && newCandidateFailed">
                 Creating a candidate failed!<br/>{{ errorMessage }}
             </div>
             <div class="alert alert-success" *ngIf="newCandidateSuccess">

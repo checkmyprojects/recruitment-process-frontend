@@ -30,6 +30,7 @@ import { NewCandidateComponent } from './candidate/new-candidate/new-candidate.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [authInterceptorProviders],

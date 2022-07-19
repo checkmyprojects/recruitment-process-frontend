@@ -10,13 +10,13 @@ export class NewCandidateComponent implements OnInit
 {
   newCandidateForm: any =
   {
-    name: null,
-    surname: null,
-    email: null,
-    skills: null,
-    studies: null,
-    location: null,
-    experience: null
+    name: "",
+    surname: "",
+    email: "",
+    skills: "",
+    studies: "",
+    location: "",
+    experience: 0
   };
 
   newCandidateFailed = false;
@@ -30,7 +30,7 @@ export class NewCandidateComponent implements OnInit
   ngOnInit(): void {
   }
 
-  submit(): void
+  onSubmit(): void
   {
     const {name, surname, email, skills, studies, location, experience} = this.newCandidateForm;
     this.candidate.new(name, surname, email, skills, studies, location, experience).subscribe(
@@ -46,6 +46,7 @@ export class NewCandidateComponent implements OnInit
         this.newCandidateFailed = true;
         this.newCandidateSuccess = false;
         this.errorMessage = err.error.message;
+        console.log(err.error.message)
       }
     });
   }
