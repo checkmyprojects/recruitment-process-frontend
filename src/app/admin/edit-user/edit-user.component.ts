@@ -14,6 +14,16 @@ export class EditUserComponent implements OnInit {
   id: string | undefined;
   public user: any;
 
+  form: any = {
+    name: null,
+    username: null,
+    email: null,
+    active: null
+  };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+
   constructor(private route: ActivatedRoute, private userService: UserService, private adminService: AdminService) { }
 
   ngOnInit(): void {
@@ -28,13 +38,19 @@ export class EditUserComponent implements OnInit {
     }
     this.adminService.getAppUserById(this.id).subscribe({
       next: (response: Object) => {
-        
+        this.user = response;
         console.log(response);
+        this.form.username = this.user.username;
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
       }
     })
+  }
+
+  onSubmit(): void {
+    const { username, email, password } = this.form;
+    
   }
 
 }
