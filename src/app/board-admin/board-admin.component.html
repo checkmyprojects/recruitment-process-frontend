@@ -33,6 +33,12 @@
                                 <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
                             </tr>
                         </thead>
+                        <tbody app-list  [user] = "user" *ngFor="let user of usersList">
+                            
+                        </tbody>
+                        <!-- <tbody *ngFor="let user of usersList">
+                            <app-list  [user] = "user"></app-list>
+                        </tbody> -->
                         <tbody *ngFor="let user of usersList">
                             <tr>
                                 <td class="pl-4">{{user.id}}</td>

@@ -1,0 +1,51 @@
+
+    <tr *ngIf="!isEdit">
+        <td class="pl-4">{{user.id}}</td>
+        <td>
+            <h5 class="font-medium mb-0">{{user.username}}</h5>
+        </td>
+        <td>
+            <span >{{user.name}}</span>
+        </td>
+        <td>
+            <span >{{user.email}}</span><br>
+        </td>
+        <td>
+            <span>{{arrayToString(user.roles)}}</span>
+        </td>
+        <td>
+            <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
+            <!-- <button type="button" class="btn btn-primary ml-2" (click)="isEditToggle()">Editar</button> -->
+            <button class="btn btn-primary" (click)="isEditToggle()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+        </td>
+        <td>
+            <input type="checkbox" [checked]="user.active">
+        </td>
+    </tr>
+
+    <tr *ngIf="isEdit" class="tableEdit">
+        <td class="pl-4">{{user.id}}</td>
+        <td>
+            <input type="text" value="{{user.username}}">
+        </td>
+        <td class="tableEdit">
+            <input type="text" value="{{user.name}}">
+        </td>
+        <td>
+            <input type="text" value="{{user.email}}">
+        </td>
+        <td>
+            <span>{{arrayToString(user.roles)}}</span>
+        </td>
+        <td>
+            <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
+            <p class="btn btn-primary" (click)="isEditToggle()"><i class="fa fa-undo" aria-hidden="true"></i></p>
+            <p class="btn btn-primary ml-2 mr-2"><i class='fa fa-save'></i></p>
+            <p class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></p>
+        </td>
+        <td>
+            <input type="checkbox" [checked]="user.active">
+        </td>
+    </tr>
+
+
