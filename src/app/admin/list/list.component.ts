@@ -33,16 +33,15 @@ export class ListComponent implements OnInit {
   }
 
   public deleteAppUserById(id:string){
-    console.log(id)
-  this.adminService.deleteAppUserById(id).subscribe({
-    next: response => {
-      this.isDeleted = true;
-      console.log("AppUser deleted")
-    },
-    error: (error: HttpErrorResponse) => {
-      alert(error.message);
-    }
-  });
+    this.adminService.deleteAppUserById(id).subscribe({
+      next: response => {
+        this.isDeleted = true;
+        console.log(`Deleted AppUser with ID: ${id}`)
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { AdminService } from '../_services/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AppUser } from '../model/app-user';
+import { AppUser } from '../model/appUser';
 
 @Component({
   selector: 'app-board-admin',
