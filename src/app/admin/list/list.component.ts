@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
     roles.forEach((role)=>rolesList.push(role.name));
     // roles.forEach((role)=>string+=role.name.toString());
     // console.log(string);
-    console.log(rolesList.join(", "));
+    // console.log(rolesList.join(", "));
     return rolesList.join(", ");
   }
 
