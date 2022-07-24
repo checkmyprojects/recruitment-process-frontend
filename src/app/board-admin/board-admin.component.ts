@@ -23,7 +23,8 @@ export class BoardAdminComponent implements OnInit {
   public usersList: any[] = [];
 
   public appUsers:AppUser[] = [];
-
+  
+  public appUsersTest:AppUser[] = [];
   constructor(private userService: UserService, private adminService: AdminService) { }
 
   ngOnInit(): void {
@@ -36,6 +37,12 @@ export class BoardAdminComponent implements OnInit {
       }
     });
     this.getAllAppUsers();
+    this.appUsersTest = this.adminService.getAllAppUsersParse();
+    console.log("Log de variable local");
+    console.log(this.appUsersTest);
+
+    
+    
   }
 
   public getAllAppUsers(): void{

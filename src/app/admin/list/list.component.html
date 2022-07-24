@@ -1,5 +1,5 @@
 
-    <tr *ngIf="!isEdit">
+    <tr *ngIf="!isEdit && !isDeleted">
         <td class="pl-4">{{user.id}}</td>
         <td>
             <h5 class="font-medium mb-0">{{user.username}}</h5>
@@ -23,7 +23,7 @@
         </td>
     </tr>
 
-    <tr *ngIf="isEdit" class="tableEdit">
+    <tr *ngIf="isEdit && !isDeleted" class="tableEdit">
         <td class="pl-4">{{user.id}}</td>
         <td>
             <input type="text" value="{{user.username}}">
@@ -35,13 +35,13 @@
             <input type="text" value="{{user.email}}">
         </td>
         <td>
-            <span>{{user.roles}}</span>
+            <p *ngFor="let role of user.roles">{{role}}</p>
         </td>
         <td>
             <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
             <p class="btn btn-primary" (click)="isEditToggle()"><i class="fa fa-undo" aria-hidden="true"></i></p>
             <p class="btn btn-primary ml-2 mr-2"><i class='fa fa-save'></i></p>
-            <p class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></p>
+            <p class="btn btn-danger" (click)="deleteAppUserById(user.id.toString())"><i class="fa fa-trash" aria-hidden="true"></i></p>
         </td>
         <td>
             <input type="checkbox" [checked]="user.active">

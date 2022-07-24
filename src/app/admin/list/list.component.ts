@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/_services/admin.service';
 
 @Component({
   selector: '[app-list]',
@@ -8,10 +10,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListComponent implements OnInit {
 
   isEdit: boolean = false;
-
+  isDeleted: boolean = false;
   @Input() user!: any;
 
-  constructor() { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,19 @@ export class ListComponent implements OnInit {
 
   isEditToggle() {
     this.isEdit = !this.isEdit;    
+  }
+
+  public deleteAppUserById(id:string){
+    console.log(id)
+  this.adminService.deleteAppUserById(id).subscribe({
+    next: response => {
+      this.isDeleted = true;
+      console.log("AppUser deleted")
+    },
+    error: (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  });
   }
 
 }
