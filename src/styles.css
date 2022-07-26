@@ -3,6 +3,8 @@
 *{
     background-color: #9FC6E9;
     font-family: 'Titillium Web', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-link {
@@ -16,8 +18,4 @@
 .copyright {
     color: #E7E9E8;
     font-size: 1.3rem;
-}
-
-footer {
-    position: absolute; bottom:0; width: 100%;
 }
