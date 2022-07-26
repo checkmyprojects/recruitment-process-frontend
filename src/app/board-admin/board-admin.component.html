@@ -36,74 +36,32 @@
                         <tbody app-list  [user] = "user" *ngFor="let user of appUsersTest">
                             
                         </tbody>
+
                         <!-- <tbody *ngFor="let user of usersList">
-                            <app-list  [user] = "user"></app-list>
-                        </tbody> -->
-                        <tbody *ngFor="let user of usersList">
                             <tr>
                                 <td class="pl-4">{{user.id}}</td>
                                 <td>
                                     <h5 class="font-medium mb-0">{{user.username}}</h5>
-                                    <!-- <span class="text-muted">{{user.name}}</span> -->
                                 </td>
                                 <td>
-                                    
-                                    <!-- <span class="text-muted">{{user.name}}</span> -->
                                     <span >{{user.name}}</span>
                                 </td>
                                 <td>
                                     <span >{{user.email}}</span><br>
 
                                 </td>
-                                <!-- <td>
-                                    <span class="text-muted">15 Mar 1988</span><br>
-                                    <span class="text-muted">10: 55 AM</span>
-                                </td> -->
                                 <td>
                                     <span>{{arrayToString(user.roles)}}</span>
-                                    <!-- <div *ngFor="let role of user.roles">
-                                        <input type="checkbox">
-                                        <span> {{role.name}} </span>
-                                    </div> -->
-                                    <!-- <div>
-                                        <input type="checkbox">
-                                        <span> People  </span>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox">
-                                        <span> Negocio  </span>
-                                    </div> -->
-                                    <!-- <select class="form-control category-select" id="exampleFormControlSelect1">
-                                        <option>Modulator</option>
-                                        <option>Admin</option>
-                                        <option>User</option>
-                                        <option>Subscriber</option>
-                                    </select> -->
                                 </td>
                                 <td>
-                                    <!-- <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle"><i
-                                        class="fa fa-key"></i> </button> -->
-                                    <!-- <button type="button"
-                                        class="btn btn-outline-info ml-2"><i
-                                            class="fa fa-trash"></i> </button>
-                                    <button type="button" -->
                                     <button type="button" class="btn btn-danger">Borrar</button>
-                                    <!-- <button type="button"
-                                        class="btn btn-outline-info ml-2"><i
-                                            class="fa fa-edit"></i> </button> -->
                                     <button type="button" class="btn btn-primary ml-2">Editar</button>
-                                    <!-- <button type="button"
-                                            class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i
-                                            class="fa fa-upload"></i> </button> -->
                                 </td>
                                 <td>
                                     <input type="checkbox" [checked]="user.active">
-                                    <!-- <span class="text-muted"> {{user.active}}</span><br> -->
-
                                 </td>
                             </tr>
-
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
