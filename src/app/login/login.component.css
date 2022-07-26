@@ -1,13 +1,13 @@
 .container {
     align-content: center;
-    border: #1C5B92 2px solid;
     margin-top: 6%;
 }
 
 .logo {
     width:80%;
     height:80%;
-    align-items: center;
+    display: block;
+    margin: 0px auto;
    } 
 
 .btn {
@@ -18,4 +18,18 @@
 
 *{
     border-radius: 30px;
+}
+
+
+.form-control {
+    background-color: #D9D9D9;
+
+}
+
+.row {
+    border: #1C5B92 2px solid;
+}
+
+.form-group {
+    margin: 8%;
 }
