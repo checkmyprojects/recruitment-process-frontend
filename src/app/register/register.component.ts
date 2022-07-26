@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,7 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(): void {
