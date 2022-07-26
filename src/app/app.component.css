@@ -1,3 +1,8 @@
 .bg-navbar {
     background-color: #1C5B92 !important;
 }
+
+html {
+    min-height: 100%;
+    position: static;
+}

@@ -1,0 +1,11 @@
+.btn {
+    background-color: #1C5B92;
+    color: #E7E9E8;
+    position: absolute;
+    border-radius: 30px;
+    width: 250px;
+}
+
+.bg-image {
+    background-size: cover;
+}

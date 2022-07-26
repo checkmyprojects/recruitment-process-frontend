@@ -1,0 +1,21 @@
+.container {
+    align-content: center;
+    border: #1C5B92 2px solid;
+    margin-top: 6%;
+}
+
+.logo {
+    width:80%;
+    height:80%;
+    align-items: center;
+   } 
+
+.btn {
+    background-color: #1C5B92;
+    color: #E7E9E8;
+    align-content: center;
+}
+
+*{
+    border-radius: 30px;
+}

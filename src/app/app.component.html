@@ -9,20 +9,8 @@
       <li class="nav-item">
         <a href="/home" class="nav-link bg-navbar" routerLink="home">Inicio</a>
       </li>
-      <!-- <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-      </li>
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-      </li> -->
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <!-- <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li> -->
       <li class="nav-item bg-navbar" style="color:#E7E9E8;">
         <a href="/login" class="nav-link" routerLink="login">Entrar</a>
       </li>
@@ -41,7 +29,7 @@
   </div>
 </div>
 
-<footer class="d-flex flex-wrap justify-content-between align-items-center bg-navbar py-3 my-4 border-top">
+<footer class="position-relative d-flex flex-wrap justify-content-between align-items-center bg-navbar py-4">
   <div class="col-md-4 d-flex align-items-center bg-navbar" style="color:#E7E9E8;">
     <p class="mb-3 mb-md-0 copyright bg-navbar">©Copyright 2022 EntiTeam</p>
   </div>
