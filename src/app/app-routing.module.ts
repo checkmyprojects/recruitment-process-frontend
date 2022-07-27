@@ -1,3 +1,4 @@
+import { BoardPeopleComponent } from './board-people/board-people.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditUserComponent } from './admin/edit-user/edit-user.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'people', component: BoardPeopleComponent },
   { path: 'admin/edit/:id', component: EditUserComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
