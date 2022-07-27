@@ -1,0 +1,69 @@
+<tr *ngIf="!isEdit && !isDeleted">
+    <td class="pl-4">{{selection.id}}</td>
+    <td>
+        <span >{{selection.project_id}}</span>
+    </td>
+    <td>
+        <span >{{selection.description}}</span>
+    </td>
+    <td>
+        <span >{{selection.end_date}}</span>
+    </td>
+    <td>
+        <span >{{selection.location}}</span>
+    </td>
+    <td>
+        <span>{{selection.name}}</span>
+    </td>
+    <td>
+        <span >{{selection.priority}}</span>
+    </td>
+    <td>
+        <span >{{selection.remote}}</span><br>
+    </td>
+    <td>
+        <span >{{selection.requirements}}</span>
+    </td>
+    <td>
+        <span >{{selection.sector}}</span>
+    </td>
+    <td>
+        <span >{{selection.start_date}}</span>
+    </td>
+    <td>
+        <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
+        <!-- <button type="button" class="btn btn-primary ml-2" (click)="isEditToggle()">Editar</button> -->
+        <button class="btn btn-primary" (click)="isEditToggle()" title="Editar usuario"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+    </td>
+    <td>
+        <input type="checkbox" [checked]="selection.active">
+    </td>
+</tr>
+
+<tr *ngIf="isEdit && !isDeleted" class="tableEdit">
+    <td class="pl-4">{{selection.id}}</td>
+    <td>
+        <input type="text" value="{{selection.username}}">
+    </td>
+    <td class="tableEdit">
+        <input type="text" value="{{selection.name}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.email}}">
+    </td>
+    <td>
+        <p *ngFor="let role of selection.roles">{{role}}</p>
+    </td>
+    <td>
+        <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
+        <button class="btn btn-primary" (click)="isEditToggle()" title="Cerrar"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button class="btn btn-success ml-2 mr-2"><i class='fa fa-save' title="Guardar"></i></button>
+        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    </td>
+    <td>
+        <input type="checkbox" [checked]="selection.active">
+    </td>
+</tr>
+
+
+

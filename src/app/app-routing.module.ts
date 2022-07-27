@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { SelectionComponent } from './selection/selection/selection.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,8 +20,10 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'people', component: BoardPeopleComponent },
+  { path: 'selection', component: SelectionComponent },
   { path: 'admin/edit/:id', component: EditUserComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+
 ];
 
 // Routes array is passed to the RouterModule.forRoot() method.

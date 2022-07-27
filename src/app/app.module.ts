@@ -17,6 +17,9 @@ import { ListComponent } from './admin/list/list.component';
 import { ListCandidatesComponent } from './candidates/list-candidates/list-candidates.component';
 import { BoardPeopleComponent } from './board-people/board-people.component';
 import { CandidateComponent } from './candidates/candidate/candidate.component';
+import { SelectionComponent } from './selection/selection/selection.component';
+import { ListSelectionComponent } from './selection/list-selection/list-selection.component';
+import { OneSelectionComponent } from './selection/one-selection/one-selection.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { CandidateComponent } from './candidates/candidate/candidate.component';
     ListComponent,
     ListCandidatesComponent,
     BoardPeopleComponent,
-    CandidateComponent
+    CandidateComponent,
+    SelectionComponent,
+    ListSelectionComponent,
+    OneSelectionComponent
   ],
   imports: [
     BrowserModule,
