@@ -43,13 +43,34 @@
 <tr *ngIf="isEdit && !isDeleted" class="tableEdit">
     <td class="pl-4">{{selection.id}}</td>
     <td>
-        <input type="text" value="{{selection.username}}">
+        <input type="text" value="{{selection.project_id}}">
     </td>
     <td class="tableEdit">
+        <input type="text" value="{{selection.description}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.end_date}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.location}}">
+    </td>
+    <td>
         <input type="text" value="{{selection.name}}">
     </td>
     <td>
-        <input type="text" value="{{selection.email}}">
+        <input type="text" value="{{selection.priority}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.remote}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.requirements}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.sector}}">
+    </td>
+    <td>
+        <input type="text" value="{{selection.start_date}}">
     </td>
     <td>
         <p *ngFor="let role of selection.roles">{{role}}</p>
@@ -57,7 +78,7 @@
     <td>
         <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
         <button class="btn btn-primary" (click)="isEditToggle()" title="Cerrar"><i class="fa fa-times" aria-hidden="true"></i></button>
-        <button class="btn btn-success ml-2 mr-2"><i class='fa fa-save' title="Guardar"></i></button>
+        <button class="btn btn-success"><i class='fa fa-save' title="Guardar"></i></button>
         <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </td>
     <td>
