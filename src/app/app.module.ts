@@ -20,6 +20,7 @@ import { CandidateComponent } from './candidates/candidate/candidate.component';
 import { SelectionComponent } from './selection/selection/selection.component';
 import { ListSelectionComponent } from './selection/list-selection/list-selection.component';
 import { OneSelectionComponent } from './selection/one-selection/one-selection.component';
+import { InterviewComponent } from './interview/interview/interview.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { OneSelectionComponent } from './selection/one-selection/one-selection.c
     CandidateComponent,
     SelectionComponent,
     ListSelectionComponent,
-    OneSelectionComponent
+    OneSelectionComponent,
+    InterviewComponent
   ],
   imports: [
     BrowserModule,
