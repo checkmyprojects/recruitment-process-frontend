@@ -13,6 +13,8 @@ export class InterviewService {
 
   getInterviews(): Observable<Object[]>
   {
-    return this.http.get(InterviewAPI + "list", {headers: new HttpHeaders({ 'Content-Type': 'application/json' })}) as Observable<Object[]>;
+    return this.http.
+    get(InterviewAPI + "list", {headers: new HttpHeaders({ 'Content-Type': 'application/json' })}) as 
+    Observable<Object[]>;
   }
 }
