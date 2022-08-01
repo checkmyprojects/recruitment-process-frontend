@@ -1,14 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppUser } from '../model/appUser';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { BoardAdminComponent } from './board-admin.component';
 
 describe('BoardAdminComponent', () => {
   let component: BoardAdminComponent;
   let fixture: ComponentFixture<BoardAdminComponent>;
+  let content: string;
 
+  let usersList: any[] = [];
+
+  let appUsers:AppUser[] = [];
+  
+  let appUsersTest:AppUser[] = [];
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardAdminComponent ]
+      declarations: [ BoardAdminComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   });
