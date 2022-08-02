@@ -26,7 +26,6 @@ export class ListCandidatesComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         alert(error.message);
       }
-
     })
   }
 }

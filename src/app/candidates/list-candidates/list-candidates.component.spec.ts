@@ -15,7 +15,7 @@ describe('ListCandidatesComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ListCandidatesComponent ],
       imports: [HttpClientTestingModule],
-      providers: [ CandidatesService ]
+      providers: [CandidatesService]
     })
     .compileComponents();
     httpMock = TestBed.inject(HttpTestingController);
