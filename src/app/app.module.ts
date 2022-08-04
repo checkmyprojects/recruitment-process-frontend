@@ -21,6 +21,19 @@ import { SelectionComponent } from './selection/selection/selection.component';
 import { ListSelectionComponent } from './selection/list-selection/list-selection.component';
 import { OneSelectionComponent } from './selection/one-selection/one-selection.component';
 import { InterviewComponent } from './interview/interview/interview.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule } from '@angular/material/input'
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CustomPaginator } from './model/CustomPaginatorConfiguration';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalUserComponent } from './admin/modal-user/modal-user.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -40,15 +53,27 @@ import { InterviewComponent } from './interview/interview/interview.component';
     SelectionComponent,
     ListSelectionComponent,
     OneSelectionComponent,
-    InterviewComponent
+    InterviewComponent,
+    ModalUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatSlideToggleModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

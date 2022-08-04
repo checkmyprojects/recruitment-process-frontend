@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-*{
+body{
     background-color: #9FC6E9;
     font-family: 'Titillium Web', sans-serif;
     padding: 0;
@@ -22,4 +22,32 @@
 
 footer {
     position: fixed; bottom:0; width: 100%;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-header-cell {
+    background: #1C5B92;
+    color: #fff;
+    font-size: 1rem;
+}
+/* .mat-cell:hover {
+    background: #1C5B92;
+    color: #fff;
+    font-size: 1rem;
+} */
+.mat-paginator {
+    background: #1C5B92;
+    color: #fff;
+    font-size: .8rem;
+}
+.mat-select-value-text, .mat-select-arrow{
+    color: #fff;
+}
+
+/* AppUsers list -> make non active AppUsers grey */
+.make-grey{
+    background-color: rgba(202, 202, 202, 0.281);
+    text-decoration: line-through;
 }

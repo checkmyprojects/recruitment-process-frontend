@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AppUsers } from '../model/app-users';
 import { AppUser } from '../model/appUser';
 
 @Injectable({
@@ -16,11 +17,18 @@ export class AdminService {
   public getAllAppUsers(): Observable<Object[]>{
     return this.http.get<Object[]>(`${this.apiServerUrl}/api/admin/users`);
   }
+  public getAllMyAppUsers(): Observable<AppUsers[]>{
+    return this.http.get<AppUsers[]>(`${this.apiServerUrl}/api/admin/users`);
+  }
 
   public getAppUserById(id: string): Observable<Object>{
     return this.http.get<Object>(`${this.apiServerUrl}/api/admin/id/${id}`);
   }
   
+  public updateAppUsers(user: AppUsers): Observable<AppUsers>{
+    return this.http.put<AppUsers>(`${this.apiServerUrl}/api/admin/edit`, user);
+  }
+
   public deleteAppUserById(id: string){
     return this.http.delete(`${this.apiServerUrl}/api/admin/delete/${id}`);
   }

@@ -39,7 +39,7 @@ body{
     max-width: 150px;
     /* border-radius: 20px; */
 }
-
+/* 
 td > span, td > h5{
     background-color: #B9D2E8;
     font-weight: bold;
@@ -47,7 +47,7 @@ td > span, td > h5{
 
 tr > *{
     background-color: #B9D2E8;
-}
+} */
 
 .card-body, .card-body *{
     background-color: #1C5B92;
@@ -68,6 +68,34 @@ thead *{
     background-color: #1C5B92;
     color: white;
 }
+
 tbody{
     border-top: 2px solid #9FC6E9!important;
+}
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+/* Hover over a table row */
+tr.mat-row:hover {
+    background-color: #9fc6e970;
+    cursor: pointer;
+}
+
+td, th {
+    width: 25%;
+}
+.align-right{
+    float: right;
+}
+.mat-button-save {
+    background-color: #28A745;
+    color: #fff;
+}
+.mat-button-save:hover {
+    background-color: #05c732;
 }
