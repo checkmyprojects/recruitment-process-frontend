@@ -72,13 +72,13 @@ thead *{
 tbody{
     border-top: 2px solid #9FC6E9!important;
 }
-table {
+table{
     width: 100%;
 }
 
 .mat-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 98%;
 }
 /* Hover over a table row */
 tr.mat-row:hover {
@@ -89,13 +89,28 @@ tr.mat-row:hover {
 td, th {
     width: 25%;
 }
-.align-right{
+/* .align-right{
     float: right;
-}
+    margin: 15px 0;
+} */
 .mat-button-save {
     background-color: #28A745;
     color: #fff;
 }
 .mat-button-save:hover {
     background-color: #05c732;
+}
+.mat-button-new {
+    background-color: #1c5b92;
+    color: #fff;
+}
+.mat-button-new:hover {
+    background-color: #007bff;
+}
+.searchTableFlex{
+    display: flex;
+    align-items: center;
+}
+.searchBar{
+    flex-grow: 1;
 }

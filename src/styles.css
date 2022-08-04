@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 body{
-    background-color: #9FC6E9;
+    /* background-color: #9FC6E9; */
+    background-color: #9fc6e96e;
     font-family: 'Titillium Web', sans-serif;
     padding: 0;
     margin: 0;
@@ -48,6 +49,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* AppUsers list -> make non active AppUsers grey */
 .make-grey{
-    background-color: rgba(202, 202, 202, 0.281);
-    text-decoration: line-through;
+    /* background-color: rgba(202, 202, 202, 0.281); */
+    background-color: rgba(202, 202, 202, 0.158);
+    color: rgb(172, 171, 171);
+    /* text-decoration: line-through; */
 }
