@@ -1,3 +1,86 @@
+
+<mat-form-field appearance="standard" >
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id" class="oscuro">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="oscuro"> Núm. </th>
+        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" > {{row.id}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell matTooltip="Nombre" *matCellDef="let row" > {{row.name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="start_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Inicio </th>
+        <td mat-cell matTooltip="Fecha de inicio" *matCellDef="let row"> {{row.start_date}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="end_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fin </th>
+        <td mat-cell matTooltip="Fecha de fin" *matCellDef="let row" > {{returnUndefined(row.end_date)}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+        <td mat-cell matTooltip="Descripción" *matCellDef="let row" > {{row.description}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="requirements">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Requisitos </th>
+        <td mat-cell matTooltip="Requisitos" *matCellDef="let row" > {{row.requirements}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
+        <td mat-cell matTooltip="Ubicación" *matCellDef="let row" > {{row.location}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="sector">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
+        <td mat-cell matTooltip="Sector" *matCellDef="let row" > {{row.sector}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
+        <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
+        <td mat-cell matTooltip="Estado" *matCellDef="let row" > {{row.status}} </td>
+      </ng-container>
+      <ng-container matColumnDef="project_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Proyecto </th>
+        <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" > {{row.project_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="remote">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Remoto </th>
+        <td mat-cell matTooltip="Remoto" *matCellDef="let row" > {{row.remote}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay datos para la búsqueda "{{input.value}}"</td>
+      </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+  </div>
+
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-20">
@@ -26,9 +109,9 @@
                             </tr>
                         </thead>
                         <tbody app-one-selection  [selection] = "selection" *ngFor="let selection of selections">
-  
+
                         </tbody>
-  
+
                         <!-- <tbody *ngFor="let candidate of candidatesList">
                             <tr>
                                 <td class="pl-4">{{candidate.id}}</td>
@@ -40,7 +123,7 @@
                                 </td>
                                 <td>
                                     <span >{{candidate.email}}</span><br>
-  
+
                                 </td>
                                 <td>
                                     <span>{{arrayToString(candidate.roles)}}</span>
@@ -60,4 +143,4 @@
         </div>
     </div>
   </div>
-  
+

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import {Selection} from 'src/app/model/selection';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +17,7 @@ export class SelectionService {
     return this.http.get<Object[]>(`${this.apiServerUrl}/api/selection/list`);
 }
 
+  public getAllSelections(): Observable<Selection[]>{
+  return this.http.get<Selection[]>(`${this.apiServerUrl}/api/selection/list`);
+}
 }

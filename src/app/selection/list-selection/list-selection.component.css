@@ -1,4 +1,4 @@
-body{
+/* body{
     background: #edf1f5;
     margin-top:20px;
 }
@@ -10,8 +10,6 @@ body{
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    /* border: 0 solid transparent; */
-    /* border-radius: 0; */
     border-radius: 44px;
     border: 3px solid #1C5B92;
     overflow: hidden;
@@ -37,7 +35,7 @@ body{
 }
 .user-table tbody tr .category-select {
     max-width: 150px;
-    /* border-radius: 20px; */
+
 }
 
 td > span, td > h5{
@@ -55,19 +53,14 @@ tr > *{
 .card-title{
     color: white;
 }
-/* .card-body{
-    border-radius: 50px 50px 0 0;
-} */
-/* table{
-    border-radius: 0 0 50px 50px;
-} */
-/* .table-responsive{
-    border-radius: 0 0 50px 50px;
-} */
+
 thead *{
     background-color: #1C5B92;
     color: white;
 }
 tbody{
     border-top: 2px solid #9FC6E9!important;
+} */
+table, mat-form-field {
+  width: 100%;
 }
