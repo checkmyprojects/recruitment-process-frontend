@@ -3,6 +3,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AppUsers } from 'src/app/model/app-users';
 import { AdminService } from 'src/app/_services/admin.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modal-user',
@@ -12,6 +13,8 @@ import { AdminService } from 'src/app/_services/admin.service';
 export class ModalUserComponent implements OnInit {
   // public dialogRef: MatDialogRef<ModalUserComponent> allow to use dialogref in the component
   constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, private adminService: AdminService, public dialogRef: MatDialogRef<ModalUserComponent>) { }
+
+  emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
 
   // Listener for enter key
   // on enter key press, save user and close dialog

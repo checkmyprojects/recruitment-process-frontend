@@ -3,14 +3,23 @@
     color: #E7E9E8;
     position: absolute;
     border-radius: 30px;
-    width: 250px;
+    width: 200px;
+    opacity: 90%;
 }
-
-.bg-image {
+.btn:hover {
+    background-color: #03e7f5;
+    opacity: 100%;
+}
+/* div{
+    background-image:url('https://i.ibb.co/1GfgPrn/fondologo.jpg');
+    width: 100vw;
+    height: 100vh;
     background-size: cover;
-}
-/* :host{
-    background-image: url("https://i.ibb.co/1GfgPrn/fondologo.jpg");
+} */
+
+/* Display this component in fullscreen */
+:host{
+    /* background-image: url("https://i.ibb.co/1GfgPrn/fondologo.jpg"); */
     background-repeat: auto;
     background-size: cover;
     position: fixed;
@@ -19,4 +28,29 @@
     width: 100vw;
     height: 100vh;
     z-index: 100  
-} */
+}
+
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+/* Center login button on the screen */
+.centerMe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+.centerMe > img{
+    margin-bottom: 100px;
+    opacity: 70%;
+}

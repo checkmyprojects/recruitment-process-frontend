@@ -18,8 +18,15 @@
     <br><br>
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput value={{editedUser.email}} (input)="editedUser.email=$any($event.target).value">
+        <input matInput type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" value={{editedUser.email}} (input)="editedUser.email=$any($event.target).value">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Por favor, introduzca una dirección válida
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            El email es <strong>obligatorio</strong>
+          </mat-error>
     </mat-form-field>
+    <br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Nombre de usuario en la aplicación</mat-label>
@@ -27,7 +34,7 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Password (no editable)</mat-label>
+        <mat-label>Contraseña (no editable)</mat-label>
         <input matInput disabled value="*****************">
     </mat-form-field>
 </form>
