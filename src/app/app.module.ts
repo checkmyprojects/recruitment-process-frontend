@@ -35,6 +35,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-candidates.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListSelectionComponent,
     OneSelectionComponent,
     InterviewComponent,
-    ModalUserComponent
+    ModalUserComponent,
+    ModalCandidatesComponent
   ],
   imports: [
     BrowserModule,

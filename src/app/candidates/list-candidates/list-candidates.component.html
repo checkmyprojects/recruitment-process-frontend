@@ -2,32 +2,48 @@
 
 <p>Home > Admin > Users List</p>
 
-<mat-form-field appearance="standard" >
-    <mat-label>Buscar</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
-  </mat-form-field>
-  
+<div class="searchTableFlex">
+  <div class="searchBar">
+    <mat-form-field class="searchBar" appearance="standard">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="button-new">Crear Usuario <mat-icon>add_circle_outline</mat-icon></button>
+  </div>
+
+</div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-  
+
       <!-- ID Column -->
       <ng-container matColumnDef="id" class="oscuro">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="oscuro"> Núm. </th>
         <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" > {{row.id}} </td>
       </ng-container>
-  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
+        <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
+        <td mat-cell matTooltip="Estado" *matCellDef="let row" > {{row.state}} </td>
+      </ng-container>
       <!-- Progress Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
         <td mat-cell matTooltip="Nombre" *matCellDef="let row" > {{row.name}} </td>
       </ng-container>
-  
       <!-- Name Column -->
       <ng-container matColumnDef="surname">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
         <td mat-cell matTooltip="Apellido" *matCellDef="let row"> {{row.surname}} </td>
       </ng-container>
-  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
+        <td mat-cell matTooltip="Ubicación" *matCellDef="let row" > {{row.location}} </td>
+      </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
@@ -44,60 +60,48 @@
         <td mat-cell matTooltip="Estudios" *matCellDef="let row" > {{row.studies}} </td>
       </ng-container>
       <!-- Fruit Column -->
-      <ng-container matColumnDef="location">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
-        <td mat-cell matTooltip="Ubicación" *matCellDef="let row" > {{row.location}} </td>
-      </ng-container>
-      <!-- Fruit Column -->
       <ng-container matColumnDef="experience">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Experiencia </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Exp </th>
         <td mat-cell matTooltip="Experiencia" *matCellDef="let row" > {{row.experience}} </td>
       </ng-container>
-      <!-- Fruit Column -->
-      <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
-        <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
-        <td mat-cell matTooltip="Estado" *matCellDef="let row" > {{row.state}} </td>
-      </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"(click)="openDialog(row)"></tr>
+
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No hay datos para la búsqueda "{{input.value}}"</td>
       </tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-  
+
   </div>
 
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
       <div class="col-md-12">
-          <div class="card mb-5 mt-5">
+          <div class="card mb-5 mt-5"> -->
               <!-- <div class="card-body">
                   <h5 class="card-title text-uppercase mb-0">Manage candidates</h5>
               </div> -->
-              <div class="table-responsive">
+              <!-- <div class="table-responsive">
                   <table class="table no-wrap user-table mb-0">
                       <thead>
                           <tr>
                               <th scope="col" class="border-0 text-uppercase font-medium pl-4">Id</th>
                               <th scope="col" class="border-0 text-uppercase font-medium">Usuario</th>
                               <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
-                              <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                              <th scope="col" class="border-0 text-uppercase font-medium">Email</th> -->
                               <!-- <th scope="col" class="border-0 text-uppercase font-medium">Added</th> -->
-                              <th scope="col" class="border-0 text-uppercase font-medium">Roles</th>
+                              <!-- <th scope="col" class="border-0 text-uppercase font-medium">Roles</th>
                               <th scope="col" class="border-0 text-uppercase font-medium">Gestión</th>
                               <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
                           </tr>
                       </thead>
                       <tbody app-list  [user] = "candidate" *ngFor="let candidate of candidates">
 
-                      </tbody>
+                      </tbody> -->
 
                       <!-- <tbody *ngFor="let candidate of candidatesList">
                           <tr>
@@ -124,9 +128,9 @@
                               </td>
                           </tr>
                       </tbody> -->
-                  </table>
+                  <!-- </table>
               </div>
           </div>
       </div>
   </div>
-</div>
+</div> -->

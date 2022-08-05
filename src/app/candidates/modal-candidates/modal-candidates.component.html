@@ -1,0 +1,64 @@
+<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
+<span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
+
+<h4>Editar candidato: <span>{{editedCandidate.name}} {{editedCandidate.surname}}</span></h4>
+
+<form class="example-form">
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Estado</mat-label>
+        <input matInput value={{editedCandidate.state}} (input)="editedCandidate.state=$any($event.target).value">
+    </mat-form-field>
+    <div>
+      <mat-form-field class="name" appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput #message maxlength="256" value={{editedCandidate.name}} (input)="editedCandidate.name=$any($event.target).value" >
+        <mat-hint align="start"><strong>Nombre</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput #message maxlength="256" value={{editedCandidate.surname}} (input)="editedCandidate.name=$any($event.target).value" >
+        <mat-hint align="start"><strong>Apellido</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+    <br>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Ubicación</mat-label>
+      <input matInput value={{editedCandidate.location}} (input)="editedCandidate.location=$any($event.target).value" >
+    </mat-form-field>
+    <br>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Por favor, introduzca una dirección válida
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            El email es <strong>obligatorio</strong>
+          </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Estudios</mat-label>
+        <input matInput value={{editedCandidate.studies}} (input)="editedCandidate.studies=$any($event.target).value">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Experiencia</mat-label>
+      <input matInput type="number" value={{editedCandidate.experience}} (input)="editedCandidate.experience=$any($event.target).value">
+  </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Habilidades</mat-label>
+      <textarea matInput value={{editedCandidate.skills}} (input)="editedCandidate.skills=$any($event.target).value" placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+</form>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
+    <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
+    <!-- Use a function to close the dialog instead -->
+    <button mat-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
+    <button mat-button [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveCandidate()">Guardar</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
+</mat-dialog-actions>

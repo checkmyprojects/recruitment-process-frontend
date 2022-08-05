@@ -2,10 +2,13 @@ import { CandidatesService } from './../../_services/candidates.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Candidate } from 'src/app/model/candidate';
+import {MatDialog} from '@angular/material/dialog';
+
 // Imports for the table
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
 
 @Component({
   selector: 'app-list-candidates',
@@ -13,19 +16,27 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./list-candidates.component.css']
 })
 export class ListCandidatesComponent implements OnInit {
-  
+
   candidates: any[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'surname', 'email', 'skills', 'studies', 'location', 'experience', 'state'];
+  displayedColumns: string[] = ['id', 'state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills' ];
   dataSource: MatTableDataSource<Candidate>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private candidatesService:CandidatesService) {
+  constructor(private candidatesService:CandidatesService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllCandidates());
   }
+  openDialog(row: Candidate) {
+    const dialogRef = this.dialog.open(ModalCandidatesComponent,{
+      data: { candidate: row},
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   // Material table
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
