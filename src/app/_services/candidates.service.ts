@@ -11,16 +11,20 @@ export class CandidatesService {
 
   private apiServerUrl = environment.apiBaseUrl;
 
-
-
   constructor(private http: HttpClient ) { }
 
   public getCandidates(): Observable<Object[]>{
     return this.http.get<Object[]>(`${this.apiServerUrl}/api/candidate/list`);
+
   }
 
   // Get all candidates from backend as a Candidate Object
   public getAllCandidates(): Observable<Candidate[]>{
     return this.http.get<Candidate[]>(`${this.apiServerUrl}/api/candidate/list`);
+  }
+
+  public updateCandidate(candidate: Candidate): Observable<Candidate>{
+    return this.http.put<Candidate>(`${this.apiServerUrl}/api/candidate/edit`, candidate);
+
   }
 }
