@@ -90,7 +90,9 @@ export class ModalUserComponent implements OnInit {
 
   // Save edited user overwriting original user
   saveUser(){
-    
+    // Remove user interviews to not send it to backend
+    this.editedUser.interviews = [];
+
     // Need to set roles
     this.editedUser.roles = this.getRolesFromCheckbox(this.role);
 

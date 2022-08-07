@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalUserComponent } from '../admin/modal-user/modal-user.component';
+import { ModalUserNewComponent } from '../admin/modal-user-new/modal-user-new.component';
 
 @Component({
   selector: 'app-board-admin',
@@ -62,14 +63,14 @@ export class BoardAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getAdminBoard().subscribe({
-      next: data => {
-        this.content = data;
-      },
-      error: err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    });
+    // this.userService.getAdminBoard().subscribe({
+    //   next: data => {
+    //     this.content = data;
+    //   },
+    //   error: err => {
+    //     this.content = JSON.parse(err.error).message;
+    //   }
+    // });
     this.getAllAppUsers();
     this.getAllMyAppUsers();
     this.appUsersTest = this.adminService.getAllAppUsersParse();
@@ -101,7 +102,42 @@ export class BoardAdminComponent implements OnInit {
       }
     });
   }
-  
+  // New empty AppUser to add when creating new user
+  newAppUser: AppUsers = {
+    id: 0,
+    name: "",
+    username: "",
+    email: "",
+    roles: [],
+    interviews: [],
+    active: false
+  }
+  openDialogNewUser() {
+    const dialogRef = this.dialog.open(ModalUserNewComponent, {
+      data: { user: this.newAppUser },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      if (result === false){
+        // console.log("BORRAR TODO");        
+        // console.log(this.newAppUser);
+        // Delete user from angular array
+        
+
+        // API call to deete user by id
+
+      }else if(result === true){
+        // It saves inside modal-user component
+        // console.log(this.dataSource.data)
+        // console.log(this.newAppUser);
+        
+        // this.dataSource.data = [this.newAppUser, ...this.dataSource.data];
+        this.dataSource.data = [...this.dataSource.data, this.newAppUser];
+      }
+    });
+  }
+
   public getAllMyAppUsers(): AppUsers[]{
     let data:any =[]
     this.adminService.getAllMyAppUsers().subscribe({

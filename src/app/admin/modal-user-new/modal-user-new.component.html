@@ -1,0 +1,84 @@
+<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
+<span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
+
+<h4>Nuevo usuario: <span>{{newModalAppUser.username}}</span></h4>
+
+<form [formGroup]="loginForm" novalidate class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nombre personal del usuario</mat-label>
+        <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{newModalAppUser.name}} (input)="newModalAppUser.name=$any($event.target).value" >
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        <mat-error *ngIf="!loginForm.get('name')?.errors?.required">
+            El nombre debe tener al menos 4 caracteres
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('name')?.invalid && (loginForm.get('name')?.dirty || loginForm.get('name')?.touched) && loginForm.get('name')?.errors?.required">
+            El nombre es obligatorio
+          </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{newModalAppUser.email}} (input)="newModalAppUser.email=$any($event.target).value">
+        <mat-error *ngIf="!loginForm.get('email')?.errors?.required && (loginForm.get('email')?.errors?.pattern)">
+            Por favor, introduzca una dirección válida
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) && loginForm.get('email')?.errors?.required">
+            El email es obligatorio
+          </mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nombre de usuario en la aplicación</mat-label>
+        <input placeholder="Nombre de usuario" formControlName="username" matInput #message maxlength="256" value={{newModalAppUser.username}} (input)="newModalAppUser.username=$any($event.target).value">
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        <mat-error *ngIf="!loginForm.get('username')?.errors?.required">
+            El nombre debe tener al menos 4 caracteres
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched) && loginForm.get('username')?.errors?.required">
+            El nombre de usuario es obligatorio
+          </mat-error>
+    </mat-form-field>
+
+    <div class="example-container">
+        <mat-form-field appearance="fill" class="password1">
+            <mat-label>Introduce la contraseña</mat-label>
+            <input matInput type="password" placeholder="Contraseña" formControlName="password" value={{newModalAppUser.password}} (input)="newModalAppUser.password=$any($event.target).value" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
+                Debe tener al menos 4 caracteres
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) && loginForm.get('password')?.errors?.required">
+                La contraseña es obligatoria
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirma la contraseña</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" value={{passwordConfirm}} (input)="passwordConfirm=$any($event.target).value" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('confirmPassword')?.invalid && (loginForm.get('confirmPassword')?.dirty || loginForm.get('confirmPassword')?.touched) && loginForm.get('confirmPassword')?.errors?.required">
+                La contraseña es obligatoria
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('confirmPassword').touched && loginForm.get('confirmPassword').invalid">
+                Las contraseñas no coinciden
+            </mat-error>
+        </mat-form-field>
+    </div>
+</form>
+
+<p>Roles:</p>
+<section class="example-section">
+    <mat-checkbox class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
+    <mat-checkbox class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
+    <mat-checkbox class="example-margin" matTooltip="Entrevistador" color="accent" [(ngModel)]="role.interview">Entrevistador</mat-checkbox>
+    <mat-checkbox class="example-margin business" matTooltip="Negocio" [(ngModel)]="role.business">Negocio</mat-checkbox>
+</section>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
+    <button mat-button [disabled]="!loginForm.valid" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
+</mat-dialog-actions>

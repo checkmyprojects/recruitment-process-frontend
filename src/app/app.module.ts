@@ -36,6 +36,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-candidates.component';
+import { ModalUserNewComponent } from './admin/modal-user-new/modal-user-new.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-ca
     OneSelectionComponent,
     InterviewComponent,
     ModalUserComponent,
-    ModalCandidatesComponent
+    ModalCandidatesComponent,
+    ModalUserNewComponent
   ],
   imports: [
     BrowserModule,

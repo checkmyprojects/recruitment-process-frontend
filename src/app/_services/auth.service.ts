@@ -22,12 +22,17 @@ export class AuthService {
       password
     }, httpOptions);
   }
-  
+
+  // Old register used on /signup page
   register(username: string, email: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username,
       email,
       password
     }, httpOptions);
+  }
+  
+  registerNewUser(newUser: any): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', newUser, httpOptions);
   }
 }

@@ -44,7 +44,7 @@
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button color="button-new">Crear Usuario <mat-icon>add_circle_outline</mat-icon></button>
+    <button mat-raised-button (click)="openDialogNewUser()" color="button-new">Crear Usuario <mat-icon>add_circle_outline</mat-icon></button>
   </div>
 
 </div>
@@ -91,7 +91,7 @@
         <td class="mat-cell" colspan="4">No hay datos para la búsqueda "{{input.value}}"</td>
       </tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
   
   </div>
   

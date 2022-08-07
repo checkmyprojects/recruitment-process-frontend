@@ -3,7 +3,11 @@
     color: #E7E9E8;
     position: absolute;
     border-radius: 30px;
-    width: 200px;
+    /* width: 200px; */
+    width: 140px;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 1.5rem;
     opacity: 90%;
 }
 .btn:hover {
