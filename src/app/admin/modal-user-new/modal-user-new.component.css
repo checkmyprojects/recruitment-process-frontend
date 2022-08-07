@@ -51,3 +51,7 @@ td {
     padding-left: 10px;
     font-size: 1.5rem;
 }
+
+.redWarningText{
+    color: red;
+}

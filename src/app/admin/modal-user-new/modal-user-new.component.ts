@@ -38,12 +38,21 @@ export class ModalUserNewComponent implements OnInit {
       }
     }
   }
+  oneRoleSelected:boolean = false;
+  rolesCheck(){
+    let anyRoleSelected:boolean = false;
+    if(this.role.admin === true || this.role.people === true || this.role.business === true || this.role.interview === true){
+      this.oneRoleSelected = true;
+    }else{
+      this.oneRoleSelected = false;
+    }
+  }
 
 
   // Password field is hidden by default
   hide = true;
 
-  emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
+  // emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
 
   newModalAppUser: any = {
     name: "",

@@ -70,15 +70,15 @@
     </div>
 </form>
 
-<p>Roles:</p>
+<p>Roles: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol) *</span></p>
 <section class="example-section">
-    <mat-checkbox class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
-    <mat-checkbox class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
-    <mat-checkbox class="example-margin" matTooltip="Entrevistador" color="accent" [(ngModel)]="role.interview">Entrevistador</mat-checkbox>
-    <mat-checkbox class="example-margin business" matTooltip="Negocio" [(ngModel)]="role.business">Negocio</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Entrevistador" color="accent" [(ngModel)]="role.interview">Entrevistador</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin business" matTooltip="Negocio" [(ngModel)]="role.business">Negocio</mat-checkbox>
 </section>
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-    <button mat-button [disabled]="!loginForm.valid" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
+    <button mat-button [disabled]="!loginForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
 </mat-dialog-actions>
