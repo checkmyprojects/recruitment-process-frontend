@@ -48,6 +48,7 @@ export class ModalCandidateNewComponent implements OnInit {
   saveCandidate(){
     this.candidateService.registerNewCandidate(this.newCandidate).subscribe({
       next: response => {
+        this.data.candidate.id = response.id;
         this.data.candidate.state = response.state;
         this.data.candidate.name = response.name;
         this.data.candidate.surname = response.surname;
@@ -56,6 +57,8 @@ export class ModalCandidateNewComponent implements OnInit {
         this.data.candidate.skills = response.skills;
         this.data.candidate.experience = response.experience;
         this.data.candidate.studies = response.studies;
+        this.data.candidate.hired = response.hired;
+        this.data.candidate.interviews = response.interviews;
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);

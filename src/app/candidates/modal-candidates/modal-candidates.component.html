@@ -30,7 +30,7 @@
     <br>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
+        <input matInput type="email" matInput [formControl]="emailFormControl" placeholder="Ej. pat@example.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
         <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             Por favor, introduzca una dirección válida
           </mat-error>
@@ -50,7 +50,7 @@
   </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
-      <textarea matInput value={{editedCandidate.skills}} (input)="editedCandidate.skills=$any($event.target).value" placeholder="Ex. It makes me feel..."></textarea>
+      <textarea matInput value={{editedCandidate.skills}} (input)="editedCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
     </mat-form-field>
 </form>
 

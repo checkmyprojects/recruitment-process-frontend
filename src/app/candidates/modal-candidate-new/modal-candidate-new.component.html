@@ -83,7 +83,7 @@
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
-      <textarea placeholder="Habilidades" formControlName="skills" matInput value={{newCandidate.skills}} (input)="newCandidate.skills=$any($event.target).value" placeholder="Ex. It makes me feel..."></textarea>
+      <textarea placeholder="Habilidades" formControlName="skills" matInput value={{newCandidate.skills}} (input)="newCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
       <mat-error *ngIf="!newCandidateForm.get('skills')?.errors?.required">
         Las habilidades deben tener al menos 4 caracteres
       </mat-error>
