@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
+import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candidate-new.component';
 
 @Component({
   selector: 'app-list-candidates',
@@ -46,6 +47,36 @@ export class ListCandidatesComponent implements OnInit {
       }
     });
   }
+
+  //New empty Candidate to add when creating new candidate
+  newCandidate: Candidate = {
+    id: 0,
+    name: "",
+    surname: "",
+    email: "",
+    skills: "",
+    studies: "",
+    location: "",
+    experience: 0,
+    state: "",
+    hired: false,
+    interviews: [],
+  }
+
+  //Open modal for new candidate
+  openDialogNewCandidate() {
+    const dialogRef = this.dialog.open(ModalCandidateNewComponent,{
+      data: { candidate: this.newCandidate }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.dataSource.data = [...this.dataSource.data, this.newCandidate];
+
+     }
+    });
+    }
+
   // Material table
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

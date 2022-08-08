@@ -37,6 +37,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-candidates.component';
 import { ModalUserNewComponent } from './admin/modal-user-new/modal-user-new.component';
+import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/modal-candidate-new.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ModalUserNewComponent } from './admin/modal-user-new/modal-user-new.com
     InterviewComponent,
     ModalUserComponent,
     ModalCandidatesComponent,
-    ModalUserNewComponent
+    ModalUserNewComponent,
+    ModalCandidateNewComponent
   ],
   imports: [
     BrowserModule,

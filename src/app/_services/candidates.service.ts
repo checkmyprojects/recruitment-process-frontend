@@ -31,4 +31,8 @@ export class CandidatesService {
   public deleteCandidateById(id: string){
     return this.http.delete(`${this.apiServerUrl}/api/candidate/delete/${id}`);
   }
+
+  registerNewCandidate(newCandidate: any): Observable<any> {
+    return this.http.post(`${this.apiServerUrl}/api/candidate/new`, newCandidate);
+  }
 }
