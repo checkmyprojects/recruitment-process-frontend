@@ -10,10 +10,10 @@
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         <mat-error *ngIf="!loginForm.get('name')?.errors?.required">
             El nombre debe tener al menos 4 caracteres
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('name')?.invalid && (loginForm.get('name')?.dirty || loginForm.get('name')?.touched) && loginForm.get('name')?.errors?.required">
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('name')?.invalid && (loginForm.get('name')?.dirty || loginForm.get('name')?.touched) && loginForm.get('name')?.errors?.required">
             El nombre es obligatorio
-          </mat-error>
+        </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width" appearance="fill">
@@ -21,10 +21,10 @@
         <input type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{newModalAppUser.email}} (input)="newModalAppUser.email=$any($event.target).value">
         <mat-error *ngIf="!loginForm.get('email')?.errors?.required && (loginForm.get('email')?.errors?.pattern)">
             Por favor, introduzca una dirección válida
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) && loginForm.get('email')?.errors?.required">
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) && loginForm.get('email')?.errors?.required">
             El email es obligatorio
-          </mat-error>
+        </mat-error>
     </mat-form-field>
     <br>
 
@@ -34,10 +34,10 @@
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         <mat-error *ngIf="!loginForm.get('username')?.errors?.required">
             El nombre debe tener al menos 4 caracteres
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched) && loginForm.get('username')?.errors?.required">
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched) && loginForm.get('username')?.errors?.required">
             El nombre de usuario es obligatorio
-          </mat-error>
+        </mat-error>
     </mat-form-field>
 
     <div class="example-container">
