@@ -20,18 +20,18 @@ export class BoardAdminComponent implements OnInit {
 
   // These Components are role-based. But authorization will be processed by back-end.
   // We only need to call UserService methods:
-  
+
   //     getUserBoard()
   //     getModeratorBoard()
   //     getAdminBoard()
-  
+
   content?: string;
 
   public usersList: any[] = [];
 
   public appUsers:AppUser[] = [];
-  
-  
+
+
   public appUsersTest:AppUser[] = [];
   // Material table
   displayedColumns: string[] = ['id', 'name', 'username', 'email', 'roles'];
@@ -78,8 +78,8 @@ export class BoardAdminComponent implements OnInit {
     console.log("Log de variable local");
     console.log(this.appUsersTest);
 
-    
-    
+
+
   }
   // Modal to edit AppUser
   openDialog(row: AppUsers) {
@@ -90,16 +90,16 @@ export class BoardAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       if (result === false){
-        console.log("BORRAR TODO");        
+        console.log("BORRAR TODO");
         console.log(row);
         // Delete user from angular array
         this.dataSource.data = this.dataSource.data.filter(item => item !== row);
 
-        // API call to deete user by id
+        // API call to delete user by id
         this.deleteAppUserById(row.id.toString())
       }else if(result === true){
         // It saves inside modal-user component
-        
+
       }
     });
   }
@@ -122,10 +122,10 @@ export class BoardAdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       if (result === false){
-        // console.log("BORRAR TODO");        
+        // console.log("BORRAR TODO");
         // console.log(this.newAppUser);
         // Delete user from angular array
-        
+
 
         // API call to deete user by id
 
@@ -133,7 +133,7 @@ export class BoardAdminComponent implements OnInit {
         // It saves inside modal-user component
         // console.log(this.dataSource.data)
         // console.log(this.newAppUser);
-        
+
         // this.dataSource.data = [this.newAppUser, ...this.dataSource.data];
         this.dataSource.data = [...this.dataSource.data, this.newAppUser];
       }
@@ -149,7 +149,7 @@ export class BoardAdminComponent implements OnInit {
         // console.log("DENTRO");
         // console.log(this.dataSource.data);
         this.dataSource.data = response;
-        
+
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);

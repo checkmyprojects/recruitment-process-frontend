@@ -28,13 +28,22 @@ export class ListCandidatesComponent implements OnInit {
   constructor(private candidatesService:CandidatesService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllCandidates());
   }
+
+  //Open modal to edit candidate
   openDialog(row: Candidate) {
     const dialogRef = this.dialog.open(ModalCandidatesComponent,{
       data: { candidate: row},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result === false){
+        //Delete candidate from angular array
+        this.dataSource.data = this.dataSource.data.filter(item => item !== row);
+        // API call to delete candidate by id
+        this.deleteCandidateById(row.id.toString())
+      }else if (result === true){
+
+      }
     });
   }
   // Material table
@@ -84,5 +93,16 @@ export class ListCandidatesComponent implements OnInit {
       }
     })
     return data;
+  }
+
+  public deleteCandidateById(id:string){
+    this.candidatesService.deleteCandidateById(id).subscribe({
+      next: response => {
+        console.log(`Deleted Candidate with ID: ${id}`)
+    },
+    error: (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  });
   }
 }

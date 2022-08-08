@@ -24,7 +24,7 @@ export class AdminService {
   public getAppUserById(id: string): Observable<Object>{
     return this.http.get<Object>(`${this.apiServerUrl}/api/admin/id/${id}`);
   }
-  
+
   public updateAppUsers(user: AppUsers): Observable<AppUsers>{
     return this.http.put<AppUsers>(`${this.apiServerUrl}/api/admin/edit`, user);
   }
@@ -35,7 +35,7 @@ export class AdminService {
 
   public getAllAppUsersParse(): AppUser[]{
     console.log("TEST SERVICE NUEVO");
-    
+
     let usersList: any[] = [];
     let appUsers:AppUser[] = [];
     this.getAllAppUsers().subscribe({

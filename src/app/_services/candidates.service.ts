@@ -27,4 +27,8 @@ export class CandidatesService {
     return this.http.put<Candidate>(`${this.apiServerUrl}/api/candidate/edit`, candidate);
 
   }
+
+  public deleteCandidateById(id: string){
+    return this.http.delete(`${this.apiServerUrl}/api/candidate/delete/${id}`);
+  }
 }
