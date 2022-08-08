@@ -42,13 +42,13 @@ export class BoardAdminComponent implements OnInit {
   // dataSource:AppUsers[] = [];
   constructor(public dialog: MatDialog, private userService: UserService, private adminService: AdminService) {
     this.dataSource = new MatTableDataSource(this.getAllMyAppUsers());
-   }
+  }
 
-   alertMe(){
-     alert("hola");
-   }
+  alertMe(){
+    alert("hola");
+  }
   //  Material table
-   ngAfterViewInit() {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -81,6 +81,7 @@ export class BoardAdminComponent implements OnInit {
     
     
   }
+  // Modal to edit AppUser
   openDialog(row: AppUsers) {
     const dialogRef = this.dialog.open(ModalUserComponent, {
       data: { user: row },
@@ -110,8 +111,9 @@ export class BoardAdminComponent implements OnInit {
     email: "",
     roles: [],
     interviews: [],
-    active: false
+    active: true
   }
+  // Modal for new AppUser
   openDialogNewUser() {
     const dialogRef = this.dialog.open(ModalUserNewComponent, {
       data: { user: this.newAppUser },
