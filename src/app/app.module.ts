@@ -38,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-candidates.component';
 import { ModalUserNewComponent } from './admin/modal-user-new/modal-user-new.component';
 import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/modal-candidate-new.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/mod
     ModalUserComponent,
     ModalCandidatesComponent,
     ModalUserNewComponent,
-    ModalCandidateNewComponent
+    ModalCandidateNewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
