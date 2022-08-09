@@ -3,7 +3,7 @@
 
 <h4>Editar usuario: <span>{{editedUser.username}}</span></h4>
 
-<form class="example-form">
+<form [formGroup]="editUserForm" novalidate class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Número de usuario (no editable)</mat-label>
         <input matInput disabled value={{editedUser.id}}>
@@ -11,26 +11,38 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput #message maxlength="256" value={{editedUser.name}} (input)="editedUser.name=$any($event.target).value" >
-        <mat-hint align="start"><strong>Nombre personal del usuario</strong> </mat-hint>
+        <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{editedUser.name}} (input)="editedUser.name=$any($event.target).value" >
+        <mat-hint align="start">Nombre personal del usuario </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        <mat-error *ngIf="!editUserForm.get('name')?.errors?.required">
+            El nombre debe tener al menos 4 caracteres
+        </mat-error>
+        <mat-error *ngIf="editUserForm.get('name')?.invalid && (editUserForm.get('name')?.dirty || editUserForm.get('name')?.touched) && editUserForm.get('name')?.errors?.required">
+            El nombre es obligatorio
+        </mat-error>
     </mat-form-field>
     <br><br>
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="email" matInput [formControl]="emailFormControl" placeholder="Ej. jorge.fernandez@nttdata.com" value={{editedUser.email}} (input)="editedUser.email=$any($event.target).value">
-        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        <input matInput type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{editedUser.email}} (input)="editedUser.email=$any($event.target).value">
+        <mat-error *ngIf="!editUserForm.get('email')?.errors?.required && (editUserForm.get('email')?.errors?.pattern)">
             Por favor, introduzca una dirección válida
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            El email es <strong>obligatorio</strong>
-          </mat-error>
+        </mat-error>
+        <mat-error *ngIf="editUserForm.get('email')?.invalid && (editUserForm.get('email')?.dirty || editUserForm.get('email')?.touched) && editUserForm.get('email')?.errors?.required">
+            El email es obligatorio
+        </mat-error>
     </mat-form-field>
     <br>
 
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Nombre de usuario en la aplicación</mat-label>
-        <input matInput value={{editedUser.username}} (input)="editedUser.username=$any($event.target).value">
+        <input placeholder="Nombre de usuario" formControlName="username" matInput value={{editedUser.username}} (input)="editedUser.username=$any($event.target).value">
+        <mat-error *ngIf="!editUserForm.get('username')?.errors?.required">
+            El nombre debe tener al menos 4 caracteres
+        </mat-error>
+        <mat-error *ngIf="editUserForm.get('username')?.invalid && (editUserForm.get('username')?.dirty || editUserForm.get('username')?.touched) && editUserForm.get('username')?.errors?.required">
+            El nombre de usuario es obligatorio
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -38,12 +50,12 @@
         <input matInput disabled value="*****************">
     </mat-form-field>
 </form>
-<p>Roles:</p>
+<p>Roles *: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol) *</span></p>
 <section class="example-section">
-    <mat-checkbox class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
-    <mat-checkbox class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
-    <mat-checkbox class="example-margin" matTooltip="Entrevistador" color="accent" [(ngModel)]="role.interview">Entrevistador</mat-checkbox>
-    <mat-checkbox class="example-margin business" matTooltip="Negocio" [(ngModel)]="role.business">Negocio</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Entrevistador" color="accent" [(ngModel)]="role.interview">Entrevistador</mat-checkbox>
+    <mat-checkbox (change)="rolesCheck()" class="example-margin business" matTooltip="Negocio" [(ngModel)]="role.business">Negocio</mat-checkbox>
 </section>
 <p class="toggleActive"><mat-slide-toggle matTooltip="Desactivar/Activar Usuario" [(ngModel)]="editedUser.active" color="primary"><span *ngIf="editedUser.active">El usuario está Activo</span><span *ngIf="!editedUser.active">El usuario está Desactivado</span> </mat-slide-toggle></p>
 
@@ -55,6 +67,6 @@
     <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
     <!-- Use a function to close the dialog instead -->
     <button mat-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
-    <button mat-button [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
+    <button mat-button [disabled]="!editUserForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
     <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>

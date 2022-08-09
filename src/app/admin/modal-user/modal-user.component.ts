@@ -3,7 +3,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AppUsers } from 'src/app/model/app-users';
 import { AdminService } from 'src/app/_services/admin.service';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modal-user',
@@ -16,6 +16,8 @@ export class ModalUserComponent implements OnInit {
 
   emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
 
+  editUserForm: FormGroup | any;
+
   // Listener for enter key
   // on enter key press, save user and close dialog
   @HostListener('window:keyup.Enter', ['$event'])
@@ -27,7 +29,25 @@ export class ModalUserComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    // Initialize checkboxes with the user roles
     this.getMyRoles(this.data.user.roles);
+    // Initialize oneRoleSelected with correct value
+    this.rolesCheck();
+
+
+    // Initialize Form
+    this.editUserForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(4),]),
+      username: new FormControl('', [Validators.required, Validators.minLength(4),]),
+      email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
+        '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
+      ),])
+    });
+
+    // Form value initialized with current user
+    this.editUserForm.controls.name.value = this.editedUser.name;
+    this.editUserForm.controls.username.value = this.editedUser.username;
+    this.editUserForm.controls.email.value = this.editedUser.email;
   }
 
   // Save if user has the role inside of a variable to enable/disable the checkboxes
@@ -48,6 +68,18 @@ export class ModalUserComponent implements OnInit {
       }
     })
   }
+
+  // Make sure at least 1 roles is selected
+  oneRoleSelected:boolean = false;
+  rolesCheck(){
+    let anyRoleSelected:boolean = false;
+    if(this.role.admin === true || this.role.people === true || this.role.business === true || this.role.interview === true){
+      this.oneRoleSelected = true;
+    }else{
+      this.oneRoleSelected = false;
+    }
+  }
+
 
   // Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
   // Function to close the dialog. It can return true or false

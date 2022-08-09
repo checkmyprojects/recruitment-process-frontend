@@ -69,8 +69,8 @@
         </mat-form-field>
     </div>
 </form>
-
-<p>Roles: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol) *</span></p>
+<br>
+<p>Roles *: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol) *</span></p>
 <section class="example-section">
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
