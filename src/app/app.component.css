@@ -8,3 +8,9 @@
     min-height: 100%;
     position: static;
 } */
+footer p{
+    font-size: 14px;
+}
+footer{
+    padding-left: 20px;
+}
