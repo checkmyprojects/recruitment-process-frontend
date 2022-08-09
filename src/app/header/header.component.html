@@ -1,85 +1,50 @@
-<nav class="navbar navbar-expand navbar-dark bg-navbar">
-    <a class="navbar-brand" href="#">
-        <img src="/assets/img/NTT_DATA_logo.png" alt="" width="150" height="45"
-            class="d-inline-block align-text-top bg-navbar">
-    </a>
-    <ul class="navbar-nav mr-auto botones" routerLinkActive="active">
-        <li class="nav-item">
-            <a href="/home" class="nav-link bg-navbar" routerLink="home">Inicio</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-light bg-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home" routerLink="home"><img src="/assets/img/NTT_DATA_logo.png" alt="" width="150"
+        height="45" class="d-inline-block align-text-top bg-navbar"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="showAdminBoard" class="nav-item">
+          <a class="nav-link" aria-current="page" href="/admin" routerLink="admin">Administración</a>
         </li>
-    </ul>
-    <ul *ngIf="showAdminBoard" class="navbar-nav mr-auto botones" routerLinkActive="active">
-        <li class="nav-item">
-            <a href="/admin" class="nav-link bg-navbar" routerLink="admin">Administración</a>
+        <li *ngIf="showCandidatesBoard" class="nav-item">
+          <a class="nav-link" href="/people" routerLink="people">Candidatos</a>
         </li>
-    </ul>
-    <ul *ngIf="showCandidatesBoard" class="navbar-nav mr-auto botones" routerLinkActive="active">
-        <li class="nav-item">
-            <a href="/people" class="nav-link bg-navbar" routerLink="people">Candidatos</a>
+        <li *ngIf="showSelectionBoard" class="nav-item">
+          <a class="nav-link" href="/selection" routerLink="selection">Procesos</a>
         </li>
-    </ul>
-    <ul *ngIf="showSelectionBoard" class="navbar-nav mr-auto botones" routerLinkActive="active">
-        <li class="nav-item">
-            <a href="/selection" class="nav-link bg-navbar" routerLink="selection">Procesos</a>
+        <li *ngIf="showInterviewerBoard" class="nav-item">
+          <a class="nav-link" href="/interview" routerLink="interview">Entrevistas</a>
         </li>
-    </ul>
-    <ul *ngIf="showInterviewerBoard" class="navbar-nav mr-auto botones" routerLinkActive="active">
-        <li class="nav-item">
-            <a href="/interview" class="nav-link bg-navbar" routerLink="interview">Entrevistas</a>
+        <li *ngIf="showBusinessBoard" class="nav-item">
+          <a class="nav-link" href="/home" routerLink="home">Estadísticas</a>
         </li>
-    </ul>
-    <ul *ngIf="showBusinessBoard" class="navbar-nav mr-auto botones" routerLinkActive="active">
-        <li class="nav-item">
-            <a href="/home" class="nav-link bg-navbar" routerLink="home">Estadísticas</a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-        <li class="nav-item bg-navbar" style="color:#E7E9E8;">
-            <a href="/login" class="nav-link" routerLink="login">Entrar</a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-        <li class="nav-item">
-            <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-        </li>
-        <li class="nav-item">
-            <a href class="nav-link" (click)="logout()">LogOut</a>
-        </li>
-    </ul>
-</nav>
-
-
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </ul>
+      <li *ngIf="isLoggedIn" class="nav-item dropdown d-flex" matTooltip={{email}}>
+        <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <mat-icon class="nav-link">exit_to_app</mat-icon>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end lightBlue" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item">
+              <mat-icon class="iconBig">person</mat-icon>
+            </a></li>
+          <li><a class="dropdown-item">{{username}}</a></li>
+          <li><a class="dropdown-item">{{email}}</a></li>
+          <li>
+            <hr class="dropdown-divider">
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
-          </li>
+          <li><a class="dropdown-item" href (click)="logout()">Cerrar sesión</a></li>
         </ul>
-        <li class="nav-item dropdown d-flex">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </div>
+      </li>
+      <li *ngIf="!isLoggedIn" class="nav-item d-flex">
+        <a class="nav-link" href="/login" routerLink="login">
+          <mat-icon>person</mat-icon>
+        </a>
+      </li>
     </div>
-  </nav>
+  </div>
+</nav>

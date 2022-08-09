@@ -8,7 +8,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 export class HeaderComponent implements OnInit {
 
-  private roles: string[] = [];
+  roles: string[] = [];
 
   isLoggedIn = false;
   showAdminBoard = false;
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   showInterviewerBoard = false;
   showSelectionBoard = false;
   username?: string;
+  email?: string;
 
 
   constructor(private tokenStorageService: TokenStorageService) { }
@@ -43,7 +44,7 @@ export class HeaderComponent implements OnInit {
         this.showInterviewerBoard = true;
       }
 
-
+      this.email = user.email;
       this.username = user.username;
     }
   }

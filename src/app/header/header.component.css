@@ -1,3 +1,15 @@
 .bg-navbar {
     background-color: #1C5B92 !important;
 }
+.iconBig{
+    font-size: 5rem;
+}
+.lightBlue{
+    background-color: #d1e9ff;
+}
+.nav-link:hover{
+    color: #fff !important;
+}
+.nav-link{
+    color: #99B5CE !important;
+}
