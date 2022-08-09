@@ -4,6 +4,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AppUsers } from 'src/app/model/app-users';
 import { AdminService } from 'src/app/_services/admin.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-modal-user',
@@ -12,11 +13,14 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ModalUserComponent implements OnInit {
   // public dialogRef: MatDialogRef<ModalUserComponent> allow to use dialogref in the component
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, private adminService: AdminService, public dialogRef: MatDialogRef<ModalUserComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, private adminService: AdminService, public dialogRef: MatDialogRef<ModalUserComponent>, private tokenStorageService: TokenStorageService) { }
 
   emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
 
   editUserForm: FormGroup | any;
+
+  isLoggedIn = false;
+  isThisMe: boolean = false;
 
   // Listener for enter key
   // on enter key press, save user and close dialog
@@ -29,6 +33,16 @@ export class ModalUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      if(user.id === this.data.user.id){
+        this.isThisMe = true;
+      }
+    }
+    console.log("soy yo o no?: " + this.isThisMe);
+
     // Initialize checkboxes with the user roles
     this.getMyRoles(this.data.user.roles);
     // Initialize oneRoleSelected with correct value
@@ -43,6 +57,7 @@ export class ModalUserComponent implements OnInit {
         '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
       ),])
     });
+    
   }
 
   // Save if user has the role inside of a variable to enable/disable the checkboxes
