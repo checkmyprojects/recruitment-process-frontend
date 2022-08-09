@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Candidate } from './../../model/candidate';
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -18,7 +18,22 @@ export class ModalCandidatesComponent implements OnInit {
   emailFormControl = new FormControl(this.data.candidate.email, [Validators.required, Validators.email]);
 
   editedCandidate: Candidate = JSON.parse(JSON.stringify(this.data.candidate));
+
+  editCandidateForm: FormGroup | any;
+
   ngOnInit(): void {
+    this.editCandidateForm = new FormGroup({
+      name: new FormControl(this.data.candidate.name, [Validators.required, Validators.minLength(4),]),
+      surname: new FormControl(this.data.candidate.surname, [Validators.required, Validators.minLength(4),]),
+      email: new FormControl(this.data.candidate.email, [Validators.required, Validators.email,Validators.pattern(
+        '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
+      ),]),
+      skills: new FormControl(this.data.candidate.skills, [Validators.required, Validators.minLength(4),]),
+      studies: new FormControl(this.data.candidate.studies, [Validators.required, Validators.minLength(4),]),
+      location: new FormControl(this.data.candidate.location, [Validators.required, Validators.minLength(4),]),
+      experience: new FormControl(this.data.candidate.experience, [Validators.required,]),
+      state: new FormControl(this.data.candidate.state, [Validators.required, Validators.minLength(4),]),
+    });
   }
 
   saveCandidate(){

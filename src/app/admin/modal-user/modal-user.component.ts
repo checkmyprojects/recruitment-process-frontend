@@ -27,7 +27,7 @@ export class ModalUserComponent implements OnInit {
     // close dialog returning true
     this.closeDialog(true);
   }
-  
+
   ngOnInit(): void {
     // Initialize checkboxes with the user roles
     this.getMyRoles(this.data.user.roles);
@@ -37,17 +37,12 @@ export class ModalUserComponent implements OnInit {
 
     // Initialize Form
     this.editUserForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      username: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
+      name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(4),]),
+      username: new FormControl(this.data.user.username, [Validators.required, Validators.minLength(4),]),
+      email: new FormControl(this.data.user.email, [Validators.required, Validators.email,Validators.pattern(
         '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
       ),])
     });
-
-    // Form value initialized with current user
-    this.editUserForm.controls.name.value = this.editedUser.name;
-    this.editUserForm.controls.username.value = this.editedUser.username;
-    this.editUserForm.controls.email.value = this.editedUser.email;
   }
 
   // Save if user has the role inside of a variable to enable/disable the checkboxes
