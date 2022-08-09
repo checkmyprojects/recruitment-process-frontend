@@ -41,23 +41,20 @@ export class ModalUserComponent implements OnInit {
         this.isThisMe = true;
       }
     }
-    console.log("soy yo o no?: " + this.isThisMe);
-
     // Initialize checkboxes with the user roles
     this.getMyRoles(this.data.user.roles);
     // Initialize oneRoleSelected with correct value
     this.rolesCheck();
-
 
     // Initialize Form
     this.editUserForm = new FormGroup({
       name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(4),]),
       username: new FormControl(this.data.user.username, [Validators.required, Validators.minLength(4),]),
       email: new FormControl(this.data.user.email, [Validators.required, Validators.email,Validators.pattern(
-        '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
+      '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
       ),])
     });
-    
+
   }
 
   // Save if user has the role inside of a variable to enable/disable the checkboxes
@@ -89,7 +86,6 @@ export class ModalUserComponent implements OnInit {
       this.oneRoleSelected = false;
     }
   }
-
 
   // Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
   // Function to close the dialog. It can return true or false
