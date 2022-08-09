@@ -1,3 +1,4 @@
+import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 import { BoardPeopleComponent } from './board-people/board-people.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,7 +25,7 @@ const routes: Routes = [
   { path: 'selection', component: SelectionComponent },
   { path: 'admin/edit/:id', component: EditUserComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'interview', component: InterviewComponent}
+  { path: 'interview', component: ListInterviewComponent}
 ];
 
 // Routes array is passed to the RouterModule.forRoot() method.

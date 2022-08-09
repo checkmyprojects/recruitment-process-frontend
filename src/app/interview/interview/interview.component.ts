@@ -14,6 +14,7 @@ export class InterviewComponent implements OnInit
 
   ngOnInit(): void
   {
-    this.interviewService.getInterviews().subscribe((ivs:Object[])=>{this.interviews = ivs;});
+    this.interviewService.getInterviews().subscribe((ivs:Object[])=>{this.interviews = ivs; console.log(ivs)});
+    console.log(this.interviews)
   }
 }
