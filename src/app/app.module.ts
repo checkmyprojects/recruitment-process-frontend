@@ -41,6 +41,8 @@ import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/mod
 import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider'
+// Material table sort arrow
+import { MatSortModule } from '@angular/material/sort'
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { MatDividerModule } from '@angular/material/divider'
     MatSlideToggleModule,
     MatMenuModule,
     MatDividerModule,
+    MatSortModule,
     ReactiveFormsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],
