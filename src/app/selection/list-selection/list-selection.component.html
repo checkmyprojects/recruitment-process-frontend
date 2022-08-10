@@ -1,9 +1,22 @@
 
-<mat-form-field appearance="standard" >
+<!-- <mat-form-field appearance="standard" >
     <mat-label>Buscar</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
-  </mat-form-field>
+  </mat-form-field> -->
+<p>Home > Selection > Selection List</p>
 
+<div class="searchTableFlex">
+  <div class="searchBar">
+    <mat-form-field class="searchBar" appearance="standard">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="button-new">Crear Proceso <mat-icon>add_circle_outline</mat-icon></button>
+  </div>
+
+</div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 

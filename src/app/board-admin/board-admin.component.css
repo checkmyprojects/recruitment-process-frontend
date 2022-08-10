@@ -86,6 +86,7 @@ tr.mat-row:hover {
     cursor: pointer;
 }
 
+/* Make roles row not so big */
 td, th {
     width: 25%;
 }
