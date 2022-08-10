@@ -39,7 +39,7 @@
 
 
 
-      <li *ngIf="isLoggedIn" class="nav-item dropdown d-flex align-items-center" matTooltip={{email}}>
+      <li *ngIf="isLoggedIn" class="nav-item dropdown d-flex align-items-center" matTooltip="Cerrar sesión">
         <a class="nav-link d-flex pt-3 pb-3" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <!-- <button mat-raised-button color="button-new">{{username}} <mat-icon>exit_to_app</mat-icon></button> -->
           {{username}} <mat-icon>exit_to_app</mat-icon>
@@ -57,7 +57,7 @@
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item d-flex align-items-center" href (click)="logout()">Cerrar sesión <mat-icon>exit_to_app</mat-icon></a></li>
+          <li><a class="dropdown-item d-flex align-items-center" matTooltip="Cerrar sesión" href (click)="logout()">Cerrar sesión <mat-icon>exit_to_app</mat-icon></a></li>
         </ul>
       </li>
       <li *ngIf="!isLoggedIn" class="nav-item d-flex" matTooltip="Iniciar sesión">
