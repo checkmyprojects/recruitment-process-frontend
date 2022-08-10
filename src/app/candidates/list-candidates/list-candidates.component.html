@@ -13,7 +13,8 @@
 
 </div>
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Sort by column "name" and "asc" order by default -->
+    <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
 
       <!-- ID Column -->
       <ng-container matColumnDef="id" class="oscuro">
