@@ -1,5 +1,6 @@
 import { Candidate } from './candidate';
 import { AppUsers } from './app-users';
+import { Selection } from './selection';
 export interface Interview {
 
     id: number;

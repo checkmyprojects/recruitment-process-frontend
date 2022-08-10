@@ -22,16 +22,42 @@ export class ListInterviewComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private interviewService: InterviewService, public dialog: MatDialog) {
-   this.dataSource = new MatTableDataSource(this.getAllInterviews());
-   }
+    this.dataSource = new MatTableDataSource(this.getAllInterviews());
 
-   openDialog() {
-   }
+    // Override filterPredicate with a custome one to allow
+    // searching on nested properties
+    this.dataSource.filterPredicate = (data, filter: string)  => {
+    const accumulator = (currentTerm:any, key:any) => {
+      return this.nestedFilterCheck(currentTerm, data, key);
+    };
+    const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+    // Transform the filter by converting it to lowercase and removing whitespace.
+    const transformedFilter = filter.trim().toLowerCase();
+    return dataStr.indexOf(transformedFilter) !== -1;
+  };
+  }
+
+  openDialog() {
+
+  }
 //Custom filter for nested properties to work
-   getProperty = (obj: any, path:any) => (
+  getProperty = (obj: any, path:any) => (
     path.split('.').reduce((o: any, p: any) => o && o[p], obj)
   )
 
+  // Used along with datasource.filterPredicate to allow filtering nested properties
+  nestedFilterCheck(search:any, data:any, key:any) {
+    if (typeof data[key] === 'object') {
+      for (const k in data[key]) {
+        if (data[key][k] !== null) {
+          search = this.nestedFilterCheck(search, data[key], k);
+        }
+      }
+    } else {
+      search += data[key];
+    }
+    return search;
+  }
    // Material table
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
