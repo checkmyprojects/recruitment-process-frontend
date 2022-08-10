@@ -54,8 +54,8 @@
     <table mat-table [dataSource]="dataSource" matSort>
   
       <!-- ID Column -->
-      <ng-container matColumnDef="id" class="oscuro">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="oscuro"> Núm. </th>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
         <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.id}} </td>
       </ng-container>
   
