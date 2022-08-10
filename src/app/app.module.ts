@@ -39,6 +39,11 @@ import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-ca
 import { ModalUserNewComponent } from './admin/modal-user-new/modal-user-new.component';
 import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/modal-candidate-new.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
+import { HeaderComponent } from './header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider'
+// Material table sort arrow
+import { MatSortModule } from '@angular/material/sort'
 
 @NgModule({
   declarations: [
@@ -63,7 +68,8 @@ import { ListInterviewComponent } from './interview/list-interview/list-intervie
     ModalCandidatesComponent,
     ModalUserNewComponent,
     ModalCandidateNewComponent,
-    ListInterviewComponent
+    ListInterviewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +87,9 @@ import { ListInterviewComponent } from './interview/list-interview/list-intervie
     MatCheckboxModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatSortModule,
     ReactiveFormsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],

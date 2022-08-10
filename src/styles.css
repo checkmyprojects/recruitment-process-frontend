@@ -38,6 +38,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #fff;
     font-size: 1rem;
 } */
+/* Material table sort arrow color */
+.mat-sort-header-arrow {
+    color: #fff !important;
+    /* opacity: 1 !important; */
+}
 .mat-paginator {
     background: #1C5B92;
     color: #fff;

@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-light bg-navbar p-0">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home" routerLink="home"><img src="/assets/img/NTT_DATA_logo.png" alt="" width="150"
+        height="45" class="d-inline-block align-text-top bg-navbar"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-0">
+        <li *ngIf="showAdminBoard" class="nav-item">
+          <a class="nav-link pt-3 pb-3" aria-current="page" href="/admin" routerLink="admin">Administración</a>
+        </li>
+        <li *ngIf="showCandidatesBoard" class="nav-item">
+          <a class="nav-link pt-3 pb-3" href="/people" routerLink="people">Candidatos</a>
+        </li>
+        <li *ngIf="showSelectionBoard" class="nav-item">
+          <a class="nav-link pt-3 pb-3" href="/selection" routerLink="selection">Procesos</a>
+        </li>
+        <li *ngIf="showInterviewerBoard" class="nav-item">
+          <a class="nav-link pt-3 pb-3" href="/interview" routerLink="interview">Entrevistas</a>
+        </li>
+        <li *ngIf="showBusinessBoard" class="nav-item">
+          <a class="nav-link pt-3 pb-3" href="/home" routerLink="home">Estadísticas</a>
+        </li>
+      </ul>
+      <li *ngIf="isLoggedIn" class="nav-item dropdown d-flex" matTooltip={{email}}>
+        <button mat-raised-button [matMenuTriggerFor]="beforeMenu">{{username}} <mat-icon>exit_to_app</mat-icon></button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <mat-icon class="iconBig">person</mat-icon>
+          <!-- <button mat-menu-item><mat-icon class="iconBig">person</mat-icon></button> -->
+          <button mat-menu-item>{{username}}</button>
+          <button mat-menu-item>{{email}}</button>
+          <mat-divider></mat-divider>
+          <button (click)="logout()" mat-menu-item>Cerrar sesión <mat-icon>exit_to_app</mat-icon></button>
+        </mat-menu>
+      </li>
+
+
+
+      <li *ngIf="isLoggedIn" class="nav-item dropdown d-flex" matTooltip={{email}}>
+        <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <button mat-raised-button color="button-new">{{username}} <mat-icon>exit_to_app</mat-icon></button>
+        </a>
+        <!-- <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <mat-icon class="nav-link">exit_to_app</mat-icon>
+        </a> -->
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item">
+              <mat-icon class="iconBig">person</mat-icon>
+            </a></li>
+          <li><a class="dropdown-item">{{username}}</a></li>
+          <li><a class="dropdown-item">{{email}}</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href (click)="logout()">Cerrar sesión <mat-icon>exit_to_app</mat-icon></a></li>
+        </ul>
+      </li>
+      <li *ngIf="!isLoggedIn" class="nav-item d-flex" matTooltip="Iniciar sesión">
+        <a class="nav-link" href="/login" routerLink="login">
+          <!-- <mat-icon>person</mat-icon> -->
+          <button mat-raised-button color="button-new">Iniciar sesión <mat-icon>person</mat-icon></button>
+        </a>
+      </li>
+    </div>
+  </div>
+</nav>
