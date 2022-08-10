@@ -83,7 +83,6 @@ export class ListInterviewComponent implements OnInit {
     let data: Interview[] = [];
     this.interviewService.getAllInterviews().subscribe({
       next: (response: Interview[]) => {
-        console.log(response);
         data = response;
         this.dataSource.data = response;
       },

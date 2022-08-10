@@ -56,25 +56,25 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id" class="oscuro">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="oscuro"> Núm. </th>
-        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }" mat-sort-header> {{row.id}} </td>
+        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.id}} </td>
       </ng-container>
   
       <!-- Progress Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-        <td mat-cell matTooltip="Nombre" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }" mat-sort-header> {{row.name}} </td>
+        <td mat-cell matTooltip="Nombre" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.name}} </td>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre usuario </th>
-        <td mat-cell matTooltip="Nombre de usuario en la aplicación" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }" mat-sort-header> {{row.username}} </td>
+        <td mat-cell matTooltip="Nombre de usuario en la aplicación" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.username}} </td>
       </ng-container>
   
       <!-- Fruit Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-        <td mat-cell matTooltip="Email" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }" mat-sort-header> {{row.email}} </td>
+        <td mat-cell matTooltip="Email" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.email}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="roles">
