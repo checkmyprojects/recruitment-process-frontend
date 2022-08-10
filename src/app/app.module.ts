@@ -38,12 +38,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalCandidatesComponent } from './candidates/modal-candidates/modal-candidates.component';
 import { ModalUserNewComponent } from './admin/modal-user-new/modal-user-new.component';
 import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/modal-candidate-new.component';
-import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider'
 // Material table sort arrow
 import { MatSortModule } from '@angular/material/sort';
+import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 
 @NgModule({
   declarations: [

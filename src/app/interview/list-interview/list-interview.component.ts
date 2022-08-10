@@ -16,7 +16,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ListInterviewComponent implements OnInit {
 
-  displayedColumns: string[] = ['interviewDate', 'candidateName', 'interviewer','selection'];
+  displayedColumns: string[] = ['id','interview_date', 'candidate.name', 'interviewer.name','selection.name'];
   dataSource: MatTableDataSource<Interview>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -27,10 +27,16 @@ export class ListInterviewComponent implements OnInit {
 
    openDialog() {
    }
+//Custom filter for nested properties to work
+   getProperty = (obj: any, path:any) => (
+    path.split('.').reduce((o: any, p: any) => o && o[p], obj)
+  )
 
    // Material table
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  //custom filter that uses getProperty function for nested properties sorting to work
+    this.dataSource.sortingDataAccessor = (obj, property) => this.getProperty(obj, property);
     this.dataSource.sort = this.sort;
   }
   applyFilter(event: Event) {
@@ -43,6 +49,8 @@ export class ListInterviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.dataSource);
+
   }
 
   public getAllInterviews(): Interview[] {

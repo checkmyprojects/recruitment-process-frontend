@@ -16,24 +16,24 @@
     <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- ID Column -->
-      <ng-container matColumnDef="id" class="oscuro">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="oscuro"> Núm. </th>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
         <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" > {{row.id}} </td>
       </ng-container>
       <!-- Fruit Column -->
-      <ng-container matColumnDef="candidateName">
+      <ng-container matColumnDef="candidate.name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre del Candidato </th>
         <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
         <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
         <td mat-cell matTooltip="Nombre del candidato" *matCellDef="let row" > {{row.candidate.name}} {{row.candidate.surname}} </td>
       </ng-container>
       <!-- Progress Column -->
-      <ng-container matColumnDef="interviewer">
+      <ng-container matColumnDef="interviewer.name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Entrevistador </th>
         <td mat-cell matTooltip="Entrevistador" *matCellDef="let row" > {{row.interviewer.name}} </td>
       </ng-container>
       <!-- Name Column -->
-      <ng-container matColumnDef="selection">
+      <ng-container matColumnDef="selection.name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Proceso </th>
         <td mat-cell matTooltip="Proceso" *matCellDef="let row"> {{row.selection.name}} </td>
       </ng-container>
@@ -43,7 +43,7 @@
         <td mat-cell matTooltip="Notas" *matCellDef="let row" > {{row.feedback}} </td>
       </ng-container>
       <!-- Fruit Column -->
-      <ng-container matColumnDef="interviewDate">
+      <ng-container matColumnDef="interview_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha  </th>
         <td mat-cell matTooltip="Fecha" *matCellDef="let row" > {{row.interview_date}} </td>
       </ng-container>
