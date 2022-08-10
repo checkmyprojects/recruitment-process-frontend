@@ -25,6 +25,9 @@ export class ListInterviewComponent implements OnInit {
    this.dataSource = new MatTableDataSource(this.getAllInterviews());
    }
 
+   openDialog() {
+   }
+
    // Material table
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
