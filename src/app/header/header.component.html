@@ -45,7 +45,7 @@
         <!-- <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <mat-icon class="nav-link">exit_to_app</mat-icon>
         </a> -->
-        <ul class="dropdown-menu dropdown-menu-end lightBlue" aria-labelledby="navbarDropdown">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item">
               <mat-icon class="iconBig">person</mat-icon>
             </a></li>
@@ -54,7 +54,7 @@
           <li>
             <hr class="dropdown-divider">
           </li>
-          <li><a class="dropdown-item" href (click)="logout()">Cerrar sesión</a></li>
+          <li><a class="dropdown-item" href (click)="logout()">Cerrar sesión <mat-icon>exit_to_app</mat-icon></a></li>
         </ul>
       </li>
       <li *ngIf="!isLoggedIn" class="nav-item d-flex" matTooltip="Iniciar sesión">
