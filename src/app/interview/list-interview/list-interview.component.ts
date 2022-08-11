@@ -26,7 +26,7 @@ export class ListInterviewComponent implements OnInit {
 
     // Override filterPredicate with a custome one to allow
     // searching on nested properties
-    this.dataSource.filterPredicate = (data, filter: string)  => {
+  this.dataSource.filterPredicate = (data, filter: string)  => {
     const accumulator = (currentTerm:any, key:any) => {
       return this.nestedFilterCheck(currentTerm, data, key);
     };

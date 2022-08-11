@@ -41,6 +41,7 @@ import { ModalCandidateNewComponent } from './candidates/modal-candidate-new/mod
 import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider'
+import { MatExpansionModule } from '@angular/material/expansion'
 // Material table sort arrow
 import { MatSortModule } from '@angular/material/sort';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
@@ -90,6 +91,7 @@ import { ListInterviewComponent } from './interview/list-interview/list-intervie
     MatMenuModule,
     MatDividerModule,
     MatSortModule,
+    MatExpansionModule,
     ReactiveFormsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],

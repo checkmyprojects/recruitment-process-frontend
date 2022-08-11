@@ -67,7 +67,9 @@
     <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
     <!-- Use a function to close the dialog instead -->
     <!-- Normal tooltip won't show if button is disabled. Show alternate tooltip when isThisMe is true and disable that tooltip when is false  -->
-    <button mat-button [disabled]="isThisMe" (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete"><span matTooltip="No puedes eliminarte a ti mismo" [matTooltipDisabled]="isThisMe === false">Eliminar</span></button>
+    <button mat-button [disabled]="isThisMe" (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">
+        <span matTooltip="No puedes eliminarte a ti mismo" [matTooltipDisabled]="isThisMe === false">Eliminar</span>
+    </button>
     <button mat-button [disabled]="!editUserForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
     <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>
