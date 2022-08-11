@@ -104,7 +104,6 @@
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-    <p (click)="saveSelection()">PRUEBAS</p>
     <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
     <!-- Use a function to close the dialog instead -->
     <button mat-button [disabled]="!newSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveSelection()">Guardar</button>
