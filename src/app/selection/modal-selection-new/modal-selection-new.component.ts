@@ -49,6 +49,9 @@ newSelectionForm: FormGroup | any;
   }
 
   saveSelection(){
+    // Get value from form and give it to newSelection
+    this.newSelection.start_date = this.newSelectionForm.controls.start_date.value
+
     this.selectionService.registerNewSelection(this.newSelection).subscribe({
       next: response => {
         this.data.selection.id = response.id;
