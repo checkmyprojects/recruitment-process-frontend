@@ -21,7 +21,7 @@ export class SelectionService {
   return this.http.get<Selection[]>(`${this.apiServerUrl}/api/selection/list`);
 }
 
-registerNewSelection(newSelection: any): Observable<any> {
-  return this.http.post(`${this.apiServerUrl}/api/selection/new?creatorid=1`, newSelection);
-}
+  registerNewSelection(newSelection: any): Observable<any> {
+    return this.http.post(`${this.apiServerUrl}/api/selection/new`, newSelection);
+  }
 }
