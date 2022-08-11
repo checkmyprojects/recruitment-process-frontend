@@ -33,7 +33,7 @@ newSelectionForm: FormGroup | any;
   ngOnInit(): void {
     this.newSelectionForm = new FormGroup({
       start_date: new FormControl('', [Validators.required]),
-      end_date: new FormControl('', [Validators.required]),
+      // end_date: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required, Validators.minLength(4),]),
       description: new FormControl('', [Validators.required, Validators.minLength(4),]),
       requirements: new FormControl('', [Validators.required, Validators.minLength(4),]),
@@ -42,7 +42,8 @@ newSelectionForm: FormGroup | any;
       status: new FormControl('', [Validators.required, Validators.minLength(4),]),
       priority: new FormControl('', [Validators.required, Validators.minLength(4),]),
       project_id: new FormControl('', [Validators.required]),
-      remote: new FormControl('', [Validators.required]),
+      // remote: new FormControl('', [Validators.required]),
+      remote: new FormControl('',),
 
     });
   }

@@ -45,6 +45,8 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatSortModule } from '@angular/material/sort';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 import { ModalSelectionNewComponent } from './selection/modal-selection-new/modal-selection-new.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [
@@ -92,6 +94,8 @@ import { ModalSelectionNewComponent } from './selection/modal-selection-new/moda
     MatMenuModule,
     MatDividerModule,
     MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ReactiveFormsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],
