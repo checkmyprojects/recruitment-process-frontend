@@ -44,6 +44,7 @@ import { MatDividerModule } from '@angular/material/divider'
 // Material table sort arrow
 import { MatSortModule } from '@angular/material/sort';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
+import { ModalSelectionNewComponent } from './selection/modal-selection-new/modal-selection-new.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ListInterviewComponent } from './interview/list-interview/list-intervie
     ModalUserNewComponent,
     ModalCandidateNewComponent,
     ListInterviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModalSelectionNewComponent
   ],
   imports: [
     BrowserModule,

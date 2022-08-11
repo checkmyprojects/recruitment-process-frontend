@@ -1,3 +1,4 @@
+import { ModalSelectionNewComponent } from './../modal-selection-new/modal-selection-new.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectionService } from 'src/app/_services/selection.service';
@@ -6,6 +7,7 @@ import {Selection} from 'src/app/model/selection';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-selection',
@@ -20,9 +22,50 @@ export class ListSelectionComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private selectionService:SelectionService) {
+  constructor(private selectionService:SelectionService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllSelections());
   }
+
+
+  newSelection: Selection = {
+    id: 0,
+    created_by: {
+      id: 0,
+      name: "",
+      username: "",
+      email: "",
+      roles: [],
+      interviews: [],
+      active: true
+    },
+    start_date: "",
+    end_date: "",
+    name: "",
+    description: "",
+    requirements: "",
+    location: "",
+    sector: "",
+    status: "",
+    priority: "",
+    project_id: 0,
+    remote: true,
+    interviews: []
+}
+
+  //Open modal for new selection
+  openDialogNewSelection() {
+    const dialogRef = this.dialog.open(ModalSelectionNewComponent,{
+      data: { selection: this.newSelection }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.dataSource.data = [...this.dataSource.data, this.newSelection];
+
+     }
+    });
+    }
+
 
    // Material table
    ngAfterViewInit() {
