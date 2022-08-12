@@ -12,6 +12,12 @@
 .example-margin{
   margin: 0 10px;
 }
+.slider-remote {
+  margin: 15px auto;
+}
+.flex{
+  display: flex;
+}
 .mat-close-button{
   float: right;
   cursor: pointer;
