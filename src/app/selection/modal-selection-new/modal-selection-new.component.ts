@@ -25,7 +25,7 @@ newSelection: any = {
     status: "",
     priority: "",
     project_id: 0,
-    remote: true
+    remote: false
 }
 
 newSelectionForm: FormGroup | any;
