@@ -1,6 +1,6 @@
 import { ModalSelectionNewComponent } from './../modal-selection-new/modal-selection-new.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { SelectionService } from 'src/app/services/selection.service';
 import {Selection} from 'src/app/model/selection';
 // Imports for the table
@@ -16,10 +16,19 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ListSelectionComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'start_date', 'end_date', 'name', 'description', 'requirements', 'location', 'sector', 'status', 'project_id', 'remote'];
+  displayedColumns: string[] = ['id', 'start_date', 'end_date', 'name', 'description', 'requirements', 'location', 'sector', 'status', 'project_id', 'remote', 'create'];
   dataSource: MatTableDataSource<Selection>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  // This value is setted when component is called from new interview component
+  @Input() newInterviewView:boolean | undefined;
+
+  // Function to send current row data to interview view
+  @Output() sendDataToInterview = new EventEmitter();
+  sendRowDataToInterview(row: any){
+    this.sendDataToInterview.emit(row)
+  }
 
   constructor(private selectionService:SelectionService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllSelections());
@@ -80,7 +89,13 @@ export class ListSelectionComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    // If this component is not called from new interview, remove last table column (button to add it to new interview)
+    if(!this.newInterviewView){
+      this.displayedColumns.splice(10,1);
+    }
+  }
 
   //Retrieve all selections from the backend
   public getAllSelections():Selection[] {

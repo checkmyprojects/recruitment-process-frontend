@@ -5,6 +5,8 @@
   </mat-form-field> -->
 <p>Home > Selection > Selection List</p>
 
+<p *ngIf="newInterviewView">Estoy dentro de la entrevista</p>
+
 <div class="searchTableFlex">
   <div class="searchBar">
     <mat-form-field class="searchBar" appearance="standard">
@@ -77,6 +79,12 @@
       <ng-container matColumnDef="remote">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Remoto </th>
         <td mat-cell matTooltip="Remoto" *matCellDef="let row" > {{row.remote}} </td>
+      </ng-container>
+      <ng-container matColumnDef="create">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
+        <td mat-cell matTooltip="Selecciona este proceso" *matCellDef="let row" > 
+          <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)"> <mat-icon>add</mat-icon> </button> 
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

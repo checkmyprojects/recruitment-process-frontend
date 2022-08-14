@@ -1,5 +1,5 @@
 import { CandidatesService } from '../../../services/candidates.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Candidate } from 'src/app/model/candidate';
 import {MatDialog} from '@angular/material/dialog';
@@ -18,10 +18,19 @@ import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candida
 })
 export class ListCandidatesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills' ];
+  displayedColumns: string[] = ['id', 'state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills', 'create' ];
   dataSource: MatTableDataSource<Candidate>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  // This value is setted when component is called from new interview component
+  @Input() newInterviewView:boolean | undefined;
+
+  // Function to send current row data to interview view
+  @Output() sendDataToInterview = new EventEmitter();
+  sendRowDataToInterview(row: any){
+    this.sendDataToInterview.emit(row)
+  }
 
 
   constructor(private candidatesService:CandidatesService, public dialog: MatDialog) {
@@ -89,7 +98,12 @@ export class ListCandidatesComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // If this component is not called from new interview, remove last table column (button to add it to new interview)
+    if(!this.newInterviewView){
+      this.displayedColumns.splice(9,1);
+    }
+  }
 
   public getAllCandidates():Candidate[] {
     let data: Candidate[] = [];

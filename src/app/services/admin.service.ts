@@ -20,6 +20,9 @@ export class AdminService {
   public getAllMyAppUsers(): Observable<AppUsers[]>{
     return this.http.get<AppUsers[]>(`${this.apiServerUrl}/api/admin/users`);
   }
+  public getAllMyInterviewers(): Observable<AppUsers[]>{
+    return this.http.get<AppUsers[]>(`${this.apiServerUrl}/api/admin/usersInterview`);
+  }
 
   public getAppUserById(id: string): Observable<Object>{
     return this.http.get<Object>(`${this.apiServerUrl}/api/admin/id/${id}`);

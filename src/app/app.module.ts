@@ -44,7 +44,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { ListInterviewComponent } from './components/interview/list-interview/list-interview.component';
 import { ModalSelectionNewComponent } from './components/selection/modal-selection-new/modal-selection-new.component';
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatNativeDateModule } from '@angular/material/core'
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component'
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { MatNativeDateModule } from '@angular/material/core'
     ModalCandidateNewComponent,
     ListInterviewComponent,
     HeaderComponent,
-    ModalSelectionNewComponent
+    ModalSelectionNewComponent,
+    NewInterviewComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +95,7 @@ import { MatNativeDateModule } from '@angular/material/core'
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
     ReactiveFormsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],

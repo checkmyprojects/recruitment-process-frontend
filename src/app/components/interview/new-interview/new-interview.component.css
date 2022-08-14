@@ -1,0 +1,8 @@
+.new-interview{
+    background-color: white;
+    padding: 20px;
+}
+
+.input-disabled input{
+    color: black;
+}
