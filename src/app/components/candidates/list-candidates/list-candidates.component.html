@@ -1,5 +1,5 @@
-<p>Home > Candidates > Candidates List</p>
-<h3 *ngIf="newInterviewView === true"> Estoy dentro de una entrevista {{newInterviewView}}</h3>
+<p *ngIf="!newInterviewView">Home > Candidates > Candidates List</p>
+
 <div class="searchTableFlex">
   <div class="searchBar">
     <mat-form-field class="searchBar" appearance="standard">
@@ -65,7 +65,7 @@
       </ng-container>
       <ng-container matColumnDef="create" *ngIf="newInterviewView === true">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
-        <td mat-cell matTooltip="Añade a este candidato" *matCellDef="let row" > <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
+        <td mat-cell matTooltip="Selecciona este candidato" *matCellDef="let row" > <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
           <mat-icon>add</mat-icon></button>
       </ng-container>
 

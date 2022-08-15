@@ -35,8 +35,7 @@
 
 
 
-<p>Home > Admin > Users List</p>
-
+<p *ngIf="!newInterviewView">Home > Admin > Users List</p>
 <div class="searchTableFlex">
   <div class="searchBar">
     <mat-form-field class="searchBar" appearance="standard">
@@ -45,7 +44,7 @@
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button (click)="openDialogNewUser()" color="button-new">Crear Usuario <mat-icon>add_circle_outline</mat-icon></button>
+    <button *ngIf="!newInterviewView" mat-raised-button (click)="openDialogNewUser()" color="button-new">Crear Usuario <mat-icon>add_circle_outline</mat-icon></button>
   </div>
 
 </div>
@@ -56,36 +55,41 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
-        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.id}} </td>
+        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> {{row.id}} </td>
       </ng-container>
   
       <!-- Progress Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-        <td mat-cell matTooltip="Nombre" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.name}} </td>
+        <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> {{row.name}} </td>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre usuario </th>
-        <td mat-cell matTooltip="Nombre de usuario en la aplicación" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.username}} </td>
+        <td mat-cell matTooltip="Nombre de usuario en la aplicación" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> {{row.username}} </td>
       </ng-container>
   
       <!-- Fruit Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-        <td mat-cell matTooltip="Email" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{row.email}} </td>
+        <td mat-cell matTooltip="Email" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> {{row.email}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="roles">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Roles </th>
         <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> {{arrayToString(row.roles)}} </td> -->
         <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
-        <td mat-cell matTooltip={{rolesToShortNameLetter(row.roles)}} *matCellDef="let row" [ngClass]="{'make-grey': !row.active }"> <div [innerHTML]="rolesToSingleLetter(row.roles)"></div> </td>
+        <td mat-cell matTooltip={{rolesToShortNameLetter(row.roles)}} *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> <div [innerHTML]="rolesToSingleLetter(row.roles)"></div> </td>
+      </ng-container>
+      <ng-container matColumnDef="create" *ngIf="newInterviewView === true">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
+        <td mat-cell matTooltip="Selecciona este entrevistador" *matCellDef="let row" > <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
+          <mat-icon>add</mat-icon></button>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"(click)="openDialog(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>

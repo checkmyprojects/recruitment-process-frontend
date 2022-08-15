@@ -1,4 +1,4 @@
-<div class="new-interview">
+<div class="new-interview mat-elevation-z2">
     <div>
         <p>Candidato</p>
         <mat-form-field class="example-full-width input-disabled" appearance="fill">
@@ -35,10 +35,34 @@
         </mat-form-field>
     </div>
 
+    <div>
+        <p>Entrevistador</p>
+        <mat-form-field class="example-full-width input-disabled" appearance="fill">
+            <mat-label>Número</mat-label>
+            <input matInput disabled value={{newInterviewAppUser?.id}}>
+        </mat-form-field>
+        <span>&nbsp;&nbsp;</span>
+        <mat-form-field class="example-full-width input-disabled" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput disabled value={{newInterviewAppUser?.name}}>
+        </mat-form-field>
+    </div>
+
+
+    <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Elige un fecha y hora" [(ngModel)]="newInterviewDate">
+        
+        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+    
+        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+    <button (click)="logDate()">logit</button>
+    <br>
+    <button (click)="createInterview()">CREA LA ENTREVISTA</button>
 </div>
 <br>
 
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title> Candidatos </mat-panel-title>
         <mat-panel-description>
@@ -48,7 +72,7 @@
     <app-list-candidates [newInterviewView]="true" (sendDataToInterview)="getCandidate($event)"></app-list-candidates>
 </mat-expansion-panel>
 <br>
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title> Proceso de selección </mat-panel-title>
         <mat-panel-description>
@@ -58,12 +82,13 @@
     <app-list-selection [newInterviewView]="true" (sendDataToInterview)="getSelection($event)"></app-list-selection>
 </mat-expansion-panel>
 <br>
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title> Entrevistador </mat-panel-title>
         <mat-panel-description>
             Haz clic para expandir o contraer la lista de Entrevistadores
         </mat-panel-description>
     </mat-expansion-panel-header>
-    <app-board-admin></app-board-admin>
+    <app-board-admin [newInterviewView]="true" (sendDataToInterview)="getInterviewer($event)"></app-board-admin>
 </mat-expansion-panel>
+<br><br>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -47,6 +47,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component'
+// Imports for DateTime Picker
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 @NgModule({
   declarations: [
@@ -96,9 +98,12 @@ import { NewInterviewComponent } from './components/interview/new-interview/new-
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
     ReactiveFormsModule
   ],
-  providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }],
+  providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }, { provide: LOCALE_ID, useValue: 'es-ES'}],
   bootstrap: [AppComponent]
-})
+}) // { provide: LOCALE_ID, useValue: 'es-ES'} is used to change default angular locale to spanish
 export class AppModule { }

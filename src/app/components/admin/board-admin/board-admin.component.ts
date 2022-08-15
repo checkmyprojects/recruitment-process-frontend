@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { AdminService } from '../../../services/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AppUser } from '../../../model/appUser';
 import { AppUsers } from '../../../model/app-users';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalUserComponent } from '../modal-user/modal-user.component';
 import { ModalUserNewComponent } from '../modal-user-new/modal-user-new.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-board-admin',
@@ -19,13 +19,22 @@ import { ModalUserNewComponent } from '../modal-user-new/modal-user-new.componen
 export class BoardAdminComponent implements OnInit {
 
   // Material table
-  displayedColumns: string[] = ['id', 'name', 'username', 'email', 'roles'];
+  displayedColumns: string[] = ['id', 'name', 'username', 'email', 'roles', 'create'];
   dataSource: MatTableDataSource<AppUsers>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  // This value is setted when component is called from new interview component
+  @Input() newInterviewView:boolean | undefined;
+
+  // Function to send current row data to interview view
+  @Output() sendDataToInterview = new EventEmitter();
+  sendRowDataToInterview(row: any){
+    this.sendDataToInterview.emit(row)
+  }
+
   // dataSource:AppUsers[] = [];
-  constructor(public dialog: MatDialog, private userService: UserService, private adminService: AdminService) {
+  constructor(public dialog: MatDialog, private userService: UserService, private adminService: AdminService, private Location:Location) {
     this.dataSource = new MatTableDataSource(this.getAllMyAppUsers());
   }
 
@@ -44,7 +53,12 @@ export class BoardAdminComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // If this component is not called from new interview, remove last table column (button to add it to new interview)
+    if(!this.newInterviewView){
+      this.displayedColumns.splice(5,1);
+    }
+  }
 
   // Modal to edit AppUser
   openDialog(row: AppUsers) {
@@ -99,12 +113,22 @@ export class BoardAdminComponent implements OnInit {
   }
 
   public getAllMyAppUsers(): AppUsers[]{
+    
+    // If we are calling this component from interview, we use getAllMyInterviewers to get all interviewers,
+    // if we call it from admin, get all AppUsers instead
+    let adminServiceQuery;
+    if(this.newInterviewView === true || this.Location.path().toString().includes("interview")){
+      adminServiceQuery = this.adminService.getAllMyInterviewers();
+    }else{
+      adminServiceQuery = this.adminService.getAllMyAppUsers();
+    }
+    
     let data:any =[]
-    this.adminService.getAllMyAppUsers().subscribe({
+    adminServiceQuery.subscribe({
       next: (response: AppUsers[]) => {
         data = response;
+        console.log(response)
         this.dataSource.data = response;
-
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);

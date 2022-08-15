@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { InterviewService } from 'src/app/services/interview.service';
 
 @Component({
   selector: 'app-new-interview',
@@ -19,26 +21,46 @@ export class NewInterviewComponent implements OnInit {
   newInterviewAppUser: any | undefined;
   getInterviewer($event: any) {this.newInterviewAppUser = $event;}
 
+  newInterviewDate!: Date;
 
-  newInterviewForm: FormGroup | any;
+  logDate(){
+    // console.log(this.newInterviewDate);
+    // console.log(Date.parse(this.newInterviewDate.toString()));
+    let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString()
+    console.log("MASSSSSS");
+    console.log(isoDateTime);
+    
+    
+    // console.log(this.newInterviewDate.toISOString());
+    // console.log(this.newInterviewDate.toUTCString());
+    // console.log(this.newInterviewDate.setMinutes(this.newInterviewDate.getMinutes() - (this.newInterviewDate.getTimezoneOffset())));
+    // console.log(this.newInterviewDate.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1));
+  }
 
-  constructor() { }
+  constructor(private interviewService: InterviewService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
-    this.newInterviewForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      surname: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
-        '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
-      ),]),
-      skills: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      studies: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      location: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      experience: new FormControl('', [Validators.required,]),
-      state: new FormControl('', [Validators.required, Validators.minLength(4),]),
+  createInterview(){
+    // console.log("PRUEBA");
+    // console.log("date: " + this.newInterviewDate.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1) + " candidateID: " + this.newInterviewCandidate.id + " InterviewerID: " + this.newInterviewAppUser.id +" SelectionID: " + this.newInterviewSelection.id);
+    // let dateTime:Date = this.newInterviewDate;
+    // dateTime.setMinutes(dateTime.getMinutes() - (dateTime.getTimezoneOffset()));
+    // let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString()
+
+    // Convert date to ISO including timezone offset
+    // Remove the las letter, a Z that makes backend with LocalDateTime break
+    let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.newInterviewDate.toISOString().length - 1)
+    // this.interviewService.registerNewInterview(dateTime.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1), this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
+    this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+        console.error('There was an error!', error);
+      }
     });
-
   }
 
 }

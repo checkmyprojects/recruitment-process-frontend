@@ -3,9 +3,7 @@
     <mat-label>Buscar</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
   </mat-form-field> -->
-<p>Home > Selection > Selection List</p>
-
-<p *ngIf="newInterviewView">Estoy dentro de la entrevista</p>
+<p *ngIf="!newInterviewView">Home > Selection > Selection List</p>
 
 <div class="searchTableFlex">
   <div class="searchBar">
