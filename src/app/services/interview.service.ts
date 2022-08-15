@@ -32,6 +32,7 @@ export class InterviewService {
   }
 
   public registerNewInterview(date: string, candidateid:number, interviewerid:number, selectionid:number): Observable<any>{
-    return this.http.post(`${this.apiServerUrl}/api/interview/new?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date);
+    // Response from backend is not a json, so we specify that with {responseType: 'text'}
+    return this.http.post(`${this.apiServerUrl}/api/interview/new?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date, {responseType: 'text'});
   }
 }
