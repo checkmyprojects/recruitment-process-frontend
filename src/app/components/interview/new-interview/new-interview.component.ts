@@ -23,6 +23,8 @@ export class NewInterviewComponent implements OnInit {
 
   newInterviewDate!: Date;
 
+  minDate = new Date();
+
   logDate(){
     // console.log(this.newInterviewDate);
     // console.log(Date.parse(this.newInterviewDate.toString()));

@@ -7,3 +7,16 @@
 .input-disabled input{
     color: black;
 }
+
+.flexMe{
+    display: flex;
+    align-items: center;
+}
+::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button{
+    background-color: #28A745;
+    color: #fff;
+}
+
+::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button:hover {
+    background-color: #05c732;
+}

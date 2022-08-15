@@ -50,11 +50,20 @@
 
 
     <mat-form-field>
-        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Elige un fecha y hora" [(ngModel)]="newInterviewDate">
+        <input matInput [ngxMatDatetimePicker]="picker" [min]="minDate" placeholder="Elige un fecha y hora" [(ngModel)]="newInterviewDate">
         
         <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
     
-        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+        <ngx-mat-datetime-picker #picker>
+            <ng-template>
+                <!-- <mat-icon>star</mat-icon> -->
+                <div class="flexMe">
+
+                    <mat-icon>check_circle_outline</mat-icon> 
+                    <span>&nbsp;Aceptar</span>
+                </div>
+              </ng-template>
+        </ngx-mat-datetime-picker>
     </mat-form-field>
     <button (click)="logDate()">logit</button>
     <br>
