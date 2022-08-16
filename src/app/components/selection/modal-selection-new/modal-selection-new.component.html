@@ -9,7 +9,7 @@
 
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Nombre</mat-label>
-    <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{newSelection.name}}
+    <input placeholder="Nombre" formControlName="name" placeholder="Ej. Jorge" matInput #message maxlength="256" value={{newSelection.name}}
       (input)="newSelection.name=$any($event.target).value">
     <mat-hint align="start"><strong>Nombre</strong> </mat-hint>
     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
@@ -24,7 +24,7 @@
   <br>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Requerimientos</mat-label>
-    <input placeholder="Requerimientos" formControlName="requirements" matInput value={{newSelection.requirements}}
+    <input placeholder="Requerimientos" formControlName="requirements" placeholder="Ej. Java" matInput value={{newSelection.requirements}}
       (input)="newSelection.requirements=$any($event.target).value">
     <mat-error *ngIf="!newSelectionForm.get('requirements')?.errors?.required">
       Los requerimientos deben tener al menos 4 caracteres
@@ -36,11 +36,10 @@
   </mat-form-field>
   <br>
   <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="name" appearance="fill">
       <mat-label>Id proyecto</mat-label>
       <input type="number" placeholder="Id proyecto" formControlName="project_id" matInput
-        value={{newSelection.project_id}} (input)="newSelection.project_id=$any($event.target).value"
-        placeholder="Ej: Java">
+        value={{newSelection.project_id}} (input)="newSelection.project_id=$any($event.target).value">
       <mat-error
         *ngIf="newSelectionForm.get('project_id')?.invalid && (newSelectionForm.get('project_id')?.dirty || newSelectionForm.get('project_id')?.touched) && newSelectionForm.get('project_id')?.errors?.required">
         La id del proyecto es obligatoria
@@ -48,7 +47,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Sector</mat-label>
-      <input placeholder="Sector" formControlName="sector" matInput value={{newSelection.sector}}
+      <input placeholder="Sector" formControlName="sector" placeholder="Ej. Salud" matInput value={{newSelection.sector}}
         (input)="newSelection.sector=$any($event.target).value">
       <mat-error *ngIf="!newSelectionForm.get('sector')?.errors?.required">
         El sector debe tener al menos 4 caracteres
@@ -61,9 +60,9 @@
   </div>
   <br>
   <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="name" appearance="fill">
       <mat-label>Estado</mat-label>
-      <input placeholder="Estado" formControlName="status" matInput type="text" value={{newSelection.status}}
+      <input placeholder="Estado" formControlName="status" placeholder="Ej. Pendiente" matInput type="text" value={{newSelection.status}}
         (input)="newSelection.status=$any($event.target).value">
       <mat-error
         *ngIf="newSelectionForm.get('status')?.invalid && (newSelectionForm.get('status')?.dirty || newSelectionForm.get('status')?.touched) && newSelectionForm.get('status')?.errors?.required">
@@ -72,8 +71,8 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Prioridad</mat-label>
-      <input placeholder="Prioridad" formControlName="priority" matInput value={{newSelection.priority}}
-        (input)="newSelection.priority=$any($event.target).value" placeholder="Ej: Java">
+      <input placeholder="Prioridad" formControlName="priority" placeholder="Ej. Alta" matInput value={{newSelection.priority}}
+        (input)="newSelection.priority=$any($event.target).value">
       <mat-error *ngIf="!newSelectionForm.get('priority')?.errors?.required">
         La prioridad debe tener al menos 4 caracteres
       </mat-error>
@@ -85,7 +84,7 @@
   </div>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Choose a date</mat-label>
-    <input formControlName="start_date" value={{newSelection.start_date}} matInput [matDatepicker]="picker">
+    <input formControlName="start_date" placeholder="Ej. 13/10/2022" value={{newSelection.start_date}} matInput [matDatepicker]="picker">
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -93,7 +92,7 @@
   <div class = "flex">
     <mat-form-field appearance="fill">
       <mat-label>Localización</mat-label>
-      <input type="localización" matInput formControlName="location" placeholder="Ej. jorge.fernandez@nttdata.com"
+      <input type="localización" matInput formControlName="location" placeholder="Ej. Sevilla"
         value={{newSelection.location}} (input)="newSelection.location=$any($event.target).value">
       <mat-error
         *ngIf="!newSelectionForm.get('location')?.errors?.required && (newSelectionForm.get('location')?.errors?.pattern)">
@@ -112,7 +111,7 @@
   </div>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Descripción</mat-label>
-    <textarea placeholder="Descripcion" formControlName="description" matInput #message maxlength="256"
+    <textarea placeholder="Descripcion" placeholder="Ej. El candidato Jorge Fernandez..." formControlName="description" matInput #message maxlength="256"
       value={{newSelection.description}} (input)="newSelection.description=$any($event.target).value"></textarea>
     <mat-hint align="start"><strong>Descripción</strong> </mat-hint>
     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>

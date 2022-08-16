@@ -6,7 +6,7 @@
 <form [formGroup]="newCandidateForm" novalidate class="example-form">
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Estado</mat-label>
-        <input placeholder="Estado" formControlName="state" matInput value={{newCandidate.state}} (input)="newCandidate.state=$any($event.target).value">
+        <input placeholder="Estado" formControlName="state" placeholder="Ej. Pendiente" matInput value={{newCandidate.state}} (input)="newCandidate.state=$any($event.target).value">
         <mat-error *ngIf="!newCandidateForm.get('state')?.errors?.required">
           El estado debe tener al menos 4 caracteres
         </mat-error>
@@ -17,7 +17,7 @@
     <div>
       <mat-form-field class="name" appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{newCandidate.name}} (input)="newCandidate.name=$any($event.target).value" >
+        <input placeholder="Nombre" formControlName="name" placeholder="Ej. Jorge" matInput #message maxlength="256" value={{newCandidate.name}} (input)="newCandidate.name=$any($event.target).value" >
         <mat-hint align="start"><strong>Nombre</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         <mat-error *ngIf="!newCandidateForm.get('name')?.errors?.required">
@@ -29,7 +29,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
-        <input placeholder="Apellido" formControlName="surname" matInput #message maxlength="256" value={{newCandidate.surname}} (input)="newCandidate.surname=$any($event.target).value" >
+        <input placeholder="Apellido" formControlName="surname" placeholder="Ej. Fernandez" matInput #message maxlength="256" value={{newCandidate.surname}} (input)="newCandidate.surname=$any($event.target).value" >
         <mat-hint align="start"><strong>Apellido</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         <mat-error *ngIf="!newCandidateForm.get('surname')?.errors?.required">
@@ -43,7 +43,7 @@
     <br>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Ubicación</mat-label>
-      <input placeholder="Ubicación" formControlName="location" matInput value={{newCandidate.location}} (input)="newCandidate.location=$any($event.target).value" >
+      <input placeholder="Ubicación" formControlName="location" placeholder="Ej. Sevilla" matInput value={{newCandidate.location}} (input)="newCandidate.location=$any($event.target).value" >
       <mat-error *ngIf="!newCandidateForm.get('location')?.errors?.required">
         La ubicación debe tener al menos 4 caracteres
       </mat-error>
@@ -65,7 +65,7 @@
     <br>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Estudios</mat-label>
-        <input placeholder="Estudios" formControlName="studies" matInput value={{newCandidate.studies}} (input)="newCandidate.studies=$any($event.target).value">
+        <input placeholder="Estudios" formControlName="studies" placeholder="Ej. FP" matInput value={{newCandidate.studies}} (input)="newCandidate.studies=$any($event.target).value">
         <mat-error *ngIf="!newCandidateForm.get('studies')?.errors?.required">
           La formación debe tener al menos 4 caracteres
         </mat-error>
@@ -76,14 +76,14 @@
     <br>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Experiencia</mat-label>
-      <input placeholder="Experiencia" formControlName="experience" matInput type="number" value={{newCandidate.experience}} (input)="newCandidate.experience=$any($event.target).value">
+      <input placeholder="Experiencia" formControlName="experience" placeholder="Ej. 3 años" matInput type="number" value={{newCandidate.experience}} (input)="newCandidate.experience=$any($event.target).value">
       <mat-error *ngIf="newCandidateForm.get('experience')?.invalid && (newCandidateForm.get('experience')?.dirty || newCandidateForm.get('experience')?.touched) && newCandidateForm.get('experience')?.errors?.required">
         La experiencia es obligatoria
      </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
-      <textarea placeholder="Habilidades" formControlName="skills" matInput value={{newCandidate.skills}} (input)="newCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
+      <textarea placeholder="Habilidades" formControlName="skills" placeholder="Ej. Java" matInput value={{newCandidate.skills}} (input)="newCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
       <mat-error *ngIf="!newCandidateForm.get('skills')?.errors?.required">
         Las habilidades deben tener al menos 4 caracteres
       </mat-error>
