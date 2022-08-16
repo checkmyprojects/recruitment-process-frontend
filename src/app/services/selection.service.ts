@@ -21,6 +21,11 @@ export class SelectionService {
   return this.http.get<Selection[]>(`${this.apiServerUrl}/api/selection/list`);
 }
 
+public updateSelections(selection: Selection): Observable<Selection>{
+  return this.http.put<Selection>(`${this.apiServerUrl}/api/selection/edit`, selection);
+
+}
+
   registerNewSelection(newSelection: any): Observable<any> {
     return this.http.post(`${this.apiServerUrl}/api/selection/new`, newSelection);
   }

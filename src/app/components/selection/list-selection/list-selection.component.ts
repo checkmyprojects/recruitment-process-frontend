@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalSelectionComponent } from '../modal-selection/modal-selection.component';
 
 @Component({
   selector: 'app-list-selection',
@@ -73,6 +74,17 @@ export class ListSelectionComponent implements OnInit {
      }
     });
     }
+
+      //Open modal for edit selection
+  openDialogEditSelection(row: Selection) {
+    const dialogRef = this.dialog.open(ModalSelectionComponent,{
+      data: { selection: row }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+    }
+
 
 
    // Material table
