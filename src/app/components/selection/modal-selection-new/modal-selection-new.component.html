@@ -1,0 +1,136 @@
+<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
+<span mat-dialog-close matTooltip="Cerrar" class="mat-close-button">
+  <mat-icon>close</mat-icon>
+</span>
+
+<h4>Nuevo proceso: <span>{{newSelection.name}}</span></h4>
+
+<form [formGroup]="newSelectionForm" novalidate class="example-form">
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{newSelection.name}}
+      (input)="newSelection.name=$any($event.target).value">
+    <mat-hint align="start"><strong>Nombre</strong> </mat-hint>
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    <mat-error *ngIf="!newSelectionForm.get('name')?.errors?.required">
+      El nombre debe tener al menos 4 caracteres
+    </mat-error>
+    <mat-error
+      *ngIf="newSelectionForm.get('name')?.invalid && (newSelectionForm.get('name')?.dirty || newSelectionForm.get('name')?.touched) && newSelectionForm.get('name')?.errors?.required">
+      El nombre es obligatorio
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Requerimientos</mat-label>
+    <input placeholder="Requerimientos" formControlName="requirements" matInput value={{newSelection.requirements}}
+      (input)="newSelection.requirements=$any($event.target).value">
+    <mat-error *ngIf="!newSelectionForm.get('requirements')?.errors?.required">
+      Los requerimientos deben tener al menos 4 caracteres
+    </mat-error>
+    <mat-error
+      *ngIf="newSelectionForm.get('requirements')?.invalid && (newSelectionForm.get('requirements')?.dirty || newSelectionForm.get('requirements')?.touched) && newSelectionForm.get('requirements')?.errors?.required">
+      Los requerimientos son obligatorio
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Id proyecto</mat-label>
+      <input type="number" placeholder="Id proyecto" formControlName="project_id" matInput
+        value={{newSelection.project_id}} (input)="newSelection.project_id=$any($event.target).value"
+        placeholder="Ej: Java">
+      <mat-error
+        *ngIf="newSelectionForm.get('project_id')?.invalid && (newSelectionForm.get('project_id')?.dirty || newSelectionForm.get('project_id')?.touched) && newSelectionForm.get('project_id')?.errors?.required">
+        La id del proyecto es obligatoria
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Sector</mat-label>
+      <input placeholder="Sector" formControlName="sector" matInput value={{newSelection.sector}}
+        (input)="newSelection.sector=$any($event.target).value">
+      <mat-error *ngIf="!newSelectionForm.get('sector')?.errors?.required">
+        El sector debe tener al menos 4 caracteres
+      </mat-error>
+      <mat-error
+        *ngIf="newSelectionForm.get('sector')?.invalid && (newSelectionForm.get('sector')?.dirty || newSelectionForm.get('sector')?.touched) && newSelectionForm.get('sector')?.errors?.required">
+        El sector es obligatorio
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <br>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Estado</mat-label>
+      <input placeholder="Estado" formControlName="status" matInput type="text" value={{newSelection.status}}
+        (input)="newSelection.status=$any($event.target).value">
+      <mat-error
+        *ngIf="newSelectionForm.get('status')?.invalid && (newSelectionForm.get('status')?.dirty || newSelectionForm.get('status')?.touched) && newSelectionForm.get('status')?.errors?.required">
+        El estado es obligatorio
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Prioridad</mat-label>
+      <input placeholder="Prioridad" formControlName="priority" matInput value={{newSelection.priority}}
+        (input)="newSelection.priority=$any($event.target).value" placeholder="Ej: Java">
+      <mat-error *ngIf="!newSelectionForm.get('priority')?.errors?.required">
+        La prioridad debe tener al menos 4 caracteres
+      </mat-error>
+      <mat-error
+        *ngIf="newSelectionForm.get('priority')?.invalid && (newSelectionForm.get('priority')?.dirty || newSelectionForm.get('priority')?.touched) && newSelectionForm.get('priority')?.errors?.required">
+        La prioridad es obligatoria
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input formControlName="start_date" value={{newSelection.start_date}} matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div class = "flex">
+    <mat-form-field appearance="fill">
+      <mat-label>Localización</mat-label>
+      <input type="localización" matInput formControlName="location" placeholder="Ej. jorge.fernandez@nttdata.com"
+        value={{newSelection.location}} (input)="newSelection.location=$any($event.target).value">
+      <mat-error
+        *ngIf="!newSelectionForm.get('location')?.errors?.required && (newSelectionForm.get('location')?.errors?.pattern)">
+        La localización debe tener al menos 4 caracteres
+      </mat-error>
+      <mat-error
+        *ngIf="newSelectionForm.get('location')?.invalid && (newSelectionForm.get('location')?.dirty || newSelectionForm.get('location')?.touched) && newSelectionForm.get('location')?.errors?.required">
+        La localización es obligatoria
+      </mat-error>
+    </mat-form-field>
+    <div class= "slider-remote"  appearance="fill">
+      <mat-slide-toggle placeholder="Remoto" formControlName="remote" matInput [(ngModel)]="newSelection.remote"
+        (input)="newSelection.remote=$any($event.target).value" placeholder="Ej: Java"></mat-slide-toggle>
+      <mat-label> Trabajo en remoto </mat-label>
+    </div>
+  </div>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Descripción</mat-label>
+    <textarea placeholder="Descripcion" formControlName="description" matInput #message maxlength="256"
+      value={{newSelection.description}} (input)="newSelection.description=$any($event.target).value"></textarea>
+    <mat-hint align="start"><strong>Descripción</strong> </mat-hint>
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    <mat-error *ngIf="!newSelectionForm.get('description')?.errors?.required">
+      La descripción debe tener al menos 4 caracteres
+    </mat-error>
+    <mat-error
+      *ngIf="newSelectionForm.get('description')?.invalid && (newSelectionForm.get('description')?.dirty || newSelectionForm.get('description')?.touched) && newSelectionForm.get('description')?.errors?.required">
+      La descripción es obligatoria
+    </mat-error>
+  </mat-form-field>
+</form>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
+  <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
+  <!-- Use a function to close the dialog instead -->
+  <button mat-button [disabled]="!newSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar"
+    color="button-save" (click)="saveSelection()">Guardar</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
+</mat-dialog-actions>

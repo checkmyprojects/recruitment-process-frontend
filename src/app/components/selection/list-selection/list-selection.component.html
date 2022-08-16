@@ -1,0 +1,165 @@
+
+<!-- <mat-form-field appearance="standard" >
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
+  </mat-form-field> -->
+<p *ngIf="!newInterviewView">Home > Selection > Selection List</p>
+
+<div class="searchTableFlex">
+  <div class="searchBar">
+    <mat-form-field class="searchBar" appearance="standard">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Javier"' #input>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="button-new" (click)="openDialogNewSelection()">Crear Proceso <mat-icon>add_circle_outline</mat-icon></button>
+  </div>
+
+</div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
+        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" > {{row.id}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell matTooltip="Nombre" *matCellDef="let row" > {{row.name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="start_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Inicio </th>
+        <td mat-cell matTooltip="Fecha de inicio" *matCellDef="let row"> {{row.start_date}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="end_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fin </th>
+        <td mat-cell matTooltip="Fecha de fin" *matCellDef="let row" > {{returnUndefined(row.end_date)}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+        <td mat-cell matTooltip="Descripción" *matCellDef="let row" > {{row.description}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="requirements">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Requisitos </th>
+        <td mat-cell matTooltip="Requisitos" *matCellDef="let row" > {{row.requirements}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
+        <td mat-cell matTooltip="Ubicación" *matCellDef="let row" > {{row.location}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="sector">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
+        <td mat-cell matTooltip="Sector" *matCellDef="let row" > {{row.sector}} </td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
+        <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
+        <td mat-cell matTooltip="Estado" *matCellDef="let row" > {{row.status}} </td>
+      </ng-container>
+      <ng-container matColumnDef="project_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Proyecto </th>
+        <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" > {{row.project_id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="remote">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Remoto </th>
+        <td mat-cell matTooltip="Remoto" *matCellDef="let row" > {{row.remote}} </td>
+      </ng-container>
+      <ng-container matColumnDef="create">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
+        <td mat-cell matTooltip="Selecciona este proceso" *matCellDef="let row" > 
+          <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)"> <mat-icon>add</mat-icon> </button> 
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay datos para la búsqueda "{{input.value}}"</td>
+      </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
+
+  </div>
+
+
+
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-20">
+            <div class="card mb-5 mt-5">
+                <!-- <div class="card-body">
+                    <h5 class="card-title text-uppercase mb-0">Manage candidates</h5>
+                </div> -->
+                <!-- <div class="table-responsive">
+                    <table class="table no-wrap user-table mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="border-0 text-uppercase font-medium pl-4">Id</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium pl-4">Id del proyecto</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Descripción</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Fecha final</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Ubicación</th> -->
+                                <!-- <th scope="col" class="border-0 text-uppercase font-medium">Added</th> -->
+                                <!-- <th scope="col" class="border-0 text-uppercase font-medium">Nombre</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Prioridad</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">A distancia</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Requisitos</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Sector</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Fecha de inicio</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Gestión</th>
+                                <th scope="col" class="border-0 text-uppercase font-medium">Activo</th>
+                            </tr>
+                        </thead>
+                        <tbody app-one-selection  [selection] = "selection" *ngFor="let selection of selections">
+
+                        </tbody> -->
+
+                        <!-- <tbody *ngFor="let candidate of candidatesList">
+                            <tr>
+                                <td class="pl-4">{{candidate.id}}</td>
+                                <td>
+                                    <h5 class="font-medium mb-0">{{candidate.candidatename}}</h5>
+                                </td>
+                                <td>
+                                    <span >{{candidate.name}}</span>
+                                </td>
+                                <td>
+                                    <span >{{candidate.email}}</span><br>
+
+                                </td>
+                                <td>
+                                    <span>{{arrayToString(candidate.roles)}}</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger">Borrar</button>
+                                    <button type="button" class="btn btn-primary ml-2">Editar</button>
+                                </td>
+                                <td>
+                                    <input type="checkbox" [checked]="candidate.active">
+                                </td>
+                            </tr>
+                        </tbody> -->
+                    <!-- </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+ -->
