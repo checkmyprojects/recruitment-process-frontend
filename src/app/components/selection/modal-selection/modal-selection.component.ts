@@ -36,9 +36,12 @@ export class ModalSelectionComponent implements OnInit {
     });
   }
   saveSelection(){
-    // Remove created_by property before sending to backend 
+    // Remove created_by property before sending to backend
     delete this.editedSelection.created_by;
     delete this.editedSelection.interviews;
+
+    this.editedSelection.start_date = this.editSelectionForm.controls.start_date.value
+
 
     this.selectionService.updateSelections(this.editedSelection).subscribe({
       next: response => {
