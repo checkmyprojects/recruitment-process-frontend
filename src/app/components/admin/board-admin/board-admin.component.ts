@@ -56,7 +56,7 @@ export class BoardAdminComponent implements OnInit {
   ngOnInit(): void {
     // If this component is not called from new interview, remove last table column (button to add it to new interview)
     if(!this.newInterviewView){
-      this.displayedColumns.splice(5,1);
+      this.displayedColumns.pop();
     }
   }
 
