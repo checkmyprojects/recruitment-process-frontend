@@ -21,7 +21,8 @@
                 <mat-label>Apellido</mat-label>
                 <input matInput disabled value={{newInterviewCandidate?.surname}}>
             </mat-form-field>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(candidates)">
+            <span>&nbsp;&nbsp;</span>
+            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(candidates, candidatesPanel)">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -45,7 +46,8 @@
                 <mat-label>Requisitos</mat-label>
                 <input matInput disabled value={{newInterviewSelection?.requirements}}>
             </mat-form-field>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(selections)">
+            <span>&nbsp;&nbsp;</span>
+            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(selections, selectionsPanel)">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -67,7 +69,8 @@
                 <mat-label>Email</mat-label>
                 <input matInput disabled value={{newInterviewAppUser?.email}}>
             </mat-form-field>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(interviewer)">
+            <span>&nbsp;&nbsp;</span>
+            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(interviewer, interviewerPanel)">
                 <mat-icon>add</mat-icon>
             </button>
             <mat-form-field class="not-grow">
@@ -97,7 +100,7 @@
 <br>
 
 <div #candidates>
-    <mat-expansion-panel>
+    <mat-expansion-panel #candidatesPanel>
         <mat-expansion-panel-header>
             <mat-panel-title> Candidatos </mat-panel-title>
             <mat-panel-description>
@@ -109,7 +112,7 @@
 </div>
 <br>
 <div #selections>
-    <mat-expansion-panel>
+    <mat-expansion-panel #selectionsPanel>
         <mat-expansion-panel-header>
             <mat-panel-title> Proceso de selección </mat-panel-title>
             <mat-panel-description>
@@ -121,7 +124,7 @@
 </div>
 <br>
 <div #interviewer>
-    <mat-expansion-panel>
+    <mat-expansion-panel #interviewerPanel>
         <mat-expansion-panel-header>
             <mat-panel-title> Entrevistador </mat-panel-title>
             <mat-panel-description>

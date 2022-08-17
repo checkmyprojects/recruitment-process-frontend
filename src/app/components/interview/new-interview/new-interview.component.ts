@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatExpansionPanel } from '@angular/material/expansion';
 import { InterviewService } from 'src/app/services/interview.service';
 
 @Component({
@@ -30,9 +31,14 @@ export class NewInterviewComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  scroll(el: HTMLElement) {
-    el.scrollIntoView();
-}
+  scroll(el: HTMLElement, panel: MatExpansionPanel) {
+    panel.open();
+
+    // small delay to make time for open panel animation to end
+    setTimeout(() => {
+      el.scrollIntoView();
+    }, 130);
+  }
   createInterview(){
 
     if(this.newInterviewDate && this.newInterviewAppUser && this.newInterviewCandidate && this.newInterviewSelection){
