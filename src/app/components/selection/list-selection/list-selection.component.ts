@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalSelectionComponent } from '../modal-selection/modal-selection.component';
 
 @Component({
   selector: 'app-list-selection',
@@ -74,6 +75,25 @@ export class ListSelectionComponent implements OnInit {
     });
     }
 
+      //Open modal for edit selection
+  openDialogEditSelection(row: Selection) {
+    const dialogRef = this.dialog.open(ModalSelectionComponent,{
+      data: { selection: row }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === false){
+        //Delete candidate from angular array
+        this.dataSource.data = this.dataSource.data.filter(item => item !== row);
+        // API call to delete candidate by id
+        this.deleteSelectionById(row.id.toString())
+      }else if (result === true){
+
+      }
+    });
+    }
+
+
 
    // Material table
    ngAfterViewInit() {
@@ -121,5 +141,16 @@ export class ListSelectionComponent implements OnInit {
     }else{
       return string
     }
+  }
+
+  public deleteSelectionById(id:string){
+    this.selectionService.deleteSelectionById(id).subscribe({
+      next: response => {
+        console.log(`Borrar proceso de selección por ID: ${id}`)
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
   }
 }

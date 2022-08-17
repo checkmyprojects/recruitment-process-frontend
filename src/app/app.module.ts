@@ -49,6 +49,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component'
 // Imports for DateTime Picker
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { ModalSelectionComponent } from './components/selection/modal-selection/modal-selection.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerMod
     ListInterviewComponent,
     HeaderComponent,
     ModalSelectionNewComponent,
-    NewInterviewComponent
+    NewInterviewComponent,
+    ModalSelectionComponent
   ],
   imports: [
     BrowserModule,

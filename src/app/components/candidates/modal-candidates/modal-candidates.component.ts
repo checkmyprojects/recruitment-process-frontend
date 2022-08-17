@@ -52,7 +52,7 @@ export class ModalCandidatesComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-        console.error('There was an error!', error);
+        console.error('¡Hubo un error!', error);
       }
     });
   }
