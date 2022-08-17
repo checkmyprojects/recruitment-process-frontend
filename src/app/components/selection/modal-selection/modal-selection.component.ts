@@ -77,6 +77,17 @@ export class ModalSelectionComponent implements OnInit {
   //     }
   // });
 }
+confirmDelete() {
+  // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
+  if(confirm("¿Seguro de que quieres borrar el proceso de selección?")){
+    this.closeDialog(false);
+  }
+}
+// Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
+  // Function to close the dialog. It can return true or false
+closeDialog(choice:boolean) {
+    this.dialogRef.close(choice);
+}
 
 
 }

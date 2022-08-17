@@ -26,6 +26,10 @@ public updateSelections(selection: Selection): Observable<Selection>{
 
 }
 
+public deleteSelectionById(id: string){
+  return this.http.delete(`${this.apiServerUrl}/api/selection/delete/${id}`);
+}
+
   registerNewSelection(newSelection: any): Observable<any> {
     return this.http.post(`${this.apiServerUrl}/api/selection/new`, newSelection);
   }

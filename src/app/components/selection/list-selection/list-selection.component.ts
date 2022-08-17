@@ -82,6 +82,14 @@ export class ListSelectionComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result === false){
+        //Delete candidate from angular array
+        this.dataSource.data = this.dataSource.data.filter(item => item !== row);
+        // API call to delete candidate by id
+        this.deleteSelectionById(row.id.toString())
+      }else if (result === true){
+
+      }
     });
     }
 
@@ -133,5 +141,16 @@ export class ListSelectionComponent implements OnInit {
     }else{
       return string
     }
+  }
+
+  public deleteSelectionById(id:string){
+    this.selectionService.deleteSelectionById(id).subscribe({
+      next: response => {
+        console.log(`Borrar proceso de selección por ID: ${id}`)
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
   }
 }
