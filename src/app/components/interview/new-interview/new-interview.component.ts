@@ -29,10 +29,7 @@ export class NewInterviewComponent implements OnInit {
     // console.log(this.newInterviewDate);
     // console.log(Date.parse(this.newInterviewDate.toString()));
     let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString()
-    console.log("MASSSSSS");
     console.log(isoDateTime);
-    
-    
     // console.log(this.newInterviewDate.toISOString());
     // console.log(this.newInterviewDate.toUTCString());
     // console.log(this.newInterviewDate.setMinutes(this.newInterviewDate.getMinutes() - (this.newInterviewDate.getTimezoneOffset())));
