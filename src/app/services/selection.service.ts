@@ -15,20 +15,19 @@ export class SelectionService {
 
   public getSelections(): Observable<Object[]>{
     return this.http.get<Object[]>(`${this.apiServerUrl}/api/selection/list`);
-}
+  }
 
   public getAllSelections(): Observable<Selection[]>{
   return this.http.get<Selection[]>(`${this.apiServerUrl}/api/selection/list`);
-}
+  }
 
-public updateSelections(selection: Selection): Observable<Selection>{
-  return this.http.put<Selection>(`${this.apiServerUrl}/api/selection/edit`, selection);
+  public updateSelections(selection: Selection): Observable<Selection>{
+    return this.http.put<Selection>(`${this.apiServerUrl}/api/selection/edit`, selection);
+  }
 
-}
-
-public deleteSelectionById(id: string){
-  return this.http.delete(`${this.apiServerUrl}/api/selection/delete/${id}`);
-}
+  public deleteSelectionById(id: string){
+    return this.http.delete(`${this.apiServerUrl}/api/selection/delete/${id}`);
+  }
 
   registerNewSelection(newSelection: any): Observable<any> {
     return this.http.post(`${this.apiServerUrl}/api/selection/new`, newSelection);
