@@ -40,3 +40,7 @@ mat-form-field{
     padding: 0 25px;
     /* flex-grow: 0; */
 }
+h5{
+    color: #1c5b92;
+    border-bottom: 1px solid #1c5b92;
+}
