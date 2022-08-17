@@ -30,6 +30,9 @@ export class NewInterviewComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+}
   createInterview(){
 
     if(this.newInterviewDate && this.newInterviewAppUser && this.newInterviewCandidate && this.newInterviewSelection){

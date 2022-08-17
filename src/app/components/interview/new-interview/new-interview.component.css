@@ -27,3 +27,16 @@
 ::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button:hover {
     background-color: #05c732;
 }
+.flexme{
+    display: flex;
+    justify-content: center;
+}
+mat-form-field{
+    /* flex-grow: 1; */
+    width: 33%;
+}
+.not-grow{
+    /* width: 30%; */
+    padding: 0 25px;
+    /* flex-grow: 0; */
+}
