@@ -28,6 +28,8 @@ export class ListSelectionComponent implements OnInit {
   // Function to send current row data to interview view
   @Output() sendDataToInterview = new EventEmitter();
   sendRowDataToInterview(row: any){
+    // Scroll to top of the page when selecting a process
+    window.scrollTo(0, 0);
     this.sendDataToInterview.emit(row)
   }
 

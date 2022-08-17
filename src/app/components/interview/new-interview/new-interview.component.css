@@ -12,6 +12,13 @@
     display: flex;
     align-items: center;
 }
+.mat-button-new {
+    background-color: #1c5b92;
+    color: #fff;
+}
+.mat-button-new:hover {
+    background-color: #007bff;
+}
 ::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button{
     background-color: #28A745;
     color: #fff;
