@@ -12,21 +12,23 @@ import { SelectionService } from 'src/app/services/selection.service';
 })
 export class ModalSelectionNewComponent implements OnInit {
 
+  minDate = new Date();
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: {selection: Selection}, private selectionService: SelectionService, public dialogRef: MatDialogRef<ModalSelectionNewComponent>) { }
 
-newSelection: any = {
-    start_date: "",
-    end_date: "",
-    name: "",
-    description: "",
-    requirements: "",
-    location: "",
-    sector: "",
-    status: "",
-    priority: "",
-    project_id: 0,
-    remote: false
-}
+  newSelection: any = {
+      start_date: "",
+      end_date: "",
+      name: "",
+      description: "",
+      requirements: "",
+      location: "",
+      sector: "",
+      status: "",
+      priority: "",
+      project_id: 0,
+      remote: false
+  }
 
 newSelectionForm: FormGroup | any;
 
