@@ -21,45 +21,36 @@ export class NewInterviewComponent implements OnInit {
   newInterviewAppUser: any | undefined;
   getInterviewer($event: any) {this.newInterviewAppUser = $event;}
 
-  newInterviewDate!: Date;
+  newInterviewDate: Date | undefined;
 
+  // Date picker minimum date is now
   minDate = new Date();
-
-  logDate(){
-    // console.log(this.newInterviewDate);
-    // console.log(Date.parse(this.newInterviewDate.toString()));
-    let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString()
-    console.log(isoDateTime);
-    // console.log(this.newInterviewDate.toISOString());
-    // console.log(this.newInterviewDate.toUTCString());
-    // console.log(this.newInterviewDate.setMinutes(this.newInterviewDate.getMinutes() - (this.newInterviewDate.getTimezoneOffset())));
-    // console.log(this.newInterviewDate.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1));
-  }
 
   constructor(private interviewService: InterviewService) { }
 
   ngOnInit(): void { }
 
   createInterview(){
-    // console.log("PRUEBA");
-    // console.log("date: " + this.newInterviewDate.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1) + " candidateID: " + this.newInterviewCandidate.id + " InterviewerID: " + this.newInterviewAppUser.id +" SelectionID: " + this.newInterviewSelection.id);
-    // let dateTime:Date = this.newInterviewDate;
-    // dateTime.setMinutes(dateTime.getMinutes() - (dateTime.getTimezoneOffset()));
-    // let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString()
 
-    // Convert date to ISO including timezone offset
-    // Remove the las letter, a Z that makes backend with LocalDateTime break
-    let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.newInterviewDate.toISOString().length - 1)
-    // this.interviewService.registerNewInterview(dateTime.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1), this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
-    this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
-      next: (response: any) => {
-        console.log(response);
-      },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message);
-        console.error('There was an error!', error);
-      }
-    });
+    if(this.newInterviewDate && this.newInterviewAppUser && this.newInterviewCandidate && this.newInterviewSelection){
+      // Convert date to ISO including timezone offset
+      // Remove the last letter, a Z that makes backend with LocalDateTime break
+      let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.newInterviewDate.toISOString().length - 1)
+
+      this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
+        next: (response: any) => {
+          this.newInterviewCandidate = undefined;
+          this.newInterviewSelection = undefined;
+          this.newInterviewAppUser = undefined;
+          this.newInterviewDate = undefined;
+          console.log(response);
+        },
+        error: (error: HttpErrorResponse) => {
+          alert(error.message);
+          console.error('There was an error!', error);
+        }
+      });
+    }
   }
 
 }
