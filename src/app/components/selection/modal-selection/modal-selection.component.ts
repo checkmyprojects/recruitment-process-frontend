@@ -40,8 +40,10 @@ export class ModalSelectionComponent implements OnInit {
     delete this.editedSelection.created_by;
     delete this.editedSelection.interviews;
 
-    this.editedSelection.start_date = this.editSelectionForm.controls.start_date.value
-
+    // Convert date to keep only YYYY-MM-DD to preven frontend to send 1 day off to the backend because of date conversion
+    let formDate = this.editSelectionForm.controls.start_date.value;
+    let dateFormatted:string = `${formDate.getFullYear()}-${formDate.getMonth()+1}-${formDate.getDate()}`;
+    this.editedSelection.start_date = dateFormatted;
 
     this.selectionService.updateSelections(this.editedSelection).subscribe({
       next: response => {

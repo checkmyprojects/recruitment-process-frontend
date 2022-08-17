@@ -49,10 +49,12 @@ newSelectionForm: FormGroup | any;
 
     });
   }
-
+  
   saveSelection(){
-    // Get value from form and give it to newSelection
-    this.newSelection.start_date = this.newSelectionForm.controls.start_date.value
+    // Convert date to keep only YYYY-MM-DD to preven frontend to send 1 day off to the backend because of date conversion
+    let formDate = this.newSelectionForm.controls.start_date.value;
+    let dateFormatted:string = `${formDate.getFullYear()}-${formDate.getMonth()+1}-${formDate.getDate()}`;
+    this.newSelection.start_date = dateFormatted;
 
     this.selectionService.registerNewSelection(this.newSelection).subscribe({
       next: response => {
