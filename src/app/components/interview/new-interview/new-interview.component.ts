@@ -1,12 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { InterviewService } from 'src/app/services/interview.service';
 
 @Component({
   selector: 'app-new-interview',
   templateUrl: './new-interview.component.html',
-  styleUrls: ['./new-interview.component.css']
+  styleUrls: ['./new-interview.component.css'],
+
 })
 export class NewInterviewComponent implements OnInit {
 
@@ -36,7 +37,7 @@ export class NewInterviewComponent implements OnInit {
     // console.log(this.newInterviewDate.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1));
   }
 
-  constructor(private interviewService: InterviewService) { }
+  constructor(private interviewService: InterviewService, public snackBar: MatSnackBar) { }
 
   ngOnInit(): void { }
 
@@ -53,12 +54,19 @@ export class NewInterviewComponent implements OnInit {
     // this.interviewService.registerNewInterview(dateTime.toISOString().slice(0, this.newInterviewDate.toISOString().length - 1), this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
     this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
       next: (response: any) => {
+        this.openSnackBar('¡Entrevista creada!', 'Cerrar')
         console.log(response);
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
         console.error('There was an error!', error);
       }
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
     });
   }
 
