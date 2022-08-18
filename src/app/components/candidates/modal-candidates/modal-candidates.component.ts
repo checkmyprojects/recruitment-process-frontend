@@ -23,6 +23,7 @@ export class ModalCandidatesComponent implements OnInit {
 
   ngOnInit(): void {
     this.editCandidateForm = new FormGroup({
+      id: new FormControl(this.data.candidate.id, [Validators.required]),
       name: new FormControl(this.data.candidate.name, [Validators.required, Validators.minLength(4),]),
       surname: new FormControl(this.data.candidate.surname, [Validators.required, Validators.minLength(4),]),
       email: new FormControl(this.data.candidate.email, [Validators.required, Validators.email,Validators.pattern(
@@ -33,14 +34,19 @@ export class ModalCandidatesComponent implements OnInit {
       location: new FormControl(this.data.candidate.location, [Validators.required, Validators.minLength(4),]),
       experience: new FormControl(this.data.candidate.experience, [Validators.required,]),
       state: new FormControl(this.data.candidate.state, [Validators.required, Validators.minLength(4),]),
+      hired: new FormControl(this.data.candidate.hired, []),
     });
   }
 
   saveCandidate(){
     //fix to remove the interview part of the candidate so that the backend does not give problems. You have to create an empty user or from scratch instead of copying the other one.
     this.editedCandidate.interviews = [];
-    this.candidateService.updateCandidate(this.editedCandidate).subscribe({
+    this.editedCandidate.hired = this.editCandidateForm.controls.hired.value;
+
+    // Send editCandidateForm Form instead of editedCandidate object
+    this.candidateService.updateCandidate(this.editCandidateForm.value).subscribe({
       next: response => {
+        this.data.candidate.id = response.id;
         this.data.candidate.state = response.state;
         this.data.candidate.name = response.name;
         this.data.candidate.surname = response.surname;
@@ -49,6 +55,7 @@ export class ModalCandidatesComponent implements OnInit {
         this.data.candidate.skills = response.skills;
         this.data.candidate.experience = response.experience;
         this.data.candidate.studies = response.studies;
+        this.data.candidate.hired = response.hired;
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);

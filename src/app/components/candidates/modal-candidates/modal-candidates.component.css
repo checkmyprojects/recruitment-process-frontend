@@ -18,6 +18,10 @@
   padding-left: 10px;
   font-size: 1.5rem;
 }
+.toggleActive{
+  margin: 4px 30px;
+  display: inline;
+}
 /* Buttons CSS */
 /* Button color tag translates into mat- */
 .mat-button-save {

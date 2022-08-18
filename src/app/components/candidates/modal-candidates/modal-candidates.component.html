@@ -73,13 +73,21 @@
        </mat-error>
       </mat-form-field>
     <br>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Experiencia</mat-label>
-      <input placeholder="Experiencia" formControlName="experience" matInput type="number" value={{editedCandidate.experience}} (input)="editedCandidate.experience=$any($event.target).value">
-      <mat-error *ngIf="editCandidateForm.get('experience')?.invalid && (editCandidateForm.get('experience')?.dirty || editCandidateForm.get('experience')?.touched) && editCandidateForm.get('experience')?.errors?.required">
-        La experiencia es obligatoria
-     </mat-error>
-    </mat-form-field>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Experiencia</mat-label>
+        <input placeholder="Experiencia" formControlName="experience" matInput type="number" value={{editedCandidate.experience}} (input)="editedCandidate.experience=$any($event.target).value">
+        <mat-error *ngIf="editCandidateForm.get('experience')?.invalid && (editCandidateForm.get('experience')?.dirty || editCandidateForm.get('experience')?.touched) && editCandidateForm.get('experience')?.errors?.required">
+          La experiencia es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <p class="toggleActive">
+        <mat-slide-toggle matTooltip="Desactivar/Activar Usuario" formControlName="hired" [(ngModel)]="editedCandidate.hired" color="primary">
+          <span *ngIf="editedCandidate.hired">Contratado/a</span>
+          <span *ngIf="!editedCandidate.hired">No contratado/a</span> 
+        </mat-slide-toggle>
+      </p>
+    </div>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
       <textarea placeholder="Habilidades" formControlName="skills" matInput value={{editedCandidate.skills}} (input)="editedCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>

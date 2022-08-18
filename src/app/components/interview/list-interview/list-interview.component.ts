@@ -16,7 +16,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ListInterviewComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','interview_date', 'candidate.name', 'interviewer.name','selection.name'];
+  displayedColumns: string[] = ['interview_date', 'candidate.name', 'interviewer.name','selection.name'];
   dataSource: MatTableDataSource<Interview>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
