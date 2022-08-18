@@ -71,3 +71,20 @@ thead *{
 tbody{
     border-top: 2px solid #9FC6E9!important;
 }
+
+::ng-deep .mat-snack-bar-container{
+  color: black !important;
+  background-color: white!important;
+  border-radius: 30px;
+  border: 1.5px solid #1c5b92 !important;
+  text-align: center;
+}
+::ng-deep .mat-simple-snackbar-action {
+  color: black;
+}
+
+::ng-deep .mat-simple-snackbar span {
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+}

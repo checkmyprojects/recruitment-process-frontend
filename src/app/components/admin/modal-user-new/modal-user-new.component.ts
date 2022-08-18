@@ -115,6 +115,7 @@ export class ModalUserNewComponent implements OnInit {
     this.authService.registerNewUser(this.newModalAppUser).subscribe({
       next: response => {
         // Change angular user data to the new one received from api
+        this.openSnackBar('¡Usuario creado con éxito!', '');
         this.data.user.id = response.id;
         this.data.user.name = response.name;
         this.data.user.username = response.username;
