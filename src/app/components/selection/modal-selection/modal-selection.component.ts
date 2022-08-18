@@ -4,7 +4,7 @@ import { SelectionService } from 'src/app/services/selection.service';
 import { Selection } from 'src/app/model/selection';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-modal-selection',
   templateUrl: './modal-selection.component.html',
@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ModalSelectionComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {selection: Selection}, private selectionService: SelectionService, public dialogRef: MatDialogRef<ModalSelectionComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {selection: Selection}, private selectionService: SelectionService, public dialogRef: MatDialogRef<ModalSelectionComponent>, private _snackBar: MatSnackBar) { }
 
   editedSelection: any = JSON.parse(JSON.stringify(this.data.selection));
   editSelectionForm: FormGroup | any;
@@ -36,6 +36,7 @@ export class ModalSelectionComponent implements OnInit {
     });
   }
   saveSelection(){
+    this.openSnackBar('¡Proceso editado con éxito!', '');
     // Remove created_by and interviews properties before sending to backend to prevent errors
     delete this.editedSelection.created_by;
     delete this.editedSelection.interviews;
@@ -45,8 +46,10 @@ export class ModalSelectionComponent implements OnInit {
     let dateFormatted:string = `${formDate.getFullYear()}-${formDate.getMonth()+1}-${formDate.getDate()}`;
     this.editedSelection.start_date = dateFormatted;
 
+
     this.selectionService.updateSelections(this.editedSelection).subscribe({
       next: response => {
+
         this.data.selection.id = response.id;
         this.data.selection.created_by = response.created_by;
         this.data.selection.start_date = response.start_date;
@@ -80,5 +83,15 @@ closeDialog(choice:boolean) {
     this.dialogRef.close(choice);
 }
 
+horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+openSnackBar(message: string, action: string) {
+  this._snackBar.open(message, action, {
+    horizontalPosition: this.horizontalPosition,
+    verticalPosition: this.verticalPosition,
+    duration: 3000
+  });
+}
 
 }
