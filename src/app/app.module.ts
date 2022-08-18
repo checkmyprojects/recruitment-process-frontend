@@ -50,7 +50,7 @@ import { NewInterviewComponent } from './components/interview/new-interview/new-
 // Imports for DateTime Picker
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { ModalSelectionComponent } from './components/selection/modal-selection/modal-selection.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +103,8 @@ import { ModalSelectionComponent } from './components/selection/modal-selection/
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }, { provide: LOCALE_ID, useValue: 'es-ES'}],
   bootstrap: [AppComponent]

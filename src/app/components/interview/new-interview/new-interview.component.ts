@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { InterviewService } from 'src/app/services/interview.service';
 
 @Component({
@@ -27,7 +28,7 @@ export class NewInterviewComponent implements OnInit {
   // Date picker minimum date is now
   minDate = new Date();
 
-  constructor(private interviewService: InterviewService) { }
+  constructor(private interviewService: InterviewService, public snackBar: MatSnackBar) { }
 
   ngOnInit(): void { }
 
@@ -53,6 +54,7 @@ export class NewInterviewComponent implements OnInit {
           this.newInterviewAppUser = undefined;
           this.newInterviewDate = undefined;
           console.log(response);
+          this.openSnackBar('¡Entrevista creada con éxito!', 'Ok')
         },
         error: (error: HttpErrorResponse) => {
           alert(error.message);
@@ -60,6 +62,12 @@ export class NewInterviewComponent implements OnInit {
         }
       });
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 }
