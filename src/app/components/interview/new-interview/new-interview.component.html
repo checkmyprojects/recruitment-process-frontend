@@ -60,19 +60,6 @@
             <input matInput disabled value={{newInterviewAppUser?.id}}>
         </mat-form-field> -->
         <div class="flexme">
-            <mat-form-field class="example-full-width input-disabled" appearance="fill">
-                <mat-label>Nombre</mat-label>
-                <input matInput disabled value={{newInterviewAppUser?.name}}>
-            </mat-form-field>
-            <span>&nbsp;&nbsp;</span>
-            <mat-form-field class="example-full-width input-disabled" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput disabled value={{newInterviewAppUser?.email}}>
-            </mat-form-field>
-            <span>&nbsp;&nbsp;</span>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(interviewer, interviewerPanel)">
-                <mat-icon>add</mat-icon>
-            </button>
             <mat-form-field class="not-grow">
                 <input matInput [ngxMatDatetimePicker]="picker" [min]="minDate" placeholder="Elige un fecha y hora"
                     [(ngModel)]="newInterviewDate">
@@ -88,6 +75,20 @@
                     </ng-template>
                 </ngx-mat-datetime-picker>
             </mat-form-field>
+            <mat-form-field class="example-full-width input-disabled" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput disabled value={{newInterviewAppUser?.name}}>
+            </mat-form-field>
+            <span>&nbsp;&nbsp;</span>
+            <mat-form-field class="example-full-width input-disabled" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput disabled value={{newInterviewAppUser?.email}}>
+            </mat-form-field>
+            <span>&nbsp;&nbsp;</span>
+            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(interviewer, interviewerPanel)">
+                <mat-icon>add</mat-icon>
+            </button>
+            
 
         </div>
     </div>

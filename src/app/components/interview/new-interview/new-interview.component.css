@@ -37,7 +37,7 @@ mat-form-field{
 }
 .not-grow{
     /* width: 30%; */
-    padding: 0 25px;
+    padding: 0 25px 0 0;
     /* flex-grow: 0; */
 }
 h5{
