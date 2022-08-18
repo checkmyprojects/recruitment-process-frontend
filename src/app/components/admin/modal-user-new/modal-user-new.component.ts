@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { AppUsers } from 'src/app/model/app-users';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,13 +16,13 @@ export class ModalUserNewComponent implements OnInit {
 
   // TODO: Needs to validate all fields before sending to backend
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, public dialogRef: MatDialogRef<ModalUserNewComponent>, private authService: AuthService) {
-    
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, public dialogRef: MatDialogRef<ModalUserNewComponent>, private authService: AuthService, public snackBar: MatSnackBar) {
+
   }
 
   logit(){
     console.log(this.loginForm);
-    
+
   }
   // Check if password and confirmPassword are the same
   passwordCheck(control:any):any{
@@ -85,7 +86,7 @@ export class ModalUserNewComponent implements OnInit {
 
     this.loginForm.controls.password.valueChanges.subscribe(
       (      _x: any)=>this.loginForm.controls.confirmPassword.updateValueAndValidity()
-    ) 
+    )
   }
 
   closeDialog(choice:boolean) {
@@ -144,5 +145,16 @@ export class ModalUserNewComponent implements OnInit {
       editedRoles.push("business");
     }
     return editedRoles;
+  }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
   }
 }
