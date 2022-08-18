@@ -5,6 +5,7 @@ import { AppUsers } from 'src/app/model/app-users';
 import { AdminService } from 'src/app/services/admin.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modal-user',
@@ -13,7 +14,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class ModalUserComponent implements OnInit {
   // public dialogRef: MatDialogRef<ModalUserComponent> allow to use dialogref in the component
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, private adminService: AdminService, public dialogRef: MatDialogRef<ModalUserComponent>, private tokenStorageService: TokenStorageService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, private adminService: AdminService, public dialogRef: MatDialogRef<ModalUserComponent>, private tokenStorageService: TokenStorageService, private _snackBar: MatSnackBar) { }
 
   emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
 
@@ -48,6 +49,7 @@ export class ModalUserComponent implements OnInit {
 
     // Initialize Form
     this.editUserForm = new FormGroup({
+
       name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(4),]),
       username: new FormControl(this.data.user.username, [Validators.required, Validators.minLength(4),]),
       email: new FormControl(this.data.user.email, [Validators.required, Validators.email,Validators.pattern(
@@ -151,6 +153,7 @@ export class ModalUserComponent implements OnInit {
 
         // Change angular user data to the new one received from api
         // TODO: Make sure all data are OK
+        this.openSnackBar('¡Usuario editado con éxito!', '');
         this.data.user.id = response.id;
         this.data.user.name = response.name;
         this.data.user.username = response.username;
@@ -163,6 +166,17 @@ export class ModalUserComponent implements OnInit {
         console.error('There was an error!', error);
       }
   });
+  }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
   }
 
 }
