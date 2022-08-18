@@ -26,6 +26,7 @@ export class ModalCandidateNewComponent implements OnInit {
     location: "",
     experience: 0,
     state: "",
+    notes: "",
   }
   newCandidateForm: FormGroup | any;
 
@@ -41,6 +42,7 @@ export class ModalCandidateNewComponent implements OnInit {
       location: new FormControl('', [Validators.required, Validators.minLength(4),]),
       experience: new FormControl('', [Validators.required,]),
       state: new FormControl('', [Validators.required, Validators.minLength(4),]),
+      notes: new FormControl('', [Validators.minLength(4),]),
 
     });
   }
@@ -59,6 +61,7 @@ export class ModalCandidateNewComponent implements OnInit {
         this.data.candidate.studies = response.studies;
         this.data.candidate.hired = response.hired;
         this.data.candidate.interviews = response.interviews;
+        this.data.candidate.notes = response.notes;
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
