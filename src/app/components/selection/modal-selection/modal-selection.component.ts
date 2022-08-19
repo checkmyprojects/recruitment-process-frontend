@@ -20,8 +20,9 @@ export class ModalSelectionComponent implements OnInit {
   ngOnInit(): void {
     console.log (this.data.selection)
     this.editSelectionForm = new FormGroup({
+      id: new FormControl(this.data.selection.id, []),
       start_date: new FormControl(this.data.selection.start_date, [Validators.required]),
-      // end_date: new FormControl('', [Validators.required]),
+      end_date: new FormControl(this.data.selection.end_date, []),
       name: new FormControl(this.data.selection.name, [Validators.required, Validators.minLength(4),]),
       description: new FormControl(this.data.selection.description, [Validators.required, Validators.minLength(4),]),
       requirements: new FormControl(this.data.selection.requirements, [Validators.required, Validators.minLength(4),]),
@@ -39,12 +40,16 @@ export class ModalSelectionComponent implements OnInit {
     // Remove created_by and interviews properties before sending to backend to prevent errors
     delete this.editedSelection.created_by;
     delete this.editedSelection.interviews;
-
+    
     // Convert date to keep only YYYY-MM-DD to preven frontend to send 1 day off to the backend because of date conversion
-    let formDate = this.editSelectionForm.controls.start_date.value;
+    let formDate:Date = new Date(this.editSelectionForm.value.start_date.toString());
     let dateFormatted:string = `${formDate.getFullYear()}-${formDate.getMonth()+1}-${formDate.getDate()}`;
+    // this.editedSelection.start_date = dateFormatted;
+    // console.log(dateFormatted);
+    
     this.editedSelection.start_date = dateFormatted;
-
+    // console.log(this.editSelectionForm.start_date);
+    
     this.selectionService.updateSelections(this.editedSelection).subscribe({
       next: response => {
         this.data.selection.id = response.id;
