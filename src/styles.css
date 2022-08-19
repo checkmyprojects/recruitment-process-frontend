@@ -59,3 +59,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: rgb(172, 171, 171);
     /* text-decoration: line-through; */
 }
+
+/* Snackbar styling */
+.mat-snack-bar-container{
+  color: black !important;
+  background-color: white!important;
+  /* border-radius: 30px; */
+  border: 1.5px solid #1c5b92 !important;
+  text-align: center;
+}
+.mat-simple-snackbar-action {
+  color: black;
+}
+
+.mat-simple-snackbar span {
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+}

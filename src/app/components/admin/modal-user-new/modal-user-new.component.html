@@ -1,7 +1,7 @@
 <!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
 <span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
 
-<h4 (click)="logit()">Nuevo usuario: <span>{{newModalAppUser.username}}</span></h4>
+<h4 mat-raised-button (click)="logit()">Nuevo usuario: <span>{{newModalAppUser.username}}</span></h4>
 
 <form [formGroup]="loginForm" novalidate class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
@@ -80,5 +80,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-    <button mat-button [disabled]="!loginForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
+    <button mat-button [disabled]="!loginForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" mat-stroked-button="openSnackBar()" (click)="saveUser()">Guardar</button>
 </mat-dialog-actions>

@@ -4,7 +4,7 @@ import { Candidate } from '../../../model/candidate';
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CandidatesService } from 'src/app/services/candidates.service';
-
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-modal-candidates',
@@ -13,7 +13,7 @@ import { CandidatesService } from 'src/app/services/candidates.service';
 })
 export class ModalCandidatesComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {candidate: Candidate}, private candidateService: CandidatesService, public dialogRef: MatDialogRef<ModalCandidatesComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {candidate: Candidate}, private candidateService: CandidatesService, public dialogRef: MatDialogRef<ModalCandidatesComponent>, private _snackBar: MatSnackBar) { }
 
   emailFormControl = new FormControl(this.data.candidate.email, [Validators.required, Validators.email]);
 
@@ -47,6 +47,7 @@ export class ModalCandidatesComponent implements OnInit {
     // Send editCandidateForm Form instead of editedCandidate object
     this.candidateService.updateCandidate(this.editCandidateForm.value).subscribe({
       next: response => {
+        this.openSnackBar('¡Candidato editado con éxito!', '');
         this.data.candidate.id = response.id;
         this.data.candidate.state = response.state;
         this.data.candidate.name = response.name;
@@ -76,5 +77,17 @@ export class ModalCandidatesComponent implements OnInit {
   closeDialog(choice:boolean) {
     this.dialogRef.close(choice);
   }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
+  }
+
 
 }

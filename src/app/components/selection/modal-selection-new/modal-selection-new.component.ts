@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Selection } from 'src/app/model/selection';
 import { SelectionService } from 'src/app/services/selection.service';
-
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-modal-selection-new',
   templateUrl: './modal-selection-new.component.html',
@@ -14,7 +14,7 @@ export class ModalSelectionNewComponent implements OnInit {
 
   minDate = new Date();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {selection: Selection}, private selectionService: SelectionService, public dialogRef: MatDialogRef<ModalSelectionNewComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {selection: Selection}, private selectionService: SelectionService, public dialogRef: MatDialogRef<ModalSelectionNewComponent>, private _snackBar: MatSnackBar) { }
 
   newSelection: any = {
       start_date: "",
@@ -49,7 +49,7 @@ newSelectionForm: FormGroup | any;
 
     });
   }
-  
+
   saveSelection(){
     // Convert date to keep only YYYY-MM-DD to preven frontend to send 1 day off to the backend because of date conversion
     let formDate = this.newSelectionForm.controls.start_date.value;
@@ -58,6 +58,8 @@ newSelectionForm: FormGroup | any;
 
     this.selectionService.registerNewSelection(this.newSelection).subscribe({
       next: response => {
+        this.openSnackBar('¡Proceso creado con éxito!', '');
+        
         this.data.selection.id = response.id;
         this.data.selection.created_by = response.created_by;
         this.data.selection.start_date = response.start_date;
@@ -79,4 +81,16 @@ newSelectionForm: FormGroup | any;
       }
   });
 }
+
+horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+openSnackBar(message: string, action: string) {
+  this._snackBar.open(message, action, {
+    horizontalPosition: this.horizontalPosition,
+    verticalPosition: this.verticalPosition,
+    duration: 3000
+  });
+}
+
 }

@@ -28,7 +28,7 @@ export class NewInterviewComponent implements OnInit {
   // Date picker minimum date is now
   minDate = new Date();
 
-  constructor(private interviewService: InterviewService, public snackBar: MatSnackBar) { }
+  constructor(private interviewService: InterviewService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void { }
 
@@ -69,13 +69,11 @@ export class NewInterviewComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
+    this._snackBar.open(message, action, {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: 3000
     });
   }
-
-
 
 }

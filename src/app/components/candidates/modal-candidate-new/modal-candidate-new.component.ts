@@ -4,6 +4,7 @@ import { Candidate } from '../../../model/candidate';
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CandidatesService } from 'src/app/services/candidates.service';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { CandidatesService } from 'src/app/services/candidates.service';
 })
 export class ModalCandidateNewComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {candidate: Candidate}, private candidateService: CandidatesService, public dialogRef: MatDialogRef<ModalCandidateNewComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {candidate: Candidate}, private candidateService: CandidatesService, public dialogRef: MatDialogRef<ModalCandidateNewComponent>, public snackBar: MatSnackBar) { }
 
   emailFormControl = new FormControl(this.data.candidate.email, [Validators.required, Validators.email]);
 
@@ -50,6 +51,7 @@ export class ModalCandidateNewComponent implements OnInit {
   saveCandidate(){
     this.candidateService.registerNewCandidate(this.newCandidate).subscribe({
       next: response => {
+        this.openSnackBar('¡Candidato creado con éxito!', '');
         this.data.candidate.id = response.id;
         this.data.candidate.state = response.state;
         this.data.candidate.name = response.name;
@@ -68,5 +70,15 @@ export class ModalCandidateNewComponent implements OnInit {
         console.error('There was an error!', error);
       }
    });
+  }
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
   }
 }
