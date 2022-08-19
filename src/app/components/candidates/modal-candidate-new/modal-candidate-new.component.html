@@ -74,13 +74,16 @@
        </mat-error>
       </mat-form-field>
     <br>
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Experiencia</mat-label>
-      <input placeholder="Experiencia" formControlName="experience" placeholder="Ej. 3 años" matInput type="number" value={{newCandidate.experience}} (input)="newCandidate.experience=$any($event.target).value">
-      <mat-error *ngIf="newCandidateForm.get('experience')?.invalid && (newCandidateForm.get('experience')?.dirty || newCandidateForm.get('experience')?.touched) && newCandidateForm.get('experience')?.errors?.required">
-        La experiencia es obligatoria
-     </mat-error>
-    </mat-form-field>
+    <div>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Experiencia</mat-label>
+        <input placeholder="Experiencia" formControlName="experience" placeholder="Ej. 3 años" matInput type="number" value={{newCandidate.experience}} (input)="newCandidate.experience=$any($event.target).value">
+        <mat-error *ngIf="newCandidateForm.get('experience')?.invalid && (newCandidateForm.get('experience')?.dirty || newCandidateForm.get('experience')?.touched) && newCandidateForm.get('experience')?.errors?.required">
+          La experiencia es obligatoria
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
       <textarea placeholder="Habilidades" formControlName="skills" placeholder="Ej. Java" matInput value={{newCandidate.skills}} (input)="newCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
@@ -89,6 +92,16 @@
       </mat-error>
       <mat-error *ngIf="newCandidateForm.get('skills')?.invalid && (newCandidateForm.get('skills')?.dirty || newCandidateForm.get('skills')?.touched) && newCandidateForm.get('skills')?.errors?.required">
         Las habilidades son obligatorias
+     </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Notas</mat-label>
+      <textarea placeholder="Notas" formControlName="notes" matInput value={{newCandidate.notes}} (input)="newCandidate.notes=$any($event.target).value" placeholder="Ej: Recomendado por ..."></textarea>
+      <mat-error *ngIf="!newCandidateForm.get('notes')?.errors?.required">
+        Las notas deben tener al menos 4 caracteres
+      </mat-error>
+      <mat-error *ngIf="newCandidateForm.get('notes')?.invalid && (newCandidateForm.get('notes')?.dirty || newCandidateForm.get('notes')?.touched) && newCandidateForm.get('notes')?.errors?.required">
+        Las notas son obligatorias
      </mat-error>
     </mat-form-field>
 </form>

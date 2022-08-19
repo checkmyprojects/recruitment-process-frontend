@@ -98,6 +98,16 @@
         Las habilidades son obligatorias
      </mat-error>
     </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Notas</mat-label>
+      <textarea placeholder="Notas" formControlName="notes" matInput value={{editedCandidate.notes}} (input)="editedCandidate.notes=$any($event.target).value" placeholder="Ej: Recomendado por ..."></textarea>
+      <mat-error *ngIf="!editCandidateForm.get('notes')?.errors?.required">
+        Las notas deben tener al menos 4 caracteres
+      </mat-error>
+      <mat-error *ngIf="editCandidateForm.get('notes')?.invalid && (editCandidateForm.get('notes')?.dirty || editCandidateForm.get('notes')?.touched) && editCandidateForm.get('notes')?.errors?.required">
+        Las notas son obligatorias
+     </mat-error>
+    </mat-form-field>
 </form>
 
 <mat-dialog-actions align="end">
