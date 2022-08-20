@@ -103,27 +103,20 @@ tr.mat-row:hover {
 
 /* Row colors applied conditionally */
 .selection-open{
-    /* background-color: rgba(202, 202, 202, 0.281); */
     background-color: rgba(0, 255, 64, 0.158);
-    /* color: rgb(172, 171, 171); */
-    /* text-decoration: line-through; */
 }
 .selection-onhold{
-    /* background-color: rgba(202, 202, 202, 0.281); */
     background-color: rgba(255, 166, 0, 0.158);
-    /* color: rgb(172, 171, 171); */
-    /* text-decoration: line-through; */
 }
 .selection-priority-high{
-    /* background-color: rgba(202, 202, 202, 0.281); */
     background-color: rgba(255, 0, 0, 0.158);
-    /* color: rgb(172, 171, 171); */
-    /* text-decoration: line-through; */
 }
 
 .selection-closed{
-    /* background-color: rgba(202, 202, 202, 0.281); */
     background-color: rgba(202, 202, 202, 0.158);
     color: rgb(172, 171, 171);
-    /* text-decoration: line-through; */
+}
+.selection-end{
+    background-color: rgba(202, 202, 202, 0.158);
+    color: rgb(172, 171, 171);
 }
