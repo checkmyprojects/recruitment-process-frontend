@@ -24,7 +24,7 @@
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
         <!-- Apply classes conditionally asking for priority or status -->
-        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialogEditSelection(row)" [ngClass]="{
+        <td mat-cell matTooltip="Número de proyecto" *matCellDef="let row" (click)="openDialogEditSelection(row)" [ngClass]="{
         'selection-open': row.status === 'Abierto', 
         'selection-priority-high': row.priority === 'Alta', 
         'selection-onhold': row.status === 'Parado',

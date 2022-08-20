@@ -107,6 +107,7 @@ tr.mat-row:hover {
 }
 .selection-onhold{
     background-color: rgba(255, 166, 0, 0.158);
+    color: rgb(172, 171, 171);
 }
 .selection-priority-high{
     background-color: rgba(255, 0, 0, 0.158);
