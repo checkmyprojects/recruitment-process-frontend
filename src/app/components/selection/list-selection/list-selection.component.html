@@ -23,60 +23,116 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
-        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialogEditSelection(row)"> {{row.id}} </td>
+        <!-- Apply classes conditionally asking for priority or status -->
+        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialogEditSelection(row)" [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.id}} </td>
       </ng-container>
 
       <!-- Progress Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-        <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.name}} </td>
+        <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.name}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="start_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Inicio </th>
-        <td mat-cell matTooltip="Fecha de inicio" *matCellDef="let row" (click)="openDialogEditSelection(row)"> {{row.start_date}} </td>
+        <td mat-cell matTooltip="Fecha de inicio" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.start_date}} </td>
       </ng-container>
 
       <!-- Fruit Column -->
       <ng-container matColumnDef="end_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Fin </th>
-        <td mat-cell matTooltip="Fecha de fin" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{returnUndefined(row.end_date)}} </td>
+        <td mat-cell matTooltip="Fecha de fin" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{returnUndefined(row.end_date)}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
-        <td mat-cell matTooltip="Descripción" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.description}} </td>
+        <td mat-cell matTooltip="Descripción" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.description}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="requirements">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Requisitos </th>
-        <td mat-cell matTooltip="Requisitos" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.requirements}} </td>
+        <td mat-cell matTooltip="Requisitos" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.requirements}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
-        <td mat-cell matTooltip="Ubicación" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.location}} </td>
+        <td mat-cell matTooltip="Ubicación" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.location}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="sector">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
-        <td mat-cell matTooltip="Sector" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.sector}} </td>
+        <td mat-cell matTooltip="Sector" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.sector}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
         <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
         <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
-        <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.status}} </td>
+        <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.status}} </td>
       </ng-container>
       <ng-container matColumnDef="project_id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Proyecto </th>
-        <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.project_id}} </td>
+        <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.project_id}} </td>
       </ng-container>
       <ng-container matColumnDef="remote">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Remoto </th>
-        <td mat-cell matTooltip="Remoto" *matCellDef="let row" (click)="openDialogEditSelection(row)" > {{row.remote}} </td>
+        <td mat-cell matTooltip="Remoto" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        'selection-open': row.status === 'Abierto', 
+        'selection-priority-high': row.priority === 'Alta', 
+        'selection-onhold': row.status === 'Parado',
+        'selection-closed': row.status === 'Cerrado'
+        }"> {{row.remote}} </td>
       </ng-container>
       <ng-container matColumnDef="create">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
