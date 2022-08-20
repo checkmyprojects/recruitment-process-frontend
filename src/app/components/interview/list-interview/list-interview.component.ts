@@ -8,6 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { ModalInterviewComponent } from '../modal-interview/modal-interview.component';
 
 @Component({
   selector: 'app-list-interview',
@@ -37,8 +38,17 @@ export class ListInterviewComponent implements OnInit {
   };
   }
 
-  openDialog() {
+  openEditDialog(row: Interview) {
+    const dialogRef = this.dialog.open(ModalInterviewComponent,{
+      data: { interview: row }, panelClass: 'dialog-big'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === false){
+      }else if (result === true){
+
+      }
+    });
   }
 //Custom filter for nested properties to work
   getProperty = (obj: any, path:any) => (
