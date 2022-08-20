@@ -42,6 +42,13 @@
   background-color: #ff0019;
 }
 
+.mat-button-end {
+  background-color: rgb(255, 145, 0);
+  color: #fff;
+}
+.mat-button-end:hover {
+  background-color: rgb(255, 187, 0);
+}
 ::ng-deep .mat-snack-bar-container{
   color: black !important;
   background-color: white!important;

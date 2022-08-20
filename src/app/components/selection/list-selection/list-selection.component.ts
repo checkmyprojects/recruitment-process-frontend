@@ -98,7 +98,7 @@ export class ListSelectionComponent implements OnInit {
 
 
    // Material table
-   ngAfterViewInit() {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

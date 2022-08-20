@@ -73,29 +73,65 @@ export class ModalSelectionComponent implements OnInit {
         alert(error.message);
         console.error('There was an error!', error);
       }
-  });
-}
-confirmDelete() {
-  // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
-  if(confirm("¿Seguro de que quieres borrar el proceso de selección?")){
-    this.closeDialog(false);
+    });
   }
-}
-// Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
-  // Function to close the dialog. It can return true or false
-closeDialog(choice:boolean) {
-    this.dialogRef.close(choice);
-}
 
-horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-verticalPosition: MatSnackBarVerticalPosition = 'top';
+  confirmDelete() {
+    // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
+    if(confirm("¿Seguro de que quieres borrar el proceso de selección?")){
+      this.closeDialog(false);
+    }
+  }
 
-openSnackBar(message: string, action: string) {
-  this._snackBar.open(message, action, {
-    horizontalPosition: this.horizontalPosition,
-    verticalPosition: this.verticalPosition,
-    duration: 3000
-  });
-}
+  confirmEnd() {
+    // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
+    if(confirm("¿Seguro de que quieres finalizar el proceso de selección?")){
+      this.endSelectionProcess();
+      this.closeDialog(true);
+    }
+  }
+
+  endSelectionProcess(){
+    this.selectionService.endSelectionById(this.data.selection.id).subscribe({
+      next: response => {
+        this.openSnackBar('¡Proceso finalizado con éxito!', '');
+
+        this.data.selection.id = response.id;
+        this.data.selection.created_by = response.created_by;
+        this.data.selection.start_date = response.start_date;
+        this.data.selection.end_date = response.end_date;
+        this.data.selection.name = response.name;
+        this.data.selection.description = response.description;
+        this.data.selection.requirements = response.requirements;
+        this.data.selection.location = response.location;
+        this.data.selection.sector = response.sector;
+        this.data.selection.status = response.status;
+        this.data.selection.priority = response.priority;
+        this.data.selection.project_id = response.project_id;
+        this.data.selection.remote = response.remote;
+        this.data.selection.interviews = response.interviews;
+      },
+      error: (error: HttpErrorResponse) =>  {
+        alert(error.message);
+        console.error('There was an error!', error);
+      }
+    });
+  }
+  // Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
+    // Function to close the dialog. It can return true or false
+  closeDialog(choice:boolean) {
+      this.dialogRef.close(choice);
+  }
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
+  }
 
 }
