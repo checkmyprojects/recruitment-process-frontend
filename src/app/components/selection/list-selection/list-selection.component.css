@@ -104,6 +104,13 @@ tr.mat-row:hover {
 /* Row colors applied conditionally */
 .selection-open{
     background-color: rgba(0, 255, 64, 0.158);
+    /* background: linear-gradient(
+        to bottom,
+        white 0%,
+        white 50%,                                                                 
+        rgb(0, 255, 64) 50%,
+        rgb(0, 255, 64) 100%
+    ); */
 }
 .selection-onhold{
     background-color: rgba(255, 166, 0, 0.158);
