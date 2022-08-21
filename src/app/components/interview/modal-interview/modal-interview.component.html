@@ -6,17 +6,12 @@
             Detalles de la entrevista
         </ng-template>
         
-        <div class="new-interview mat-elevation-z2">
+        <div class="new-interview">
             
             <h2 class="title-center">Fecha de la entrevista: {{data.interview.interview_date}}</h2>
 
-
-              
             <br>
-
             <div class="cards-flex mat-elevation-z2">
-            
-
                 <div class="cards">
                     <h5>Candidato</h5>
                     <h2>{{data.interview.candidate.name}} {{data.interview.candidate.surname}}</h2>
@@ -43,19 +38,14 @@
                 <h5>Notas</h5>
                 <mat-form-field class="notes" appearance="fill">
                     <mat-label>Notas sobre la entrevista</mat-label>
-                    <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize"cdkAutosizeMinRows="6" cdkAutosizeMaxRows="5" matInput placeholder="Ej. Encaja con..."></textarea>
+                    <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize"cdkAutosizeMinRows="9" cdkAutosizeMaxRows="10" matInput placeholder="Ej. Encaja con..."></textarea>
                 </mat-form-field>
                 <mat-dialog-actions align="end">
                     <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar" color="button-save">Guardar Notas</button>
                 </mat-dialog-actions>
             </div>
-
-            <br>
-
-        
-
         </div>
-
+        <br>
     </mat-tab>
 
     <!-- Edit interview tab -->
@@ -184,12 +174,9 @@
             </div>
             <br><br>
 
-            <button mat-stroked-button (click)="createInterview()" color="button-new">Guardar Entrevista <mat-icon>
-                    add_circle_outline</mat-icon></button>
-
+            <button mat-stroked-button (click)="createInterview()" color="button-new">
+                Guardar Entrevista <mat-icon>add_circle_outline</mat-icon>
+            </button>
         </div>
-
-
     </mat-tab>
-
 </mat-tab-group>
