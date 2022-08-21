@@ -51,3 +51,34 @@ h5{
 .mat-expansion-panel-header{
     background-color: #9fc6e96e;
 }
+
+.cards-flex{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.cards-icon-text{
+    display: flex;
+    align-items: flex-end;
+}
+.cards{
+    width: 250px;
+}
+.cards-center{
+    margin: 0 40px;
+}
+
+.title-center{
+    text-align: center;
+}
+
+.notes{
+    width: 100%;
+}
+
+
+/* Material table style */
+mat-table {
+    display: block;
+    font-family: Tahoma, Verdana;
+}

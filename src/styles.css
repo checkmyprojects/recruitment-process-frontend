@@ -79,7 +79,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .dialog-big{
-    height: 65vw;
-    max-width: 100vw;
-    width: 90vw;
+    height: 80%;
+    /* max-width: 100vw;
+    width: 90vw; */
+}
+
+/* Button custom colors */
+
+/* Buttons CSS */
+/* Button color tag translates into mat- */
+.mat-button-save {
+    background-color: #28A745;
+    color: #fff;
+}
+.mat-button-save:hover {
+    background-color: #05c732;
 }
