@@ -177,6 +177,8 @@
             <button mat-stroked-button (click)="createInterview()" color="button-new" (click)="editInterview()">
                 Guardar Entrevista <mat-icon>add_circle_outline</mat-icon>
             </button>
+                <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Notas" color="button-save" (click)="editInterview()">Guardar Notas</button>
+            
         </div>
     </mat-tab>
 </mat-tab-group>
