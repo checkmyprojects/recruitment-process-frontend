@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/user/register/register.component
 import { SelectionComponent } from './components/selection/selection/selection.component';
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component';
 import { AuthGuardService as AuthGuard} from './services/auth-guard.service';
+import { RoleGuardService as RoleGuard} from './services/role-guard.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'interview/new', component: NewInterviewComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: BoardAdminComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
   { path: '**', redirectTo: '' }
 ];
 
