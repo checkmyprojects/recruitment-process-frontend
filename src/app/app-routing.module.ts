@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { SelectionComponent } from './components/selection/selection/selection.component';
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component';
+import { AuthGuardService as AuthGuard} from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,7 +26,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'interview', component: ListInterviewComponent},
   { path: 'interview/new', component: NewInterviewComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' }
 ];
 
 // Routes array is passed to the RouterModule.forRoot() method.
