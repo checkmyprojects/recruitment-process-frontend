@@ -23,7 +23,7 @@ export class ListInterviewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  // When we receive the data, append it to the interviews list
+  // When we receive the data from new interview child, append it to the interviews list
   getNewInterview($event: any) {
     this.dataSource.data = [...this.dataSource.data, $event];
   }
@@ -44,6 +44,7 @@ export class ListInterviewComponent implements OnInit {
     };
   }
 
+  // Will open or close the panel with that id
   openPanel(panel: MatExpansionPanel) {
     if(panel.expanded){
       panel.close();
