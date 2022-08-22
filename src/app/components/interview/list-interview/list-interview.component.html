@@ -1,6 +1,6 @@
 <p>Home > Interview > Interview List</p>
 
-<mat-expansion-panel #interviewerPanel>
+<mat-expansion-panel #interviewPanel>
   <mat-expansion-panel-header>
       <mat-panel-title> Crear Entrevista </mat-panel-title>
       <mat-panel-description>
@@ -18,7 +18,7 @@
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button color="button-new" routerLink="/interview/new">Crear Entrevista <mat-icon>add_circle_outline</mat-icon></button>
+    <button mat-raised-button color="button-new" matTooltip="Crear entrevista" (click)="openPanel(interviewPanel)">Crear Entrevista <mat-icon>add_circle_outline</mat-icon></button>
   </div>
 
 </div>

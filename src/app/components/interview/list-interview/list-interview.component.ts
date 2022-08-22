@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalInterviewComponent } from '../modal-interview/modal-interview.component';
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-list-interview',
@@ -41,6 +42,15 @@ export class ListInterviewComponent implements OnInit {
       const transformedFilter = filter.trim().toLowerCase();
       return dataStr.indexOf(transformedFilter) !== -1;
     };
+  }
+
+  openPanel(panel: MatExpansionPanel) {
+    if(panel.expanded){
+      panel.close();
+    }else{
+      panel.open();
+      window.scrollTo(0, 0);
+    }
   }
 
   openEditDialog(row: Interview) {
