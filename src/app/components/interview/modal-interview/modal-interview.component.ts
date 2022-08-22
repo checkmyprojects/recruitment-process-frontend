@@ -68,6 +68,23 @@ export class ModalInterviewComponent implements OnInit {
     // }
   }
 
+  feedback(feedback: string, id: number){
+
+    this.interviewService.feedbackInterview(feedback, id).subscribe({
+      next: (response: any) => {
+        this.openSnackBar('Feedback guardado', '');
+        
+        console.log(response);
+
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+        console.error('There was an error!', error);
+      }
+    });
+
+  }
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 

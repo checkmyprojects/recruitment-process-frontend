@@ -35,4 +35,9 @@ export class InterviewService {
     // Response from backend is not a json, so we specify that with {responseType: 'text'}
     return this.http.post(`${this.apiServerUrl}/api/interview/new?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date, {responseType: 'text'});
   }
+
+  public feedbackInterview(feedback: string, interviewId: number): Observable<any>{
+    // Response from backend is not a json, so we specify that with {responseType: 'text'}
+    return this.http.put(`${this.apiServerUrl}/api/interview/feedback/${interviewId}`,feedback);
+  }
 }
