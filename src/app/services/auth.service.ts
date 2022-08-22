@@ -13,6 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  jwtHelper: any;
 
   constructor(private http: HttpClient) { }
 
@@ -31,8 +32,16 @@ export class AuthService {
       password
     }, httpOptions);
   }
-  
+
   registerNewUser(newUser: any): Observable<any> {
     return this.http.post(AUTH_API + 'signup', newUser, httpOptions);
   }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
 }
