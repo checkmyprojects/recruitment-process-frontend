@@ -40,4 +40,9 @@ export class InterviewService {
     // Response from backend is not a json, so we specify that with {responseType: 'text'}
     return this.http.put(`${this.apiServerUrl}/api/interview/feedback/${interviewId}`,feedback);
   }
+
+  public editInterview(date: string, interviewId:number, candidateid:number, interviewerid:number, selectionid:number): Observable<any>{
+    // Response from backend is not a json, so we specify that with {responseType: 'text'}
+    return this.http.put(`${this.apiServerUrl}/api/interview/edit/${interviewId}/?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date);
+  }
 }

@@ -69,20 +69,40 @@ export class ModalInterviewComponent implements OnInit {
   }
 
   feedback(feedback: string, id: number){
-
     this.interviewService.feedbackInterview(feedback, id).subscribe({
       next: (response: any) => {
         this.openSnackBar('Feedback guardado', '');
-        
         console.log(response);
-
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
         console.error('There was an error!', error);
       }
     });
+  }
 
+  editInterview(){
+
+    this.data.interview.interview_date
+    let isoDateTime = new Date(this.interviewDate.getTime() - (this.interviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.interviewDate.toISOString().length - 1)
+
+    this.interviewService.editInterview(isoDateTime, this.data.interview.id, this.editInterviewCandidate.id, this.editInterviewAppUser.id, this.editInterviewSelection.id).subscribe({
+      next: (response: any) => {
+        this.openSnackBar('¡Entrevista editada!', '');
+        this.data.interview.interview_date = response.interview_date;
+        this.data.interview.id = response.id;
+        this.data.interview.candidate = response.candidate;
+        this.data.interview.selection = response.selection;
+        this.data.interview.interviewer = response.interviewer;
+        this.data.interview.feedback = response.feedback;
+        this.data.interview.creation_date = response.creation_date;
+        console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+        console.error('There was an error!', error);
+      }
+    });
   }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
