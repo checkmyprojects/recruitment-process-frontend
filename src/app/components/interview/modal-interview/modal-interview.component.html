@@ -177,6 +177,7 @@
             <br><br>
             <div class="align-to-end">
                 <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
+                <button mat-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
                 <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Cambios" color="button-save" (click)="editInterview()">Guardar Cambios</button>
             </div>
         </div>

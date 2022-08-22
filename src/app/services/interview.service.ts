@@ -45,4 +45,8 @@ export class InterviewService {
     // Response from backend is not a json, so we specify that with {responseType: 'text'}
     return this.http.put(`${this.apiServerUrl}/api/interview/edit/${interviewId}/?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date);
   }
+
+  public deleteInterviewById(id: number){
+    return this.http.delete(`${this.apiServerUrl}/api/interview/delete/${id}`);
+  }
 }

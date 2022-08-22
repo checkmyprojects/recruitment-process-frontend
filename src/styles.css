@@ -96,10 +96,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-button-save {
     background-color: #28A745;
     color: #fff;
-}
-.mat-button-save:hover {
+  }
+  .mat-button-save:hover {
     background-color: #05c732;
-}
+  }
+  
+  .mat-button-delete {
+    background-color: #DC3545;
+    color: #fff;
+  }
+  .mat-button-delete:hover {
+    background-color: #ff0019;
+  }
 
 /* Material tabs custom style */
 .mat-tab-label-active {

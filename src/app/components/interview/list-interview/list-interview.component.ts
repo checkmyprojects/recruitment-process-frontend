@@ -45,6 +45,8 @@ export class ListInterviewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === false){
+        this.dataSource.data = this.dataSource.data.filter(item => item !== row);
+        this.deleteInterviewById(row.id)
       }else if (result === true){
 
       }
@@ -101,5 +103,16 @@ export class ListInterviewComponent implements OnInit {
       }
     })
       return data;
+  }
+
+  public deleteInterviewById(id:number){
+    this.interviewService.deleteInterviewById(id).subscribe({
+      next: response => {
+        console.log(`Deleted Candidate with ID: ${id}`)
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
   }
 }
