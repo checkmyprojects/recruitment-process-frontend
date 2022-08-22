@@ -27,15 +27,15 @@ export class ListInterviewComponent implements OnInit {
 
     // Override filterPredicate with a custome one to allow
     // searching on nested properties
-  this.dataSource.filterPredicate = (data, filter: string)  => {
-    const accumulator = (currentTerm:any, key:any) => {
-      return this.nestedFilterCheck(currentTerm, data, key);
+    this.dataSource.filterPredicate = (data, filter: string)  => {
+      const accumulator = (currentTerm:any, key:any) => {
+        return this.nestedFilterCheck(currentTerm, data, key);
+      };
+      const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+      // Transform the filter by converting it to lowercase and removing whitespace.
+      const transformedFilter = filter.trim().toLowerCase();
+      return dataStr.indexOf(transformedFilter) !== -1;
     };
-    const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
-    // Transform the filter by converting it to lowercase and removing whitespace.
-    const transformedFilter = filter.trim().toLowerCase();
-    return dataStr.indexOf(transformedFilter) !== -1;
-  };
   }
 
   openEditDialog(row: Interview) {
@@ -70,10 +70,11 @@ export class ListInterviewComponent implements OnInit {
     }
     return search;
   }
-   // Material table
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-  //custom filter that uses getProperty function for nested properties sorting to work
+
+    //custom filter that uses getProperty function for nested properties sorting to work
     this.dataSource.sortingDataAccessor = (obj, property) => this.getProperty(obj, property);
     this.dataSource.sort = this.sort;
   }
@@ -88,7 +89,6 @@ export class ListInterviewComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.dataSource);
-
   }
 
   public getAllInterviews(): Interview[] {
@@ -108,7 +108,7 @@ export class ListInterviewComponent implements OnInit {
   public deleteInterviewById(id:number){
     this.interviewService.deleteInterviewById(id).subscribe({
       next: response => {
-        console.log(`Deleted Candidate with ID: ${id}`)
+        console.log(`Deleted Interview with ID: ${id}`)
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);

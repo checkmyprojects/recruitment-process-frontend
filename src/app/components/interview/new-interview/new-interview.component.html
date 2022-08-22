@@ -1,6 +1,6 @@
-<p>Home > Interview > New Interview</p>
+<!-- <p>Home > Interview > New Interview</p>
 
-<h2>Crear nueva entrevista</h2>
+<h2>Crear nueva entrevista</h2> -->
 <div class="new-interview mat-elevation-z2">
     <div>
         <h5>Candidato</h5>
@@ -109,16 +109,7 @@
     <br>
     <div class="align-to-end">
         <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection">Todos los campos tienen que ser rellenados para crear la entrevista *</span>
-        <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-save">Crear Entrevista <mat-icon>
-                add_circle_outline</mat-icon></button>
+        <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-save">Crear Entrevista </button>
     </div>
 
 </div>
-<br>
-
-
-<br>
-
-<br>
-
-<br><br>
