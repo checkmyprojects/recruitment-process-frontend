@@ -4,10 +4,6 @@
 <div class="new-interview mat-elevation-z2">
     <div>
         <h5>Candidato</h5>
-        <!-- <mat-form-field class="example-full-width input-disabled" appearance="fill">
-            <mat-label>Número</mat-label>
-            <input matInput disabled value={{newInterviewCandidate?.id}}>
-        </mat-form-field> -->
         <div class="flexme">
             <mat-form-field class="example-full-width input-disabled" appearance="fill">
                 <mat-label>Estado</mat-label>
@@ -23,14 +19,20 @@
                 <mat-label>Apellido</mat-label>
                 <input matInput disabled value={{newInterviewCandidate?.surname}}>
             </mat-form-field>
-            <span>&nbsp;&nbsp;</span>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(candidates, candidatesPanel)">
-                <mat-icon>add</mat-icon>
-            </button>
         </div>
-
+        <div #candidates>
+            <mat-expansion-panel #candidatesPanel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Candidatos </mat-panel-title>
+                    <mat-panel-description>
+                        Haz clic para expandir o contraer la lista de candidatos
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-list-candidates [newInterviewView]="true" (sendDataToInterview)="getCandidate($event)"></app-list-candidates>
+            </mat-expansion-panel>
+        </div>
     </div>
-
+    <br><br>
     <div>
         <h5>Proceso de selección</h5>
         <div class="flexme">
@@ -48,19 +50,22 @@
                 <mat-label>Requisitos</mat-label>
                 <input matInput disabled value={{newInterviewSelection?.requirements}}>
             </mat-form-field>
-            <span>&nbsp;&nbsp;</span>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(selections, selectionsPanel)">
-                <mat-icon>add</mat-icon>
-            </button>
+        </div>
+        <div #selections>
+            <mat-expansion-panel #selectionsPanel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Proceso de selección </mat-panel-title>
+                    <mat-panel-description>
+                        Haz clic para expandir o contraer la lista de Procesos
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-list-selection [newInterviewView]="true" (sendDataToInterview)="getSelection($event)"></app-list-selection>
+            </mat-expansion-panel>
         </div>
     </div>
-
+    <br><br>
     <div>
         <h5>Entrevistador</h5>
-        <!-- <mat-form-field class="example-full-width input-disabled" appearance="fill">
-            <mat-label>Número</mat-label>
-            <input matInput disabled value={{newInterviewAppUser?.id}}>
-        </mat-form-field> -->
         <div class="flexme">
             <mat-form-field class="not-grow">
                 <input matInput [ngxMatDatetimePicker]="picker" [min]="minDate" placeholder="Elige un fecha y hora"
@@ -86,56 +91,34 @@
                 <mat-label>Email</mat-label>
                 <input matInput disabled value={{newInterviewAppUser?.email}}>
             </mat-form-field>
-            <span>&nbsp;&nbsp;</span>
-            <button mat-mini-fab color="primary" aria-label="Añadir" (click)="scroll(interviewer, interviewerPanel)">
-                <mat-icon>add</mat-icon>
-            </button>
-
-
+        </div>
+        <div #interviewer>
+            <mat-expansion-panel #interviewerPanel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> Entrevistador </mat-panel-title>
+                    <mat-panel-description>
+                        Haz clic para expandir o contraer la lista de Entrevistadores
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-board-admin [newInterviewView]="true" (sendDataToInterview)="getInterviewer($event)"></app-board-admin>
+            </mat-expansion-panel>
         </div>
     </div>
 
 
     <br>
-    <button mat-stroked-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-new">Crear Entrevista <mat-icon>
-            add_circle_outline</mat-icon></button>
+    <div class="align-to-end">
+        <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection">Todos los campos tienen que ser rellenados para crear la entrevista *</span>
+        <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-save">Crear Entrevista <mat-icon>
+                add_circle_outline</mat-icon></button>
+    </div>
 
 </div>
 <br>
 
-<div #candidates>
-    <mat-expansion-panel #candidatesPanel>
-        <mat-expansion-panel-header>
-            <mat-panel-title> Candidatos </mat-panel-title>
-            <mat-panel-description>
-                Haz clic para expandir o contraer la lista de candidatos
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <app-list-candidates [newInterviewView]="true" (sendDataToInterview)="getCandidate($event)"></app-list-candidates>
-    </mat-expansion-panel>
-</div>
+
 <br>
-<div #selections>
-    <mat-expansion-panel #selectionsPanel>
-        <mat-expansion-panel-header>
-            <mat-panel-title> Proceso de selección </mat-panel-title>
-            <mat-panel-description>
-                Haz clic para expandir o contraer la lista de Procesos
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <app-list-selection [newInterviewView]="true" (sendDataToInterview)="getSelection($event)"></app-list-selection>
-    </mat-expansion-panel>
-</div>
+
 <br>
-<div #interviewer>
-    <mat-expansion-panel #interviewerPanel>
-        <mat-expansion-panel-header>
-            <mat-panel-title> Entrevistador </mat-panel-title>
-            <mat-panel-description>
-                Haz clic para expandir o contraer la lista de Entrevistadores
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <app-board-admin [newInterviewView]="true" (sendDataToInterview)="getInterviewer($event)"></app-board-admin>
-    </mat-expansion-panel>
-</div>
+
 <br><br>
