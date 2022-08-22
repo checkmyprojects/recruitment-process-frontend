@@ -97,3 +97,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-button-save:hover {
     background-color: #05c732;
 }
+
+
+.mat-tab-label-active {
+    color: #1C5B92 !important;
+    border-bottom: 6px solid #1C5B92;
+} 
+
+.remove-border-bottom .mat-tab-header {
+    border-bottom: none;
+}
+
+.mat-ink-bar{
+    background-color: #fff !important;
+    /* display:block; */
+    /* height: 8px !important; */
+}
