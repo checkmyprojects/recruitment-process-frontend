@@ -43,30 +43,6 @@ export class ModalInterviewComponent implements OnInit {
       el.scrollIntoView();
     }, 130);
   }
-  createInterview(){
-
-    // if(this.newInterviewDate && this.newInterviewAppUser && this.newInterviewCandidate && this.newInterviewSelection){
-    //   // Convert date to ISO including timezone offset
-    //   // Remove the last letter, a Z that makes backend with LocalDateTime break
-    //   let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.newInterviewDate.toISOString().length - 1)
-
-    //   this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
-    //     next: (response: any) => {
-    //       this.openSnackBar('¡Entrevista creada con éxito!', '');
-    //       this.newInterviewCandidate = this.data.interview.candidate;
-    //       this.newInterviewSelection = this.data.interview.selection;
-    //       this.newInterviewAppUser = this.data.interview.interviewer;
-    //       this.newInterviewDate = this.data.interview.interview_date;
-    //       console.log(response);
-
-    //     },
-    //     error: (error: HttpErrorResponse) => {
-    //       alert(error.message);
-    //       console.error('There was an error!', error);
-    //     }
-    //   });
-    // }
-  }
 
   feedback(feedback: string, id: number){
     this.interviewService.feedbackInterview(feedback, id).subscribe({
