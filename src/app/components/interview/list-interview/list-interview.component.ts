@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Interview } from '../../../model/interview';
 import { MatDialog } from '@angular/material/dialog';
 import { InterviewService } from 'src/app/services/interview.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 //Imports for the table
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,6 +21,11 @@ export class ListInterviewComponent implements OnInit {
   dataSource: MatTableDataSource<Interview>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  // When we receive the data, append it to the interviews list
+  getNewInterview($event: any) {
+    this.dataSource.data = [...this.dataSource.data, $event];
+  }
 
   constructor(private interviewService: InterviewService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllInterviews());

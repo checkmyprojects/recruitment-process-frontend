@@ -7,7 +7,7 @@
           Haz clic para expandir o contraer el formulario de nueva entrevista
       </mat-panel-description>
   </mat-expansion-panel-header>
-  <app-new-interview></app-new-interview>
+  <app-new-interview (sendDataToInterview)="getNewInterview($event)"></app-new-interview>
 </mat-expansion-panel>
 
 <div class="searchTableFlex">
