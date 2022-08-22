@@ -51,7 +51,7 @@ h5{
     color: #1c5b92;
     border-bottom: 1px solid #1c5b92;
 }
-h2{
+.new-interview > h2{
     color: #1c5b92;
     padding-bottom: 10px;
     border-bottom: 1px solid #1c5b92;
