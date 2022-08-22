@@ -39,6 +39,8 @@ export class ListInterviewComponent implements OnInit {
   }
 
   openEditDialog(row: Interview) {
+    // With panelClass we add a new class to the panel and we use that class to position the button
+    // If we use the same method as with other dialogs close buttons, because of the tabs, everything gets moved and the tab contents stays displaced to the right
     const dialogRef = this.dialog.open(ModalInterviewComponent,{
       data: { interview: row }, panelClass: 'dialog-big'
     });
