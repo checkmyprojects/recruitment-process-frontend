@@ -1,0 +1,28 @@
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<!-- <mat-grid-list cols="3" rowHeight="3:3">
+  <mat-grid-tile class="mat-card-image1">Administración
+
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-card-image2">Candidatos
+
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-card-image3">Procesos
+
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-card-image4">Entrevistas
+
+  </mat-grid-tile>
+  <mat-grid-tile class="mat-card-image5">Estadísticas
+
+  </mat-grid-tile>
+</mat-grid-list> -->
