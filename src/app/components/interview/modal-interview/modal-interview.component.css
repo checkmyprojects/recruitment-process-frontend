@@ -8,6 +8,13 @@
     color: black;
 }
 
+.mat-close-button{
+    float: right;
+    cursor: pointer;
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
 .flexMe{
     display: flex;
     align-items: center;
@@ -76,6 +83,12 @@ h5{
     width: 100%;
 }
 
+.align-to-end{
+    text-align: right;
+}
+.align-to-end > button{
+    margin-left: 8px;
+}
 
 /* Material table style */
 mat-table {

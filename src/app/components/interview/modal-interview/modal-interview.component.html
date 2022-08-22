@@ -1,3 +1,5 @@
+<span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
+
 <!-- Inserting content inside of a mat-dialog-content makes dialog scrollable -->
 <mat-tab-group mat-align-tabs="center">
     <mat-tab>
@@ -41,6 +43,7 @@
                     <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize"cdkAutosizeMinRows="9" cdkAutosizeMaxRows="10" matInput placeholder="Ej. Encaja con..." value="{{data.interview.feedback}}" [(ngModel)]="data.interview.feedback"></textarea>
                 </mat-form-field>
                 <mat-dialog-actions align="end">
+                    <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
                     <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Notas" color="button-save" (click)="feedback(data.interview.feedback, data.interview.id)">Guardar Notas</button>
                 </mat-dialog-actions>
             </div>
@@ -157,7 +160,6 @@
                         <mat-label>Email</mat-label>
                         <input matInput disabled value={{editInterviewAppUser?.email}}>
                     </mat-form-field>
-                    <span>&nbsp;&nbsp;</span>
                     
                 </div>
                 <div #interviewer>
@@ -173,12 +175,10 @@
                 </div>
             </div>
             <br><br>
-
-            <button mat-stroked-button (click)="createInterview()" color="button-new" (click)="editInterview()">
-                Guardar Entrevista <mat-icon>add_circle_outline</mat-icon>
-            </button>
-                <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Notas" color="button-save" (click)="editInterview()">Guardar Notas</button>
-            
+            <div class="align-to-end">
+                <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
+                <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Cambios" color="button-save" (click)="editInterview()">Guardar Cambios</button>
+            </div>
         </div>
     </mat-tab>
 </mat-tab-group>
