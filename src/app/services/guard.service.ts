@@ -21,7 +21,7 @@ export class GuardService
     let b = false;
     const t = this.token.getToken();
     if(t)
-      b = this.token.getUser().roles.includes("ROLE_ADMIN");
+      b = this.token.getUser().roles.includes("ROLE_ADMIN") || this.token.getUser().roles.includes("ROLE_PEOPLE") || this.token.getUser().roles.includes("ROLE_BUSINESS") || this.token.getUser().roles.includes("ROLE_INTERVIEWER");
     if(!b)
       this.router.navigate(["login"]);
   }
@@ -41,7 +41,7 @@ export class GuardService
     let b = false;
     const t = this.token.getToken();
     if(t)
-      b = this.token.getUser().roles.includes("ROLE_INTERVIEWER");
+      b = this.token.getUser().roles.includes("ROLE_INTERVIEWER") || this.token.getUser().roles.includes("ROLE_PEOPLE");
     if(!b)
       this.router.navigate(["login"]);
   }
