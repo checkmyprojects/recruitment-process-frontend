@@ -31,8 +31,29 @@ export class InterviewService {
     return this.http.get<Interview[]>(`${this.apiServerUrl}/api/interview/list`);
   }
 
+  // Old service used when backend returned a string
+  // public registerNewInterview(date: string, candidateid:number, interviewerid:number, selectionid:number): Observable<any>{
+  //   // Response from backend is not a json, so we specify that with {responseType: 'text'}
+  //   return this.http.post(`${this.apiServerUrl}/api/interview/new?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date, {responseType: 'text'});
+  // }
+
+  // Backend will return the newly created interview
   public registerNewInterview(date: string, candidateid:number, interviewerid:number, selectionid:number): Observable<any>{
     // Response from backend is not a json, so we specify that with {responseType: 'text'}
-    return this.http.post(`${this.apiServerUrl}/api/interview/new?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date, {responseType: 'text'});
+    return this.http.post(`${this.apiServerUrl}/api/interview/new?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date);
+  }
+
+  public feedbackInterview(feedback: string, interviewId: number): Observable<any>{
+    // Response from backend is not a json, so we specify that with {responseType: 'text'}
+    return this.http.put(`${this.apiServerUrl}/api/interview/feedback/${interviewId}`,feedback);
+  }
+
+  public editInterview(date: string, interviewId:number, candidateid:number, interviewerid:number, selectionid:number): Observable<any>{
+    // Response from backend is not a json, so we specify that with {responseType: 'text'}
+    return this.http.put(`${this.apiServerUrl}/api/interview/edit/${interviewId}/?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date);
+  }
+
+  public deleteInterviewById(id: number){
+    return this.http.delete(`${this.apiServerUrl}/api/interview/delete/${id}`);
   }
 }

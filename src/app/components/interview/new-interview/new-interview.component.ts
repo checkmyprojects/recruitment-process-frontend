@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -11,6 +11,11 @@ import { InterviewService } from 'src/app/services/interview.service';
   styleUrls: ['./new-interview.component.css']
 })
 export class NewInterviewComponent implements OnInit {
+
+  @Output() sendDataToInterview = new EventEmitter();
+  sendNewDataToInterviewList(data: any){
+    this.sendDataToInterview.emit(data)
+  }
 
   newInterviewView = true;
 
@@ -55,6 +60,7 @@ export class NewInterviewComponent implements OnInit {
           this.newInterviewAppUser = undefined;
           this.newInterviewDate = undefined;
           console.log(response);
+          this.sendNewDataToInterviewList(response);
 
         },
         error: (error: HttpErrorResponse) => {
