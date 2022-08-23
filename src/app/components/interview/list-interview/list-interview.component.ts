@@ -8,6 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { GuardService } from 'src/app/services/guard.service';
 
 @Component({
   selector: 'app-list-interview',
@@ -21,7 +22,8 @@ export class ListInterviewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private interviewService: InterviewService, public dialog: MatDialog) {
+  constructor(private interviewService: InterviewService, public dialog: MatDialog, guard: GuardService) {
+    guard.isInterviewer();
     this.dataSource = new MatTableDataSource(this.getAllInterviews());
 
     // Override filterPredicate with a custome one to allow

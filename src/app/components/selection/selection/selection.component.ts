@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GuardService } from 'src/app/services/guard.service';
 
 @Component({
   selector: 'app-selection',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(guard: GuardService)
+  {
+    guard.isPeople();
+  }
 
   ngOnInit(): void {
   }
