@@ -51,6 +51,8 @@ import { NewInterviewComponent } from './components/interview/new-interview/new-
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { ModalSelectionComponent } from './components/selection/modal-selection/modal-selection.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ModalInterviewComponent } from './components/interview/modal-interview/modal-interview.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HeaderComponent,
     ModalSelectionNewComponent,
     NewInterviewComponent,
-    ModalSelectionComponent
+    ModalSelectionComponent,
+    ModalInterviewComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +106,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
+    MatTabsModule,
     ReactiveFormsModule,
     MatSnackBarModule
   ],

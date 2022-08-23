@@ -17,7 +17,7 @@ import { ModalSelectionComponent } from '../modal-selection/modal-selection.comp
 })
 export class ListSelectionComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'start_date', 'end_date', 'name', 'description', 'requirements', 'location', 'sector', 'status', 'project_id', 'remote', 'create'];
+  displayedColumns: string[] = ['id', 'start_date', 'end_date', 'name', 'description', 'requirements', 'location', 'sector', 'project_id', 'create'];
   dataSource: MatTableDataSource<Selection>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -98,7 +98,7 @@ export class ListSelectionComponent implements OnInit {
 
 
    // Material table
-   ngAfterViewInit() {
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

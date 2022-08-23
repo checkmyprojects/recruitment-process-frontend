@@ -36,7 +36,7 @@
   </mat-form-field>
   <br>
   <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="name" appearance="fill">
       <mat-label>Id proyecto</mat-label>
       <input type="number" placeholder="Id proyecto" formControlName="project_id" matInput
         value={{editedSelection.project_id}} (input)="editedSelection.project_id=$any($event.target).value"
@@ -46,7 +46,7 @@
         La id del proyecto es obligatoria
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="name" appearance="fill">
       <mat-label>Sector</mat-label>
       <input placeholder="Sector" formControlName="sector" matInput value={{editedSelection.sector}}
         (input)="editedSelection.sector=$any($event.target).value">
@@ -59,9 +59,9 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <br>
+
   <div>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="name" appearance="fill">
       <mat-label>Estado</mat-label>
       <input placeholder="Estado" formControlName="status" matInput type="text" value={{editedSelection.status}}
         (input)="editedSelection.status=$any($event.target).value">
@@ -70,7 +70,7 @@
         El estado es obligatorio
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field class="name" appearance="fill">
       <mat-label>Prioridad</mat-label>
       <input placeholder="Prioridad" formControlName="priority" matInput value={{editedSelection.priority}}
         (input)="editedSelection.priority=$any($event.target).value" placeholder="Ej: Java">
@@ -90,7 +90,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <div class = "flex">
+  <div class="flex">
     <mat-form-field appearance="fill">
       <mat-label>Localización</mat-label>
       <input type="localización" matInput formControlName="location" placeholder="Ej. jorge.fernandez@nttdata.com"
@@ -104,7 +104,7 @@
         La localización es obligatoria
       </mat-error>
     </mat-form-field>
-    <div class= "slider-remote"  appearance="fill">
+    <div class="slider-remote"  appearance="fill">
       <mat-slide-toggle placeholder="Remoto" formControlName="remote" matInput [(ngModel)]="editedSelection.remote"
         (input)="editedSelection.remote=$any($event.target).value" placeholder="Ej: Java"></mat-slide-toggle>
       <mat-label> Trabajo en remoto </mat-label>
@@ -130,8 +130,9 @@
   <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
   <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
   <!-- Use a function to close the dialog instead -->
-  <button mat-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
-  <button mat-button [disabled]="!editSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar"
+  <button mat-raised-button [disabled]="data.selection.end_date" (click)="confirmEnd()" matTooltip="Finalizar proceso" color="button-end">Finalizar</button>
+  <button mat-raised-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
+  <button mat-raised-button [disabled]="!editSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar"
     color="button-save" mat-stroked-button="openSnackBar()" (click)="saveSelection()">Guardar</button>
   <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>

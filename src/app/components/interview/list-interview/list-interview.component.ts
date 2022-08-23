@@ -2,13 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Interview } from '../../../model/interview';
 import { MatDialog } from '@angular/material/dialog';
 import { InterviewService } from 'src/app/services/interview.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
 //Imports for the table
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { GuardService } from 'src/app/services/guard.service';
+import { ModalInterviewComponent } from '../modal-interview/modal-interview.component';
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-list-interview',
@@ -21,6 +23,11 @@ export class ListInterviewComponent implements OnInit {
   dataSource: MatTableDataSource<Interview>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  
+  // When we receive the data from new interview child, append it to the interviews list
+  getNewInterview($event: any) {
+    this.dataSource.data = [...this.dataSource.data, $event];
+  }
 
   constructor(private interviewService: InterviewService, public dialog: MatDialog, guard: GuardService) {
     guard.isInterviewer();
@@ -28,19 +35,42 @@ export class ListInterviewComponent implements OnInit {
 
     // Override filterPredicate with a custome one to allow
     // searching on nested properties
-  this.dataSource.filterPredicate = (data, filter: string)  => {
-    const accumulator = (currentTerm:any, key:any) => {
-      return this.nestedFilterCheck(currentTerm, data, key);
+    this.dataSource.filterPredicate = (data, filter: string)  => {
+      const accumulator = (currentTerm:any, key:any) => {
+        return this.nestedFilterCheck(currentTerm, data, key);
+      };
+      const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+      // Transform the filter by converting it to lowercase and removing whitespace.
+      const transformedFilter = filter.trim().toLowerCase();
+      return dataStr.indexOf(transformedFilter) !== -1;
     };
-    const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
-    // Transform the filter by converting it to lowercase and removing whitespace.
-    const transformedFilter = filter.trim().toLowerCase();
-    return dataStr.indexOf(transformedFilter) !== -1;
-  };
   }
 
-  openDialog() {
+  // Will open or close the panel with that id
+  openPanel(panel: MatExpansionPanel) {
+    if(panel.expanded){
+      panel.close();
+    }else{
+      panel.open();
+      window.scrollTo(0, 0);
+    }
+  }
 
+  openEditDialog(row: Interview) {
+    // With panelClass we add a new class to the panel and we use that class to position the button
+    // If we use the same method as with other dialogs close buttons, because of the tabs, everything gets moved and the tab contents stays displaced to the right
+    const dialogRef = this.dialog.open(ModalInterviewComponent,{
+      data: { interview: row }, panelClass: 'dialog-big'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === false){
+        this.dataSource.data = this.dataSource.data.filter(item => item !== row);
+        this.deleteInterviewById(row.id)
+      }else if (result === true){
+
+      }
+    });
   }
 //Custom filter for nested properties to work
   getProperty = (obj: any, path:any) => (
@@ -60,10 +90,11 @@ export class ListInterviewComponent implements OnInit {
     }
     return search;
   }
-   // Material table
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-  //custom filter that uses getProperty function for nested properties sorting to work
+
+    //custom filter that uses getProperty function for nested properties sorting to work
     this.dataSource.sortingDataAccessor = (obj, property) => this.getProperty(obj, property);
     this.dataSource.sort = this.sort;
   }
@@ -78,7 +109,6 @@ export class ListInterviewComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.dataSource);
-
   }
 
   public getAllInterviews(): Interview[] {
@@ -93,5 +123,16 @@ export class ListInterviewComponent implements OnInit {
       }
     })
       return data;
+  }
+
+  public deleteInterviewById(id:number){
+    this.interviewService.deleteInterviewById(id).subscribe({
+      next: response => {
+        console.log(`Deleted Interview with ID: ${id}`)
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
   }
 }

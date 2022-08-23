@@ -25,6 +25,10 @@ export class SelectionService {
     return this.http.put<Selection>(`${this.apiServerUrl}/api/selection/edit`, selection);
   }
 
+  public endSelectionById(id:number): Observable<any>{
+    return this.http.get<any>(`${this.apiServerUrl}/api/selection/end/${id}`);
+  }
+
   public deleteSelectionById(id: string){
     return this.http.delete(`${this.apiServerUrl}/api/selection/delete/${id}`);
   }

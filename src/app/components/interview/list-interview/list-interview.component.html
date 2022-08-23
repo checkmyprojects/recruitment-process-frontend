@@ -1,5 +1,15 @@
 <p>Home > Interview > Interview List</p>
 
+<mat-expansion-panel #interviewPanel>
+  <mat-expansion-panel-header>
+      <mat-panel-title> Crear Entrevista </mat-panel-title>
+      <mat-panel-description>
+          Haz clic para expandir o contraer el formulario de nueva entrevista
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-new-interview (sendDataToInterview)="getNewInterview($event)"></app-new-interview>
+</mat-expansion-panel>
+
 <div class="searchTableFlex">
   <div class="searchBar">
     <mat-form-field class="searchBar" appearance="standard">
@@ -8,7 +18,7 @@
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button color="button-new" routerLink="/interview/new">Crear Entrevista <mat-icon>add_circle_outline</mat-icon></button>
+    <button mat-raised-button color="button-new" matTooltip="Crear entrevista" (click)="openPanel(interviewPanel)">Crear Entrevista <mat-icon>add_circle_outline</mat-icon></button>
   </div>
 
 </div>
@@ -64,7 +74,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditDialog(row)"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
@@ -77,7 +87,3 @@
   <br>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
-

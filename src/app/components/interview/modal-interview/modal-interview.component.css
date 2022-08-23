@@ -8,6 +8,13 @@
     color: black;
 }
 
+/* .mat-close-button{
+    float: right;
+    cursor: pointer;
+    padding-left: 10px;
+    font-size: 1.5rem;
+} */
+
 .flexMe{
     display: flex;
     align-items: center;
@@ -44,19 +51,10 @@ h5{
     color: #1c5b92;
     border-bottom: 1px solid #1c5b92;
 }
-
-.warning-missing-fields{
-    color: red;
-    font-weight: 500;
-    float: left;
-}
-
-
-.align-to-end{
-    text-align: right;
-}
-.align-to-end > button{
-    margin-left: 8px;
+.new-interview > h2{
+    color: #1c5b92;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1c5b92;
 }
 
 /* Expansion panel color */
@@ -66,19 +64,40 @@ h5{
 .mat-expansion-panel-header{
     background-color: #9fc6e96e;
 }
-/* 
-::ng-deep .mat-snack-bar-container{
-  color: black !important;
-  background-color: white!important;
-  border: 1.5px solid #1c5b92 !important;
-  text-align: center;
+
+.cards-flex{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
-::ng-deep .mat-simple-snackbar-action {
-  color: black;
+.cards-icon-text{
+    display: flex;
+    align-items: flex-end;
+}
+.cards{
+    width: 250px;
+}
+.cards-center{
+    margin: 0 40px;
 }
 
-::ng-deep .mat-simple-snackbar span {
-  margin: auto;
-  text-align: center;
-  font-size: 18px;
-} */
+.title-center{
+    text-align: center;
+}
+
+.notes{
+    width: 100%;
+}
+
+.align-to-end{
+    text-align: right;
+}
+.align-to-end > button{
+    margin-left: 8px;
+}
+
+/* Material table style */
+mat-table {
+    display: block;
+    font-family: Tahoma, Verdana;
+}

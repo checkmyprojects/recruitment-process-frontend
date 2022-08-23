@@ -18,6 +18,12 @@
   padding-left: 10px;
   font-size: 1.5rem;
 }
+.slider-remote {
+  margin: 15px auto;
+}
+.flex{
+  display: flex;
+}
 /* Buttons CSS */
 /* Button color tag translates into mat- */
 .mat-button-save {
@@ -36,6 +42,13 @@
   background-color: #ff0019;
 }
 
+.mat-button-end {
+  background-color: rgb(255, 145, 0);
+  color: #fff;
+}
+.mat-button-end:hover {
+  background-color: rgb(255, 187, 0);
+}
 ::ng-deep .mat-snack-bar-container{
   color: black !important;
   background-color: white!important;
