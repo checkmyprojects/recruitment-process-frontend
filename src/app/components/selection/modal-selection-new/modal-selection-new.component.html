@@ -129,7 +129,7 @@
   <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
   <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
   <!-- Use a function to close the dialog instead -->
-  <button mat-button [disabled]="!newSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar"
+  <button mat-raised-button [disabled]="!newSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar"
     color="button-save" mat-stroked-button="openSnackBar()" (click)="saveSelection()">Guardar</button>
   <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>

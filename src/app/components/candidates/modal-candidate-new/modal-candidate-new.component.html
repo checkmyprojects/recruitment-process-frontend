@@ -83,7 +83,7 @@
         </mat-error>
       </mat-form-field>
     </div>
-    
+
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
       <textarea placeholder="Habilidades" formControlName="skills" placeholder="Ej. Java" matInput value={{newCandidate.skills}} (input)="newCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
@@ -110,7 +110,7 @@
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
     <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
     <!-- Use a function to close the dialog instead -->
-    <button mat-button [disabled]="!newCandidateForm.valid" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" mat-raised-button (click)="saveCandidate()">Guardar</button>
+    <button mat-raised-button [disabled]="!newCandidateForm.valid" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" mat-raised-button (click)="saveCandidate()">Guardar</button>
     <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>
 

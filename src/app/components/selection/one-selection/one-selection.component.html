@@ -77,9 +77,9 @@
     </td>
     <td>
         <!-- <button type="button" class="btn btn-danger">Borrar</button> -->
-        <button class="btn btn-primary" (click)="isEditToggle()" title="Cerrar"><i class="fa fa-times" aria-hidden="true"></i></button>
-        <button class="btn btn-success"><i class='fa fa-save' title="Guardar"></i></button>
-        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        <button mat-button class="btn btn-primary" (click)="isEditToggle()" title="Cerrar"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button  mat-raised-buttonclass="btn btn-success"><i class='fa fa-save' title="Guardar"></i></button>
+        <button mat-raised-button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </td>
     <td>
         <input type="checkbox" [checked]="selection.active">
