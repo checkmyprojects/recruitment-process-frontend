@@ -53,6 +53,7 @@ import { ModalSelectionComponent } from './components/selection/modal-selection/
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ModalInterviewComponent } from './components/interview/modal-interview/modal-interview.component';
+import {BreadcrumbModule} from 'xng-breadcrumb';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +108,7 @@ import { ModalInterviewComponent } from './components/interview/modal-interview/
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     MatTabsModule,
+    BreadcrumbModule,
     ReactiveFormsModule,
     MatSnackBarModule
   ],

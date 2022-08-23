@@ -145,3 +145,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     line-height: 14px;
     min-width: auto;
 }
+
+/* Styling for xng-breadcrumb */
+.xng-breadcrumb-root {
+    padding: 8px 16px;
+    /* With inline-block, it doesn't go all the way through the whole with of the page */
+    /* display: inline-block; */
+    border-radius: 0px;
+    background-color: #ffffff59;
+}
+
+.xng-breadcrumb-separator {
+    padding: 0 4px;
+}
