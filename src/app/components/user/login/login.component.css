@@ -1,4 +1,4 @@
-.container {
+/*.container {
     align-content: center;
     margin-top: 6%;
 }
@@ -32,4 +32,24 @@
 
 .form-group {
     margin: 8%;
+}*/
+
+:host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
+}
+
+.mat-form-field {
+    width: 100%;
+    min-width: 300px;
+}
+
+mat-card-title, mat-card-content {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 100%;
 }
