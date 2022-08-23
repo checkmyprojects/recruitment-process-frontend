@@ -1,32 +1,48 @@
-mat-grid-list {
-margin-top: 2.5%;
+body {
+  background-color: #eee
 }
 
-mat-grid-tile {
-  background: #E7E9E8;
+.card {
+  border: none;
+  border-radius: 5px;
+  height: 200px;
+  margin-top: 20px;
 }
 
-.mat-card-image1 {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.c-details span {
+  font-weight: 350;
+  font-size: 28px
 }
 
-.mat-card-image2 {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.icon {
+  width: 50px;
+  height: 50px;
+  background-color: #eee;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 39px
 }
 
-.mat-card-image3 {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.badge span {
+  background-color: #fffbec;
+  width: 60px;
+  height: 25px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: #fed85d;
+  justify-content: center;
+  align-items: center
 }
 
-.mat-card-image4 {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.text1 {
+  margin-top: 5px;
+  font-size: 34px;
+  font-weight: 600
 }
 
-.mat-card-image5 {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.text2 {
+  color: #a5aec0
 }

@@ -1,28 +1,64 @@
-<mat-grid-list cols="4" rowHeight="150px">
-  <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container mt-5 mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card p-3 mb-2" style="background-image:url('https://i.ibb.co/9pRywtQ/Administrador.png')">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="ms-2 c-details">
+              <span class="nav-link" href="/admin">Administración</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 mb-2" style="background-image:url('https://i.ibb.co/9pRywtQ/Administrador.png')">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="ms-2 c-details">
+            <span class="nav-link" href="/people">Candidatos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 mb-2" style="background-image:url('https://i.ibb.co/9pRywtQ/Administrador.png')">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="ms-2 c-details">
+              <span class="nav-link" href="/selection">Procesos de selección</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 mb-2" style="background-image:url('https://i.ibb.co/9pRywtQ/Administrador.png')">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="ms-2 c-details">
+              <span class="nav-link" href="/interview">Entrevistas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-3 mb-2" style="background-image:url('https://i.ibb.co/9pRywtQ/Administrador.png')">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div class="ms-2 c-details">
+             <span class="nav-link" href="#">Estadísticas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<!-- <mat-grid-list cols="3" rowHeight="3:3">
-  <mat-grid-tile class="mat-card-image1">Administración
-
-  </mat-grid-tile>
-  <mat-grid-tile class="mat-card-image2">Candidatos
-
-  </mat-grid-tile>
-  <mat-grid-tile class="mat-card-image3">Procesos
-
-  </mat-grid-tile>
-  <mat-grid-tile class="mat-card-image4">Entrevistas
-
-  </mat-grid-tile>
-  <mat-grid-tile class="mat-card-image5">Estadísticas
-
-  </mat-grid-tile>
-</mat-grid-list> -->
