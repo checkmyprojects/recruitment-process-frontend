@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalUserComponent } from '../modal-user/modal-user.component';
 import { ModalUserNewComponent } from '../modal-user-new/modal-user-new.component';
 import { Location } from '@angular/common';
+import { GuardService } from 'src/app/services/guard.service';
 
 @Component({
   selector: 'app-board-admin',
@@ -36,7 +37,8 @@ export class BoardAdminComponent implements OnInit {
   }
 
   // dataSource:AppUsers[] = [];
-  constructor(public dialog: MatDialog, private userService: UserService, private adminService: AdminService, private Location:Location) {
+  constructor(public dialog: MatDialog, private userService: UserService, private adminService: AdminService, private Location:Location, guard: GuardService) {
+    guard.isAdmin();
     this.dataSource = new MatTableDataSource(this.getAllMyAppUsers());
   }
 

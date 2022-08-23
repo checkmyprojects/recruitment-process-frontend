@@ -8,6 +8,7 @@ import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { GuardService } from 'src/app/services/guard.service';
 import { ModalInterviewComponent } from '../modal-interview/modal-interview.component';
 import { MatExpansionPanel } from '@angular/material/expansion';
 
@@ -22,13 +23,14 @@ export class ListInterviewComponent implements OnInit {
   dataSource: MatTableDataSource<Interview>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  
   // When we receive the data from new interview child, append it to the interviews list
   getNewInterview($event: any) {
     this.dataSource.data = [...this.dataSource.data, $event];
   }
 
-  constructor(private interviewService: InterviewService, public dialog: MatDialog) {
+  constructor(private interviewService: InterviewService, public dialog: MatDialog, guard: GuardService) {
+    guard.isInterviewer();
     this.dataSource = new MatTableDataSource(this.getAllInterviews());
 
     // Override filterPredicate with a custome one to allow

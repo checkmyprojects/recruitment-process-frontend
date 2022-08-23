@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { GuardService } from 'src/app/services/guard.service';
 import { InterviewService } from 'src/app/services/interview.service';
 
 @Component({
@@ -33,7 +34,10 @@ export class NewInterviewComponent implements OnInit {
   // Date picker minimum date is now
   minDate = new Date();
 
-  constructor(private interviewService: InterviewService, private _snackBar: MatSnackBar) { }
+  constructor(private interviewService: InterviewService, private _snackBar: MatSnackBar, guard: GuardService)
+  {
+    guard.isInterviewer();
+  }
 
   ngOnInit(): void { }
 
