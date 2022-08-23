@@ -8,7 +8,6 @@ import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { GuardService } from 'src/app/services/guard.service';
 import { ModalInterviewComponent } from '../modal-interview/modal-interview.component';
 import { MatExpansionPanel } from '@angular/material/expansion';
 
@@ -29,8 +28,7 @@ export class ListInterviewComponent implements OnInit {
     this.dataSource.data = [...this.dataSource.data, $event];
   }
 
-  constructor(private interviewService: InterviewService, public dialog: MatDialog, guard: GuardService) {
-    guard.isInterviewer();
+  constructor(private interviewService: InterviewService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllInterviews());
 
     // Override filterPredicate with a custome one to allow

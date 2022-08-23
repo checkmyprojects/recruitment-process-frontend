@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { GuardService } from 'src/app/services/guard.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -26,10 +25,7 @@ export class EditUserComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private adminService: AdminService, private _snackBar: MatSnackBar, guard: GuardService)
-  {
-    guard.isAdmin();
-  }
+  constructor(private route: ActivatedRoute, private userService: UserService, private adminService: AdminService, private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string;

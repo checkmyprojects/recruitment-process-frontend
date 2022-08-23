@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GuardService } from 'src/app/services/guard.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -11,10 +10,7 @@ export class ProfileComponent implements OnInit {
 
   currentUser: any;
 
-  constructor(private token: TokenStorageService, guard: GuardService)
-  {
-    guard.isLogged();
-  }
+  constructor(private token: TokenStorageService){}
   
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
