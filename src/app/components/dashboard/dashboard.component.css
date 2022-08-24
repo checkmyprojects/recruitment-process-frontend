@@ -18,8 +18,11 @@ body {
 }
 
 .card-link {
-  font-size: 24px;
-  color: #1C5B92;
+  font-size: 23px;
+  color: black;
+  border: 2px solid;
+  border-radius: 5px;
+  margin-left: 5%;
 }
 
 .mat-icon {
@@ -31,3 +34,8 @@ body {
   margin-left: 77px;
   width: 300px;
 }
+
+.pointer {
+  cursor: pointer;
+}
+

@@ -1,69 +1,69 @@
 <div class="card-columns mt-5 mb-3">
   <div class="row">
     <div class="col-md-4">
-      <div class="card p-3 mb-2" style="background-color: #b2e2f2">
+      <div class="card p-3 mb-2 pointer" style="background-color: #b2e2f2" routerLink="/admin">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
               <mat-icon>keyboard</mat-icon>
-              <a class="btn card-link" href="/admin" routerLink="admin">Administración</a>
             </div>
+            <a class="btn card-link">Administración</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card p-3 mb-2" style="background-color:#c5c6c8">
+      <div class="card p-3 mb-2 pointer" style="background-color:#c5c6c8" routerLink="/people">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
               <mat-icon>people</mat-icon>
-              <a class="btn card-link" href="/people" routerLink="people">Candidatos</a>
             </div>
+            <a class="btn card-link">Candidatos</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card p-3 mb-2" style="background-color:#ffda9e">
+      <div class="card p-3 mb-2 pointer" style="background-color:#ffda9e" routerLink="/selection">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
               <mat-icon>assignment</mat-icon>
-              <a class="btn card-link" href="/selection" routerLink="selection">Procesos de selección</a>
             </div>
+            <a class="btn card-link">Procesos de selección</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card p-3 mb-2" style="background-color: #fdf9c4">
+      <div class="card p-3 mb-2 pointer" style="background-color: #fdf9c4" routerLink="/interview">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
               <mat-icon>event_note</mat-icon>
-              <a class="btn card-link" href="/interview" routerLink="interview">Entrevistas</a>
             </div>
+            <a class="btn card-link" >Entrevistas</a>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card p-3 mb-2" style="background-color: #fabfb7">
+      <div class="card p-3 mb-2 pointer" style="background-color: #fabfb7" routerLink="/home">
         <div class="d-flex justify-content-between">
           <div class="d-flex flex-row align-items-center">
             <div class="ms-2 c-details">
               <mat-icon>event_note</mat-icon>
-             <a class="btn card-link" href="/home" routerLink="home">Estadísticas</a>
             </div>
+            <a class="btn card-link">Estadísticas</a>
           </div>
         </div>
       </div>
     </div>
-    
+
     <mat-card class="calendar">
       <mat-calendar [(selected)]="selected"></mat-calendar>
       <p>Selected date: {{selected}}</p>
