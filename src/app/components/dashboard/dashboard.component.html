@@ -1,81 +1,43 @@
-<div class="card-columns mt-5 mb-3">
+<div class="card-columns mt-5 mb-2">
   <div class="row">
-
-    <div class="col-md-4">
-      <div class="card p-3 mb-2 pointer" style="background-color: #b2e2f2" routerLink="/admin">
-        <div class="card-img-overlay d-flex align-content-center justify-content-center">
-          <img class="fondo" src="https://i.ibb.co/9pRywtQ/Administrador.png" alt="Administrador" border="0">
-          <!-- <div class="d-flex flex-row align-items-center">
-           <div class="ms-2 c-details">
-              <mat-icon>keyboard</mat-icon>
-            </div>
-           <a class="btn card-link">Administración</a>
-          </div> -->
-        </div>
-      </div>
+    <div matTooltip="Administración" matTooltipClass="mat-tooltip" class="col-md-4 p-3 pointer" routerLink="/admin">
+      <a class="card card-bg-image" style="
+          background-image: url('https://mc-bcdcbf23-962c-44b4-ae98-627791-cdn-endpoint.azureedge.net/-/media/project/emea/es/card-images/computer2.jpg?cx=0.5&amp;cy=0.5&amp;cw=1000&amp;ch=667&amp;hash=3FEEC9D74BD3250D151FBBC9BD2744A6');
+        ">
+      </a>
     </div>
 
-    <div class="col-md-4">
-      <div class="card p-3 mb-2 pointer" style="background-color:#c5c6c8" routerLink="/people">
-        <div class="card-img-overlay d-flex align-content-center justify-content-center">
-          <img class="fondo" src="https://i.ibb.co/9pRywtQ/Administrador.png" alt="Administrador" border="0">
-          <!-- <div class="d-flex flex-row align-items-center">
-            <div class="ms-2 c-details">
-              <mat-icon>people</mat-icon>
-            </div>
-            <a class="btn card-link">Candidatos</a>
-          </div> -->
-        </div>
-      </div>
+    <div matTooltip="Candidatos" matTooltipClass="tooltip" class="col-md-4 p-3 pointer" routerLink="/people">
+      <a class="card card-bg-image" style="
+          background-image: url('https://www.nttdata.com/global/en/-/media/nttdataglobal/1_images/services/data-and-intelligence/figure-02.jpg?la=en&hash=333328A4ADA11F9FEA1FA84D9CC47387E8578A4A');
+        ">
+      </a>
     </div>
 
-    <div class="col-md-4">
-      <div class="card p-3 mb-2 pointer" style="background-color:#ffda9e" routerLink="/selection">
-          <div class="card-img-overlay d-flex align-content-center justify-content-center">
-            <img class="fondo" src="https://i.ibb.co/9pRywtQ/Administrador.png" alt="Administrador" border="0">
-          <!-- <div class="d-flex flex-row align-items-center">
-            <div class="ms-2 c-details">
-              <mat-icon>assignment</mat-icon>
-            </div>
-            <a class="btn card-link">Procesos de selección</a>
-          </div> -->
-        </div>
-      </div>
+    <div matTooltip="Proceso de selección" matTooltipClass="tooltip" class="col-md-4 p-3 pointer" routerLink="/selection">
+      <a class="card card-bg-image" style="
+          background-image: url('https://www.nttdata.com/global/en/-/media/nttdataglobal/1_images/services/data-and-intelligence/figure-01.jpg?la=en&hash=BB9D76718FE932D1BC5CF1E6B18AAC2BF1677EB6');
+        ">
+      </a>
     </div>
 
-    <div class="col-md-4">
-      <div class="card p-3 mb-2 pointer" style="background-color: #fdf9c4" routerLink="/interview">
-        <div class="card-img-overlay d-flex align-content-center justify-content-center">
-          <img class="fondo" src="https://i.ibb.co/9pRywtQ/Administrador.png" alt="Administrador" border="0">
-          <!-- <div class="d-flex flex-row align-items-center">
-            <div class="ms-2 c-details">
-              <mat-icon>event_note</mat-icon>
-            </div>
-            <a class="btn card-link" >Entrevistas</a>
-          </div> -->
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card p-3 mb-2 pointer" style="background-color: #fabfb7" routerLink="/home">
-        <div class="card-img-overlay d-flex align-content-center justify-content-center">
-          <img class="fondo" src="https://i.ibb.co/9pRywtQ/Administrador.png" alt="Administrador" border="0">
-          <!-- <div class="d-flex flex-row align-items-center">
-            <div class="ms-2 c-details">
-              <mat-icon>event_note</mat-icon>
-            </div>
-            <a class="btn card-link">Estadísticas</a>
-          </div> -->
-        </div>
-      </div>
+    <div class="col-md-4 p-3 pointer" routerLink="/interview">
+      <a matTooltip="Entrevistas" matTooltipClass="tooltip" class="card card-bg-image" style="
+          background-image: url('https://www.nttdata.com/global/en/-/media/nttdataglobal/1_images/services/cybersecurity/figure-03.jpg?la=en&hash=A78EA2572F59B67E934293A5BD828F866F998A9E');
+        ">
+      </a>
     </div>
 
-    <mat-card class="calendar">
+    <div matTooltip="Estadísticas" matTooltipClass="tooltip" class="col-md-4 p-3 pointer" routerLink="#">
+      <a class="card card-bg-image" style="
+          background-image: url('https://developingthebusiness.com/wp-content/uploads/2018/05/Estadisticas-de-ventas.jpg');
+        ">
+      </a>
+    </div>
+
+    <mat-card class="calendar" matTooltip="Calendario" matTooltipClass="tooltip" >
       <mat-calendar [(selected)]="selected"></mat-calendar>
-      <p>Selected date: {{selected}}</p>
+      <p>Selected date: {{ selected }}</p>
     </mat-card>
-
   </div>
 </div>
-
-
