@@ -1,8 +1,11 @@
+import jsPDF from 'jspdf';
 import { CandidatesService } from '../../../services/candidates.service';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Candidate } from 'src/app/model/candidate';
 import {MatDialog} from '@angular/material/dialog';
+import html2canvas from 'html2canvas';
+
 
 // Imports for the table
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,6 +20,18 @@ import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candida
   styleUrls: ['./list-candidates.component.css']
 })
 export class ListCandidatesComponent implements OnInit {
+
+  Candidates =[
+    {id: 0,
+    name: "",
+    surname: "",
+    email: "",
+    skills: "",
+    studies: "",
+    location: "",
+    experience: 0,
+    state: ""}
+  ];
 
   displayedColumns: string[] = ['state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills', 'create' ];
   dataSource: MatTableDataSource<Candidate>;
@@ -38,6 +53,30 @@ export class ListCandidatesComponent implements OnInit {
   constructor(private candidatesService:CandidatesService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllCandidates());
   }
+
+  downloadPDF(){
+    const DATA = document.getElementById('htmlData');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+  };
+  html2canvas(DATA, options).then((canvas) => {
+
+    const img = canvas.toDataURL('image/PNG');
+
+    // Add image Canvas to PDF
+    const bufferX = 15;
+    const bufferY = 15;
+    const imgProps = (doc as any).getImageProperties(img);
+    const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+    return doc;
+  }).then((docResult) => {
+    docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+  });
+}
 
   //Open modal to edit candidate
   openDialog(row: Candidate) {

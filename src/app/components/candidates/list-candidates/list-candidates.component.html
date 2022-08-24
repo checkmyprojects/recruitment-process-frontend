@@ -1,4 +1,4 @@
-<p *ngIf="!newInterviewView">Home > Candidates > Candidates List</p>
+<p  *ngIf="!newInterviewView">Home > Candidates > Candidates List</p>
 
 <div class="searchTableFlex">
   <div class="searchBar">
@@ -12,14 +12,16 @@
   </div>
 
 </div>
-  <div class="mat-elevation-z8">
+
+  <div id="htmlData" style="display: hidden;" class="mat-elevation-z8">
+
     <!-- Sort by column "name" and "asc" order by default -->
     <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
 
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
-        <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialog(row)"> {{row.id}} </td>
+        <td mat-cell matTooltip="Número de usuario"  *matCellDef="let row" (click)="openDialog(row)"> {{row.id}} </td>
       </ng-container>
       <!-- Fruit Column -->
       <ng-container matColumnDef="state">
@@ -78,8 +80,10 @@
       </tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
-
+    </div>
+  <br>
+  <br>
+  <div>
+    <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
   </div>
-  <br>
-  <br>
   <br>
