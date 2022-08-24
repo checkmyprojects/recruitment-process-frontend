@@ -6,21 +6,28 @@ body {
   border: none;
   border-radius: 5px;
   height: 200px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  /* align-items: center; */
 }
 
 .c-details span {
   font-weight: 420;
-  font-size: 28px;
+  font-size: 26px;
   color: #1C5B92;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .card-link {
-  font-size: 30px;
+  font-size: 24px;
   color: #1C5B92;
 }
 
 .mat-icon {
+  transform: scale(1.5);
+}
 
+.calendar {
+  border-radius: 5px;
+  margin-left: 77px;
+  width: 300px;
 }

@@ -63,8 +63,13 @@
         </div>
       </div>
     </div>
-  </div>
+    
+    <mat-card class="calendar">
+      <mat-calendar [(selected)]="selected"></mat-calendar>
+      <p>Selected date: {{selected}}</p>
+    </mat-card>
 
+  </div>
 </div>
 
 

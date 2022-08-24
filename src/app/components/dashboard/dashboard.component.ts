@@ -5,8 +5,13 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   selector: 'dashboard.component',
   styleUrls: ['dashboard.component.css'],
   templateUrl: 'dashboard.component.html',
+
 })
+
+
 export class DashboardComponent implements OnInit {
+
+  selected: Date | null | undefined;
 
   roles: string[] = [];
 
@@ -18,6 +23,8 @@ export class DashboardComponent implements OnInit {
   showSelectionBoard = false;
   username?: string;
   email?: string;
+
+
 
 
   constructor(private tokenStorageService: TokenStorageService) { }
@@ -48,4 +55,7 @@ export class DashboardComponent implements OnInit {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+
+
 }
+
