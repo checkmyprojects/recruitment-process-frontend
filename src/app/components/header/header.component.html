@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light bg-navbar p-0">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/home" routerLink="home"><img src="/assets/img/logoblanco.png" alt="" width="150"
+    <a class="navbar-brand" matTooltip="Inicio" href="/home" routerLink="home"><img src="/assets/img/logoblanco.png" alt="" width="150"
         height="45" class="d-inline-block align-text-top bg-navbar"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,19 +9,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-0">
         <li *ngIf="showAdminBoard" class="nav-item">
-          <a class="nav-link pt-3 pb-3" aria-current="page" href="/admin" routerLink="admin">Administración</a>
+          <a class="nav-link pt-3 pb-3" matTooltip="Administración" aria-current="page" href="/admin" routerLink="admin">Administración</a>
         </li>
         <li *ngIf="showCandidatesBoard" class="nav-item">
-          <a class="nav-link pt-3 pb-3" href="/people" routerLink="people">Candidatos</a>
+          <a class="nav-link pt-3 pb-3" matTooltip="Candidatos" href="/people" routerLink="people">Candidatos</a>
         </li>
         <li *ngIf="showSelectionBoard" class="nav-item">
-          <a class="nav-link pt-3 pb-3" href="/selection" routerLink="selection">Procesos</a>
+          <a class="nav-link pt-3 pb-3" matTooltip="Procesos" href="/selection" routerLink="selection">Procesos</a>
         </li>
         <li *ngIf="showInterviewerBoard" class="nav-item">
-          <a class="nav-link pt-3 pb-3" href="/interview" routerLink="interview">Entrevistas</a>
+          <a class="nav-link pt-3 pb-3" matTooltip="Entrevistas" href="/interview" routerLink="interview">Entrevistas</a>
         </li>
         <li *ngIf="showBusinessBoard" class="nav-item">
-          <a class="nav-link pt-3 pb-3" href="/home" routerLink="home">Estadísticas</a>
+          <a class="nav-link pt-3 pb-3" matTooltip="Estadísticas" href="/home" routerLink="home">Estadísticas</a>
         </li>
       </ul>
 

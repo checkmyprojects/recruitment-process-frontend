@@ -127,6 +127,7 @@ tr.mat-row:hover {
     border-width: 1px 1px 1px 1px;
 }
 .color-info span{
+    cursor: default;
     padding: 0 5px;
 }
 

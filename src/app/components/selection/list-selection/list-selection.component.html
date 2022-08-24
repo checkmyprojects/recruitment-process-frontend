@@ -6,7 +6,7 @@
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button color="button-new" (click)="openDialogNewSelection()">Crear Proceso <mat-icon>add_circle_outline</mat-icon></button>
+    <button mat-raised-button color="button-new" matTooltip="Crear proceso de selección" (click)="openDialogNewSelection()">Crear Proceso <mat-icon>add_circle_outline</mat-icon></button>
   </div>
 
 </div>
@@ -17,7 +17,7 @@
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
         <!-- Apply classes conditionally asking for priority or status -->
-        <td mat-cell matTooltip="Número de proyecto" *matCellDef="let row" (click)="openDialogEditSelection(row)" [ngClass]="{
+        <td mat-cell matTooltip="Número del proceso" *matCellDef="let row" (click)="openDialogEditSelection(row)" [ngClass]="{
         'selection-open': row.status === 'Abierto', 
         'selection-priority-high': row.priority === 'Alta', 
         'selection-onhold': row.status === 'Parado',
@@ -119,8 +119,8 @@
         }"> {{row.status}} </td>
       </ng-container>
       <ng-container matColumnDef="project_id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Proyecto </th>
-        <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cód. Proyecto </th>
+        <td mat-cell matTooltip="Código de proyecto" *matCellDef="let row" (click)="openDialogEditSelection(row)"  [ngClass]="{
         'selection-open': row.status === 'Abierto', 
         'selection-priority-high': row.priority === 'Alta', 
         'selection-onhold': row.status === 'Parado',
