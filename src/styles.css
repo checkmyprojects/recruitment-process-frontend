@@ -81,14 +81,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 18px;
 }
 
-/* Dialog class styling */
-/* Used on interview details modal */
-.dialog-big{
-    height: 80%;
-    /* max-width: 100vw;
-    width: 90vw; */
-}
-
 /* Button custom colors */
 
 /* Buttons CSS */
@@ -132,11 +124,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 
-/* CSS for dialog close button */
+
+/* Dialog class styling */
+/* Used on interview details modal */
 .dialog-big{
+    height: 80%;
     position: relative!important;
+    /* max-width: 100vw;
+    width: 90vw; */
 }
 
+/* CSS for dialog close button */
 .mat-close-button-interview{
     position: absolute;
     top: 10px;

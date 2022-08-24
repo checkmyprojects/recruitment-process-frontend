@@ -140,7 +140,13 @@
       </ng-container>
       <ng-container matColumnDef="create">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
-        <td mat-cell matTooltip="Selecciona este proceso" *matCellDef="let row" >
+        <td mat-cell matTooltip="Selecciona este proceso" *matCellDef="let row" [ngClass]="{
+          'selection-open': row.status === 'Abierto', 
+          'selection-priority-high': row.priority === 'Alta', 
+          'selection-onhold': row.status === 'Parado',
+          'selection-closed': row.status === 'Cerrado', 
+          'selection-end': row.end_date
+          }">
           <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)"> <mat-icon>add</mat-icon> </button>
         </td>
       </ng-container>
