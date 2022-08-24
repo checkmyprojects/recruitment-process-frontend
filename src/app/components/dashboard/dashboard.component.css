@@ -17,5 +17,10 @@ body {
 }
 
 .card-link {
-  text-align: center;
+  font-size: 30px;
+  color: #1C5B92;
+}
+
+.mat-icon {
+
 }
