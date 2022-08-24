@@ -101,6 +101,35 @@ tr.mat-row:hover {
     flex-grow: 1;
 }
 
+/* Color coding info description */
+.color-square{
+    background-color: white;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #1C5B92;
+}
+.color-info{
+    padding: 4px 0;
+    /* background-color: white; */
+    display: flex;
+    justify-content: flex-end;
+}
+.color-info > div{
+    background-color: white;
+    padding: 5px 10px;
+    border: 1px solid #1C5B92;
+    border-width: 1px 1px 1px 0;
+    display: flex;
+    align-items: center;
+}
+.color-info > div:nth-child(1){
+    border-width: 1px 1px 1px 1px;
+}
+.color-info span{
+    padding: 0 5px;
+}
+
 /* Row colors applied conditionally */
 .selection-open{
     background-color: rgba(0, 255, 64, 0.158);
