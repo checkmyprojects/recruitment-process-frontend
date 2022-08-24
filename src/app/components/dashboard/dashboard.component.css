@@ -15,3 +15,7 @@ body {
   color: #1C5B92;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.card-link {
+  text-align: center;
+}
