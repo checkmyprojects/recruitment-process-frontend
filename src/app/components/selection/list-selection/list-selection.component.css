@@ -110,7 +110,7 @@ tr.mat-row:hover {
     border: 1px solid #1C5B92;
 }
 .color-info{
-    padding: 4px 0;
+    padding: 10px 0;
     /* background-color: white; */
     display: flex;
     justify-content: flex-end;
