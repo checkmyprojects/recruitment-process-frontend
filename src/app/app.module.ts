@@ -56,6 +56,10 @@ import { ModalSelectionComponent } from './components/selection/modal-selection/
 import { MatTabsModule } from '@angular/material/tabs';
 import { ModalInterviewComponent } from './components/interview/modal-interview/modal-interview.component';
 import {BreadcrumbModule} from 'xng-breadcrumb';
+
+//import { MaterialModule } from '@angular/material/module' ;
+
+
 @NgModule({
   declarations: [
     AppComponent,

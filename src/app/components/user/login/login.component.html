@@ -1,8 +1,8 @@
-<body>
+<!--<body>-->
 <!-- Jumbotron -->
 <!-- <div class="bg-image p-5 shadow-1-strong"
     style="background-image: url('https://i.ibb.co/8gqHvsF/fondo.jpg');"> -->
-    <div class="container mx-auto py-5 h-100">
+    <!--<div class="container mx-auto py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center w-65">
             <div class="col col-xl-5">
                 <a><img src="https://i.ibb.co/XbWYkTw/NTT-DATA-Logo-Black.png" alt="NTT-DATA-Logo-Black" class="logo align-items-center"></a>
@@ -39,12 +39,56 @@
 
             </div>
         </div>
-    </div>  
+    </div>  -->
 
 <!-- Jumbotron -->
-<section class="vh-50 align-items-center">
+<!--<section class="vh-50 align-items-center">
     
 
 
-</section>
-</body>
+</section>-->
+
+
+<mat-card style="background-color: #ffffffb5;">
+    <mat-card-title>
+        <img src="https://i.ibb.co/XbWYkTw/NTT-DATA-Logo-Black.png" alt="NTT-DATA-Logo-Black" class="logo align-items-center">
+    </mat-card-title>
+    <mat-card-content>
+        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Nombre de usuario / Correo" name="username" [(ngModel)]="form.username" required
+                    #username="ngModel"/>
+                    <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                        ¡El nombre de usuario es requerido!
+                    </div>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Contraseña" name="password" [(ngModel)]="form.password" required
+                            minlength="3" #password="ngModel" />
+                        <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                            <div *ngIf="password.errors['required']">La contraseña es requerida</div>
+                            <div *ngIf="password.errors['minlength']">
+                                La contraseña debe de tener al menos 6 caracteres
+                            </div>
+                        </div>
+                </mat-form-field>
+            </p>
+                <button type="submit" mat-raised-button>Entrar</button>
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                    Login failed: {{ errorMessage }}
+                </div>
+        </form>
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+            Logeado como {{ loggedUser }}.
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<video id="background-video" playsinline autoplay loop muted>
+    <source src="assets/img/video2.mp4" type="video/mp4">
+</video>
+
+<!--<body>-->
