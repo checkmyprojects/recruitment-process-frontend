@@ -27,9 +27,9 @@ body {
 ::ng-deep .mat-tooltip {
   font-size: 15px;
   white-space: pre-wrap;
-  color: gray !important;
-  background-color: rgba(255, 255, 255, .9);
-  border:1px solid gray;
+  color: black !important;
+  background-color: white;
+  border:1px solid black;
   border-radius: 5px;
   max-width: unset !important;
  }
