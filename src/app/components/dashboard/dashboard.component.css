@@ -22,14 +22,6 @@ body {
 
 .card-bg-image {
   background-size: cover;
+  width: 400px;
 }
 
-::ng-deep .mat-tooltip {
-  font-size: 15px;
-  white-space: pre-wrap;
-  color: black !important;
-  background-color: white;
-  border:1px solid black;
-  border-radius: 5px;
-  max-width: unset !important;
- }
