@@ -10,6 +10,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
 import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candidate-new.component';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-list-candidates',
@@ -18,7 +21,7 @@ import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candida
 })
 export class ListCandidatesComponent implements OnInit {
 
-  displayedColumns: string[] = ['state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills', 'create' ];
+  displayedColumns: string[] = ['state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills', 'pdf', 'create' ];
   dataSource: MatTableDataSource<Candidate>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -133,5 +136,36 @@ export class ListCandidatesComponent implements OnInit {
         alert(error.message);
       }
     });
+  }
+  printDoc(candidate: any){
+
+    //pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    let dd = { content: [
+
+      {
+         table: {
+           widths: ["*"],
+           body: [
+             [
+               {
+                 text: [
+                   { text: `El candidato se llama: ${candidate.name}\n`, bold: true },
+                   { text: `Se apellida:${candidate.surname}` }
+                 ],
+                 
+                 style: "header",
+                 width: "150",
+                 alignment: "left",
+                 border: [true, true, true, false],
+                 margin: [0, 15, 0, 15]
+               }
+             ]
+           ]
+         }
+       },
+]
+};
+
+    pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
   }
 }
