@@ -1,34 +1,34 @@
 <div class="card-columns mt-5 mb-2">
   <div class="row">
-    <div *ngIf="isLoggedIn" matTooltip="Administración" class="col-md-4 p-3 pointer" routerLink="/admin">
+    <div *ngIf="showAdminBoard" matTooltip="Administración" class="col-md-4 p-3 pointer" routerLink="/admin">
       <a class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/0qRSsyx/Recursos-Humanos.png');
         ">
       </a>
     </div>
 
-    <div matTooltip="Candidatos" class="col-md-4 p-3 pointer" routerLink="/people">
+    <div *ngIf="showCandidatesBoard" matTooltip="Candidatos" class="col-md-4 p-3 pointer" routerLink="/people">
       <a class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/HqfnxQx/candidatos.png');
         ">
       </a>
     </div>
 
-    <div matTooltip="Proceso de selección" class="col-md-4 p-3 pointer" routerLink="/selection">
+    <div *ngIf="showSelectionBoard" matTooltip="Proceso de selección" class="col-md-4 p-3 pointer" routerLink="/selection">
       <a class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/98Kdvnk/seleccion.png');
         ">
       </a>
     </div>
 
-    <div class="col-md-4 p-3 pointer" routerLink="/interview">
+    <div *ngIf="showInterviewerBoard" class="col-md-4 p-3 pointer" routerLink="/interview">
       <a matTooltip="Entrevistas" class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/WD4W7Gw/entrevistas.jpg');
         ">
       </a>
     </div>
 
-    <div matTooltip="Estadísticas" class="col-md-4 p-3 pointer" routerLink="#">
+    <div *ngIf="showBusinessBoard" matTooltip="Estadísticas" class="col-md-4 p-3 pointer" routerLink="#">
       <a class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/YTJgP79/estadisticas.png');
         ">
