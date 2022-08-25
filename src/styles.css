@@ -157,3 +157,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .xng-breadcrumb-separator {
     padding: 0 4px;
 }
+
+/* Tooltip style */
+.mat-tooltip {
+    color: black!important;
+    font-size: 15px;
+    background: #fff;
+    white-space: pre-wrap;
+    border: 1px solid black;
+}
