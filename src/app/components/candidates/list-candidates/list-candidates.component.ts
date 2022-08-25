@@ -147,16 +147,18 @@ export class ListCandidatesComponent implements OnInit {
            widths: ["*"],
            body: [
              [
+
                {
                  text: [
-                   { text: `El candidato se llama: ${candidate.name}\n`, bold: true },
-                   { text: `Se apellida:${candidate.surname}` }
+                  {text: 'DATOS DEL CANDIDATO\n\n', style: 'header', bold: true, aligment:'center'},
+                  { text: `Nombre y apellidos: ${candidate.name} ${candidate.surname}\n\n`},
+                  { text: `Ubicación: ${candidate.location}`},
+
                  ],
-                 
+
                  style: "header",
                  width: "150",
                  alignment: "left",
-                 border: [true, true, true, false],
                  margin: [0, 15, 0, 15]
                }
              ]
