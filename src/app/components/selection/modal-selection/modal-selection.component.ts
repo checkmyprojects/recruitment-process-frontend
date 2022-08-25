@@ -18,7 +18,7 @@ export class ModalSelectionComponent implements OnInit {
   editSelectionForm: FormGroup | any;
 
   ngOnInit(): void {
-    console.log (this.data.selection)
+    // Initialize FormGroup
     this.editSelectionForm = new FormGroup({
       id: new FormControl(this.data.selection.id, []),
       start_date: new FormControl(this.data.selection.start_date, [Validators.required]),
@@ -31,7 +31,7 @@ export class ModalSelectionComponent implements OnInit {
       status: new FormControl(this.data.selection.status, [Validators.required, Validators.minLength(4),]),
       priority: new FormControl(this.data.selection.priority, [Validators.required, Validators.minLength(4),]),
       project_id: new FormControl(this.data.selection.project_id, [Validators.required]),
-      // remote: new FormControl(this.data.selection., [Validators.required]),
+      // remote doesn't need validation, otherwise it will always need to be true
       remote: new FormControl(this.data.selection.remote,),
 
     });
@@ -42,11 +42,9 @@ export class ModalSelectionComponent implements OnInit {
     delete this.editedSelection.created_by;
     delete this.editedSelection.interviews;
     
-    // Convert date to keep only YYYY-MM-DD to preven frontend to send 1 day off to the backend because of date conversion
+    // Convert date to keep only YYYY-MM-DD to prevent frontend to send 1 day off to the backend because of date conversion
     let formDate:Date = new Date(this.editSelectionForm.value.start_date.toString());
     let dateFormatted:string = `${formDate.getFullYear()}-${formDate.getMonth()+1}-${formDate.getDate()}`;
-    // this.editedSelection.start_date = dateFormatted;
-    // console.log(dateFormatted);
     
     this.editedSelection.start_date = dateFormatted;
 
@@ -54,6 +52,7 @@ export class ModalSelectionComponent implements OnInit {
       next: response => {
         this.openSnackBar('¡Proceso editado con éxito!', '');
         
+        // change edited selection and change it to the one we receive from the backend to update the frontend without making a new call
         this.data.selection.id = response.id;
         this.data.selection.created_by = response.created_by;
         this.data.selection.start_date = response.start_date;
@@ -77,14 +76,14 @@ export class ModalSelectionComponent implements OnInit {
   }
 
   confirmDelete() {
-    // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
+    // If user click accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
     if(confirm("¿Seguro de que quieres borrar el proceso de selección?")){
       this.closeDialog(false);
     }
   }
 
   confirmEnd() {
-    // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
+    // If user click accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
     if(confirm("¿Seguro de que quieres finalizar el proceso de selección?")){
       this.endSelectionProcess();
       this.closeDialog(true);
@@ -96,6 +95,7 @@ export class ModalSelectionComponent implements OnInit {
       next: response => {
         this.openSnackBar('¡Proceso finalizado con éxito!', '');
 
+        // change ended selection and change it to the one we receive from the backend to update the frontend without making a new call
         this.data.selection.id = response.id;
         this.data.selection.created_by = response.created_by;
         this.data.selection.start_date = response.start_date;
@@ -117,12 +117,14 @@ export class ModalSelectionComponent implements OnInit {
       }
     });
   }
+
+  // Function to close the dialog. It can return true or false
   // Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
-    // Function to close the dialog. It can return true or false
   closeDialog(choice:boolean) {
       this.dialogRef.close(choice);
   }
 
+  // Snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 

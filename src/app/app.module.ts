@@ -30,7 +30,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { InterviewComponent } from './components/interview/interview/interview.component';
 import { ListSelectionComponent } from './components/selection/list-selection/list-selection.component';
-import { OneSelectionComponent } from './components/selection/one-selection/one-selection.component';
 import { SelectionComponent } from './components/selection/selection/selection.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
@@ -71,7 +70,6 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     CandidateComponent,
     SelectionComponent,
     ListSelectionComponent,
-    OneSelectionComponent,
     InterviewComponent,
     ModalUserComponent,
     ModalCandidatesComponent,

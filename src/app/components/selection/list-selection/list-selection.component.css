@@ -1,106 +1,3 @@
-/* body{
-    background: #edf1f5;
-    margin-top:20px;
-}
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border-radius: 44px;
-    border: 3px solid #1C5B92;
-    overflow: hidden;
-}
-.btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
-    width: 50px;
-    height: 50px;
-    padding: 14px 15px;
-    font-size: 18px;
-    line-height: 23px;
-}
-.text-muted {
-    color: #8898aa!important;
-}
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-    cursor: pointer;
-}
-.btn-circle {
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-}
-.user-table tbody tr .category-select {
-    max-width: 150px;
-
-}
-
-td > span, td > h5{
-    background-color: #B9D2E8;
-    font-weight: bold;
-}
-
-tr > *{
-    background-color: #B9D2E8;
-}
-
-.card-body, .card-body *{
-    background-color: #1C5B92;
-}
-.card-title{
-    color: white;
-}
-
-thead *{
-    background-color: #1C5B92;
-    color: white;
-}
-tbody{
-    border-top: 2px solid #9FC6E9!important;
-} */
-table, mat-form-field {
-    width: 100%;
-}
-
-.mat-form-field {
-    font-size: 14px;
-    width: 98%;
-}
-/* Hover over a table row */
-tr.mat-row:hover {
-    background-color: #9fc6e970;
-    cursor: pointer;
-}
-
-/* .align-right{
-    float: right;
-    margin: 15px 0;
-} */
-.mat-button-save {
-    background-color: #28A745;
-    color: #fff;
-}
-.mat-button-save:hover {
-    background-color: #05c732;
-}
-.mat-button-new {
-    background-color: #1c5b92;
-    color: #fff;
-}
-.mat-button-new:hover {
-    background-color: #007bff;
-}
-.searchTableFlex{
-    display: flex;
-    align-items: center;
-}
-.searchBar{
-    flex-grow: 1;
-}
-
 /* Color coding info description */
 .color-square{
     background-color: white;
@@ -131,16 +28,11 @@ tr.mat-row:hover {
     padding: 0 5px;
 }
 
+/* ********************** */
+
 /* Row colors applied conditionally */
 .selection-open{
     background-color: rgba(0, 255, 64, 0.158);
-    /* background: linear-gradient(
-        to bottom,
-        white 0%,
-        white 50%,                                                                 
-        rgb(0, 255, 64) 50%,
-        rgb(0, 255, 64) 100%
-    ); */
 }
 .selection-onhold{
     background-color: rgba(255, 166, 0, 0.158);
@@ -149,7 +41,6 @@ tr.mat-row:hover {
 .selection-priority-high{
     background-color: rgba(255, 0, 0, 0.158);
 }
-
 .selection-closed{
     background-color: rgba(202, 202, 202, 0.158);
     color: rgb(172, 171, 171);
@@ -157,4 +48,41 @@ tr.mat-row:hover {
 .selection-end{
     background-color: rgba(202, 202, 202, 0.158);
     color: rgb(172, 171, 171);
+}
+
+/* ********************** */
+
+/* Table column width*/
+/* Make "roles" and "add to" row not so big */
+/* mat-colum- next to the matColumnDef name to apply style to that column*/
+.mat-column-id {
+    width: 5%;
+}
+.mat-column-start_date {
+    width: 7%;
+}
+.mat-column-end_date {
+    width: 7%;
+}
+.mat-column-name {
+    width: 15%;
+}
+.mat-column-description {
+    width: 18%;
+}
+.mat-column-requirements {
+    width: 18%;
+}
+.mat-column-location {
+    width: 7%;
+}
+.mat-column-sector {
+    width: 7%;
+}
+.mat-column-project_id {
+    width: 5%;
+}
+.mat-column-create {
+    text-align: center;
+    width: 5%;
 }

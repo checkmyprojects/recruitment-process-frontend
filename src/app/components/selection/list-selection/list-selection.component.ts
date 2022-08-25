@@ -2,13 +2,13 @@ import { ModalSelectionNewComponent } from './../modal-selection-new/modal-selec
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { SelectionService } from 'src/app/services/selection.service';
-import {Selection} from 'src/app/model/selection';
+import { Selection } from 'src/app/model/selection';
+import { ModalSelectionComponent } from '../modal-selection/modal-selection.component';
 // Imports for the table
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalSelectionComponent } from '../modal-selection/modal-selection.component';
 
 @Component({
   selector: 'app-list-selection',
@@ -37,7 +37,7 @@ export class ListSelectionComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.getAllSelections());
   }
 
-
+  // New selection item used to create a new one and push it into the table
   newSelection: Selection = {
     id: 0,
     created_by: {
@@ -77,7 +77,7 @@ export class ListSelectionComponent implements OnInit {
     });
     }
 
-      //Open modal for edit selection
+  //Open edit selection modal
   openDialogEditSelection(row: Selection) {
     const dialogRef = this.dialog.open(ModalSelectionComponent,{
       data: { selection: row }
@@ -85,9 +85,9 @@ export class ListSelectionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === false){
-        //Delete candidate from angular array
+        // Delete selection from angular array
         this.dataSource.data = this.dataSource.data.filter(item => item !== row);
-        // API call to delete candidate by id
+        // API call to delete selection by id
         this.deleteSelectionById(row.id.toString())
       }else if (result === true){
 
@@ -97,7 +97,7 @@ export class ListSelectionComponent implements OnInit {
 
 
 
-   // Material table
+  // Material table
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -137,7 +137,7 @@ export class ListSelectionComponent implements OnInit {
   }
 
   // If it has no end date, print "Sin fecha" instead
-  public returnUndefined(string: string):string {
+  public returnIfDateIsUndefined(string: string):string {
     if(!string) {
       return "Sin fecha";
     }else{

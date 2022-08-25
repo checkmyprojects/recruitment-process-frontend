@@ -1,11 +1,11 @@
-<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
+<!-- Close dialog button -->
 <span mat-dialog-close matTooltip="Cerrar" class="mat-close-button">
   <mat-icon>close</mat-icon>
 </span>
 
 <h4>Editar proceso: <span>{{editedSelection.name}}</span></h4>
 
-<form [formGroup]="editSelectionForm" novalidate class="example-form">
+<form [formGroup]="editSelectionForm" novalidate class="form">
 
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Nombre</mat-label>
@@ -21,7 +21,9 @@
       El nombre es obligatorio
     </mat-error>
   </mat-form-field>
+
   <br>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Requerimientos</mat-label>
     <input placeholder="Requerimientos" formControlName="requirements" matInput value={{editedSelection.requirements}}
@@ -34,9 +36,12 @@
       Los requerimientos son obligatorio
     </mat-error>
   </mat-form-field>
+
   <br>
-  <div>
-    <mat-form-field class="name" appearance="fill">
+
+  <div class="flex">
+    
+    <mat-form-field class="half-width half-width-margin-right" appearance="fill">
       <mat-label>Id proyecto</mat-label>
       <input type="number" placeholder="Id proyecto" formControlName="project_id" matInput
         value={{editedSelection.project_id}} (input)="editedSelection.project_id=$any($event.target).value"
@@ -46,7 +51,8 @@
         La id del proyecto es obligatoria
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="name" appearance="fill">
+
+    <mat-form-field appearance="fill" class="half-width">
       <mat-label>Sector</mat-label>
       <input placeholder="Sector" formControlName="sector" matInput value={{editedSelection.sector}}
         (input)="editedSelection.sector=$any($event.target).value">
@@ -58,10 +64,11 @@
         El sector es obligatorio
       </mat-error>
     </mat-form-field>
+
   </div>
 
-  <div>
-    <mat-form-field class="name" appearance="fill">
+  <div class="flex">
+    <mat-form-field class="half-width half-width-margin-right" appearance="fill">
       <mat-label>Estado</mat-label>
       <input placeholder="Estado" formControlName="status" matInput type="text" value={{editedSelection.status}}
         (input)="editedSelection.status=$any($event.target).value">
@@ -70,7 +77,8 @@
         El estado es obligatorio
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="name" appearance="fill">
+
+    <mat-form-field class="half-width" appearance="fill">
       <mat-label>Prioridad</mat-label>
       <input placeholder="Prioridad" formControlName="priority" matInput value={{editedSelection.priority}}
         (input)="editedSelection.priority=$any($event.target).value" placeholder="Ej: Java">
@@ -82,7 +90,9 @@
         La prioridad es obligatoria
       </mat-error>
     </mat-form-field>
+
   </div>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Elige una fecha</mat-label>
     <input formControlName="start_date" value={{editedSelection.start_date}} matInput [matDatepicker]="picker">
@@ -90,8 +100,9 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
   <div class="flex">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="half-width half-width-margin-right">
       <mat-label>Localización</mat-label>
       <input type="localización" matInput formControlName="location" placeholder="Ej. jorge.fernandez@nttdata.com"
         value={{editedSelection.location}} (input)="editedSelection.location=$any($event.target).value">
@@ -104,12 +115,15 @@
         La localización es obligatoria
       </mat-error>
     </mat-form-field>
-    <div class="slider-remote"  appearance="fill">
+
+    <div class="slider-remote half-width"  appearance="fill">
       <mat-slide-toggle placeholder="Remoto" formControlName="remote" matInput [(ngModel)]="editedSelection.remote"
         (input)="editedSelection.remote=$any($event.target).value" placeholder="Ej: Java"></mat-slide-toggle>
       <mat-label> Trabajo en remoto </mat-label>
     </div>
+
   </div>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Descripción</mat-label>
     <textarea placeholder="Descripcion" formControlName="description" matInput #message maxlength="256"
@@ -124,15 +138,15 @@
       La descripción es obligatoria
     </mat-error>
   </mat-form-field>
+
 </form>
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-  <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
-  <!-- Use a function to close the dialog instead -->
+
+  <!-- Use a function to confirm the dialog instead -->
   <button mat-raised-button [disabled]="data.selection.end_date" (click)="confirmEnd()" matTooltip="Finalizar proceso" color="button-end">Finalizar</button>
   <button mat-raised-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
   <button mat-raised-button [disabled]="!editSelectionForm.valid" [mat-dialog-close]="true" matTooltip="Guardar"
     color="button-save" mat-stroked-button="openSnackBar()" (click)="saveSelection()">Guardar</button>
-  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>

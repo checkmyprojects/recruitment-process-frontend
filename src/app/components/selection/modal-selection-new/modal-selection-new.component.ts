@@ -33,9 +33,9 @@ export class ModalSelectionNewComponent implements OnInit {
 newSelectionForm: FormGroup | any;
 
   ngOnInit(): void {
+    // Initialize form
     this.newSelectionForm = new FormGroup({
       start_date: new FormControl('', [Validators.required]),
-      // end_date: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required, Validators.minLength(4),]),
       description: new FormControl('', [Validators.required, Validators.minLength(4),]),
       requirements: new FormControl('', [Validators.required, Validators.minLength(4),]),
@@ -44,7 +44,7 @@ newSelectionForm: FormGroup | any;
       status: new FormControl('', [Validators.required, Validators.minLength(4),]),
       priority: new FormControl('', [Validators.required, Validators.minLength(4),]),
       project_id: new FormControl('', [Validators.required]),
-      // remote: new FormControl('', [Validators.required]),
+      // remote doesn't need validation, otherwise it will always need to be true
       remote: new FormControl('',),
 
     });
@@ -60,6 +60,7 @@ newSelectionForm: FormGroup | any;
       next: response => {
         this.openSnackBar('¡Proceso creado con éxito!', '');
         
+        // change edited selection and change it to the one we receive from the backend to update the frontend without making a new call
         this.data.selection.id = response.id;
         this.data.selection.created_by = response.created_by;
         this.data.selection.start_date = response.start_date;
@@ -79,18 +80,19 @@ newSelectionForm: FormGroup | any;
         alert(error.message);
         console.error('There was an error!', error);
       }
-  });
-}
+    });
+  }
 
-horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-verticalPosition: MatSnackBarVerticalPosition = 'top';
+  // Snackbar
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-openSnackBar(message: string, action: string) {
-  this._snackBar.open(message, action, {
-    horizontalPosition: this.horizontalPosition,
-    verticalPosition: this.verticalPosition,
-    duration: 3000
-  });
-}
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3000
+    });
+  }
 
 }
