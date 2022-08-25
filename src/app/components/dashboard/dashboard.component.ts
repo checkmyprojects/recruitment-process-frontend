@@ -22,10 +22,6 @@ export class DashboardComponent implements OnInit {
   showBusinessBoard = false;
   showInterviewerBoard = false;
   showSelectionBoard = false;
-  username?: string;
-  email?: string;
-
-
 
 
   constructor(private tokenStorageService: TokenStorageService) { }
@@ -46,9 +42,6 @@ export class DashboardComponent implements OnInit {
       }if(this.roles.includes('ROLE_INTERVIEWER')){
         this.showInterviewerBoard = true;
       }
-
-      this.email = user.email;
-      this.username = user.username;
     }
   }
 

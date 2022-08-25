@@ -1,6 +1,6 @@
 <div class="card-columns mt-5 mb-2">
   <div class="row">
-    <div matTooltip="Administración" class="col-md-4 p-3 pointer" routerLink="/admin">
+    <div *ngIf="isLoggedIn" matTooltip="Administración" class="col-md-4 p-3 pointer" routerLink="/admin">
       <a class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/0qRSsyx/Recursos-Humanos.png');
         ">
