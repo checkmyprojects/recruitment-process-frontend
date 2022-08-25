@@ -3,24 +3,25 @@
 
 /* Table column width*/
 /* Make "roles" and "add to" row not so big */
+/* mat-colum- next to the matColumnDef name to apply style to that column*/
 .mat-column-id {
-    width: 10% !important;
+    width: 10%;
 }
 .mat-column-name {
-    width: 27% !important;
+    width: 27%;
 }
 .mat-column-username {
-    width: 27% !important;
+    width: 27%;
 }
 .mat-column-email {
-    width: 27% !important;
+    width: 27%;
 }
 .mat-column-roles {
-    width: 5% !important;
+    width: 5%;
 }
 .mat-column-create {
     text-align: center;
-    width: 5% !important;
+    width: 5%;
 }
 
 /* ********************** */
