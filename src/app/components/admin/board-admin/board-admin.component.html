@@ -20,7 +20,7 @@
         <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> {{row.id}} </td>
       </ng-container>
   
-      <!-- Nme Column -->
+      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
         <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{'make-grey': !row.active }"> {{row.name}} </td>
