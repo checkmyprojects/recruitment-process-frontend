@@ -1,9 +1,9 @@
-<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
 <span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
 
 <h4 mat-raised-button (click)="logit()">Nuevo usuario: <span>{{newModalAppUser.username}}</span></h4>
 
 <form [formGroup]="loginForm" novalidate class="example-form">
+
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Nombre personal del usuario</mat-label>
         <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{newModalAppUser.name}} (input)="newModalAppUser.name=$any($event.target).value" >
@@ -15,7 +15,9 @@
             El nombre es obligatorio
         </mat-error>
     </mat-form-field>
+
     <br>
+
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{newModalAppUser.email}} (input)="newModalAppUser.email=$any($event.target).value">
@@ -26,6 +28,7 @@
             El email es obligatorio
         </mat-error>
     </mat-form-field>
+
     <br>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -54,6 +57,7 @@
                 La contraseña es obligatoria
             </mat-error>
         </mat-form-field>
+
         <mat-form-field appearance="fill">
             <mat-label>Confirma la contraseña</mat-label>
             <input matInput type="password" formControlName="confirmPassword" value={{passwordConfirm}} (input)="passwordConfirm=$any($event.target).value" [type]="hide ? 'password' : 'text'">
@@ -67,10 +71,14 @@
                 Las contraseñas no coinciden
             </mat-error>
         </mat-form-field>
+
     </div>
+
 </form>
+
 <br>
-<p>Roles *: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol) *</span></p>
+
+<p>Roles: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol)</span></p>
 <section class="example-section">
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
@@ -80,5 +88,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-    <button mat-raised-button [disabled]="!loginForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" mat-stroked-button="openSnackBar()" (click)="saveUser()">Guardar</button>
+    <button mat-raised-button [disabled]="!loginForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button>
 </mat-dialog-actions>

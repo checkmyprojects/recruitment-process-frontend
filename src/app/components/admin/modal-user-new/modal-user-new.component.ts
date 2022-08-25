@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { AppUsers } from 'src/app/model/app-users';
-import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -13,8 +12,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./modal-user-new.component.css']
 })
 export class ModalUserNewComponent implements OnInit {
-
-  // TODO: Needs to validate all fields before sending to backend
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, public dialogRef: MatDialogRef<ModalUserNewComponent>, private authService: AuthService, public snackBar: MatSnackBar) {
 
@@ -53,8 +50,7 @@ export class ModalUserNewComponent implements OnInit {
     }
   }
 
-
-  // Password field is hidden by default
+  // Hide/Show password
   hide = true;
 
   newModalAppUser: any = {
@@ -89,6 +85,7 @@ export class ModalUserNewComponent implements OnInit {
     )
   }
 
+  // Used to close the dialog sending true or false
   closeDialog(choice:boolean) {
     this.dialogRef.close(choice);
   }
@@ -101,17 +98,11 @@ export class ModalUserNewComponent implements OnInit {
   }
 
   saveUser(){
-    // TODO: Needs to validate all before sending to backend
-    // ! Do not send if some fields are missing
-    // ! Needs to control error (duplicate username or valid email)
 
     // Get roles from checkbox
     this.newModalAppUser.role = this.getRolesFromCheckbox(this.role);
 
     // Call API to save user
-    // TODO Make sure that roles are not empty!!!!
-    // If roles list is empty, use old roles
-    // TODO: If no roles are selected, DO NOT allow to update user
     this.authService.registerNewUser(this.newModalAppUser).subscribe({
       next: response => {
         // Change angular user data to the new one received from api
@@ -127,8 +118,7 @@ export class ModalUserNewComponent implements OnInit {
         alert(error.message);
         console.error('There was an error!', error);
       }
-  });
-    console.log(this.newModalAppUser);
+    });
   }
 
   getRolesFromCheckbox(role:any){
