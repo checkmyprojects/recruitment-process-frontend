@@ -1,0 +1,43 @@
+<div class="card-columns mt-5 mb-2">
+  <div class="row">
+    <div matTooltip="Administración" class="col-md-4 p-3 pointer" routerLink="/admin">
+      <a class="card card-bg-image" style="
+          background-image: url('https://i.ibb.co/0qRSsyx/Recursos-Humanos.png');
+        ">
+      </a>
+    </div>
+
+    <div matTooltip="Candidatos" class="col-md-4 p-3 pointer" routerLink="/people">
+      <a class="card card-bg-image" style="
+          background-image: url('https://i.ibb.co/HqfnxQx/candidatos.png');
+        ">
+      </a>
+    </div>
+
+    <div matTooltip="Proceso de selección" class="col-md-4 p-3 pointer" routerLink="/selection">
+      <a class="card card-bg-image" style="
+          background-image: url('https://i.ibb.co/98Kdvnk/seleccion.png');
+        ">
+      </a>
+    </div>
+
+    <div class="col-md-4 p-3 pointer" routerLink="/interview">
+      <a matTooltip="Entrevistas" class="card card-bg-image" style="
+          background-image: url('https://i.ibb.co/WD4W7Gw/entrevistas.jpg');
+        ">
+      </a>
+    </div>
+
+    <div matTooltip="Estadísticas" class="col-md-4 p-3 pointer" routerLink="#">
+      <a class="card card-bg-image" style="
+          background-image: url('https://i.ibb.co/YTJgP79/estadisticas.png');
+        ">
+      </a>
+    </div>
+
+    <mat-card class="calendar" matTooltip="Calendario">
+      <mat-calendar [(selected)]="selected"></mat-calendar>
+      <p>Selected date: {{ selected }}</p>
+    </mat-card>
+  </div>
+</div>

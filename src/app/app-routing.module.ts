@@ -1,3 +1,4 @@
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ListInterviewComponent } from './components/interview/list-interview/list-interview.component';
 import { BoardPeopleComponent } from './components/candidates/board-people/board-people.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,8 @@ import { SelectionComponent } from './components/selection/selection/selection.c
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component';
 // Import Authguard class to protect routes for non authorized users
 import { AuthGuard } from './helpers/auth-guard';
+// import { AuthGuardService as AuthGuard} from './services/auth-guard.service';
+// import { RoleGuardService as RoleGuard} from './services/role-guard.service';
 
 // === Authguard ===
 // To protect a route and allow access only to users with role ROLE_ADMIN, use: "canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN']}}"
@@ -35,7 +38,9 @@ const routes: Routes = [
   { path: 'admin/edit/:id', component: EditUserComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE']}},
   { path: '', redirectTo: 'home', pathMatch: 'full', data: { breadcrumb: { label: 'Inicio', info: 'home' }} },
   { path: 'interview', component: ListInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER'], breadcrumb: { label: 'Entrevistas', info: 'event_note' }}},
-  { path: 'interview/new', component: NewInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER']}}
+  { path: 'interview/new', component: NewInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER']}},
+  { path: 'dashboard', component: DashboardComponent},
+  // { path: '**', redirectTo: '' }
 ];
 
 // Routes array is passed to the RouterModule.forRoot() method.

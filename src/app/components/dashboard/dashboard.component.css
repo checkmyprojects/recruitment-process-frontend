@@ -1,0 +1,27 @@
+body {
+  background-color: #eee
+}
+
+.card {
+  border: none;
+  border-radius: 5px;
+  height: 200px;
+  /* margin-top: 20px; */
+  /* align-items: center; */
+}
+
+.calendar {
+  border-radius: 5px;
+  margin-left: 77px;
+  width: 300px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.card-bg-image {
+  background-size: cover;
+  width: 400px;
+}
+
