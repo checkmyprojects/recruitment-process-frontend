@@ -1,38 +1,44 @@
 <div class="card-columns mt-5 mb-2">
   <div class="row">
     <div *ngIf="showAdminBoard" matTooltip="Administración" class="col-md-4 p-3 pointer" routerLink="/admin">
-      <a class="card card-bg-image" style="
+      <div class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/0qRSsyx/Recursos-Humanos.png');
         ">
-      </a>
+        <span class="card-title">Administración</span>
+      </div>
+
     </div>
 
     <div *ngIf="showCandidatesBoard" matTooltip="Candidatos" class="col-md-4 p-3 pointer" routerLink="/people">
-      <a class="card card-bg-image" style="
+      <div class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/HqfnxQx/candidatos.png');
         ">
-      </a>
+        <span class="card-title">Candidatos</span>
+      </div>
     </div>
 
     <div *ngIf="showSelectionBoard" matTooltip="Proceso de selección" class="col-md-4 p-3 pointer" routerLink="/selection">
-      <a class="card card-bg-image" style="
+      <div class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/98Kdvnk/seleccion.png');
         ">
-      </a>
+        <span class="card-title">Proceso de selección</span>
+      </div>
     </div>
 
     <div *ngIf="showInterviewerBoard" class="col-md-4 p-3 pointer" routerLink="/interview">
-      <a matTooltip="Entrevistas" class="card card-bg-image" style="
+      <div matTooltip="Entrevistas" class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/WD4W7Gw/entrevistas.jpg');
         ">
-      </a>
+        <span class="card-title">Entrevistas</span>
+      </div>
     </div>
 
-    <div *ngIf="showBusinessBoard" matTooltip="Estadísticas" class="col-md-4 p-3 pointer" routerLink="#">
-      <a class="card card-bg-image" style="
+    <div *ngIf="showBusinessBoard" matTooltip="Estadísticas" class="col-md-4 p-3 pointer" routerLink="/statistics">
+      <div class="card card-bg-image" style="
           background-image: url('https://i.ibb.co/YTJgP79/estadisticas.png');
         ">
-      </a>
+        <span class="card-title">Estadísticas</span>
+      </div>
     </div>
 
     <mat-card class="calendar" matTooltip="Calendario">
