@@ -3,10 +3,8 @@ import { ListInterviewComponent } from './components/interview/list-interview/li
 import { BoardPeopleComponent } from './components/candidates/board-people/board-people.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
 import { BoardAdminComponent } from './components/admin/board-admin/board-admin.component';
 import { HomeComponent } from './components/home/home.component';
-import { InterviewComponent } from './components/interview/interview/interview.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -14,8 +12,6 @@ import { SelectionComponent } from './components/selection/selection/selection.c
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component';
 // Import Authguard class to protect routes for non authorized users
 import { AuthGuard } from './helpers/auth-guard';
-// import { AuthGuardService as AuthGuard} from './services/auth-guard.service';
-// import { RoleGuardService as RoleGuard} from './services/role-guard.service';
 
 // === Authguard ===
 // To protect a route and allow access only to users with role ROLE_ADMIN, use: "canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN']}}"
@@ -35,7 +31,6 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN'], breadcrumb: { label: 'Administración', info: 'keyboard' }}},
   { path: 'people', component: BoardPeopleComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE'], breadcrumb: { label: 'Candidatos', info: 'people' }}},
   { path: 'selection', component: SelectionComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE'], breadcrumb: { label: 'Procesos de selección', info: 'assignment' }}},
-  { path: 'admin/edit/:id', component: EditUserComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE']}},
   { path: '', redirectTo: 'home', pathMatch: 'full', data: { breadcrumb: { label: 'Inicio', info: 'home' }} },
   { path: 'interview', component: ListInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER'], breadcrumb: { label: 'Entrevistas', info: 'event_note' }}},
   { path: 'interview/new', component: NewInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER']}},

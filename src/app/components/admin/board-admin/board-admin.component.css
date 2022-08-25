@@ -1,117 +1,39 @@
-body{
-    background: #edf1f5;
-    margin-top:20px;
+
+/* ********************** */
+
+/* Table column width*/
+/* Make "roles" and "add to" row not so big */
+.mat-column-id {
+    width: 10% !important;
 }
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    /* border: 0 solid transparent; */
-    /* border-radius: 0; */
-    border-radius: 44px;
-    border: 3px solid #1C5B92;
-    overflow: hidden;
+.mat-column-name {
+    width: 27% !important;
 }
-.btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
-    width: 50px;
-    height: 50px;
-    padding: 14px 15px;
-    font-size: 18px;
-    line-height: 23px;
+.mat-column-username {
+    width: 27% !important;
 }
-.text-muted {
-    color: #8898aa!important;
+.mat-column-email {
+    width: 27% !important;
 }
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-    cursor: pointer;
+.mat-column-roles {
+    width: 5% !important;
 }
-.btn-circle {
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-}
-.user-table tbody tr .category-select {
-    max-width: 150px;
-    /* border-radius: 20px; */
-}
-/* 
-td > span, td > h5{
-    background-color: #B9D2E8;
-    font-weight: bold;
+.mat-column-create {
+    text-align: center;
+    width: 5% !important;
 }
 
-tr > *{
-    background-color: #B9D2E8;
-} */
+/* ********************** */
 
-.card-body, .card-body *{
-    background-color: #1C5B92;
-}
-.card-title{
-    color: white;
-}
-/* .card-body{
-    border-radius: 50px 50px 0 0;
-} */
-/* table{
-    border-radius: 0 0 50px 50px;
-} */
-/* .table-responsive{
-    border-radius: 0 0 50px 50px;
-} */
-thead *{
-    background-color: #1C5B92;
-    color: white;
+/* Class used to change background of non active users row */
+.make-grey{
+    background-color: rgba(202, 202, 202, 0.158);
+    color: rgb(172, 171, 171);
 }
 
-tbody{
-    border-top: 2px solid #9FC6E9!important;
-}
-table{
-    width: 100%;
-}
+/* ********************** */
 
-.mat-form-field {
-    font-size: 14px;
-    width: 98%;
-}
-/* Hover over a table row */
-tr.mat-row:hover {
-    background-color: #9fc6e970;
-    cursor: pointer;
-}
-
-/* Make roles row not so big */
-td, th {
-    width: 25%;
-}
-/* .align-right{
-    float: right;
-    margin: 15px 0;
-} */
-.mat-button-save {
-    background-color: #28A745;
-    color: #fff;
-}
-.mat-button-save:hover {
-    background-color: #05c732;
-}
-.mat-button-new {
-    background-color: #1c5b92;
-    color: #fff;
-}
-.mat-button-new:hover {
-    background-color: #007bff;
-}
-.searchTableFlex{
-    display: flex;
-    align-items: center;
-}
-.searchBar{
-    flex-grow: 1;
+/* role letter style */
+.role-letter{
+    padding: 0 3px;
 }

@@ -18,8 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoardAdminComponent } from './components/admin/board-admin/board-admin.component';
-import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
-import { ListComponent } from './components/admin/list/list.component';
 import { ModalUserNewComponent } from './components/admin/modal-user-new/modal-user-new.component';
 import { ModalUserComponent } from './components/admin/modal-user/modal-user.component';
 import { BoardPeopleComponent } from './components/candidates/board-people/board-people.component';
@@ -68,8 +66,6 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
-    EditUserComponent,
-    ListComponent,
     ListCandidatesComponent,
     BoardPeopleComponent,
     CandidateComponent,

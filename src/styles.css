@@ -1,7 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
 body{
-    /* background-color: #9FC6E9; */
     background-color: #9fc6e96e;
     font-family: 'Titillium Web', sans-serif;
     padding: 0;
@@ -21,85 +18,127 @@ body{
     font-size: 1.3rem;
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* ********************** */
+/* Footer styling */
 footer {
     position: fixed; bottom:0; width: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* ********************** */
+/* Material table styling */
 
+tbody{
+    border-top: 2px solid #9FC6E9!important;
+}
+table{
+    width: 100%;
+}
 
-/* Table custom CSS */
+/* Table search and create button next to it */
+.searchTableFlex{
+    display: flex;
+    align-items: center;
+}
+.searchBar{
+    flex-grow: 1;
+}
+/* search field size */
+.mat-form-field {
+    font-size: 14px;
+    width: 98%;
+}
+
+/* Table title color */
 .mat-header-cell {
     background: #1C5B92;
     color: #fff;
     font-size: 1rem;
 }
-/* .mat-cell:hover {
-    background: #1C5B92;
-    color: #fff;
-    font-size: 1rem;
-} */
 
-/* Material table sort arrow color */
+/* Table header sort arrow color */
 .mat-sort-header-arrow {
     color: #fff !important;
-    /* opacity: 1 !important; */
 }
+
+/* Hover effect on table rows */
+tr.mat-row:hover {
+    background-color: #9fc6e970;
+    cursor: pointer;
+}
+
+/* Table paginator */
+/* Table bottom paginator */
 .mat-paginator {
     background: #1C5B92;
     color: #fff;
     font-size: .8rem;
 }
+/* Number of results text color */
 .mat-select-value-text, .mat-select-arrow{
     color: #fff;
 }
 
-/* AppUsers list -> make non active AppUsers grey */
-.make-grey{
-    /* background-color: rgba(202, 202, 202, 0.281); */
-    background-color: rgba(202, 202, 202, 0.158);
-    color: rgb(172, 171, 171);
-    /* text-decoration: line-through; */
-}
+/* ********************** */
 
 /* Snackbar styling */
 .mat-snack-bar-container{
     color: black !important;
     background-color: white!important;
-    /* border-radius: 30px; */
     border: 1.5px solid #1c5b92 !important;
     text-align: center;
 }
 .mat-simple-snackbar-action {
     color: black;
 }
-
 .mat-simple-snackbar span {
     margin: auto;
     text-align: center;
     font-size: 18px;
 }
 
-/* Button custom colors */
+/* ********************** */
 
-/* Buttons CSS */
+/* Material buttons custom colors */
+
 /* Button color tag translates into mat- */
+/* color="button-save" will use mat-button-save class */
 .mat-button-save {
     background-color: #28A745;
     color: #fff;
-  }
-  .mat-button-save:hover {
+}
+.mat-button-save:hover {
     background-color: #05c732;
-  }
-  
-  .mat-button-delete {
+}
+
+.mat-button-delete {
     background-color: #DC3545;
     color: #fff;
-  }
-  .mat-button-delete:hover {
+}
+.mat-button-delete:hover {
     background-color: #ff0019;
-  }
+}
+.mat-button-new {
+    background-color: #1c5b92;
+    color: #fff;
+}
+.mat-button-new:hover {
+    background-color: #007bff;
+}
+
+/* ********************** */
+
+/* Close button used on all modal except interview */
+.mat-close-button{
+    float: right;
+    cursor: pointer;
+    padding-left: 10px;
+    font-size: 1.5rem;
+}
+
+/* ********************** */
 
 /* Material tabs custom style */
 .mat-tab-label-active {
@@ -111,9 +150,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .mat-ink-bar{
     background-color: #fff !important;
-    /* display:block; */
-    /* height: 8px !important; */
 }
+
+/* ********************** */
 
 /* Material expansion panel */
 /* Center description */
@@ -123,40 +162,40 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     max-width: 60%;
 }
 
+/* ********************** */
 
-
-/* Dialog class styling */
+/* Dialog class styling on interview view */
 /* Used on interview details modal */
 .dialog-big{
     height: 80%;
     position: relative!important;
-    /* max-width: 100vw;
-    width: 90vw; */
 }
 
 /* CSS for dialog close button */
+/* Used to fix a display error when using expansion panel and tables inside modal */
+
 .mat-close-button-interview{
     position: absolute;
     top: 10px;
     right: 10px;
-    /* padding: 5px; */
     line-height: 14px;
     min-width: auto;
 }
 
+/* ********************** */
+
 /* Styling for xng-breadcrumb */
 .xng-breadcrumb-root {
     padding: 8px 16px;
-    /* With inline-block, it doesn't go all the way through the whole with of the page */
-    /* display: inline-block; */
     border-radius: 0px;
     background-color: #ffffff59;
     border-bottom: 1px solid #1C5B92;
 }
-
 .xng-breadcrumb-separator {
     padding: 0 4px;
 }
+
+/* ********************** */
 
 /* Tooltip style */
 .mat-tooltip {

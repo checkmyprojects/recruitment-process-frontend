@@ -1,9 +1,10 @@
-<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
+<!-- Close button -->
 <span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
 
 <h4>Editar usuario: <span>{{editedUser.username}}</span></h4>
 
 <form [formGroup]="editUserForm" novalidate class="example-form">
+    
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Número de usuario (no editable)</mat-label>
         <input matInput disabled value={{editedUser.id}}>
@@ -21,7 +22,9 @@
             El nombre es obligatorio
         </mat-error>
     </mat-form-field>
+
     <br><br>
+
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{editedUser.email}} (input)="editedUser.email=$any($event.target).value">
@@ -32,6 +35,7 @@
             El email es obligatorio
         </mat-error>
     </mat-form-field>
+
     <br>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -49,27 +53,25 @@
         <mat-label>Contraseña (no editable)</mat-label>
         <input matInput disabled value="*****************">
     </mat-form-field>
+
 </form>
-<p>Roles *: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol) *</span></p>
+
+<p>Roles: <span class="redWarningText" *ngIf="!oneRoleSelected">(Se debe seleccionar al menos un rol)</span></p>
 <section class="example-section">
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Administrador" color="warn" [(ngModel)]="role.admin">Administrador</mat-checkbox>
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="People" color="primary" [(ngModel)]="role.people">People</mat-checkbox>
     <mat-checkbox (change)="rolesCheck()" class="example-margin" matTooltip="Entrevistador" color="accent" [(ngModel)]="role.interview">Entrevistador</mat-checkbox>
     <mat-checkbox (change)="rolesCheck()" class="example-margin business" matTooltip="Negocio" [(ngModel)]="role.business">Negocio</mat-checkbox>
 </section>
-<p class="toggleActive"><mat-slide-toggle matTooltip="Desactivar/Activar Usuario" [(ngModel)]="editedUser.active" color="primary"><span *ngIf="editedUser.active">El usuario está Activo</span><span *ngIf="!editedUser.active">El usuario está Desactivado</span> </mat-slide-toggle></p>
 
-<!-- <button class="btn btn-warning" (click)="logUser()"> Log USER</button>
-<button class="btn btn-primary" (click)="saveUser()"> Save USER</button> -->
+<br>
+
+<p class="toggleActive"><mat-slide-toggle matTooltip="Desactivar/Activar Usuario" [(ngModel)]="editedUser.active" color="primary"><span *ngIf="editedUser.active">El usuario está Activo</span><span *ngIf="!editedUser.active">El usuario está Desactivado</span> </mat-slide-toggle></p>
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-    <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
-    <!-- Use a function to close the dialog instead -->
-    <!-- Normal tooltip won't show if button is disabled. Show alternate tooltip when isThisMe is true and disable that tooltip when is false  -->
     <button mat-raised-button [disabled]="isThisMe" (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">
         <span matTooltip="No puedes eliminarte a ti mismo" [matTooltipDisabled]="isThisMe === false">Eliminar</span>
     </button>
     <button mat-raised-button [disabled]="!editUserForm.valid || !oneRoleSelected" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" mat-stroked-button="openSnackBar()" (click)="saveUser()">Guardar</button>
-    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>

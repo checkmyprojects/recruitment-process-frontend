@@ -35,7 +35,6 @@ export class BoardAdminComponent implements OnInit {
     this.sendDataToInterview.emit(row)
   }
 
-  // dataSource:AppUsers[] = [];
   constructor(public dialog: MatDialog, private userService: UserService, private adminService: AdminService, private Location:Location) {
     this.dataSource = new MatTableDataSource(this.getAllMyAppUsers());
   }
@@ -69,17 +68,13 @@ export class BoardAdminComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       if (result === false){
-        console.log("BORRAR TODO");
-        console.log(row);
-        // Delete user from angular array
+        // Delete user from angular table data array
         this.dataSource.data = this.dataSource.data.filter(item => item !== row);
 
         // API call to delete user by id
         this.deleteAppUserById(row.id.toString())
       }else if(result === true){
-        // It saves inside modal-user component
 
       }
     });
@@ -94,6 +89,7 @@ export class BoardAdminComponent implements OnInit {
     interviews: [],
     active: true
   }
+
   // Modal for new AppUser
   openDialogNewUser() {
     const dialogRef = this.dialog.open(ModalUserNewComponent, {
@@ -101,14 +97,10 @@ export class BoardAdminComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       if (result === false){
 
       }else if(result === true){
-        // It saves inside modal-user component
-        // console.log(this.dataSource.data)
-        // console.log(this.newAppUser);
-
+        // Saved on the modal and now added to table view
         this.dataSource.data = [...this.dataSource.data, this.newAppUser];
       }
     });
@@ -129,7 +121,6 @@ export class BoardAdminComponent implements OnInit {
     adminServiceQuery.subscribe({
       next: (response: AppUsers[]) => {
         data = response;
-        console.log(response)
         this.dataSource.data = response;
       },
       error: (error: HttpErrorResponse) => {
@@ -150,44 +141,16 @@ export class BoardAdminComponent implements OnInit {
     });
   }
 
-
-  public rolesToSingleLetter(roles: any[]){
-    // let string : String = '';
-    let rolesList: any[] = [];
-    roles.forEach((role)=>{
-      if (role.name === "ROLE_ADMIN"){
-        rolesList.push('A');
+  // Used to to check if this user roles list has the desired user role
+  // Used to display only the span with the apppropiate role or hide it if the user doesn't have it
+  isRoleIncluded(roles:any[], userRole:string){
+    let containsRole:boolean = false;
+    roles.forEach((role) => {
+      if(role.name === userRole){
+        containsRole = true;
       }
-      if (role.name === "ROLE_PEOPLE"){
-        rolesList.push('P');
-      }
-      if (role.name === "ROLE_BUSINESS"){
-        rolesList.push('N');
-      }
-      if (role.name === "ROLE_INTERVIEWER"){
-        rolesList.push('E');
-      }
-    });
-    return rolesList.sort().join(" ");
-  }
-
-  public rolesToShortNameLetter(roles: any[]){
-    let rolesList: any[] = [];
-    roles.forEach((role)=>{
-      if (role.name === "ROLE_ADMIN"){
-        rolesList.push('Administrador');
-      }
-      if (role.name === "ROLE_PEOPLE"){
-        rolesList.push('People');
-      }
-      if (role.name === "ROLE_BUSINESS"){
-        rolesList.push('Negocio');
-      }
-      if (role.name === "ROLE_INTERVIEWER"){
-        rolesList.push('Entrevistador');
-      }
-    });
-    return rolesList.sort().join(", ");
+    })
+    return containsRole;
   }
 
 }

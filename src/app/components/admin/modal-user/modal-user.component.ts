@@ -21,6 +21,8 @@ export class ModalUserComponent implements OnInit {
   editUserForm: FormGroup | any;
 
   isLoggedIn = false;
+
+  // used to prevent deletion of current logged user
   isThisMe: boolean = false;
 
   // Listener for enter key
@@ -39,17 +41,19 @@ export class ModalUserComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       if(user.id === this.data.user.id){
+        // prevent logged user to delete own account
         this.isThisMe = true;
       }
     }
+
     // Initialize checkboxes with the user roles
     this.getMyRoles(this.data.user.roles);
+
     // Initialize oneRoleSelected with correct value
     this.rolesCheck();
 
     // Initialize Form
     this.editUserForm = new FormGroup({
-
       name: new FormControl(this.data.user.name, [Validators.required, Validators.minLength(4),]),
       username: new FormControl(this.data.user.username, [Validators.required, Validators.minLength(4),]),
       email: new FormControl(this.data.user.email, [Validators.required, Validators.email,Validators.pattern(
@@ -94,10 +98,6 @@ export class ModalUserComponent implements OnInit {
   closeDialog(choice:boolean) {
     this.dialogRef.close(choice);
   }
-  // Console Log Current User (original, not edited)
-  logUser(){
-    console.log(this.data.user);
-  }
 
   confirmDelete() {
     // If user clic accept, it calls the function to close the dialog returning false, that will trigger the delete on parent component
@@ -110,7 +110,6 @@ export class ModalUserComponent implements OnInit {
   editedUser: AppUsers = JSON.parse(JSON.stringify(this.data.user));
 
   // Convert role from the checkboxes (true/false) and convert it into roles object
-  // TODO: Get roles from backend instead of being hardcoded
   getRolesFromCheckbox(role:any){
     let editedRoles: any = [];
     if(role.admin === true){
@@ -148,11 +147,8 @@ export class ModalUserComponent implements OnInit {
     }
     this.adminService.updateAppUsers(this.editedUser).subscribe({
       next: response => {
-        // If I change the whole object, it doesn't get updated in angular view
-        // this.data.user = data;
-
         // Change angular user data to the new one received from api
-        // TODO: Make sure all data are OK
+
         this.openSnackBar('¡Usuario editado con éxito!', '');
         this.data.user.id = response.id;
         this.data.user.name = response.name;
