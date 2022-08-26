@@ -10,7 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
 import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candidate-new.component';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-list-candidates',
   templateUrl: './list-candidates.component.html',
@@ -133,5 +133,17 @@ export class ListCandidatesComponent implements OnInit {
         alert(error.message);
       }
     });
+  }
+
+  Candidate = [];
+  name = 'ExcelSheet.xlsx';
+  exportToExcel(): void {
+    let element = document.getElementById('candidate-tble');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+
+    XLSX.writeFile(book, this.name);
   }
 }

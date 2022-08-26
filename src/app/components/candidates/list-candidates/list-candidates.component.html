@@ -10,7 +10,7 @@
   </div>
 
 </div>
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" id="candidate-tble">
     <!-- Sort by column "name" and "asc" order by default -->
     <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
 
@@ -76,8 +76,6 @@
       </tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
-
   </div>
   <br>
-  <br>
-  <br>
+  <button (click)="exportToExcel()">Export to Excel</button>
