@@ -27,7 +27,6 @@ import { ModalCandidatesComponent } from './components/candidates/modal-candidat
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { InterviewComponent } from './components/interview/interview/interview.component';
 import { ListSelectionComponent } from './components/selection/list-selection/list-selection.component';
 import { SelectionComponent } from './components/selection/selection/selection.component';
 import { LoginComponent } from './components/user/login/login.component';
@@ -68,7 +67,6 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     BoardPeopleComponent,
     SelectionComponent,
     ListSelectionComponent,
-    InterviewComponent,
     ModalUserComponent,
     ModalCandidatesComponent,
     ModalUserNewComponent,

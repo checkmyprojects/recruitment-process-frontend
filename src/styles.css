@@ -67,11 +67,6 @@ tr.mat-row:hover {
     cursor: pointer;
 }
 
-thead *{
-    background-color: #1C5B92;
-    color: white;
-}
-
 /* Table paginator */
 /* Table bottom paginator */
 .mat-paginator {

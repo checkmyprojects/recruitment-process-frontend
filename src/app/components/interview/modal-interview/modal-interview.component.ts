@@ -15,40 +15,32 @@ export class ModalInterviewComponent implements OnInit {
 
   newInterviewView = true;
 
+  // get data from candidate list component
   editInterviewCandidate: any = this.data.interview.candidate;
   getCandidate($event: any) {this.editInterviewCandidate = $event;}
 
+  // get data from selection list component
   editInterviewSelection: any = this.data.interview.selection;
   getSelection($event: any) {this.editInterviewSelection = $event;}
 
+  // get data from appuser list component
   editInterviewAppUser: any = this.data.interview.interviewer;
   getInterviewer($event: any) {this.editInterviewAppUser = $event;}
 
   interviewDate: Date = new Date(this.data.interview.interview_date);
 
-  // Date picker minimum date is now
+  // Date picker min date is now
   minDate = new Date();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {interview: Interview}, private interviewService: InterviewService, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<ModalInterviewComponent>) { }
 
-  ngOnInit(): void {
-    // this.dialogRef.updateSize('80%', '80%');
-  }
+  ngOnInit(): void { }
 
-  scroll(el: HTMLElement, panel: MatExpansionPanel) {
-    panel.open();
-
-    // small delay to make time for open panel animation to end
-    setTimeout(() => {
-      el.scrollIntoView();
-    }, 130);
-  }
-
+  // Leave feedback function
   feedback(feedback: string, id: number){
     this.interviewService.feedbackInterview(feedback, id).subscribe({
       next: (response: any) => {
         this.openSnackBar('Feedback guardado', '');
-        console.log(response);
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
@@ -57,14 +49,18 @@ export class ModalInterviewComponent implements OnInit {
     });
   }
 
+  // Edit interview
   editInterview(){
 
+    // Format date to remove timezone and make it compatible with the spring boot backend
     this.data.interview.interview_date
     let isoDateTime = new Date(this.interviewDate.getTime() - (this.interviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.interviewDate.toISOString().length - 1)
 
     this.interviewService.editInterview(isoDateTime, this.data.interview.id, this.editInterviewCandidate.id, this.editInterviewAppUser.id, this.editInterviewSelection.id).subscribe({
       next: (response: any) => {
         this.openSnackBar('¡Entrevista editada!', '');
+
+        // Update table row with data from the backend
         this.data.interview.interview_date = response.interview_date;
         this.data.interview.id = response.id;
         this.data.interview.candidate = response.candidate;
@@ -72,7 +68,6 @@ export class ModalInterviewComponent implements OnInit {
         this.data.interview.interviewer = response.interviewer;
         this.data.interview.feedback = response.feedback;
         this.data.interview.creation_date = response.creation_date;
-        console.log(response);
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
@@ -87,12 +82,14 @@ export class ModalInterviewComponent implements OnInit {
       this.closeDialog(false);
     }
   }
+
   // Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
-    // Function to close the dialog. It can return true or false
+  // Function to close the dialog. It can return true or false
   closeDialog(choice:boolean) {
       this.dialogRef.close(choice);
   }
 
+  // Snackbar config
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 

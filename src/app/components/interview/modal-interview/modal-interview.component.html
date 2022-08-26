@@ -2,6 +2,8 @@
 
 <!-- Inserting content inside of a mat-dialog-content makes dialog scrollable -->
 <mat-tab-group mat-align-tabs="center">
+
+    <!-- Tab Interview details -->
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon>remove_red_eye</mat-icon>&nbsp;&nbsp;
@@ -50,6 +52,8 @@
         </div>
         <br>
     </mat-tab>
+    <!-- Tab End -->
+
 
     <!-- Edit interview tab -->
     <mat-tab> 
@@ -59,13 +63,13 @@
         </ng-template>
         
         <div class="new-interview mat-elevation-z2">
+
+            <!-- Candidate section -->
             <div>
                 <h5>Candidato</h5>
-                <!-- <mat-form-field class="example-full-width input-disabled" appearance="fill">
-                <mat-label>Número</mat-label>
-                <input matInput disabled value={{editInterviewCandidate?.id}}>
-            </mat-form-field> -->
+
                 <div class="flexme">
+
                     <mat-form-field matTooltip="Estado del candidato" class="example-full-width input-disabled" appearance="fill">
                         <mat-label>Estado</mat-label>
                         <input matInput disabled value={{editInterviewCandidate?.state}}>
@@ -82,6 +86,7 @@
                     </mat-form-field>
                     
                 </div>
+                <!-- Candidates Expansion panel -->
                 <div #candidates>
                     <mat-expansion-panel #candidatesPanel>
                         <mat-expansion-panel-header>
@@ -95,7 +100,10 @@
                     </mat-expansion-panel>
                 </div>
             </div>
+
             <br><br>
+
+            <!-- Selection Process section -->
             <div>
                 <h5>Proceso de selección</h5>
                 <div class="flexme">
@@ -115,6 +123,8 @@
                     </mat-form-field>
                     
                 </div>
+
+                <!-- Selection Process expansion panel -->
                 <div #selections>
                     <mat-expansion-panel #selectionsPanel>
                         <mat-expansion-panel-header>
@@ -128,29 +138,32 @@
                     </mat-expansion-panel>
                 </div>
             </div>
+
             <br><br>
+
+            <!-- Interviewer section -->
             <div>
+
                 <h5>Entrevistador</h5>
-                <!-- <mat-form-field class="example-full-width input-disabled" appearance="fill">
-                <mat-label>Número</mat-label>
-                <input matInput disabled value={{editInterviewAppUser?.id}}>
-            </mat-form-field> -->
+
                 <div class="flexme">
+
+                    <!-- Interview Datepick -->
                     <mat-form-field class="not-grow" matTooltip="Fecha de la entrevista">
                         <input matInput [ngxMatDatetimePicker]="picker" [min]="minDate" placeholder="Elige un fecha y hora"
                             [(ngModel)]="interviewDate">
                         <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
                         <ngx-mat-datetime-picker #picker>
                             <ng-template>
-                                <!-- <mat-icon>star</mat-icon> -->
                                 <div class="flexMe">
-
                                     <mat-icon>check_circle_outline</mat-icon>
                                     <span>&nbsp;Aceptar</span>
                                 </div>
                             </ng-template>
                         </ngx-mat-datetime-picker>
                     </mat-form-field>
+
+                    <!-- Interviewer section -->
                     <mat-form-field matTooltip="Nombre del entrevistador" class="example-full-width input-disabled" appearance="fill">
                         <mat-label>Nombre</mat-label>
                         <input matInput disabled value={{editInterviewAppUser.name}}>
@@ -162,6 +175,9 @@
                     </mat-form-field>
                     
                 </div>
+
+                <!-- Interviewer Expansion panel -->
+                <!-- Only shows AppUsers with Interviewer role -->
                 <div #interviewer>
                     <mat-expansion-panel #interviewerPanel>
                         <mat-expansion-panel-header>
@@ -173,8 +189,11 @@
                         <app-board-admin [newInterviewView]="true" (sendDataToInterview)="getInterviewer($event)"></app-board-admin>
                     </mat-expansion-panel>
                 </div>
+
             </div>
+
             <br><br>
+            
             <div class="align-to-end">
                 <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
                 <button mat-raised-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
@@ -182,4 +201,6 @@
             </div>
         </div>
     </mat-tab>
+    <!-- Tab End -->
+    
 </mat-tab-group>

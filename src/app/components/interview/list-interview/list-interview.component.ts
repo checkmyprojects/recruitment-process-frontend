@@ -31,8 +31,7 @@ export class ListInterviewComponent implements OnInit {
   constructor(private interviewService: InterviewService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.getAllInterviews());
 
-    // Override filterPredicate with a custome one to allow
-    // searching on nested properties
+    // Override filterPredicate with a custom one to allow searching on nested properties
     this.dataSource.filterPredicate = (data, filter: string)  => {
       const accumulator = (currentTerm:any, key:any) => {
         return this.nestedFilterCheck(currentTerm, data, key);
@@ -70,7 +69,7 @@ export class ListInterviewComponent implements OnInit {
       }
     });
   }
-//Custom filter for nested properties to work
+  //Custom filter for nested properties to work
   getProperty = (obj: any, path:any) => (
     path.split('.').reduce((o: any, p: any) => o && o[p], obj)
   )
@@ -105,9 +104,7 @@ export class ListInterviewComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    console.log(this.dataSource);
-  }
+  ngOnInit(): void { }
 
   public getAllInterviews(): Interview[] {
     let data: Interview[] = [];

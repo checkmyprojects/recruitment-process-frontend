@@ -12,6 +12,7 @@ import { InterviewService } from 'src/app/services/interview.service';
 })
 export class NewInterviewComponent implements OnInit {
 
+  // send data to parent component
   @Output() sendDataToInterview = new EventEmitter();
   sendNewDataToInterviewList(data: any){
     this.sendDataToInterview.emit(data)
@@ -19,12 +20,15 @@ export class NewInterviewComponent implements OnInit {
 
   newInterviewView = true;
 
+  // get data from candidate lsit component
   newInterviewCandidate: any | undefined;
   getCandidate($event: any) {this.newInterviewCandidate = $event;}
 
+  // get data from selection lsit component
   newInterviewSelection: any | undefined;
   getSelection($event: any) {this.newInterviewSelection = $event;}
 
+  // get data from interviewer lsit component
   newInterviewAppUser: any | undefined;
   getInterviewer($event: any) {this.newInterviewAppUser = $event;}
 
@@ -37,14 +41,6 @@ export class NewInterviewComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  scroll(el: HTMLElement, panel: MatExpansionPanel) {
-    panel.open();
-
-    // small delay to make time for open panel animation to end
-    setTimeout(() => {
-      el.scrollIntoView();
-    }, 130);
-  }
   createInterview(){
 
     if(this.newInterviewDate && this.newInterviewAppUser && this.newInterviewCandidate && this.newInterviewSelection){
@@ -55,13 +51,15 @@ export class NewInterviewComponent implements OnInit {
       this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
         next: (response: any) => {
           this.openSnackBar('¡Entrevista creada con éxito!', '');
+
+          // reset form data
           this.newInterviewCandidate = undefined;
           this.newInterviewSelection = undefined;
           this.newInterviewAppUser = undefined;
           this.newInterviewDate = undefined;
-          console.log(response);
-          this.sendNewDataToInterviewList(response);
 
+          // send backend data to parent component to insert it into the table
+          this.sendNewDataToInterviewList(response);
         },
         error: (error: HttpErrorResponse) => {
           alert(error.message);
@@ -71,6 +69,7 @@ export class NewInterviewComponent implements OnInit {
     }
   }
 
+  // Snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 

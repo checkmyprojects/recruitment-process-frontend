@@ -1,6 +1,4 @@
-<!-- <p>Home > Interview > New Interview</p>
-
-<h2>Crear nueva entrevista</h2> -->
+<!-- mat-elevation-z2 is a material class to apply the shadow, border radius and card aspect -->
 <div class="new-interview mat-elevation-z2">
     <div>
         <h5>Candidato</h5>
@@ -20,6 +18,7 @@
                 <input matInput disabled value={{newInterviewCandidate?.surname}}>
             </mat-form-field>
         </div>
+        <!-- Candidates List component Expansion panel-->
         <div #candidates>
             <mat-expansion-panel #candidatesPanel>
                 <mat-expansion-panel-header>
@@ -32,7 +31,9 @@
             </mat-expansion-panel>
         </div>
     </div>
+
     <br><br>
+
     <div>
         <h5>Proceso de selección</h5>
         <div class="flexme">
@@ -51,6 +52,7 @@
                 <input matInput disabled value={{newInterviewSelection?.requirements}}>
             </mat-form-field>
         </div>
+        <!-- Selections List component Expansion panel-->
         <div #selections>
             <mat-expansion-panel #selectionsPanel>
                 <mat-expansion-panel-header>
@@ -63,7 +65,9 @@
             </mat-expansion-panel>
         </div>
     </div>
+
     <br><br>
+
     <div>
         <h5>Entrevistador</h5>
         <div class="flexme">
@@ -73,9 +77,7 @@
                 <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
                 <ngx-mat-datetime-picker #picker>
                     <ng-template>
-                        <!-- <mat-icon>star</mat-icon> -->
                         <div class="flexMe">
-
                             <mat-icon>check_circle_outline</mat-icon>
                             <span>&nbsp;Aceptar</span>
                         </div>
@@ -92,6 +94,7 @@
                 <input matInput disabled value={{newInterviewAppUser?.email}}>
             </mat-form-field>
         </div>
+        <!-- Interviewers List component Expansion panel-->
         <div #interviewer>
             <mat-expansion-panel #interviewerPanel>
                 <mat-expansion-panel-header>
@@ -105,10 +108,11 @@
         </div>
     </div>
 
-
     <br>
     <div class="align-to-end">
+        <!-- Show warning text if any field is missing -->
         <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection">Todos los campos tienen que ser rellenados para crear la entrevista *</span>
+        <!-- Disable create button if any field is missing -->
         <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-save">Crear Entrevista </button>
     </div>
 

@@ -78,7 +78,7 @@
             </p>
                 <button type="submit" mat-raised-button>Entrar</button>
                 <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
-                    Login failed: {{ errorMessage }}
+                    Error, compruebe su usuario y contraseña
                 </div>
         </form>
         <div class="alert alert-success" *ngIf="isLoggedIn">

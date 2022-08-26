@@ -1,3 +1,4 @@
+<!-- Create interview expansion panel -->
 <mat-expansion-panel #interviewPanel>
   <mat-expansion-panel-header>
       <mat-panel-title> Crear Entrevista </mat-panel-title>
@@ -8,6 +9,7 @@
   <app-new-interview (sendDataToInterview)="getNewInterview($event)"></app-new-interview>
 </mat-expansion-panel>
 
+<!-- Interview list table -->
 <div class="searchTableFlex">
   <div class="searchBar">
     <mat-form-field class="searchBar" appearance="standard">
@@ -28,44 +30,42 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
         <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" > {{row.id}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- Candidate Name Column -->
       <ng-container matColumnDef="candidate.name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre del Candidato </th>
-        <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
-        <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
         <td mat-cell matTooltip="Nombre del candidato" *matCellDef="let row" > {{row.candidate.name}} {{row.candidate.surname}} </td>
       </ng-container>
-      <!-- Progress Column -->
+      <!-- Interviewer Name Column -->
       <ng-container matColumnDef="interviewer.name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Entrevistador </th>
         <td mat-cell matTooltip="Entrevistador" *matCellDef="let row" > {{row.interviewer.name}} </td>
       </ng-container>
-      <!-- Name Column -->
+      <!-- Selection process Name Column -->
       <ng-container matColumnDef="selection.name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Proceso </th>
         <td mat-cell matTooltip="Proceso" *matCellDef="let row"> {{row.selection.name}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- Feedback Column -->
       <ng-container matColumnDef="feedback">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Notas </th>
         <td mat-cell matTooltip="Notas" *matCellDef="let row" > {{row.feedback}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- Interview date Column -->
       <ng-container matColumnDef="interview_date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha  </th>
         <td mat-cell matTooltip="Fecha" *matCellDef="let row" > {{row.interview_date}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- Skills Column -->
       <ng-container matColumnDef="skills">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Habilidades </th>
         <td mat-cell matTooltip="Habilidades" *matCellDef="let row" > {{row.skills}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- Studies Column -->
       <ng-container matColumnDef="studies">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estudios </th>
         <td mat-cell matTooltip="Estudios" *matCellDef="let row" > {{row.studies}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- Experience Column -->
       <ng-container matColumnDef="experience">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Exp </th>
         <td mat-cell matTooltip="Experiencia" *matCellDef="let row" > {{row.experience}} </td>

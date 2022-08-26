@@ -74,7 +74,7 @@ export class ModalCandidatesComponent implements OnInit {
       this.closeDialog(false);
     }
   }
-// Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
+  // Needs to add public dialogRef: MatDialogRef<ModalUserComponent> into the constructor
   // Function to close the dialog. It can return true or false
   closeDialog(choice:boolean) {
     this.dialogRef.close(choice);

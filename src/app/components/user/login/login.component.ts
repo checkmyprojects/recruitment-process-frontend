@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
       this.loggedUser = this.tokenStorage.getUser().username;
-      this.router.navigate(['/dashboard']);
+      this.redirectToUserRolePage();
     }
   }
 
@@ -40,10 +40,11 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        window.location.reload();
+        this.redirectToUserRolePage();
       },
       error: err => {
-        this.errorMessage = err.error.message;
+        // this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     });
@@ -51,6 +52,32 @@ export class LoginComponent implements OnInit {
   
   reloadPage(): void {
     window.location.reload();
+    this.redirectToUserRolePage()
+  }
+
+  redirectToUserRolePage(){
+
+    const adminRole: string = 'ROLE_ADMIN';
+    const peopleRole: string = 'ROLE_PEOPLE';
+    const interviewerRole: string = 'ROLE_INTERVIEWER';
+    const businessRole: string = 'ROLE_BUSINESS';
+
+    const userRoles = this.tokenStorage.getUser().roles;
+
+    if(userRoles.includes(adminRole)){
+      this.router.navigate(['/admin']);
+    }
+    if(userRoles.includes(peopleRole)){
+      this.router.navigate(['/selection']);
+    }
+    if(userRoles.includes(interviewerRole)){
+      this.router.navigate(['/interview']);
+    }
+    if(userRoles.includes(businessRole)){
+      this.router.navigate(['/statistics']);
+    }
+
+
   }
 
 }

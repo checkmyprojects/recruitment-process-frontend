@@ -6,15 +6,15 @@
 <form [formGroup]="editCandidateForm" novalidate class="form">
 
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Estado</mat-label>
-        <input placeholder="Estado" formControlName="state" matInput value={{editedCandidate.state}} (input)="editedCandidate.state=$any($event.target).value">
-        <mat-error *ngIf="!editCandidateForm.get('state')?.errors?.required">
-          El estado debe tener al menos 4 caracteres
-        </mat-error>
-        <mat-error *ngIf="editCandidateForm.get('state')?.invalid && (editCandidateForm.get('state')?.dirty || editCandidateForm.get('state')?.touched) && editCandidateForm.get('state')?.errors?.required">
-          El estado es obligatorio
-        </mat-error>
-      </mat-form-field>
+      <mat-label>Estado</mat-label>
+      <input placeholder="Estado" formControlName="state" matInput value={{editedCandidate.state}} (input)="editedCandidate.state=$any($event.target).value">
+      <mat-error *ngIf="!editCandidateForm.get('state')?.errors?.required">
+        El estado debe tener al menos 4 caracteres
+      </mat-error>
+      <mat-error *ngIf="editCandidateForm.get('state')?.invalid && (editCandidateForm.get('state')?.dirty || editCandidateForm.get('state')?.touched) && editCandidateForm.get('state')?.errors?.required">
+        El estado es obligatorio
+      </mat-error>
+    </mat-form-field>
 
     <div class="flex">
 

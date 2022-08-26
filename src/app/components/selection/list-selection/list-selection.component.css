@@ -81,6 +81,7 @@
 }
 .mat-column-project_id {
     width: 5%;
+    text-align: center;
 }
 .mat-column-create {
     text-align: center;

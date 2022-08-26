@@ -1,39 +1,13 @@
+/* general component style */
 .new-interview{
     background-color: white;
     border-radius: 5px;
     padding: 20px;
 }
 
-.input-disabled input{
-    color: black;
-}
-
-.flexMe{
-    display: flex;
-    align-items: center;
-}
-.mat-button-new {
-    background-color: #1c5b92;
-    color: #fff;
-}
-.mat-button-new:hover {
-    background-color: #007bff;
-}
-::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button{
-    background-color: #28A745;
-    color: #fff;
-}
-
-::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button:hover {
-    background-color: #05c732;
-}
 .flexme{
     display: flex;
     justify-content: center;
-}
-mat-form-field{
-    /* flex-grow: 1; */
-    width: 33%;
 }
 .not-grow{
     /* width: 30%; */
@@ -51,7 +25,6 @@ h5{
     float: left;
 }
 
-
 .align-to-end{
     text-align: right;
 }
@@ -66,19 +39,3 @@ h5{
 .mat-expansion-panel-header{
     background-color: #9fc6e96e;
 }
-/* 
-::ng-deep .mat-snack-bar-container{
-  color: black !important;
-  background-color: white!important;
-  border: 1.5px solid #1c5b92 !important;
-  text-align: center;
-}
-::ng-deep .mat-simple-snackbar-action {
-  color: black;
-}
-
-::ng-deep .mat-simple-snackbar span {
-  margin: auto;
-  text-align: center;
-  font-size: 18px;
-} */
