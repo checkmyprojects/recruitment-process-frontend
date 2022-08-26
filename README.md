@@ -1,4 +1,6 @@
-# 📋 Recruitment Process 📋
+<p align="center">
+<img src="src/assets/img/Logo_Team_Project.png"/>
+</p>
 
 This is our app to manage internal recruitment processes for NTT DATA Spain and Affiliates. 
 
@@ -71,18 +73,18 @@ In this project we have worked with agile development through Scrum and Kanban, 
 ![Trello](src/assets/screenshots/trello.png)
 
 <!-- Color Reference -->
-### :art: Color Reference
+<!-- ### :art: Color Reference
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#1C5B92](https://via.placeholder.com/10/1C5B92?text=+) #1C5B92 |
-| Secondary Color | ![#B9D2E8](https://via.placeholder.com/10/B9D2E8?text=+) #B9D2E8 |
-| Disable Color | ![#E7E9E8](https://via.placeholder.com/10/E7E9E8?text=+) #E7E9E8 |
-| Text Color | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
-| Button | ![#F5B655](https://via.placeholder.com/10/F5B655?text=+) #F5B655 |
-| Save Button| ![#28A745](https://via.placeholder.com/10/28A745?text=+) #28A745 |
-| Delete Button | ![#ff0019](https://via.placeholder.com/10/ff0019?text=+) #ff0019 |
-| matTooltip & snackBar | ![#fff](https://via.placeholder.com/10/fff?text=+) #fff |
+| Primary Color | ![#1C5B92](https://via.placeholder.com/10/1C5B92?text=+) |
+| Secondary Color | ![#B9D2E8](https://via.placeholder.com/10/B9D2E8?text=+) |
+| Disable Color | ![#E7E9E8](https://via.placeholder.com/10/E7E9E8?text=+) |
+| Text Color | ![#000000](https://via.placeholder.com/10/000000?text=+) |
+| Button | ![#F5B655](https://via.placeholder.com/10/F5B655?text=+) |
+| Save Button| ![#28A745](https://via.placeholder.com/10/28A745?text=+) |
+| Delete Button | ![#ff0019](https://via.placeholder.com/10/ff0019?text=+) |
+| matTooltip & snackBar | ![#fff](https://via.placeholder.com/10/fff?text=+) | -->
 
 :checkered_flag:  Team
 ---
