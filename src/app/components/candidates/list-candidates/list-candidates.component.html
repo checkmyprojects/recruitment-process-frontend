@@ -63,7 +63,7 @@
       </ng-container>
       <ng-container matColumnDef="pdf">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Pdf </th>
-        <td mat-cell matTooltip="Pdf" *matCellDef="let row" > <button  mat-mini-fab color="button-delete" (click)="printDoc(row)" aria-label="Añadir">
+        <td mat-cell matTooltip="Exportar a Pdf" *matCellDef="let row" > <button  mat-mini-fab color="button-delete" (click)="printDoc(row)" aria-label="Añadir">
           <mat-icon>picture_as_pdf</mat-icon></button></td>
       </ng-container>
       <ng-container matColumnDef="create" *ngIf="newInterviewView === true">
@@ -84,7 +84,7 @@
   </div>
   <br>
   <div class="align-right">
-    <button mat-raised-button color="button-save" matTooltip="Exportar Excel" (click)="exportToExcel()">Exportar Excel</button>
+    <button mat-raised-button color="button-save" matTooltip="Exportar a Excel" (click)="exportToExcel()">Exportar a Excel</button>
   </div>
   <br>
   <br>

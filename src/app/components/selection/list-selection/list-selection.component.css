@@ -137,7 +137,7 @@ tr.mat-row:hover {
     /* background: linear-gradient(
         to bottom,
         white 0%,
-        white 50%,                                                                 
+        white 50%,
         rgb(0, 255, 64) 50%,
         rgb(0, 255, 64) 100%
     ); */
@@ -157,4 +157,11 @@ tr.mat-row:hover {
 .selection-end{
     background-color: rgba(202, 202, 202, 0.158);
     color: rgb(172, 171, 171);
+}
+.align-right{
+  text-align: right;
+}
+.flex-spread{
+  display: flex;
+  justify-content: space-between;
 }
