@@ -23,10 +23,13 @@ export class HeaderComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    // check if user is logged in
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
+      // get user roles
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+      // show/hide parts of the navbar if user does not have the required roles
       if(this.roles.includes('ROLE_ADMIN')){
         this.showAdminBoard = true;
       }if(this.roles.includes('ROLE_PEOPLE') || this.roles.includes('ROLE_ADMIN')){

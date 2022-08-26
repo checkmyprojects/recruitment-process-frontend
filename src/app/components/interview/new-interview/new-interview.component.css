@@ -39,3 +39,8 @@ h5{
 .mat-expansion-panel-header{
     background-color: #9fc6e96e;
 }
+
+/* input disabled text color */
+.mat-input-element{
+    color: black;
+}
