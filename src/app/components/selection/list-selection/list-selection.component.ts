@@ -179,7 +179,7 @@ export class ListSelectionComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+      docResult.save(`Procesos ${new Date().toISOString()}.pdf`);
     });
 
   }
