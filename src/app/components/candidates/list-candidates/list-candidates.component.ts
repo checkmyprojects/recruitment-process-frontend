@@ -14,7 +14,7 @@ import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-list-candidates',
   templateUrl: './list-candidates.component.html',
@@ -138,6 +138,7 @@ export class ListCandidatesComponent implements OnInit {
       }
     });
   }
+
   printDoc(candidate: any){
 
     let dd = { content: [
@@ -172,5 +173,29 @@ export class ListCandidatesComponent implements OnInit {
 };
 
     pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
+  }
+  Candidate = [];
+  name = 'ExcelSheet.xlsx';
+  exportToExcel(): void {
+
+    let element = document.getElementById('candidate-table');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+     delete(worksheet['I1']);
+     delete(worksheet['I2']);
+     delete(worksheet['I3']);
+     delete(worksheet['I4']);
+     delete(worksheet['I5']);
+     delete(worksheet['I6']);
+     delete(worksheet['I7']);
+     delete(worksheet['I8']);
+     delete(worksheet['I9']);
+     delete(worksheet['I10']);
+     delete(worksheet['I11']);
+
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+
+    XLSX.writeFile(book, this.name);
   }
 }
