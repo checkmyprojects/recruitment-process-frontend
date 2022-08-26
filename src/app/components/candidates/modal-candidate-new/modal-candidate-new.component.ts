@@ -16,8 +16,7 @@ export class ModalCandidateNewComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {candidate: Candidate}, private candidateService: CandidatesService, public dialogRef: MatDialogRef<ModalCandidateNewComponent>, public snackBar: MatSnackBar) { }
 
-  emailFormControl = new FormControl(this.data.candidate.email, [Validators.required, Validators.email]);
-
+  // New candidate to send back when creating one
   newCandidate: any = {
     name: "",
     surname: "",
@@ -32,6 +31,7 @@ export class ModalCandidateNewComponent implements OnInit {
   newCandidateForm: FormGroup | any;
 
   ngOnInit(): void {
+    // Initialize form
     this.newCandidateForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(4),]),
       surname: new FormControl('', [Validators.required, Validators.minLength(4),]),
@@ -52,6 +52,8 @@ export class ModalCandidateNewComponent implements OnInit {
     this.candidateService.registerNewCandidate(this.newCandidate).subscribe({
       next: response => {
         this.openSnackBar('¡Candidato creado con éxito!', '');
+
+        // Take response from backend and insert it into the table
         this.data.candidate.id = response.id;
         this.data.candidate.state = response.state;
         this.data.candidate.name = response.name;
@@ -71,6 +73,8 @@ export class ModalCandidateNewComponent implements OnInit {
       }
    });
   }
+
+  // Snackbar config
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 

@@ -15,13 +15,13 @@ export class ModalCandidatesComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {candidate: Candidate}, private candidateService: CandidatesService, public dialogRef: MatDialogRef<ModalCandidatesComponent>, private _snackBar: MatSnackBar) { }
 
-  emailFormControl = new FormControl(this.data.candidate.email, [Validators.required, Validators.email]);
-
+  // Create a new user from the one received from the parent to edit on that new one instead of the original on the table
   editedCandidate: Candidate = JSON.parse(JSON.stringify(this.data.candidate));
 
   editCandidateForm: FormGroup | any;
 
   ngOnInit(): void {
+    // Initialize form
     this.editCandidateForm = new FormGroup({
       id: new FormControl(this.data.candidate.id, [Validators.required]),
       name: new FormControl(this.data.candidate.name, [Validators.required, Validators.minLength(4),]),
@@ -34,13 +34,13 @@ export class ModalCandidatesComponent implements OnInit {
       location: new FormControl(this.data.candidate.location, [Validators.required, Validators.minLength(4),]),
       experience: new FormControl(this.data.candidate.experience, [Validators.required,]),
       state: new FormControl(this.data.candidate.state, [Validators.required, Validators.minLength(4),]),
-      hired: new FormControl(this.data.candidate.hired, []),
+      hired: new FormControl(this.data.candidate.hired, []), //Hired does not need any validation
       notes: new FormControl(this.data.candidate.notes, [Validators.minLength(4),]),
     });
   }
 
   saveCandidate(){
-    //fix to remove the interview part of the candidate so that the backend does not give problems. You have to create an empty user or from scratch instead of copying the other one.
+    //fix to remove the interview part of the candidate so that the backend does not give problems. You have to create an empty user from scratch instead of copying the other one.
     this.editedCandidate.interviews = [];
     this.editedCandidate.hired = this.editCandidateForm.controls.hired.value;
 
@@ -48,6 +48,8 @@ export class ModalCandidatesComponent implements OnInit {
     this.candidateService.updateCandidate(this.editCandidateForm.value).subscribe({
       next: response => {
         this.openSnackBar('¡Candidato editado con éxito!', '');
+
+        // Edit table user
         this.data.candidate.id = response.id;
         this.data.candidate.state = response.state;
         this.data.candidate.name = response.name;

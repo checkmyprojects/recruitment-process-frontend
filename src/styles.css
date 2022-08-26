@@ -31,9 +31,6 @@ footer {
 /* ********************** */
 /* Material table styling */
 
-tbody{
-    border-top: 2px solid #9FC6E9!important;
-}
 table{
     width: 100%;
 }
@@ -70,12 +67,21 @@ tr.mat-row:hover {
     cursor: pointer;
 }
 
+thead *{
+    background-color: #1C5B92;
+    color: white;
+}
+
 /* Table paginator */
 /* Table bottom paginator */
 .mat-paginator {
     background: #1C5B92;
     color: #fff;
     font-size: .8rem;
+    height: 50px;
+}
+.mat-paginator-container {
+    max-height: 50px;
 }
 /* Number of results text color */
 .mat-select-value-text, .mat-select-arrow{

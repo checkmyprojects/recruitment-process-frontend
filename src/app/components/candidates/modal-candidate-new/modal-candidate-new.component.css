@@ -1,7 +1,7 @@
-.name{
+.half-width-margin-right{
   margin-right: 7px;
 }
-.example-form {
+.form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
@@ -9,29 +9,12 @@
 .full-width {
   width: 100%;
 }
-.example-margin{
+.half-width{
+  width: 50%;
+}
+.flex{
+  display: flex;
+}
+.margin{
   margin: 0 10px;
-}
-.mat-close-button{
-  float: right;
-  cursor: pointer;
-  padding-left: 10px;
-  font-size: 1.5rem;
-}
-/* Buttons CSS */
-/* Button color tag translates into mat- */
-.mat-button-save {
-  background-color: #28A745;
-  color: #fff;
-}
-.mat-button-save:hover {
-  background-color: #05c732;
-}
-
-.mat-button-delete {
-  background-color: #DC3545;
-  color: #fff;
-}
-.mat-button-delete:hover {
-  background-color: #ff0019;
 }

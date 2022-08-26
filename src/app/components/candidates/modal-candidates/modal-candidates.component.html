@@ -1,9 +1,10 @@
-<!-- <button mat-button mat-dialog-close color="close-button"><mat-icon>close</mat-icon></button> -->
+<!-- Close button -->
 <span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
 
 <h4>Editar candidato: <span>{{editedCandidate.name}} {{editedCandidate.surname}}</span></h4>
 
-<form [formGroup]="editCandidateForm" novalidate class="example-form">
+<form [formGroup]="editCandidateForm" novalidate class="form">
+
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Estado</mat-label>
         <input placeholder="Estado" formControlName="state" matInput value={{editedCandidate.state}} (input)="editedCandidate.state=$any($event.target).value">
@@ -14,8 +15,10 @@
           El estado es obligatorio
         </mat-error>
       </mat-form-field>
-    <div>
-      <mat-form-field class="name" appearance="fill">
+
+    <div class="flex">
+
+      <mat-form-field class="half-width-margin-right" appearance="fill">
         <mat-label>Nombre</mat-label>
         <input placeholder="Nombre" formControlName="name" matInput #message maxlength="256" value={{editedCandidate.name}} (input)="editedCandidate.name=$any($event.target).value" >
         <mat-hint align="start"><strong>Nombre</strong> </mat-hint>
@@ -25,8 +28,9 @@
         </mat-error>
         <mat-error *ngIf="editCandidateForm.get('name')?.invalid && (editCandidateForm.get('name')?.dirty || editCandidateForm.get('name')?.touched) && editCandidateForm.get('name')?.errors?.required">
           El nombre es obligatorio
-       </mat-error>
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
         <input placeholder="Apellido" formControlName="surname" matInput #message maxlength="256" value={{editedCandidate.surname}} (input)="editedCandidate.surname=$any($event.target).value" >
@@ -37,10 +41,13 @@
         </mat-error>
         <mat-error *ngIf="editCandidateForm.get('surname')?.invalid && (editCandidateForm.get('surname')?.dirty || editCandidateForm.get('surname')?.touched) && editCandidateForm.get('surname')?.errors?.required">
           El apellido es obligatorio
-       </mat-error>
+        </mat-error>
       </mat-form-field>
+
     </div>
+
     <br>
+
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Ubicación</mat-label>
       <input placeholder="Ubicación" formControlName="location" matInput value={{editedCandidate.location}} (input)="editedCandidate.location=$any($event.target).value" >
@@ -49,45 +56,56 @@
       </mat-error>
       <mat-error *ngIf="editCandidateForm.get('location')?.invalid && (editCandidateForm.get('location')?.dirty || editCandidateForm.get('location')?.touched) && editCandidateForm.get('location')?.errors?.required">
         La ubicación es obligatorio
-     </mat-error></mat-form-field>
+      </mat-error>
+    </mat-form-field>
+
     <br>
+
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput type="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
-        <mat-error *ngIf="!editCandidateForm.get('email')?.errors?.required && (editCandidateForm.get('email')?.errors?.pattern)">
-          Por favor, introduzca una dirección válida
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput type="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
+      <mat-error *ngIf="!editCandidateForm.get('email')?.errors?.required && (editCandidateForm.get('email')?.errors?.pattern)">
+        Por favor, introduzca una dirección válida
       </mat-error>
       <mat-error *ngIf="editCandidateForm.get('email')?.invalid && (editCandidateForm.get('email')?.dirty || editCandidateForm.get('email')?.touched) && editCandidateForm.get('email')?.errors?.required">
           El email es obligatorio
       </mat-error>
     </mat-form-field>
+
     <br>
+
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Estudios</mat-label>
-        <input placeholder="Estudios" formControlName="studies" matInput value={{editedCandidate.studies}} (input)="editedCandidate.studies=$any($event.target).value">
-        <mat-error *ngIf="!editCandidateForm.get('studies')?.errors?.required">
-          La formación debe tener al menos 4 caracteres
-        </mat-error>
-        <mat-error *ngIf="editCandidateForm.get('studies')?.invalid && (editCandidateForm.get('studies')?.dirty || editCandidateForm.get('studies')?.touched) && editCandidateForm.get('studies')?.errors?.required">
-          La formación es obligatorio
-       </mat-error>
-      </mat-form-field>
+      <mat-label>Estudios</mat-label>
+      <input placeholder="Estudios" formControlName="studies" matInput value={{editedCandidate.studies}} (input)="editedCandidate.studies=$any($event.target).value">
+      <mat-error *ngIf="!editCandidateForm.get('studies')?.errors?.required">
+        La formación debe tener al menos 4 caracteres
+      </mat-error>
+      <mat-error *ngIf="editCandidateForm.get('studies')?.invalid && (editCandidateForm.get('studies')?.dirty || editCandidateForm.get('studies')?.touched) && editCandidateForm.get('studies')?.errors?.required">
+        La formación es obligatorio
+      </mat-error>
+    </mat-form-field>
+
     <br>
-    <div>
-      <mat-form-field appearance="fill">
+
+    <div class="flex">
+
+      <mat-form-field appearance="fill" class="half-width half-width-margin-right">
         <mat-label>Experiencia</mat-label>
         <input placeholder="Experiencia" formControlName="experience" matInput type="number" value={{editedCandidate.experience}} (input)="editedCandidate.experience=$any($event.target).value">
         <mat-error *ngIf="editCandidateForm.get('experience')?.invalid && (editCandidateForm.get('experience')?.dirty || editCandidateForm.get('experience')?.touched) && editCandidateForm.get('experience')?.errors?.required">
           La experiencia es obligatoria
         </mat-error>
       </mat-form-field>
-      <p class="toggleActive">
+
+      <p class="toggleActive half-width">
         <mat-slide-toggle matTooltip="Desactivar/Activar Usuario" formControlName="hired" [(ngModel)]="editedCandidate.hired" color="primary">
           <span *ngIf="editedCandidate.hired">Contratado/a</span>
           <span *ngIf="!editedCandidate.hired">No contratado/a</span>
         </mat-slide-toggle>
       </p>
+
     </div>
+
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
       <textarea placeholder="Habilidades" formControlName="skills" matInput value={{editedCandidate.skills}} (input)="editedCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
@@ -96,8 +114,9 @@
       </mat-error>
       <mat-error *ngIf="editCandidateForm.get('skills')?.invalid && (editCandidateForm.get('skills')?.dirty || editCandidateForm.get('skills')?.touched) && editCandidateForm.get('skills')?.errors?.required">
         Las habilidades son obligatorias
-     </mat-error>
+      </mat-error>
     </mat-form-field>
+
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Notas</mat-label>
       <textarea placeholder="Notas" formControlName="notes" matInput value={{editedCandidate.notes}} (input)="editedCandidate.notes=$any($event.target).value" placeholder="Ej: Recomendado por ..."></textarea>
@@ -106,15 +125,14 @@
       </mat-error>
       <mat-error *ngIf="editCandidateForm.get('notes')?.invalid && (editCandidateForm.get('notes')?.dirty || editCandidateForm.get('notes')?.touched) && editCandidateForm.get('notes')?.errors?.required">
         Las notas son obligatorias
-     </mat-error>
+      </mat-error>
     </mat-form-field>
+
 </form>
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-    <!-- <button mat-button [mat-dialog-close]="false" matTooltip="Eliminar" color="button-delete">Eliminar</button> -->
     <!-- Use a function to close the dialog instead -->
     <button mat-raised-button (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">Eliminar</button>
     <button mat-raised-button [disabled]="!editCandidateForm.valid" [mat-dialog-close]="true" matTooltip="Guardar" color="button-save" mat-stroked-button="openSnackBar()" (click)="saveCandidate()">Guardar</button>
-    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Guardar" color="button-save" (click)="saveUser()">Guardar</button> -->
 </mat-dialog-actions>
