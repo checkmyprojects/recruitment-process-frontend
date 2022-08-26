@@ -14,6 +14,7 @@ import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
+
 @Component({
   selector: 'app-list-candidates',
   templateUrl: './list-candidates.component.html',
@@ -139,7 +140,6 @@ export class ListCandidatesComponent implements OnInit {
   }
   printDoc(candidate: any){
 
-    //pdfMake.vfs = pdfFonts.pdfMake.vfs;
     let dd = { content: [
 
       {
@@ -152,8 +152,11 @@ export class ListCandidatesComponent implements OnInit {
                  text: [
                   {text: 'DATOS DEL CANDIDATO\n\n', style: 'header', bold: true, aligment:'center'},
                   { text: `Nombre y apellidos: ${candidate.name} ${candidate.surname}\n\n`},
-                  { text: `Ubicación: ${candidate.location}`},
-
+                  { text: `Ubicación: ${candidate.location}\n\n`},
+                  { text: `Email: ${candidate.email}\n\n`},
+                  { text: `Habilidades: ${candidate.skills}\n\n`},
+                  { text: `Estudios: ${candidate.studies}\n\n`},
+                  { text: `Experiencia: ${candidate.experience}\n\n`}
                  ],
 
                  style: "header",
