@@ -75,7 +75,7 @@ export class ListSelectionComponent implements OnInit {
       if (result === true) {
         this.dataSource.data = [...this.dataSource.data, this.newSelection];
 
-     }
+      }
     });
     }
 
@@ -96,8 +96,6 @@ export class ListSelectionComponent implements OnInit {
       }
     });
     }
-
-
 
   // Material table
   ngAfterViewInit() {
