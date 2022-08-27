@@ -19,53 +19,53 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
         <td mat-cell matTooltip="Número de usuario" *matCellDef="let row" (click)="openDialog(row)"> {{row.id}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- state Column -->
       <ng-container matColumnDef="state">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
-        <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
         <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="openDialog(row)"> {{row.state}} </td>
       </ng-container>
-      <!-- Progress Column -->
+      <!-- name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
         <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialog(row)"> {{row.name}} </td>
       </ng-container>
-      <!-- Name Column -->
+      <!-- surname Column -->
       <ng-container matColumnDef="surname">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
         <td mat-cell matTooltip="Apellido" *matCellDef="let row"(click)="openDialog(row)"> {{row.surname}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- location Column -->
       <ng-container matColumnDef="location">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
         <td mat-cell matTooltip="Ubicación" *matCellDef="let row" (click)="openDialog(row)"> {{row.location}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- email Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
         <td mat-cell matTooltip="Email" *matCellDef="let row" (click)="openDialog(row)"> {{row.email}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- skills Column -->
       <ng-container matColumnDef="skills">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Habilidades </th>
         <td mat-cell matTooltip="Habilidades" *matCellDef="let row" (click)="openDialog(row)"> {{row.skills}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- studies Column -->
       <ng-container matColumnDef="studies">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estudios </th>
         <td mat-cell matTooltip="Estudios" *matCellDef="let row" (click)="openDialog(row)"> {{row.studies}} </td>
       </ng-container>
-      <!-- Fruit Column -->
+      <!-- experience Column -->
       <ng-container matColumnDef="experience">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Exp </th>
         <td mat-cell matTooltip="Experiencia" *matCellDef="let row" (click)="openDialog(row)"> {{row.experience}} </td>
       </ng-container>
+      <!-- export to pdf Column -->
       <ng-container matColumnDef="pdf">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Pdf </th>
         <td mat-cell matTooltip="Exportar a Pdf" *matCellDef="let row" > <button  mat-mini-fab color="button-delete" (click)="printDoc(row)" aria-label="Añadir">
           <mat-icon>picture_as_pdf</mat-icon></button></td>
       </ng-container>
+      <!-- add to interview Column, shown only on interview view -->
       <ng-container matColumnDef="create" *ngIf="newInterviewView === true">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
         <td mat-cell matTooltip="Selecciona este candidato" *matCellDef="let row"><button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
@@ -86,7 +86,6 @@
   <div class="align-right">
     <button mat-raised-button color="button-save" matTooltip="Exportar a Excel" (click)="exportToExcel()">Exportar a Excel</button>
   </div>
-  <br>
   <br>
   <br>
   <br>
