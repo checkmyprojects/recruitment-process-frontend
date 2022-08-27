@@ -5,8 +5,9 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    //"strict": true,
     "noImplicitOverride": true,
+    "allowSyntheticDefaultImports": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -28,5 +29,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "typeRoots": ["./node_modules/@types"],
+  "types": ["pdfmake"]
 }

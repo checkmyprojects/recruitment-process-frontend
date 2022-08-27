@@ -25,3 +25,6 @@ tr.mat-row:hover {
 .mat-button-new:hover {
   background-color: #007bff;
 }
+.align-right{
+  text-align: right;
+}

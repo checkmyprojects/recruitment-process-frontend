@@ -1,4 +1,3 @@
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ListInterviewComponent } from './components/interview/list-interview/list-interview.component';
 import { BoardPeopleComponent } from './components/candidates/board-people/board-people.component';
 import { NgModule } from '@angular/core';
@@ -34,7 +33,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', data: { breadcrumb: { label: 'Inicio', info: 'home' }} },
   { path: 'interview', component: ListInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER'], breadcrumb: { label: 'Entrevistas', info: 'event_note' }}},
   { path: 'interview/new', component: NewInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER']}},
-  { path: 'dashboard', component: DashboardComponent},
   // { path: '**', redirectTo: '' }
 ];
 

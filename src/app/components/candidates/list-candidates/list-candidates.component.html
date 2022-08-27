@@ -10,7 +10,7 @@
   </div>
 
 </div>
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8" id="candidate-table">
     <!-- Sort by column "name" and "asc" order by default -->
     <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
 
@@ -61,9 +61,14 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Exp </th>
         <td mat-cell matTooltip="Experiencia" *matCellDef="let row" (click)="openDialog(row)"> {{row.experience}} </td>
       </ng-container>
+      <ng-container matColumnDef="pdf">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pdf </th>
+        <td mat-cell matTooltip="Exportar a Pdf" *matCellDef="let row" > <button  mat-mini-fab color="button-delete" (click)="printDoc(row)" aria-label="Añadir">
+          <mat-icon>picture_as_pdf</mat-icon></button></td>
+      </ng-container>
       <ng-container matColumnDef="create" *ngIf="newInterviewView === true">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
-        <td mat-cell matTooltip="Selecciona este candidato" *matCellDef="let row" > <button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
+        <td mat-cell matTooltip="Selecciona este candidato" *matCellDef="let row"><button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
           <mat-icon>add</mat-icon></button>
       </ng-container>
 
@@ -76,8 +81,12 @@
       </tr>
     </table>
     <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
-
   </div>
+  <br>
+  <div class="align-right">
+    <button mat-raised-button color="button-save" matTooltip="Exportar a Excel" (click)="exportToExcel()">Exportar a Excel</button>
+  </div>
+  <br>
   <br>
   <br>
   <br>

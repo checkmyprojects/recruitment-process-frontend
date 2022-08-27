@@ -10,7 +10,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
 import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candidate-new.component';
+import * as pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-list-candidates',
   templateUrl: './list-candidates.component.html',
@@ -18,7 +22,7 @@ import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candida
 })
 export class ListCandidatesComponent implements OnInit {
 
-  displayedColumns: string[] = ['state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills', 'create' ];
+  displayedColumns: string[] = ['state', 'name', 'surname',  'location', 'email', 'studies', 'experience', 'skills', 'pdf', 'create' ];
   dataSource: MatTableDataSource<Candidate>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -133,5 +137,65 @@ export class ListCandidatesComponent implements OnInit {
         alert(error.message);
       }
     });
+  }
+
+  printDoc(candidate: any){
+
+    let dd = { content: [
+
+      {
+         table: {
+           widths: ["*"],
+           body: [
+             [
+
+               {
+                 text: [
+                  {text: 'DATOS DEL CANDIDATO\n\n', style: 'header', bold: true, aligment:'center'},
+                  { text: `Nombre y apellidos: ${candidate.name} ${candidate.surname}\n\n`},
+                  { text: `Ubicación: ${candidate.location}\n\n`},
+                  { text: `Email: ${candidate.email}\n\n`},
+                  { text: `Habilidades: ${candidate.skills}\n\n`},
+                  { text: `Estudios: ${candidate.studies}\n\n`},
+                  { text: `Experiencia: ${candidate.experience}\n\n`}
+                 ],
+
+                 style: "header",
+                 width: "150",
+                 alignment: "left",
+                 margin: [0, 15, 0, 15]
+               }
+             ]
+           ]
+         }
+       },
+]
+};
+
+    pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
+  }
+  Candidate = [];
+  name = 'ExcelSheet.xlsx';
+  exportToExcel(): void {
+
+    let element = document.getElementById('candidate-table');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+     delete(worksheet['I1']);
+     delete(worksheet['I2']);
+     delete(worksheet['I3']);
+     delete(worksheet['I4']);
+     delete(worksheet['I5']);
+     delete(worksheet['I6']);
+     delete(worksheet['I7']);
+     delete(worksheet['I8']);
+     delete(worksheet['I9']);
+     delete(worksheet['I10']);
+     delete(worksheet['I11']);
+
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+
+    XLSX.writeFile(book, this.name);
   }
 }

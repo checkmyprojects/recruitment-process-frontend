@@ -49,7 +49,10 @@
     background-color: rgba(202, 202, 202, 0.158);
     color: rgb(172, 171, 171);
 }
-
+.flex-spread{
+    display: flex;
+    justify-content: space-between;
+}
 /* ********************** */
 
 /* Table column width*/
