@@ -24,7 +24,7 @@ describe('AuthService', () => {
       (key, value) => (localStore[key] = value + '')
     );
     spyOn(window.localStorage, 'clear').and.callFake(() => (localStore = {}));
-    });
+  });
 
     it('should be created', () => {
       expect(service).toBeTruthy();
