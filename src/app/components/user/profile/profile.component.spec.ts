@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service'; 
 
 import { ProfileComponent } from './profile.component';
 class MockTokenService {

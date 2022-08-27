@@ -1,13 +1,13 @@
 /* Material table. Required for it to fill whole table */
-table, mat-form-field {
+/* table, mat-form-field {
     width: 100%;
-}
-.mat-form-field {
+} */
+/* .mat-form-field {
   font-size: 14px;
   width: 98%;
-}
+} */
 /* Hover over a table row */
-tr.mat-row:hover {
+/* tr.mat-row:hover {
   background-color: #9fc6e970;
   cursor: pointer;
 }
@@ -24,7 +24,7 @@ tr.mat-row:hover {
 }
 .mat-button-new:hover {
   background-color: #007bff;
-}
+} */
 .align-right{
   text-align: right;
 }
