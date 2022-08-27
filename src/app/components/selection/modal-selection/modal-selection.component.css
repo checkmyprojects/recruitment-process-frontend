@@ -34,3 +34,8 @@
 .mat-button-end:hover {
   background-color: rgb(255, 187, 0);
 }
+
+
+/* Select text color */
+::ng-deep .mat-select-value *{    
+  color: black!important;  }

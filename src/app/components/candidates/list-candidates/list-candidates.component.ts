@@ -116,7 +116,6 @@ export class ListCandidatesComponent implements OnInit {
     let data: Candidate[] = [];
     this.candidatesService.getAllCandidates().subscribe({
       next: (response: Candidate[]) => {
-        console.log(response);
         data = response;
         // Initialize datasource with response from backend
         this.dataSource.data = response;

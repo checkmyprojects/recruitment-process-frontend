@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { ListInterviewComponent } from './components/interview/list-interview/list-interview.component';
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component';
 import { ModalSelectionNewComponent } from './components/selection/modal-selection-new/modal-selection-new.component';
+import {MatSelectModule} from '@angular/material/select';
 // Imports for DateTime Picker
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { MatCardModule } from '@angular/material/card';
@@ -107,6 +108,7 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatGridListModule,
+    MatSelectModule,
     MatCardModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }, { provide: LOCALE_ID, useValue: 'es-ES'}],

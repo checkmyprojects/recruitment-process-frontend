@@ -18,3 +18,7 @@
 .margin{
   margin: 0 10px;
 }
+
+/* Select text color */
+::ng-deep .mat-select-value *{    
+  color: black!important;  }

@@ -68,27 +68,23 @@
   </div>
 
   <div class="flex">
+    
     <mat-form-field class="half-width half-width-margin-right" appearance="fill">
       <mat-label>Estado</mat-label>
-      <input placeholder="Estado" formControlName="status" matInput type="text" value={{editedSelection.status}}
-        (input)="editedSelection.status=$any($event.target).value">
-      <mat-error
-        *ngIf="editSelectionForm.get('status')?.invalid && (editSelectionForm.get('status')?.dirty || editSelectionForm.get('status')?.touched) && editSelectionForm.get('status')?.errors?.required">
-        El estado es obligatorio
-      </mat-error>
+      <mat-select formControlName="status" [(value)]="editedSelection.status">
+        <mat-option value="Abierto">Abierto</mat-option>
+        <mat-option value="Parado">Parado</mat-option>
+        <mat-option value="Cerrado">Cerrado</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="half-width" appearance="fill">
       <mat-label>Prioridad</mat-label>
-      <input placeholder="Prioridad" formControlName="priority" matInput value={{editedSelection.priority}}
-        (input)="editedSelection.priority=$any($event.target).value" placeholder="Ej: Java">
-      <mat-error *ngIf="!editSelectionForm.get('priority')?.errors?.required">
-        La prioridad debe tener al menos 4 caracteres
-      </mat-error>
-      <mat-error
-        *ngIf="editSelectionForm.get('priority')?.invalid && (editSelectionForm.get('priority')?.dirty || editSelectionForm.get('priority')?.touched) && editSelectionForm.get('priority')?.errors?.required">
-        La prioridad es obligatoria
-      </mat-error>
+      <mat-select formControlName="priority" [(value)]="editedSelection.priority">
+        <mat-option value="Alta">Alta</mat-option>
+        <mat-option value="Media">Media</mat-option>
+        <mat-option value="Baja">Baja</mat-option>
+      </mat-select>
     </mat-form-field>
 
   </div>

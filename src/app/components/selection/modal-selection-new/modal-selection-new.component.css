@@ -22,3 +22,7 @@
 .flex{
   display: flex;
 }
+
+/* Select text color */
+::ng-deep .mat-select-value *{    
+  color: black!important;  }

@@ -126,7 +126,6 @@ export class ListSelectionComponent implements OnInit {
     let data: Selection[] = [];
     this.selectionService.getAllSelections().subscribe({
       next: (response: Selection[]) => {
-        console.log(response);
         data = response;
         // Initialize datasource with response from backend
         this.dataSource.data = response;

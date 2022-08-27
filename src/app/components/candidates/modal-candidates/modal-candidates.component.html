@@ -7,13 +7,14 @@
 
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Estado</mat-label>
-      <input placeholder="Estado" formControlName="state" matInput value={{editedCandidate.state}} (input)="editedCandidate.state=$any($event.target).value">
-      <mat-error *ngIf="!editCandidateForm.get('state')?.errors?.required">
-        El estado debe tener al menos 4 caracteres
-      </mat-error>
-      <mat-error *ngIf="editCandidateForm.get('state')?.invalid && (editCandidateForm.get('state')?.dirty || editCandidateForm.get('state')?.touched) && editCandidateForm.get('state')?.errors?.required">
-        El estado es obligatorio
-      </mat-error>
+      <mat-select formControlName="state" [(value)]="editedCandidate.state">
+        <mat-option value="Pendiente validación CV">Pendiente validación CV</mat-option>
+        <mat-option value="Pendiente entrevista">Pendiente entrevista</mat-option>
+        <mat-option value="Pendiente Carta Oferta">Pendiente Carta Oferta</mat-option>
+        <mat-option value="Acepta Carta Oferta">Acepta Carta Oferta</mat-option>
+        <mat-option value="Rechaza Carta Oferta">Rechaza Carta Oferta</mat-option>
+        <mat-option value="Contratado">Contratado</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <div class="flex">

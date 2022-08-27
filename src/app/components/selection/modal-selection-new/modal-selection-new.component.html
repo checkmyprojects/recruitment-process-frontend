@@ -67,27 +67,23 @@
   </div>
 
   <div class="flex">
-    <mat-form-field class="half-width-margin-right" appearance="fill">
+
+    <mat-form-field class="half-width half-width-margin-right" appearance="fill">
       <mat-label>Estado</mat-label>
-      <input placeholder="Estado" formControlName="status" placeholder="Ej. Pendiente" matInput type="text" value={{newSelection.status}}
-        (input)="newSelection.status=$any($event.target).value">
-      <mat-error
-        *ngIf="newSelectionForm.get('status')?.invalid && (newSelectionForm.get('status')?.dirty || newSelectionForm.get('status')?.touched) && newSelectionForm.get('status')?.errors?.required">
-        El estado es obligatorio
-      </mat-error>
+      <mat-select formControlName="status" [(value)]="newSelection.status">
+        <mat-option value="Abierto">Abierto</mat-option>
+        <mat-option value="Parado">Parado</mat-option>
+        <mat-option value="Cerrado">Cerrado</mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field class="half-width" appearance="fill">
       <mat-label>Prioridad</mat-label>
-      <input placeholder="Prioridad" formControlName="priority" placeholder="Ej. Alta" matInput value={{newSelection.priority}}
-        (input)="newSelection.priority=$any($event.target).value">
-      <mat-error *ngIf="!newSelectionForm.get('priority')?.errors?.required">
-        La prioridad debe tener al menos 4 caracteres
-      </mat-error>
-      <mat-error
-        *ngIf="newSelectionForm.get('priority')?.invalid && (newSelectionForm.get('priority')?.dirty || newSelectionForm.get('priority')?.touched) && newSelectionForm.get('priority')?.errors?.required">
-        La prioridad es obligatoria
-      </mat-error>
+      <mat-select formControlName="priority" [(value)]="newSelection.priority">
+        <mat-option value="Alta">Alta</mat-option>
+        <mat-option value="Media">Media</mat-option>
+        <mat-option value="Baja">Baja</mat-option>
+      </mat-select>
     </mat-form-field>
 
   </div>
