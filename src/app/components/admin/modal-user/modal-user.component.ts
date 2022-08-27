@@ -16,8 +16,6 @@ export class ModalUserComponent implements OnInit {
   // public dialogRef: MatDialogRef<ModalUserComponent> allow to use dialogref in the component
   constructor(@Inject(MAT_DIALOG_DATA) public data: {user: AppUsers}, private adminService: AdminService, public dialogRef: MatDialogRef<ModalUserComponent>, private tokenStorageService: TokenStorageService, private _snackBar: MatSnackBar) { }
 
-  emailFormControl = new FormControl(this.data.user.email, [Validators.required, Validators.email]);
-
   editUserForm: FormGroup | any;
 
   isLoggedIn = false;

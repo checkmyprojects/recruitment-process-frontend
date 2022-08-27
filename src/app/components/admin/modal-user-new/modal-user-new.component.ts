@@ -17,10 +17,6 @@ export class ModalUserNewComponent implements OnInit {
 
   }
 
-  logit(){
-    console.log(this.loginForm);
-
-  }
   // Check if password and confirmPassword are the same
   passwordCheck(control:any):any{
     if (control.value != null){
