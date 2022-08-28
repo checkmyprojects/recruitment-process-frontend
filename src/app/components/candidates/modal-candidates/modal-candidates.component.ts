@@ -34,6 +34,7 @@ export class ModalCandidatesComponent implements OnInit {
       location: new FormControl(this.data.candidate.location, ),
       experience: new FormControl(this.data.candidate.experience, ),
       state: new FormControl(this.data.candidate.state, ),
+      phone: new FormControl(this.data.candidate.phone, [Validators.minLength(9),]),
       hired: new FormControl(this.data.candidate.hired, []), //Hired does not need any validation
       notes: new FormControl(this.data.candidate.notes, [Validators.minLength(4),]),
     });
@@ -60,6 +61,7 @@ export class ModalCandidatesComponent implements OnInit {
         this.data.candidate.experience = response.experience;
         this.data.candidate.studies = response.studies;
         this.data.candidate.hired = response.hired;
+        this.data.candidate.phone = response.phone;
         this.data.candidate.notes = response.notes;
       },
       error: (error: HttpErrorResponse) => {

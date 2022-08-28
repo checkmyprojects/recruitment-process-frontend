@@ -9,6 +9,7 @@ export interface Candidate {
     experience: number;
     hired: boolean;
     state: string;
+    phone?: string;
     notes?: string;
     interviews: any[];
 }

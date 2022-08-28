@@ -1,7 +1,7 @@
 <!-- Close button -->
 <span mat-dialog-close matTooltip="Cerrar" class="mat-close-button"><mat-icon>close</mat-icon></span>
 
-<h4>Editar candidato: <span>{{newCandidate.name}} {{newCandidate.surname}}</span></h4>
+<h4>Nuevo candidato: <span>{{newCandidate.name}} {{newCandidate.surname}}</span></h4>
 
 <form [formGroup]="newCandidateForm" novalidate class="example-form">
 
@@ -62,18 +62,30 @@
 
     <br>
 
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Email</mat-label>
-      <input type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{newCandidate.email}} (input)="newCandidate.email=$any($event.target).value">
-      <mat-error *ngIf="!newCandidateForm.get('email')?.errors?.required && (newCandidateForm.get('email')?.errors?.pattern)">
-        Por favor, introduzca una dirección válida
-      </mat-error>
-      <mat-error *ngIf="newCandidateForm.get('email')?.invalid && (newCandidateForm.get('email')?.dirty || newCandidateForm.get('email')?.touched) && newCandidateForm.get('email')?.errors?.required">
-          El email es obligatorio
-      </mat-error>
-    </mat-form-field>
+    <div class="flex">
+      <mat-form-field class="half-width half-width-margin-right" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{newCandidate.email}} (input)="newCandidate.email=$any($event.target).value">
+        <mat-error *ngIf="!newCandidateForm.get('email')?.errors?.required && (newCandidateForm.get('email')?.errors?.pattern)">
+          Introduzca una dirección válida
+        </mat-error>
+        <mat-error *ngIf="newCandidateForm.get('email')?.invalid && (newCandidateForm.get('email')?.dirty || newCandidateForm.get('email')?.touched) && newCandidateForm.get('email')?.errors?.required">
+            El email es obligatorio
+        </mat-error>
+      </mat-form-field>
 
-    <br>
+      <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input type="text" matInput formControlName="phone" placeholder="Ej. 654321654" value={{newCandidate.phone}} (input)="newCandidate.phone=$any($event.target).value">
+        <mat-error *ngIf="!newCandidateForm.get('phone')?.errors?.required">
+          Debe tener al menos 9 caracteres
+        </mat-error>
+        <mat-error *ngIf="newCandidateForm.get('phone')?.invalid && (newCandidateForm.get('phone')?.dirty || newCandidateForm.get('phone')?.touched) && newCandidateForm.get('phone')?.errors?.required">
+            El teléfono es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+    </div>
 
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Estudios</mat-label>

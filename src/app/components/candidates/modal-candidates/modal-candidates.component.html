@@ -62,18 +62,31 @@
 
     <br>
 
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Email</mat-label>
-      <input formControlName="email" matInput type="email" placeholder="Ej. jorge.fernandez@nttdata.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
-      <mat-error *ngIf="!editCandidateForm.get('email')?.errors?.required && (editCandidateForm.get('email')?.errors?.pattern)">
-        Por favor, introduzca una dirección válida
-      </mat-error>
-      <mat-error *ngIf="editCandidateForm.get('email')?.invalid && (editCandidateForm.get('email')?.dirty || editCandidateForm.get('email')?.touched) && editCandidateForm.get('email')?.errors?.required">
-          El email es obligatorio
-      </mat-error>
-    </mat-form-field>
+    <div class="flex">
 
-    <br>
+      <mat-form-field class="half-width half-width-margin-right" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput type="email" placeholder="Ej. jorge.fdz@nttdata.com" value={{editedCandidate.email}} (input)="editedCandidate.email=$any($event.target).value">
+        <mat-error *ngIf="!editCandidateForm.get('email')?.errors?.required && (editCandidateForm.get('email')?.errors?.pattern)">
+          Introduzca una dirección válida
+        </mat-error>
+        <mat-error *ngIf="editCandidateForm.get('email')?.invalid && (editCandidateForm.get('email')?.dirty || editCandidateForm.get('email')?.touched) && editCandidateForm.get('email')?.errors?.required">
+            El email es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input type="text" matInput formControlName="phone" placeholder="Ej. 654321654" value={{editedCandidate.phone}} (input)="editedCandidate.phone=$any($event.target).value">
+        <mat-error *ngIf="!editCandidateForm.get('phone')?.errors?.required">
+          Debe tener al menos 9 caracteres
+        </mat-error>
+        <mat-error *ngIf="editCandidateForm.get('phone')?.invalid && (editCandidateForm.get('phone')?.dirty || editCandidateForm.get('phone')?.touched) && editCandidateForm.get('phone')?.errors?.required">
+            El teléfono es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+
 
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Estudios</mat-label>
@@ -88,25 +101,14 @@
 
     <br>
 
-    <div class="flex">
-
-      <mat-form-field appearance="fill" class="half-width half-width-margin-right">
-        <mat-label>Experiencia</mat-label>
-        <input placeholder="Experiencia" formControlName="experience" matInput type="number" value={{editedCandidate.experience}} (input)="editedCandidate.experience=$any($event.target).value">
-        <mat-error *ngIf="editCandidateForm.get('experience')?.invalid && (editCandidateForm.get('experience')?.dirty || editCandidateForm.get('experience')?.touched) && editCandidateForm.get('experience')?.errors?.required">
-          La experiencia es obligatoria
-        </mat-error>
-      </mat-form-field>
-
-      <p class="toggleActive half-width">
-        <mat-slide-toggle matTooltip="Desactivar/Activar Usuario" formControlName="hired" [(ngModel)]="editedCandidate.hired" color="primary">
-          <span *ngIf="editedCandidate.hired">Contratado/a</span>
-          <span *ngIf="!editedCandidate.hired">No contratado/a</span>
-        </mat-slide-toggle>
-      </p>
-
-    </div>
-
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Experiencia</mat-label>
+      <input placeholder="Experiencia" formControlName="experience" matInput type="number" value={{editedCandidate.experience}} (input)="editedCandidate.experience=$any($event.target).value">
+      <mat-error *ngIf="editCandidateForm.get('experience')?.invalid && (editCandidateForm.get('experience')?.dirty || editCandidateForm.get('experience')?.touched) && editCandidateForm.get('experience')?.errors?.required">
+        La experiencia es obligatoria
+      </mat-error>
+    </mat-form-field>
+    
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Habilidades</mat-label>
       <textarea placeholder="Habilidades" formControlName="skills" matInput value={{editedCandidate.skills}} (input)="editedCandidate.skills=$any($event.target).value" placeholder="Ej: Java"></textarea>
