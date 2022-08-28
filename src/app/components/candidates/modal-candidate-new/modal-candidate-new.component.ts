@@ -38,11 +38,11 @@ export class ModalCandidateNewComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
         '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
       ),]),
-      skills: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      studies: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      location: new FormControl('', [Validators.required, Validators.minLength(4),]),
-      experience: new FormControl('', [Validators.required,]),
-      state: new FormControl('', [Validators.required, Validators.minLength(4),]),
+      skills: new FormControl('', ),
+      studies: new FormControl('', ),
+      location: new FormControl('', ),
+      experience: new FormControl('', ),
+      state: new FormControl('', ),
       notes: new FormControl('', [Validators.minLength(4),]),
 
     });
