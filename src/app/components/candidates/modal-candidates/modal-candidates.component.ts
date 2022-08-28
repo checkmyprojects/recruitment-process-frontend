@@ -29,11 +29,11 @@ export class ModalCandidatesComponent implements OnInit {
       email: new FormControl(this.data.candidate.email, [Validators.required, Validators.email,Validators.pattern(
         '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
       ),]),
-      skills: new FormControl(this.data.candidate.skills, [Validators.required, Validators.minLength(4),]),
-      studies: new FormControl(this.data.candidate.studies, [Validators.required, Validators.minLength(4),]),
-      location: new FormControl(this.data.candidate.location, [Validators.required, Validators.minLength(4),]),
-      experience: new FormControl(this.data.candidate.experience, [Validators.required,]),
-      state: new FormControl(this.data.candidate.state, [Validators.required, Validators.minLength(4),]),
+      skills: new FormControl(this.data.candidate.skills, ),
+      studies: new FormControl(this.data.candidate.studies, ),
+      location: new FormControl(this.data.candidate.location, ),
+      experience: new FormControl(this.data.candidate.experience, ),
+      state: new FormControl(this.data.candidate.state, ),
       hired: new FormControl(this.data.candidate.hired, []), //Hired does not need any validation
       notes: new FormControl(this.data.candidate.notes, [Validators.minLength(4),]),
     });
