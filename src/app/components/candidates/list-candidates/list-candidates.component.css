@@ -1,3 +1,46 @@
 .align-right{
   text-align: right;
 }
+
+/* ********************** */
+
+/* Table column width*/
+/* Make "roles" and "add to" row not so big */
+/* mat-colum- next to the matColumnDef name to apply style to that column*/
+.mat-column-id {
+  width: 10%;
+}
+.mat-column-state {
+  width: 13%;
+}
+.mat-column-name {
+  width: 10%;
+}
+.mat-column-surname {
+  width: 10%;
+}
+.mat-column-location {
+  width: 10%;
+}
+.mat-column-email {
+  width: 15%;
+}
+.mat-column-skills {
+  width: 15%;
+}
+.mat-column-studies {
+  width: 20%;
+}
+.mat-column-experience {
+  width: 5%;
+}
+.mat-column-pdf {
+  padding-right: 20px;
+  text-align: center;
+  width: 5%;
+}
+.mat-column-create {
+  text-align: center;
+  width: 5%;
+}
+

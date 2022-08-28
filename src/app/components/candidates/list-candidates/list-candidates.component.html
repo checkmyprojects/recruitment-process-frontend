@@ -68,7 +68,7 @@
       <!-- add to interview Column, shown only on interview view -->
       <ng-container matColumnDef="create" *ngIf="newInterviewView === true">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Añadir </th>
-        <td mat-cell matTooltip="Selecciona este candidato" *matCellDef="let row"><button mat-mini-fab color="primary" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
+        <td mat-cell matTooltip="Selecciona este candidato" *matCellDef="let row"><button mat-mini-fab color="button-add" aria-label="Añadir" (click)="sendRowDataToInterview(row)">
           <mat-icon>add</mat-icon></button>
       </ng-container>
 

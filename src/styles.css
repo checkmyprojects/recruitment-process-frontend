@@ -129,6 +129,14 @@ tr.mat-row:hover {
 .mat-button-new:hover {
     background-color: #007bff;
 }
+.mat-button-add {
+    background-color: #007bff;
+    color: white;
+}
+.mat-button-add:hover {
+    background-color: #007bffbb;
+    color: #fff;
+}
 
 /* ********************** */
 
