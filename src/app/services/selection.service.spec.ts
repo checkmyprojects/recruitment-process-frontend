@@ -85,7 +85,7 @@ describe('SelectionService', () => {
 
   httpMock.verify();
 });
-it ('registerNewSelection should be a post request', () => {
+it ('registerNewSelection() should be a post request', () => {
 
   let newSelection: any = {name: 'a'}
 
