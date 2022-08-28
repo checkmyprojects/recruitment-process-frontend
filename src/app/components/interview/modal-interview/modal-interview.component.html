@@ -150,7 +150,7 @@
 
                     <!-- Interview Datepick -->
                     <mat-form-field class="not-grow" matTooltip="Fecha de la entrevista">
-                        <input matInput [ngxMatDatetimePicker]="picker" [min]="minDate" placeholder="Elige un fecha y hora"
+                        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Elige un fecha y hora"
                             [(ngModel)]="interviewDate">
                         <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
                         <ngx-mat-datetime-picker #picker>

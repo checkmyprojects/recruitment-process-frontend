@@ -69,7 +69,7 @@
 
   <div class="flex">
     
-    <mat-form-field class="half-width half-width-margin-right" appearance="fill">
+    <mat-form-field class="half-width half-width-margin-right select" appearance="fill">
       <mat-label>Estado</mat-label>
       <mat-select formControlName="status" [(value)]="editedSelection.status">
         <mat-option value="Abierto">Abierto</mat-option>
@@ -78,7 +78,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="half-width" appearance="fill">
+    <mat-form-field class="half-width select" appearance="fill">
       <mat-label>Prioridad</mat-label>
       <mat-select formControlName="priority" [(value)]="editedSelection.priority">
         <mat-option value="Alta">Alta</mat-option>

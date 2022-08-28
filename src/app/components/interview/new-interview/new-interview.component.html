@@ -69,30 +69,60 @@
     <br><br>
 
     <div>
-        <h5>Entrevistador</h5>
         <div class="flexme">
-            <mat-form-field class="not-grow" matTooltip="Fecha de la entrevista">
-                <input matInput [ngxMatDatetimePicker]="picker" [min]="minDate" placeholder="Elige un fecha y hora"
-                    [(ngModel)]="newInterviewDate">
-                <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-                <ngx-mat-datetime-picker #picker>
-                    <ng-template>
-                        <div class="flexMe">
-                            <mat-icon>check_circle_outline</mat-icon>
-                            <span>&nbsp;Aceptar</span>
-                        </div>
-                    </ng-template>
-                </ngx-mat-datetime-picker>
-            </mat-form-field>
-            <mat-form-field matTooltip="Nombre del entrevistador" class="example-full-width input-disabled" appearance="fill">
-                <mat-label>Nombre</mat-label>
-                <input matInput disabled value={{newInterviewAppUser?.name}}>
-            </mat-form-field>
+            <div class="flex-date-status">
+                <div>
+                    <h5>Fecha</h5>
+                    <mat-form-field class="padding-right" matTooltip="Fecha de la entrevista">
+                        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Elige un fecha y hora"
+                            [(ngModel)]="newInterviewDate">
+                        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker>
+                            <ng-template>
+                                <div class="flexMe">
+                                    <mat-icon>check_circle_outline</mat-icon>
+                                    <span>&nbsp;Aceptar</span>
+                                </div>
+                            </ng-template>
+                        </ngx-mat-datetime-picker>
+                    </mat-form-field>
+
+                </div>
+                <span>&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;</span>
+                <div>
+                    <h5>Estado</h5>
+                    <mat-form-field class="padding-right select" appearance='fill' appearance="fill">
+                        <mat-label>Estado de la entrevista</mat-label>
+                        <mat-select  formControlName="state">
+                            <mat-option value="Planificada">Planificada</mat-option>
+                            <mat-option value="Realizada">Realizada</mat-option>
+                            <mat-option value="Cancelada">Cancelada</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                
+                <span>&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;</span>
+            </div>
+            
             <span>&nbsp;&nbsp;</span>
-            <mat-form-field matTooltip="Email del entrevistador" class="example-full-width input-disabled" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput disabled value={{newInterviewAppUser?.email}}>
-            </mat-form-field>
+
+            <div>
+                <h5>Entrevistador</h5>
+                <mat-form-field matTooltip="Nombre del entrevistador" class="example-full-width input-disabled" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput disabled value={{newInterviewAppUser?.name}}>
+                </mat-form-field>
+            </div>
+            <div>
+                <h5>&nbsp;</h5>
+                <mat-form-field matTooltip="Email del entrevistador" class="example-full-width input-disabled" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput disabled value={{newInterviewAppUser?.email}}>
+                </mat-form-field>
+            </div>
+            <span>&nbsp;&nbsp;</span>
         </div>
         <!-- Interviewers List component Expansion panel-->
         <div #interviewer>
@@ -111,7 +141,7 @@
     <br>
     <div class="align-to-end">
         <!-- Show warning text if any field is missing -->
-        <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection">Todos los campos tienen que ser rellenados para crear la entrevista *</span>
+        <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection">Todos los campos son requeridos *</span>
         <!-- Disable create button if any field is missing -->
         <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-save">Crear Entrevista </button>
     </div>

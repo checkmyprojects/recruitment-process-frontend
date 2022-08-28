@@ -8,11 +8,25 @@
 .flexme{
     display: flex;
     justify-content: center;
+    flex: 1 1 0px
 }
-.not-grow{
-    /* width: 30%; */
-    padding: 0 25px 0 0;
-    /* flex-grow: 0; */
+.flex-date-status{
+    /* width: 33%; */
+    display: flex;
+    justify-content: space-between;
+    /* flex-grow: 1; */
+}
+.flex-date-status >div{
+    width: 100%;
+}
+.flex-date-status > div > mat-form-field{
+    width: 100%;
+}
+.flexme > mat-form-field{
+    flex: 1 1 0px
+}
+.flexme > div{
+    flex: 1 1 0px
 }
 h5{
     color: #1c5b92;
@@ -43,4 +57,11 @@ h5{
 /* input disabled text color */
 .mat-input-element{
     color: black;
+}
+/* Select text color */
+/* ::ng-deep .mat-select-value *{    
+    color: black!important;  }
+*/
+::ng-deep .select .mat-form-field-underline {
+    display: none;
 }

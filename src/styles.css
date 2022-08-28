@@ -163,6 +163,11 @@ tr.mat-row:hover {
 }
 
 /* ********************** */
+/* Mat Select Arrow color */
+.select .mat-select-arrow {
+    color: #000;
+}
+/* ********************** */
 
 /* Material expansion panel */
 /* Center description */
