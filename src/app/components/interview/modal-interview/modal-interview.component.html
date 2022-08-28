@@ -42,11 +42,11 @@
                 <h5>Notas</h5>
                 <mat-form-field class="notes" appearance="fill" matTooltip="Notas sobre la entrevista">
                     <mat-label>Notas sobre la entrevista</mat-label>
-                    <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize"cdkAutosizeMinRows="9" cdkAutosizeMaxRows="10" matInput placeholder="Ej. Encaja con..." value="{{data.interview.feedback}}" [(ngModel)]="data.interview.feedback"></textarea>
+                    <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize"cdkAutosizeMinRows="9" cdkAutosizeMaxRows="10" matInput placeholder="Ej. Encaja con..." value="{{interviewFeedback}}" [(ngModel)]="interviewFeedback"></textarea>
                 </mat-form-field>
                 <mat-dialog-actions align="end">
                     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
-                    <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Notas" color="button-save" (click)="feedback(data.interview.feedback, data.interview.id)">Guardar Notas</button>
+                    <button mat-raised-button [mat-dialog-close]="true" matTooltip="Guardar Notas" color="button-save" (click)="feedback(interviewFeedback, data.interview.id)">Guardar Notas</button>
                 </mat-dialog-actions>
             </div>
         </div>
@@ -147,32 +147,60 @@
                 <h5>Entrevistador</h5>
 
                 <div class="flexme">
+                    <div class="flex-date-status">
 
-                    <!-- Interview Datepick -->
-                    <mat-form-field class="not-grow" matTooltip="Fecha de la entrevista">
-                        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Elige un fecha y hora"
-                            [(ngModel)]="interviewDate">
-                        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-                        <ngx-mat-datetime-picker #picker>
-                            <ng-template>
-                                <div class="flexMe">
-                                    <mat-icon>check_circle_outline</mat-icon>
-                                    <span>&nbsp;Aceptar</span>
-                                </div>
-                            </ng-template>
-                        </ngx-mat-datetime-picker>
-                    </mat-form-field>
-
-                    <!-- Interviewer section -->
-                    <mat-form-field matTooltip="Nombre del entrevistador" class="example-full-width input-disabled" appearance="fill">
-                        <mat-label>Nombre</mat-label>
-                        <input matInput disabled value={{editInterviewAppUser.name}}>
-                    </mat-form-field>
+                        <!-- Interview Datepick -->
+                        <div>
+                            <h5>Fecha</h5>
+                            <mat-form-field class="padding-right" matTooltip="Fecha de la entrevista">
+                                <input matInput [ngxMatDatetimePicker]="picker" placeholder="Elige un fecha y hora"
+                                    [(ngModel)]="interviewDate">
+                                <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                                <ngx-mat-datetime-picker #picker>
+                                    <ng-template>
+                                        <div class="flexMe">
+                                            <mat-icon>check_circle_outline</mat-icon>
+                                            <span>&nbsp;Aceptar</span>
+                                        </div>
+                                    </ng-template>
+                                </ngx-mat-datetime-picker>
+                            </mat-form-field>
+    
+                        </div>
+                        <span>&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;</span>
+                        <div>
+                            <h5>Estado</h5>
+                            <mat-form-field class="padding-right select" appearance='fill' appearance="fill">
+                                <mat-label>Estado de la entrevista</mat-label>
+                                <mat-select [(value)]="interviewStatus">
+                                    <mat-option value="Planificada">Planificada</mat-option>
+                                    <mat-option value="Realizada">Realizada</mat-option>
+                                    <mat-option value="Cancelada">Cancelada</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <span>&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;</span>
+                    </div>
                     <span>&nbsp;&nbsp;</span>
-                    <mat-form-field matTooltip="Email del entrevistador" class="example-full-width input-disabled" appearance="fill">
-                        <mat-label>Email</mat-label>
-                        <input matInput disabled value={{editInterviewAppUser?.email}}>
-                    </mat-form-field>
+                    <!-- Interviewer section -->
+                    <div>
+                        <h5>Entrevistador</h5>
+
+                        <mat-form-field matTooltip="Nombre del entrevistador" class="example-full-width input-disabled" appearance="fill">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput disabled value={{editInterviewAppUser.name}}>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <h5>&nbsp;</h5>
+                        <mat-form-field matTooltip="Email del entrevistador" class="example-full-width input-disabled" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput disabled value={{editInterviewAppUser?.email}}>
+                        </mat-form-field>
+                    </div>
+                    <span>&nbsp;&nbsp;</span>
                     
                 </div>
 

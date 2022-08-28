@@ -58,10 +58,11 @@ h5{
 .mat-input-element{
     color: black;
 }
+
 /* Select text color */
-/* ::ng-deep .mat-select-value *{    
+::ng-deep .select .mat-select-value *{    
     color: black!important;  }
-*/
+
 ::ng-deep .select .mat-form-field-underline {
     display: none;
 }

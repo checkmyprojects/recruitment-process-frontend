@@ -18,7 +18,7 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 })
 export class ListInterviewComponent implements OnInit {
 
-  displayedColumns: string[] = ['interview_date', 'candidate.name', 'interviewer.name','selection.name'];
+  displayedColumns: string[] = ['interview_date', 'status', 'candidate.name', 'interviewer.name','selection.name'];
   dataSource: MatTableDataSource<Interview>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

@@ -1,0 +1,9 @@
+/* Table column width*/
+/* Make "roles" and "add to" row not so big */
+/* mat-colum- next to the matColumnDef name to apply style to that column*/
+.mat-column-interview_date {
+    width: 12%;
+}
+.mat-column-status {
+    width: 12%;
+}

@@ -9,6 +9,7 @@ export interface Interview {
     selection: Selection;
     feedback: string;
     interview_date: Date;
+    status?: string;
     creation_date: Date;
 
 }

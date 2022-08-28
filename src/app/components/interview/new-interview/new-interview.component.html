@@ -94,7 +94,7 @@
                     <h5>Estado</h5>
                     <mat-form-field class="padding-right select" appearance='fill' appearance="fill">
                         <mat-label>Estado de la entrevista</mat-label>
-                        <mat-select  formControlName="state">
+                        <mat-select [(ngModel)]="newInterviewStatus" [(value)]="newInterviewStatus">
                             <mat-option value="Planificada">Planificada</mat-option>
                             <mat-option value="Realizada">Realizada</mat-option>
                             <mat-option value="Cancelada">Cancelada</mat-option>

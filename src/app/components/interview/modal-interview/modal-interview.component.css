@@ -8,9 +8,28 @@
     color: black;
 }
 
-.flexMe{
+.flexme{
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex: 1 1 0px
+}
+.flex-date-status{
+    /* width: 33%; */
+    display: flex;
+    justify-content: space-between;
+    /* flex-grow: 1; */
+}
+.flex-date-status >div{
+    width: 100%;
+}
+.flex-date-status > div > mat-form-field{
+    width: 100%;
+}
+.flexme > mat-form-field{
+    flex: 1 1 0px
+}
+.flexme > div{
+    flex: 1 1 0px
 }
 .mat-button-new {
     background-color: #1c5b92;
@@ -27,13 +46,13 @@
 ::ng-deep .ng-tns-c190-52 .ng-star-inserted .mat-stroked-button:hover {
     background-color: #05c732;
 }
-.flexme{
+/* .flexme{
     display: flex;
     justify-content: center;
-}
-mat-form-field{
+} */
+/* mat-form-field{
     width: 33%;
-}
+} */
 .not-grow{
     padding: 0 25px 0 0;
 }

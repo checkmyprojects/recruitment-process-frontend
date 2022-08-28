@@ -28,6 +28,8 @@ export class ModalInterviewComponent implements OnInit {
   getInterviewer($event: any) {this.editInterviewAppUser = $event;}
 
   interviewDate: Date = new Date(this.data.interview.interview_date);
+  interviewFeedback = this.data.interview.feedback;
+  interviewStatus = this.data.interview.status;
 
   // Date picker min date is now
   minDate = new Date();
@@ -41,6 +43,7 @@ export class ModalInterviewComponent implements OnInit {
     this.interviewService.feedbackInterview(feedback, id).subscribe({
       next: (response: any) => {
         this.openSnackBar('Feedback guardado', '');
+        this.data.interview.feedback = response.feedback;
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
@@ -56,17 +59,29 @@ export class ModalInterviewComponent implements OnInit {
     this.data.interview.interview_date
     let isoDateTime = new Date(this.interviewDate.getTime() - (this.interviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.interviewDate.toISOString().length - 1)
 
-    this.interviewService.editInterview(isoDateTime, this.data.interview.id, this.editInterviewCandidate.id, this.editInterviewAppUser.id, this.editInterviewSelection.id).subscribe({
+    //date: string, candidateid:number, interviewerid:number, selectionid:number
+    // New object to send data to backend
+    let interviewRequest: any = {
+      candidateId: this.editInterviewCandidate.id,
+      interviewerId: this.editInterviewAppUser.id,
+      selectionId: this.editInterviewSelection.id,
+      date: isoDateTime,
+      status: this.interviewStatus,
+      feedback: this.interviewFeedback
+    }
+    //isoDateTime, this.data.interview.id, this.editInterviewCandidate.id, this.editInterviewAppUser.id, this.editInterviewSelection.id
+    this.interviewService.editInterview(this.data.interview.id, interviewRequest).subscribe({
       next: (response: any) => {
         this.openSnackBar('¡Entrevista editada!', '');
 
         // Update table row with data from the backend
-        this.data.interview.interview_date = response.interview_date;
         this.data.interview.id = response.id;
         this.data.interview.candidate = response.candidate;
-        this.data.interview.selection = response.selection;
         this.data.interview.interviewer = response.interviewer;
+        this.data.interview.selection = response.selection;
         this.data.interview.feedback = response.feedback;
+        this.data.interview.interview_date = response.interview_date;
+        this.data.interview.status = response.status;
         this.data.interview.creation_date = response.creation_date;
       },
       error: (error: HttpErrorResponse) => {

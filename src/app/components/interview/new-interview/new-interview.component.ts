@@ -34,6 +34,8 @@ export class NewInterviewComponent implements OnInit {
 
   newInterviewDate: Date | undefined;
 
+  newInterviewStatus: String | undefined;
+
   // Date picker minimum date is now
   minDate = new Date();
 
@@ -48,7 +50,17 @@ export class NewInterviewComponent implements OnInit {
       // Remove the last letter, a Z that makes backend with LocalDateTime break
       let isoDateTime = new Date(this.newInterviewDate.getTime() - (this.newInterviewDate.getTimezoneOffset() * 60000)).toISOString().slice(0, this.newInterviewDate.toISOString().length - 1)
 
-      this.interviewService.registerNewInterview(isoDateTime, this.newInterviewCandidate.id, this.newInterviewAppUser.id, this.newInterviewSelection.id).subscribe({
+      //date: string, candidateid:number, interviewerid:number, selectionid:number
+      let interviewRequest: any = {
+        candidateId: this.newInterviewCandidate.id,
+        interviewerId: this.newInterviewAppUser.id,
+        selectionId: this.newInterviewSelection.id,
+        date: isoDateTime,
+        status: this.newInterviewStatus,
+        feedback: ""
+      }
+
+      this.interviewService.registerNewInterview(interviewRequest).subscribe({
         next: (response: any) => {
           this.openSnackBar('¡Entrevista creada con éxito!', '');
 
