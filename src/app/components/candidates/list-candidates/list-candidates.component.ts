@@ -10,7 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
 import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candidate-new.component';
-import * as pdfMake from "pdfmake/build/pdfmake";
+// import * as pdfMake from "pdfmake/build/pdfmake";
+const pdfMake = require('pdfmake/build/pdfmake.js');
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -141,36 +142,793 @@ export class ListCandidatesComponent implements OnInit {
   // create PDF using pdfmake
   printDoc(candidate: any){
 
-    let dd = { content: [
-
-      {
-         table: {
-           widths: ["*"],
-           body: [
-             [
-
-               {
-                 text: [
-                  {text: 'DATOS DEL CANDIDATO\n\n', style: 'header', bold: true, aligment:'center'},
-                  { text: `Nombre y apellidos: ${candidate.name} ${candidate.surname}\n\n`},
-                  { text: `Ubicación: ${candidate.location}\n\n`},
-                  { text: `Email: ${candidate.email}\n\n`},
-                  { text: `Habilidades: ${candidate.skills}\n\n`},
-                  { text: `Estudios: ${candidate.studies}\n\n`},
-                  { text: `Experiencia: ${candidate.experience}\n\n`}
-                 ],
-
-                 style: "header",
-                 width: "150",
-                 alignment: "left",
-                 margin: [0, 15, 0, 15]
-               }
-             ]
-           ]
-         }
-       },
-]
-};
+    var dd = {
+      "content": [
+        {
+          "nodeName": "DIV",
+          "id": "page-wrap",
+          "stack": [
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            },
+            {
+              "nodeName": "DIV",
+              "id": "contact-info",
+              "stack": [
+                {
+                  "text": " ",
+                  "style": [
+                    "html-div",
+                    "vcard"
+                  ]
+                },
+                {
+                  "text": `${candidate.name} ${candidate.surname}`,
+                  "nodeName": "H1",
+                  "fontSize": 24,
+                  "bold": true,
+                  "marginBottom": 5,
+                  "style": [
+                    "html-h1",
+                    "html-div",
+                    "vcard",
+                    "fn"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-div",
+                    "vcard"
+                  ]
+                },
+                {
+                  "text": [
+                    {
+                      "text": " Teléfono: ",
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text": "555-666-7777",
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": "\n",
+                      "nodeName": "BR"
+                    },
+                    {
+                      "text": " Email: ",
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text": `${candidate.email}`,
+                      "color": "blue",
+                      "decoration": [
+                        "underline"
+                      ],
+                      "style": [
+                        "html-a",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "email"
+                      ],
+                      "link": `mailto:${candidate.email}`,
+                      "nodeName": "A"
+                    },
+                    {
+                      "text": " ",
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    }
+                  ],
+                  "nodeName": "P",
+                  "margin": [
+                    0,
+                    5,
+                    0,
+                    10
+                  ],
+                  "style": [
+                    "html-p",
+                    "html-div",
+                    "vcard"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-div",
+                    "vcard"
+                  ]
+                }
+              ]
+            },
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            },
+            {
+              "nodeName": "DIV",
+              "id": "objective",
+              "stack": [
+                {
+                  "text": " ",
+                  "style": [
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization. ",
+                  "nodeName": "P",
+                  "margin": [
+                    0,
+                    5,
+                    0,
+                    10
+                  ],
+                  "style": [
+                    "html-p",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-div"
+                  ]
+                }
+              ]
+            },
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            },
+            {
+              "text": "",
+              "nodeName": "DIV"
+            },
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            },
+            {
+              "nodeName": "DL",
+              "stack": [
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "",
+                  "nodeName": "DD"
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "Educación",
+                  "nodeName": "DT",
+                  "style": [
+                    "html-dt",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "nodeName": "DD",
+                  "stack": [
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": "F.P. Desarrollo de aplicaciones móviles",
+                      "nodeName": "H2",
+                      "fontSize": 22,
+                      "bold": true,
+                      "marginBottom": 5,
+                      "style": [
+                        "html-h2",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "",
+                  "nodeName": "DD"
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "Habilidades",
+                  "nodeName": "DT",
+                  "style": [
+                    "html-dt",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "nodeName": "DD",
+                  "stack": [
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": "Office skills",
+                      "nodeName": "H2",
+                      "fontSize": 22,
+                      "bold": true,
+                      "marginBottom": 5,
+                      "style": [
+                        "html-h2",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": "Java, Spring boot, Angular, Boota",
+                      "nodeName": "P",
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": "Computer skills",
+                      "nodeName": "H2",
+                      "fontSize": 22,
+                      "bold": true,
+                      "marginBottom": 5,
+                      "style": [
+                        "html-h2",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": "Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows",
+                      "nodeName": "P",
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "",
+                  "nodeName": "DD"
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "Experience",
+                  "nodeName": "DT",
+                  "style": [
+                    "html-dt",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "nodeName": "DD",
+                  "stack": [
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": [
+                        {
+                          "text": "Doomsday Cult ",
+                          "fontSize": 22,
+                          "bold": true,
+                          "marginBottom": 5,
+                          "style": [
+                            "html-h2",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        },
+                        {
+                          "text": "Leader/Overlord - Baton Rogue, LA - 1926-2010",
+                          "nodeName": "SPAN",
+                          "fontSize": 22,
+                          "bold": true,
+                          "style": [
+                            "html-span",
+                            "html-h2",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        }
+                      ],
+                      "nodeName": "H2",
+                      "fontSize": 22,
+                      "bold": true,
+                      "marginBottom": 5,
+                      "style": [
+                        "html-h2",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "nodeName": "UL",
+                      "marginBottom": 5,
+                      "marginLeft": 5,
+                      "style": [
+                        "html-ul",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ],
+                      "ul": [
+                        {
+                          "text": "Inspired and won highest peasant death competition among servants",
+                          "nodeName": "LI",
+                          "style": [
+                            "html-li",
+                            "html-ul",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        },
+                        {
+                          "text": "Helped coordinate managers to grow cult following",
+                          "nodeName": "LI",
+                          "style": [
+                            "html-li",
+                            "html-ul",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        },
+                        {
+                          "text": "Provided untimely deaths to all who opposed",
+                          "nodeName": "LI",
+                          "style": [
+                            "html-li",
+                            "html-ul",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": [
+                        {
+                          "text": "The Watering Hole ",
+                          "fontSize": 22,
+                          "bold": true,
+                          "marginBottom": 5,
+                          "style": [
+                            "html-h2",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        },
+                        {
+                          "text": "Bartender/Server - Milwaukee, WI - 2009",
+                          "nodeName": "SPAN",
+                          "fontSize": 22,
+                          "bold": true,
+                          "style": [
+                            "html-span",
+                            "html-h2",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        }
+                      ],
+                      "nodeName": "H2",
+                      "fontSize": 22,
+                      "bold": true,
+                      "marginBottom": 5,
+                      "style": [
+                        "html-h2",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    },
+                    {
+                      "nodeName": "UL",
+                      "marginBottom": 5,
+                      "marginLeft": 5,
+                      "style": [
+                        "html-ul",
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ],
+                      "ul": [
+                        {
+                          "text": "Worked on grass-roots promotional campaigns",
+                          "nodeName": "LI",
+                          "style": [
+                            "html-li",
+                            "html-ul",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        },
+                        {
+                          "text": "Reduced theft and property damage percentages",
+                          "nodeName": "LI",
+                          "style": [
+                            "html-li",
+                            "html-ul",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        },
+                        {
+                          "text": "Janitorial work, Laundry",
+                          "nodeName": "LI",
+                          "style": [
+                            "html-li",
+                            "html-ul",
+                            "html-dd",
+                            "html-dl",
+                            "html-div"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "text": " ",
+                      "style": [
+                        "html-dd",
+                        "html-dl",
+                        "html-div"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "",
+                  "nodeName": "DD"
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "Hobbies",
+                  "nodeName": "DT",
+                  "style": [
+                    "html-dt",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "World Domination, Deep Sea Diving, Murder Most Foul",
+                  "nodeName": "DD",
+                  "style": [
+                    "html-dd",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "",
+                  "nodeName": "DD"
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "References",
+                  "nodeName": "DT",
+                  "style": [
+                    "html-dt",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "Available on request",
+                  "nodeName": "DD",
+                  "style": [
+                    "html-dd",
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                },
+                {
+                  "text": "",
+                  "nodeName": "DD"
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-dl",
+                    "html-div"
+                  ]
+                }
+              ]
+            },
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            },
+            {
+              "text": "",
+              "nodeName": "DIV"
+            },
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            }
+          ]
+        },
+        {
+          "text": " ",
+          "style": []
+        }
+      ],
+      "styles": {
+        "green": {
+          "color": "green"
+        }
+      }
+    }
 
     pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
   }
