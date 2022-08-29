@@ -67,7 +67,7 @@
 <br>
 
 <p class="toggleActive"><mat-slide-toggle matTooltip="Desactivar/Activar Usuario" [(ngModel)]="editedUser.active" color="primary"><span *ngIf="editedUser.active">El usuario está Activo</span><span *ngIf="!editedUser.active">El usuario está Desactivado</span> </mat-slide-toggle></p>
-
+<span class="warning-missing-fields">Todos los campos con * son requeridos</span>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close matTooltip="Cancelar" color="button-cancel">Cancelar</button>
     <button mat-raised-button [disabled]="isThisMe" (click)="confirmDelete()" matTooltip="Eliminar" color="button-delete">

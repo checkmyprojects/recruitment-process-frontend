@@ -141,9 +141,9 @@
     <br>
     <div class="align-to-end">
         <!-- Show warning text if any field is missing -->
-        <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection">Todos los campos son requeridos *</span>
+        <span class="warning-missing-fields" *ngIf="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection || !newInterviewStatus">Todos los campos son requeridos</span>
         <!-- Disable create button if any field is missing -->
-        <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection" (click)="createInterview()" color="button-save">Crear Entrevista </button>
+        <button matTooltip="Crear Entrevista" mat-raised-button [disabled]="!newInterviewDate || !newInterviewAppUser || !newInterviewCandidate || !newInterviewSelection || !newInterviewStatus" (click)="createInterview()" color="button-save">Crear Entrevista </button>
     </div>
 
 </div>
