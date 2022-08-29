@@ -8,26 +8,27 @@ This is our app to manage internal recruitment processes for NTT DATA Spain and 
 
 Here you can add, edit or delete candidates, interviewers, interviews, processes and view statistics on the selection processes.
 
-### :information_source: **Links to project:** 
-#### FrontEnd: 
+---
+
+### :link: **Links to project:** 
+#### :arrow_right: FrontEnd: 
 https://github.com/checkmyprojects/recruitment-process-frontend
 
-#### Backend: 
+#### :arrow_left: Backend: 
 https://github.com/checkmyprojects/recruitment-process-backend
 
 ###  :space_invader: Tech Stack
 
-- Angular 13: https://angular.io/
-- Typescript: https://www.typescriptlang.org/
-- Angular Material: https://material.angular.io/
-- HTML: https://developer.mozilla.org/es/docs/Web/HTML
-- CSS: https://www.w3schools.com/css/
+<a href="https://angular.io/" title="Angular"><img src="https://github.com/get-icon/geticon/raw/master/icons/angular-icon.svg" alt="Angular" width="28px" height="28px"></a> <a href="https://material.angular.io/" title="Angular Material"><img src="https://steemitimages.com/0x0/https://s3-us-west-2.amazonaws.com/steemhunt/production/steemhunt/2021-01-02/0cb920e2-Angular-Material.png" alt="Angular Material" width="35px" height="28px"></a> <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="28px" height="28px"></a> <a href="https://www.w3.org/TR/html5/" title="HTML5"><img src="https://github.com/get-icon/geticon/raw/master/icons/html-5.svg" alt="HTML5" width="28px" height="28px"></a> <a href="https://www.w3.org/TR/CSS/" title="CSS3"><img src="https://github.com/get-icon/geticon/raw/master/icons/css-3.svg" alt="CSS3" width="28px" height="28px"></a> <a href="https://rxjs.dev/" title="RxJS"><img src="https://github.com/get-icon/geticon/raw/master/icons/reactivex.svg" alt="RxJS" width="28px" height="28px"></a> <a href="https://jquery.com/" title="jQuery"><img src="https://github.com/get-icon/geticon/raw/master/icons/jquery-icon.svg" alt="jQuery" width="28px" height="28px"></a> <a href="https://github.com/redux-observable/redux-observable" title="redux-observable"><img src="https://github.com/get-icon/geticon/raw/master/icons/redux-observable.svg" alt="redux-observable" width="28px" height="28px"></a> <a href="https://git-scm.com/" title="Git"><img src="https://github.com/get-icon/geticon/raw/master/icons/git-icon.svg" alt="Git" width="28px" height="28px"></a> <a href="https://nodejs.org/" title="Node.js"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="Node.js" width="28px" height="28px"></a> <a href="https://www.npmjs.com/" title="npm"><img src="https://github.com/get-icon/geticon/raw/master/icons/npm.svg" alt="npm" width="28px" height="28px"></a> <a href="https://www.npmjs.com/" title="ng2-charts"><img src="http://www.chartjs.org/img/chartjs-logo.svg" alt="ng2-charts" width="28px" height="28px"></a> <a href="https://sheetjs.com/" title="sheetJS"><img src="https://sheetjs.com/sketch128.png" alt="sheetJS" width="28px" height="28px"></a> <a href="https://www.npmjs.com/" title="xngbreadcrumbs"><img src="https://avatars.githubusercontent.com/u/23525418?v=4?s=100" alt="xngbreadcrumbs" width="28px" height="28px"></a>
 
-With Springboot to power our fullstack application, we made a responsive website to manage selection processes.
+With **Springboot** to power our fullstack application, we made a responsive website to manage selection processes.
+
+We have used the **auth guard** service to protect the application's routes.
+
 
 Our goal is to facilitate the hiring process of the HR department, bringing together all the roles in a single app.
 
-This was our first project using Angular Material and it has made some tasks much easier, besides improving the loading process of the app itself.
+This was our first project using **Angular Material** and it has made some tasks much easier, besides improving the loading process of the app itself.
 
 ---
 ### This is a landing page of our project:
@@ -70,12 +71,14 @@ This was our first project using Angular Material and it has made some tasks muc
 
 In this project we have worked with agile development through Scrum and Kanban, divided into six sprints and assigning our tasks in each week. Good organization is essential and we had a good time working as a team, both programming in pairs and helping our partner.
 
+
+
 ![Trello](src/assets/screenshots/trello.png)
 
 ---
 
 <!-- Color Reference -->
-#### Paleta de colores
+### :art: Paleta de colores
 ![](src/assets/screenshots/paletadecolores.png)
 
 ---
@@ -110,11 +113,11 @@ Also, we have used Material library for the first time, which has made it much e
 We have used JWT in Angular to work on the security feature (registration, login and authorizations).
 
 ---
- ### License 
+ ### :spiral_notepad: License 
 
 This project is licensed under the **Entiteam** License - see the file [LICENSE.md](LICENSE.md) for details.
 
-### Thanks 🎁
+### :gift: Thanks
 
 * Tell others about this project 📢
 * Invite someone from the team to a beer 🍺 or a coffee ☕.
