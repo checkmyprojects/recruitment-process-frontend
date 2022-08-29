@@ -19,6 +19,11 @@
   margin: 0 10px;
 }
 
+.warning-missing-fields{
+  color: red;
+  font-weight: 500;
+}
+
 /* Select text color */
 ::ng-deep .mat-select-value *{    
   color: black!important;  }

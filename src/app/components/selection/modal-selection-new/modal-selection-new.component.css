@@ -23,6 +23,13 @@
   display: flex;
 }
 
+.warning-missing-fields{
+  padding-top: 10px;
+  display: block;
+  color: red;
+  font-weight: 500;
+}
+
 /* Select text color */
 ::ng-deep .mat-select-value *{    
   color: black!important;  }

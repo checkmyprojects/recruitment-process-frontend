@@ -34,7 +34,7 @@ export class NewInterviewComponent implements OnInit {
 
   newInterviewDate: Date | undefined;
 
-  newInterviewStatus: String | undefined;
+  newInterviewStatus: string | undefined;
 
   // Date picker minimum date is now
   minDate = new Date();
