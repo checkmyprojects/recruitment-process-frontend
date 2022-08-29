@@ -2,28 +2,26 @@
 <img src="src/assets/img/Logo_Team_Project.png"/>
 </p>
 
+---
+
 This is our app to manage internal recruitment processes for NTT DATA Spain and Affiliates. 
 
 Here you can add, edit or delete candidates, interviewers, interviews, processes and view statistics on the selection processes.
 
 ### :information_source: **Links to project:** 
-FrontEnd: https://github.com/checkmyprojects/recruitment-process-frontend
+#### FrontEnd: 
+https://github.com/checkmyprojects/recruitment-process-frontend
 
-Backend: https://github.com/checkmyprojects/recruitment-process-backend
-## How It's Made:
----
+#### Backend: 
+https://github.com/checkmyprojects/recruitment-process-backend
 
 ###  :space_invader: Tech Stack
 
-- Java: https://www.java.com/es/
-- Spring: https://spring.io/
 - Angular 13: https://angular.io/
 - Typescript: https://www.typescriptlang.org/
 - Angular Material: https://material.angular.io/
-- Bootstrap: https://getbootstrap.com/
 - HTML: https://developer.mozilla.org/es/docs/Web/HTML
 - CSS: https://www.w3schools.com/css/
-- MySQL: https://www.mysql.com/
 
 With Springboot to power our fullstack application, we made a responsive website to manage selection processes.
 
