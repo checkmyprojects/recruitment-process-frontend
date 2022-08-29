@@ -20,7 +20,7 @@ describe('InterviewService', () => {
   });
 
   it('getAllInterviews should be a GET request and return proper data', () => {
-    
+
     const interview: any[] = [
       {
           "id": 1,
@@ -31,7 +31,7 @@ describe('InterviewService', () => {
           "interview_date": new Date(),
           "creation_date": new Date()
       }
-    ] 
+    ]
 
     service.getAllInterviews().subscribe((res) => {
       expect(res).toEqual(interview);
@@ -44,8 +44,30 @@ describe('InterviewService', () => {
     httpMock.verify();
   });
 
+  it('registerNewInterview() should be a post request', () => {
+
+    let newInterview: any = {
+      "id": 1,
+          "candidate": null,
+          "interviewer": null,
+          "selection": null,
+          "feedback": "Notes",
+          "interview_date": new Date(),
+          "creation_date": new Date()
+    }
+
+    service.registerNewInterview(newInterview).subscribe((res) => {
+      expect(res).toEqual(newInterview);
+    });
+
+    const req = httpMock.expectOne('http://localhost:8080/api/interview/new');
+    expect(req.request.method).toEqual('POST');
+    req.flush(newInterview);
+
+  });
+
   it('feedbackInterview should be a PUT request, call interviewID url, send proper feedback, and return data', () => {
-    
+
     const interview: any = {
           "id": 1,
           "candidate": null,
@@ -67,29 +89,31 @@ describe('InterviewService', () => {
     httpMock.verify();
   });
 
-  it('editInterview should be a PUT request, call interviewID url, send proper feedback, and return data', () => {
-    
-    const interview: any = {
-          "id": 1,
-          "candidate": null,
-          "interviewer": null,
-          "selection": null,
-          "feedback": "Notes",
-          "interview_date": "2022-12-12",
-          "creation_date": "2022-12-12"
-      }
-    
-    let date = "2022-12-12";
-    let interviewId = 1;
-    let candidateid = 2;
-    let interviewerid = 3;
-    let selectionid = 4;
+  it('editInterview() should be a PUT request, call interviewID url, send proper feedback, and return data', () => {
 
-    service.editInterview(date, interviewId, candidateid, interviewerid, selectionid).subscribe((res) => {
+    const interview: any = {
+      "id": 1,
+      "candidate": null,
+      "interviewer": null,
+      "selection": null,
+      "feedback": "Notes",
+      "interview_date": "2022-12-12",
+      "creation_date": "2022-12-12"
+  }
+    let interviewRequest: any = {
+      candidateId: 1,
+      interviewerId: 2,
+      selectionId: 3,
+      date: "2022-10-13",
+      status: "",
+      feedback: ""
+    }
+
+    service.editInterview(interview.id, interviewRequest).subscribe((res) => {
       expect(res).toEqual(interview);
     });
 
-    const req = httpMock.expectOne(`http://localhost:8080/api/interview/edit/${interviewId}/?candidateid=${candidateid}&interviewerid=${interviewerid}&selectionid=${selectionid}`,date);
+    const req = httpMock.expectOne(`http://localhost:8080/api/interview/edit/${interview.id}`,interviewRequest);
     expect(req.request.method).toEqual("PUT");
     req.flush(interview);
 
@@ -97,7 +121,7 @@ describe('InterviewService', () => {
   });
 
   it('deleteInterviewById should be a DELETE request and call proper ID url', () => {
-    
+
     const interview: any = {
           "id": 1,
           "candidate": null,
@@ -107,7 +131,7 @@ describe('InterviewService', () => {
           "interview_date": "2022-12-12",
           "creation_date": "2022-12-12"
       }
-    
+
     service.deleteInterviewById(interview.id).subscribe((res) => {
       expect(res).toEqual(interview);
     });
