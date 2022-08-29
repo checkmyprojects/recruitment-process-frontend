@@ -23,7 +23,7 @@ https://github.com/checkmyprojects/recruitment-process-backend
 
 We have used **Angular and its Material** library to make our application, since with Material, only the necessary components are loaded and this improves the loading of the application.
 
-##### Other libraries used:
+#### Other libraries used:
 - **RxJS** to simplify the asynchronous code.
 - **redux-observable** to compose and cancel asynchronous actions and create side effects.
 - **JQuery** to simplify the way to interact with HTML documents, manipulate the DOM tree, handle events, develop animations and add AJAX interaction to web pages.
