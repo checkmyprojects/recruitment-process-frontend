@@ -30,6 +30,8 @@ With Springboot to power our fullstack application, we made a responsive website
 Our goal is to facilitate the hiring process of the HR department, bringing together all the roles in a single app.
 
 This was our first project using Angular Material and it has made some tasks much easier, besides improving the loading process of the app itself.
+
+---
 ### This is a landing page of our project:
 
 ![](src/assets/screenshots/landing_page.png)
@@ -66,15 +68,19 @@ This was our first project using Angular Material and it has made some tasks muc
 
 </details>
 
-
+---
 
 In this project we have worked with agile development through Scrum and Kanban, divided into six sprints and assigning our tasks in each week. Good organization is essential and we had a good time working as a team, both programming in pairs and helping our partner.
 
 ![Trello](src/assets/screenshots/trello.png)
 
+---
+
 <!-- Color Reference -->
+#### Paleta de colores
 ![](src/assets/screenshots/paletadecolores.png)
 
+---
 :checkered_flag:  Team
 ---
 
@@ -105,6 +111,7 @@ Also, we have used Material library for the first time, which has made it much e
 
 We have used JWT in Angular to work on the security feature (registration, login and authorizations).
 
+---
  ### License 
 
 This project is licensed under the **Entiteam** License - see the file [LICENSE.md](LICENSE.md) for details.
