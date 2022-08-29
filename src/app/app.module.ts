@@ -54,6 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ModalInterviewComponent } from './components/interview/modal-interview/modal-interview.component';
 import {BreadcrumbModule} from 'xng-breadcrumb';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +82,8 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     ModalSelectionNewComponent,
     NewInterviewComponent,
     ModalSelectionComponent,
-    ModalInterviewComponent
+    ModalInterviewComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     MatTabsModule,
     BreadcrumbModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgChartsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }, { provide: LOCALE_ID, useValue: 'es-ES'}],
   bootstrap: [AppComponent]
