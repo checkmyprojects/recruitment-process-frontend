@@ -30,8 +30,8 @@ We have used **Angular and its Material** library to make our application, since
 - **ng2-charts** for the development of dynamic graphics.
 - **sheetJS** for exporting a DB table to an xls document.
 - **xngbreadcrumbs** to implement the "breadcrumbs" and to be able to see the path of each page.
-- **PdfMake** para la creación de pdfs desde la parte cliente de Angular.
-- **jspdf + html2canvas** ajusta automáticamente el ancho del dom de destino en el tamaño del PDF. Y si la altura del contenido es superior a 1 pdf, lo separará automáticamente en otra página pdf.
+- **PdfMake** for the creation of pdfs from the client side of Angular.
+- **jspdf + html2canvas** automatically adjusts the width of the target domain to the PDF size. And if the height of the content is more than 1 pdf, it will automatically separate it into another pdf page.
 
 **Git** as a version control system and **Github** as a repository for the project divided into branches for better organization.
 
