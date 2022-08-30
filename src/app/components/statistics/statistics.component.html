@@ -1,3 +1,9 @@
+<div class="searchBar">
+  <mat-form-field class="searchBar" appearance="standard">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder='Ej.: "Entrevistas"' #input>
+  </mat-form-field>
+</div>
 <mat-accordion multi style="margin-bottom: 20px">
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
@@ -21,26 +27,37 @@
           <mat-form-field appearance="fill" style="display: flex; align-items:center; justify-content: center">
             <mat-label>Desde - Hasta</mat-label>
             <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-              <input matStartDate formControlName="start">
-              <input matEndDate formControlName="end">
+              <input matStartDate formControlName="start" readonly>
+              <input matEndDate formControlName="end" readonly>
             </mat-date-range-input>
-            <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker startView="multi-year" (closed)="statsMode = 1"></mat-date-range-picker>
+            <mat-hint>MM/YYYY - MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker" (click)="statsMode = 1"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker color="primary" startView="multi-year"></mat-date-range-picker>
           </mat-form-field>
         </section>
     </mat-expansion-panel>
-    <button style="margin-top: 10px" [disabled]="!range.valid" mat-flat-button color="primary" (click)="stats()">Mostrar</button>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Candidatos
+      </mat-panel-title>
+      <mat-panel-description>
+        Evolución mensual de candidatos activos en un proceso
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    
+  </mat-expansion-panel>
+    <div style="margin-top: 10px; flex: center; align-items: center; justify-content: space-around">
+      <button [disabled]="!range.valid" mat-flat-button color="primary" (click)="stats()">Mostrar</button>
+      <button style="margin-left: 10px" [disabled]="!statsMode" mat-flat-button color="accent" (click)="lastStatsMode = statsMode; statsMode = 0; stats(); statsMode = lastStatsMode">Limpiar</button>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
-<div *ngIf="statsMode" class="container" style="border-radius: 10px 10px; margin-top: 20px; margin-bottom: 20px; background-color: rgb(255, 255, 255);">
+<div class="container" style="width: 40vw; border-radius: 10px 10px; margin-top: 20px; margin-bottom: 20px; background-color: rgb(255, 255, 255);">
   <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType"></canvas>
 </div>
-<table class="table table-responsive table-condensed">
-  <tr>
-    <th *ngFor="let label of chartData?.labels"></th>
-  </tr>
+<table *ngIf="chartType == 'line'" class="table table-responsive table-condensed">
   <tr *ngFor="let d of chartData?.datasets; let i=index" [class]="'line-'+i">
-    <td *ngFor="let label of chartData?.labels; let j=index">{{d && d.data[j]}}</td>
+    <td *ngFor="let label of chartData?.labels; let j=index"></td>
   </tr>
 </table>
