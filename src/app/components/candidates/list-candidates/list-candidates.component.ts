@@ -148,47 +148,48 @@ export class ListCandidatesComponent implements OnInit {
           "nodeName": "DIV",
           "id": "page-wrap",
           "stack": [
-            {
-              "text": " ",
-              "style": [
-                "html-div"
-              ]
-            },
+             {
+               "text": " ",
+               "style": [
+                 "html-div"
+               ]
+             },
             {
               "nodeName": "DIV",
               "id": "contact-info",
               "stack": [
                 {
-                  "text": " ",
+                   "text": " ",
+                   "style": [
+                     "html-div",
+                     "vcard"
+                   ]
+                 },
+                 {
+                  "text": "Candidatos",
+                  "nodeName": "P",
+                  "margin": [
+                    0,
+                    5,
+                    0,
+                    10
+                  ],
+                  "alignment": "center",
+                  "decoration": [
+                    "underline"
+                  ],
+                  "bold": "true",
+                  "fontSize": 25,
                   "style": [
-                    "html-div",
-                    "vcard"
-                  ]
-                },
-                {
-                  "text": `${candidate.name} ${candidate.surname}`,
-                  "nodeName": "H1",
-                  "fontSize": 24,
-                  "bold": true,
-                  "marginBottom": 5,
-                  "style": [
-                    "html-h1",
-                    "html-div",
-                    "vcard",
-                    "fn"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-div",
-                    "vcard"
+                    "html-p"
                   ]
                 },
                 {
                   "text": [
                     {
-                      "text": " Teléfono: ",
+                      "text": " \nNOMBRE Y APELLIDOS:",
+                      "bold": true,
+                      "fontSize": 13,
                       "margin": [
                         0,
                         5,
@@ -202,7 +203,7 @@ export class ListCandidatesComponent implements OnInit {
                       ]
                     },
                     {
-                      "text": "555-666-7777",
+                      "text":   `\n${candidate.name} ${candidate.surname}`,
                       "nodeName": "SPAN",
                       "style": [
                         "html-span",
@@ -213,11 +214,9 @@ export class ListCandidatesComponent implements OnInit {
                       ]
                     },
                     {
-                      "text": "\n",
-                      "nodeName": "BR"
-                    },
-                    {
-                      "text": " Email: ",
+                      "text": " \n\n\n  UBICACIÓN:   ",
+                      "bold": true,
+                      "fontSize": 13,
                       "margin": [
                         0,
                         5,
@@ -231,23 +230,20 @@ export class ListCandidatesComponent implements OnInit {
                       ]
                     },
                     {
-                      "text": `${candidate.email}`,
-                      "color": "blue",
-                      "decoration": [
-                        "underline"
-                      ],
+                      "text":`\n${candidate.location}`,
+                      "nodeName": "SPAN",
                       "style": [
-                        "html-a",
+                        "html-span",
                         "html-p",
                         "html-div",
                         "vcard",
-                        "email"
-                      ],
-                      "link": `mailto:${candidate.email}`,
-                      "nodeName": "A"
+                        "tel"
+                      ]
                     },
                     {
-                      "text": " ",
+                      "text": " \n\n\n  TELÉFONO:   ",
+                      "bold": true,
+                      "fontSize": 13,
                       "margin": [
                         0,
                         5,
@@ -259,7 +255,153 @@ export class ListCandidatesComponent implements OnInit {
                         "html-div",
                         "vcard"
                       ]
-                    }
+                    },
+                    {
+                      "text":`\n${candidate.phone}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\nEMAIL:",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":   `\n${candidate.email}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  HABILIDADES:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.skills}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  ESTUDIOS:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.studies}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  EXPERIENCIA:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.experience} años`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  NOTAS:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.notes}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
                   ],
                   "nodeName": "P",
                   "margin": [
@@ -282,633 +424,6 @@ export class ListCandidatesComponent implements OnInit {
                   ]
                 }
               ]
-            },
-            {
-              "text": " ",
-              "style": [
-                "html-div"
-              ]
-            },
-            {
-              "nodeName": "DIV",
-              "id": "objective",
-              "stack": [
-                {
-                  "text": " ",
-                  "style": [
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization. ",
-                  "nodeName": "P",
-                  "margin": [
-                    0,
-                    5,
-                    0,
-                    10
-                  ],
-                  "style": [
-                    "html-p",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-div"
-                  ]
-                }
-              ]
-            },
-            {
-              "text": " ",
-              "style": [
-                "html-div"
-              ]
-            },
-            {
-              "text": "",
-              "nodeName": "DIV"
-            },
-            {
-              "text": " ",
-              "style": [
-                "html-div"
-              ]
-            },
-            {
-              "nodeName": "DL",
-              "stack": [
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "",
-                  "nodeName": "DD"
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "Educación",
-                  "nodeName": "DT",
-                  "style": [
-                    "html-dt",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "nodeName": "DD",
-                  "stack": [
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": "F.P. Desarrollo de aplicaciones móviles",
-                      "nodeName": "H2",
-                      "fontSize": 22,
-                      "bold": true,
-                      "marginBottom": 5,
-                      "style": [
-                        "html-h2",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "",
-                  "nodeName": "DD"
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "Habilidades",
-                  "nodeName": "DT",
-                  "style": [
-                    "html-dt",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "nodeName": "DD",
-                  "stack": [
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": "Office skills",
-                      "nodeName": "H2",
-                      "fontSize": 22,
-                      "bold": true,
-                      "marginBottom": 5,
-                      "style": [
-                        "html-h2",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": "Java, Spring boot, Angular, Boota",
-                      "nodeName": "P",
-                      "margin": [
-                        0,
-                        5,
-                        0,
-                        10
-                      ],
-                      "style": [
-                        "html-p",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": "Computer skills",
-                      "nodeName": "H2",
-                      "fontSize": 22,
-                      "bold": true,
-                      "marginBottom": 5,
-                      "style": [
-                        "html-h2",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": "Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows",
-                      "nodeName": "P",
-                      "margin": [
-                        0,
-                        5,
-                        0,
-                        10
-                      ],
-                      "style": [
-                        "html-p",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "",
-                  "nodeName": "DD"
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "Experience",
-                  "nodeName": "DT",
-                  "style": [
-                    "html-dt",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "nodeName": "DD",
-                  "stack": [
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": [
-                        {
-                          "text": "Doomsday Cult ",
-                          "fontSize": 22,
-                          "bold": true,
-                          "marginBottom": 5,
-                          "style": [
-                            "html-h2",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        },
-                        {
-                          "text": "Leader/Overlord - Baton Rogue, LA - 1926-2010",
-                          "nodeName": "SPAN",
-                          "fontSize": 22,
-                          "bold": true,
-                          "style": [
-                            "html-span",
-                            "html-h2",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        }
-                      ],
-                      "nodeName": "H2",
-                      "fontSize": 22,
-                      "bold": true,
-                      "marginBottom": 5,
-                      "style": [
-                        "html-h2",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "nodeName": "UL",
-                      "marginBottom": 5,
-                      "marginLeft": 5,
-                      "style": [
-                        "html-ul",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ],
-                      "ul": [
-                        {
-                          "text": "Inspired and won highest peasant death competition among servants",
-                          "nodeName": "LI",
-                          "style": [
-                            "html-li",
-                            "html-ul",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        },
-                        {
-                          "text": "Helped coordinate managers to grow cult following",
-                          "nodeName": "LI",
-                          "style": [
-                            "html-li",
-                            "html-ul",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        },
-                        {
-                          "text": "Provided untimely deaths to all who opposed",
-                          "nodeName": "LI",
-                          "style": [
-                            "html-li",
-                            "html-ul",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": [
-                        {
-                          "text": "The Watering Hole ",
-                          "fontSize": 22,
-                          "bold": true,
-                          "marginBottom": 5,
-                          "style": [
-                            "html-h2",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        },
-                        {
-                          "text": "Bartender/Server - Milwaukee, WI - 2009",
-                          "nodeName": "SPAN",
-                          "fontSize": 22,
-                          "bold": true,
-                          "style": [
-                            "html-span",
-                            "html-h2",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        }
-                      ],
-                      "nodeName": "H2",
-                      "fontSize": 22,
-                      "bold": true,
-                      "marginBottom": 5,
-                      "style": [
-                        "html-h2",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    },
-                    {
-                      "nodeName": "UL",
-                      "marginBottom": 5,
-                      "marginLeft": 5,
-                      "style": [
-                        "html-ul",
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ],
-                      "ul": [
-                        {
-                          "text": "Worked on grass-roots promotional campaigns",
-                          "nodeName": "LI",
-                          "style": [
-                            "html-li",
-                            "html-ul",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        },
-                        {
-                          "text": "Reduced theft and property damage percentages",
-                          "nodeName": "LI",
-                          "style": [
-                            "html-li",
-                            "html-ul",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        },
-                        {
-                          "text": "Janitorial work, Laundry",
-                          "nodeName": "LI",
-                          "style": [
-                            "html-li",
-                            "html-ul",
-                            "html-dd",
-                            "html-dl",
-                            "html-div"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "text": " ",
-                      "style": [
-                        "html-dd",
-                        "html-dl",
-                        "html-div"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "",
-                  "nodeName": "DD"
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "Hobbies",
-                  "nodeName": "DT",
-                  "style": [
-                    "html-dt",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "World Domination, Deep Sea Diving, Murder Most Foul",
-                  "nodeName": "DD",
-                  "style": [
-                    "html-dd",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "",
-                  "nodeName": "DD"
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "References",
-                  "nodeName": "DT",
-                  "style": [
-                    "html-dt",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "Available on request",
-                  "nodeName": "DD",
-                  "style": [
-                    "html-dd",
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                },
-                {
-                  "text": "",
-                  "nodeName": "DD"
-                },
-                {
-                  "text": " ",
-                  "style": [
-                    "html-dl",
-                    "html-div"
-                  ]
-                }
-              ]
-            },
-            {
-              "text": " ",
-              "style": [
-                "html-div"
-              ]
-            },
-            {
-              "text": "",
-              "nodeName": "DIV"
             },
             {
               "text": " ",
@@ -959,9 +474,9 @@ export class ListCandidatesComponent implements OnInit {
     if(range.e.c >= (1<<14)) range.e.c = (1<<14)-1;
     return range;
   }
-  
+
   crefregex = /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)([1-9]\d{0,5}|10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6])(?![_.\(A-Za-z0-9])/g;
-  
+
   /*
   deletes `ncols` cols STARTING WITH `start_col`
   usage: delete_cols(ws, 4, 3); // deletes columns E-G and shifts everything after G to the left by 3 columns
@@ -971,11 +486,11 @@ export class ListCandidatesComponent implements OnInit {
     var dense = Array.isArray(ws);
     if(!ncols) ncols = 1;
     if(!start_col) start_col = 0;
-  
+
     /* extract original range */
     var range = XLSX.utils.decode_range(ws["!ref"]);
     var R = 0, C = 0;
-  
+
     var formula_cb = function($0, $1, $2, $3, $4, $5) {
       var _R = XLSX.utils.decode_row($5), _C = XLSX.utils.decode_col($3);
       if(_C >= start_col) {
@@ -984,7 +499,7 @@ export class ListCandidatesComponent implements OnInit {
       }
       return $1+($2=="$" ? $2+$3 : XLSX.utils.encode_col(_C))+($4=="$" ? $4+$5 : XLSX.utils.encode_row(_R));
     };
-  
+
     var addr, naddr;
     for(C = start_col + ncols; C <= range.e.c; ++C) {
       for(R = range.s.r; R <= range.e.r; ++R) {
@@ -1007,12 +522,12 @@ export class ListCandidatesComponent implements OnInit {
         if(ws[addr] && ws[addr].f) ws[addr].f = ws[addr].f.replace(this.crefregex, formula_cb);
       }
     }
-  
+
     /* write new range */
     range.e.c -= ncols;
     if(range.e.c < range.s.c) range.e.c = range.s.c;
     ws["!ref"] = XLSX.utils.encode_range(this.clamp_range(range));
-  
+
     /* merge cells */
     if(ws["!merges"]) ws["!merges"].forEach(function(merge, idx) {
       var mergerange;
@@ -1031,11 +546,11 @@ export class ListCandidatesComponent implements OnInit {
       ws["!merges"][idx] = mergerange;
     });
     if(ws["!merges"]) ws["!merges"] = ws["!merges"].filter(function(x) { return !!x; });
-  
+
     /* cols */
     if(ws["!cols"]) ws["!cols"].splice(start_col, ncols);
   }
   // End utility to remove columns
   // =======================================================================
-  
+
 }
