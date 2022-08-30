@@ -11,6 +11,7 @@ import { SelectionComponent } from './components/selection/selection/selection.c
 import { NewInterviewComponent } from './components/interview/new-interview/new-interview.component';
 // Import Authguard class to protect routes for non authorized users
 import { AuthGuard } from './helpers/auth-guard';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 // === Authguard ===
 // To protect a route and allow access only to users with role ROLE_ADMIN, use: "canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN']}}"
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'interview', component: ListInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER'], breadcrumb: { label: 'Entrevistas', info: 'event_note' }}},
   { path: 'interview/new', component: NewInterviewComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_PEOPLE', 'ROLE_INTERVIEWER']}},
   // { path: '**', redirectTo: '' }
+  { path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN', 'ROLE_BUSINESS'], breadcrumb: { label: 'Estadísticas', info: 'query_stats' }} }
 ];
 
 // Routes array is passed to the RouterModule.forRoot() method.

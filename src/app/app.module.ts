@@ -55,6 +55,8 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
 //import { MaterialModule } from '@angular/material/module' ;
 
 
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { NgChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,8 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     ModalSelectionNewComponent,
     NewInterviewComponent,
     ModalSelectionComponent,
-    ModalInterviewComponent
+    ModalInterviewComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +112,8 @@ import {BreadcrumbModule} from 'xng-breadcrumb';
     MatSnackBarModule,
     MatGridListModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    NgChartsModule
   ],
   providers: [authInterceptorProviders, { provide: MatPaginatorIntl, useValue: CustomPaginator() }, { provide: LOCALE_ID, useValue: 'es-ES'}],
   bootstrap: [AppComponent]
