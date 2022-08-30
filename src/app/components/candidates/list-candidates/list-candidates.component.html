@@ -44,6 +44,11 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
         <td mat-cell matTooltip="Email" *matCellDef="let row" (click)="openDialog(row)"> {{row.email}} </td>
       </ng-container>
+      <!-- telephone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Teléfono </th>
+        <td mat-cell matTooltip="Teléfono" *matCellDef="let row" (click)="openDialog(row)"> {{row.phone}} </td>
+      </ng-container>
       <!-- skills Column -->
       <ng-container matColumnDef="skills">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Habilidades </th>

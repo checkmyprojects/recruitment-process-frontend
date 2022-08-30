@@ -10,7 +10,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalCandidatesComponent } from '../modal-candidates/modal-candidates.component';
 import { ModalCandidateNewComponent } from '../modal-candidate-new/modal-candidate-new.component';
-import * as pdfMake from "pdfmake/build/pdfmake";
+// import * as pdfMake from "pdfmake/build/pdfmake";
+const pdfMake = require('pdfmake/build/pdfmake.js');
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -141,36 +142,308 @@ export class ListCandidatesComponent implements OnInit {
   // create PDF using pdfmake
   printDoc(candidate: any){
 
-    let dd = { content: [
-
-      {
-         table: {
-           widths: ["*"],
-           body: [
-             [
-
-               {
-                 text: [
-                  {text: 'DATOS DEL CANDIDATO\n\n', style: 'header', bold: true, aligment:'center'},
-                  { text: `Nombre y apellidos: ${candidate.name} ${candidate.surname}\n\n`},
-                  { text: `Ubicación: ${candidate.location}\n\n`},
-                  { text: `Email: ${candidate.email}\n\n`},
-                  { text: `Habilidades: ${candidate.skills}\n\n`},
-                  { text: `Estudios: ${candidate.studies}\n\n`},
-                  { text: `Experiencia: ${candidate.experience}\n\n`}
-                 ],
-
-                 style: "header",
-                 width: "150",
-                 alignment: "left",
-                 margin: [0, 15, 0, 15]
-               }
-             ]
-           ]
-         }
-       },
-]
-};
+    var dd = {
+      "content": [
+        {
+          "nodeName": "DIV",
+          "id": "page-wrap",
+          "stack": [
+             {
+               "text": " ",
+               "style": [
+                 "html-div"
+               ]
+             },
+            {
+              "nodeName": "DIV",
+              "id": "contact-info",
+              "stack": [
+                {
+                   "text": " ",
+                   "style": [
+                     "html-div",
+                     "vcard"
+                   ]
+                 },
+                 {
+                  "text": "Candidatos",
+                  "nodeName": "P",
+                  "margin": [
+                    0,
+                    5,
+                    0,
+                    10
+                  ],
+                  "alignment": "center",
+                  "decoration": [
+                    "underline"
+                  ],
+                  "bold": "true",
+                  "fontSize": 25,
+                  "style": [
+                    "html-p"
+                  ]
+                },
+                {
+                  "text": [
+                    {
+                      "text": " \nNOMBRE Y APELLIDOS:",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":   `\n${candidate.name} ${candidate.surname}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  UBICACIÓN:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.location}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  TELÉFONO:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.phone}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\nEMAIL:",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":   `\n${candidate.email}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  HABILIDADES:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.skills}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  ESTUDIOS:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.studies}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  EXPERIENCIA:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.experience} años`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                    {
+                      "text": " \n\n\n  NOTAS:   ",
+                      "bold": true,
+                      "fontSize": 13,
+                      "margin": [
+                        0,
+                        5,
+                        0,
+                        10
+                      ],
+                      "style": [
+                        "html-p",
+                        "html-div",
+                        "vcard"
+                      ]
+                    },
+                    {
+                      "text":`\n${candidate.notes}`,
+                      "nodeName": "SPAN",
+                      "style": [
+                        "html-span",
+                        "html-p",
+                        "html-div",
+                        "vcard",
+                        "tel"
+                      ]
+                    },
+                  ],
+                  "nodeName": "P",
+                  "margin": [
+                    0,
+                    5,
+                    0,
+                    10
+                  ],
+                  "style": [
+                    "html-p",
+                    "html-div",
+                    "vcard"
+                  ]
+                },
+                {
+                  "text": " ",
+                  "style": [
+                    "html-div",
+                    "vcard"
+                  ]
+                }
+              ]
+            },
+            {
+              "text": " ",
+              "style": [
+                "html-div"
+              ]
+            }
+          ]
+        },
+        {
+          "text": " ",
+          "style": []
+        }
+      ],
+      "styles": {
+        "green": {
+          "color": "green"
+        }
+      }
+    }
 
     pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
   }
@@ -201,9 +474,9 @@ export class ListCandidatesComponent implements OnInit {
     if(range.e.c >= (1<<14)) range.e.c = (1<<14)-1;
     return range;
   }
-  
+
   crefregex = /(^|[^._A-Z0-9])([$]?)([A-Z]{1,2}|[A-W][A-Z]{2}|X[A-E][A-Z]|XF[A-D])([$]?)([1-9]\d{0,5}|10[0-3]\d{4}|104[0-7]\d{3}|1048[0-4]\d{2}|10485[0-6]\d|104857[0-6])(?![_.\(A-Za-z0-9])/g;
-  
+
   /*
   deletes `ncols` cols STARTING WITH `start_col`
   usage: delete_cols(ws, 4, 3); // deletes columns E-G and shifts everything after G to the left by 3 columns
@@ -213,11 +486,11 @@ export class ListCandidatesComponent implements OnInit {
     var dense = Array.isArray(ws);
     if(!ncols) ncols = 1;
     if(!start_col) start_col = 0;
-  
+
     /* extract original range */
     var range = XLSX.utils.decode_range(ws["!ref"]);
     var R = 0, C = 0;
-  
+
     var formula_cb = function($0, $1, $2, $3, $4, $5) {
       var _R = XLSX.utils.decode_row($5), _C = XLSX.utils.decode_col($3);
       if(_C >= start_col) {
@@ -226,7 +499,7 @@ export class ListCandidatesComponent implements OnInit {
       }
       return $1+($2=="$" ? $2+$3 : XLSX.utils.encode_col(_C))+($4=="$" ? $4+$5 : XLSX.utils.encode_row(_R));
     };
-  
+
     var addr, naddr;
     for(C = start_col + ncols; C <= range.e.c; ++C) {
       for(R = range.s.r; R <= range.e.r; ++R) {
@@ -249,12 +522,12 @@ export class ListCandidatesComponent implements OnInit {
         if(ws[addr] && ws[addr].f) ws[addr].f = ws[addr].f.replace(this.crefregex, formula_cb);
       }
     }
-  
+
     /* write new range */
     range.e.c -= ncols;
     if(range.e.c < range.s.c) range.e.c = range.s.c;
     ws["!ref"] = XLSX.utils.encode_range(this.clamp_range(range));
-  
+
     /* merge cells */
     if(ws["!merges"]) ws["!merges"].forEach(function(merge, idx) {
       var mergerange;
@@ -273,11 +546,11 @@ export class ListCandidatesComponent implements OnInit {
       ws["!merges"][idx] = mergerange;
     });
     if(ws["!merges"]) ws["!merges"] = ws["!merges"].filter(function(x) { return !!x; });
-  
+
     /* cols */
     if(ws["!cols"]) ws["!cols"].splice(start_col, ncols);
   }
   // End utility to remove columns
   // =======================================================================
-  
+
 }
