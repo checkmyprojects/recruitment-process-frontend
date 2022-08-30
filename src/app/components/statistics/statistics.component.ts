@@ -4,10 +4,12 @@ import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { StatisticsService } from 'src/app/services/statistics.service';
 import { NativeDateAdapter, MatDateFormats, DateAdapter, MAT_DATE_FORMATS} from '@angular/material/core';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { Selection } from 'src/app/model/selection';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SelectionService } from 'src/app/services/selection.service';
 
 //Date custom formatter
 export class AppDateAdapter extends NativeDateAdapter
@@ -50,8 +52,10 @@ export const APP_DATE_FORMATS: MatDateFormats = {
 })
 export class StatisticsComponent
 {
+  displayedColumns: string[] = ['id', 'start_date', 'end_date', 'name', 'description', 'requirements', 'location', 'sector', 'project_id'];
+
   //Table to filter and sort
-  dataSource?: MatTableDataSource<Selection>;
+  dataSource: MatTableDataSource<Selection>;
 
   //Paginator of the table
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -80,6 +84,9 @@ export class StatisticsComponent
   //The latest stats mode before the cleaning of filters
   lastStatsMode = 0;
 
+  //The process name
+  processName = "";
+
   //The selected process ID
   processId = 0;
 
@@ -87,9 +94,47 @@ export class StatisticsComponent
   panelOpenState = false;
 
   //Inject statistics service, to do calls to the backend
-  constructor(private service: StatisticsService)
+  constructor(private service: StatisticsService, private selectionService: SelectionService)
   {
+    this.dataSource = new MatTableDataSource(this.getAllSelections());
     this.stats();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event)
+  {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator)
+      this.dataSource.paginator.firstPage();
+  }
+
+  public getAllSelections():Selection[] {
+    let data: Selection[] = [];
+    this.selectionService.getAllSelections().subscribe({
+      next: (response) => {
+        data = response;
+        // Initialize datasource with response from backend
+        this.dataSource.data = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
+    return data;
+  }
+
+  // If it has no end date, print "Sin fecha" instead
+  public returnUndefined(string: string):string {
+    if(!string) {
+      return "Sin fecha";
+    }else{
+      return string
+    }
   }
 
   //Get the range of months into an String array
@@ -212,7 +257,7 @@ export class StatisticsComponent
                 this.chartData = {datasets: [
                   {
                     data: value.candidates?value.candidates:[],
-                    label: 'Candidatos',
+                    label: 'Candidatos (' + this.processName + ')',
                     backgroundColor: 'rgba(0, 0, 210, 0.4)',
                     borderColor: 'rgba(255, 255, 255, 1)',
                     pointBackgroundColor: 'rgba(0, 0, 0, 1)',
