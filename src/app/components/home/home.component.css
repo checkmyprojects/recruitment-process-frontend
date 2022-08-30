@@ -1,60 +1,42 @@
 .btn {
-    background-color: #00C1CD;
-    color: #E7E9E8;
-    position: absolute;
-    border-radius: 30px;
-    /* width: 200px; */
-    width: 140px;
-    padding: 0;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    opacity: 90%;
+  background-color: #00C1CD;
+  color: #E7E9E8;
+  position: absolute;
+  border-radius: 30px;
+  /* width: 200px; */
+  width: 140px;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  opacity: 90%;
 }
 .btn:hover {
-    background-color: #03e7f5;
-    opacity: 100%;
+  background-color: #03e7f5;
+  opacity: 100%;
 }
-/* div{
-    background-image:url('https://i.ibb.co/1GfgPrn/fondologo.jpg');
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-} */
 
 /* Display this component in fullscreen */
 :host{
-    /* background-image: url("https://i.ibb.co/1GfgPrn/fondologo.jpg"); */
-    background-repeat: auto;
-    background-size: cover;
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100
-}
-
-#background-video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
+  background-image: url("https://i.ibb.co/fCpnr6T/background.png");
+  background-repeat: auto;
+  background-size: cover;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100
 }
 
 /* Center login button on the screen */
 .centerMe{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 }
 .centerMe > img{
-    margin-bottom: 100px;
-    opacity: 70%;
+  margin-bottom: 100px;
+  opacity: 70%;
 }
