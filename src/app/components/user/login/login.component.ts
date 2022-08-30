@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { TokenStorageService } from '../../../services/token-storage.service';
@@ -10,6 +11,9 @@ import { TokenStorageService } from '../../../services/token-storage.service';
 })
 export class LoginComponent implements OnInit {
 
+  // Hide/Show password
+  hide = true;
+  loginForm: FormGroup | any;
   form: any = {
     username: null,
     password: null
@@ -29,11 +33,15 @@ export class LoginComponent implements OnInit {
       this.loggedUser = this.tokenStorage.getUser().username;
       this.redirectToUserRolePage();
     }
+    this.loginForm = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.minLength(4),]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4),])
+    });
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
-    this.authService.login(username, password).subscribe({
+    // const { username, password } = this.form;
+    this.authService.login(this.loginForm.username, this.loginForm.password).subscribe({
       next: data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
