@@ -58,7 +58,11 @@
       <!-- Status Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado  </th>
-        <td mat-cell matTooltip="Estado" *matCellDef="let row" > {{row.status}} </td>
+        <td mat-cell matTooltip="Estado" *matCellDef="let row" [ngClass]="{
+          'interview-planned': row.status === 'Planificada',
+          'interview-cancel': row.status === 'Cancelada',
+          'interview-closed': row.status === 'Realizada'
+          }"> {{row.status}} </td>
       </ng-container>
       <!-- Skills Column -->
       <ng-container matColumnDef="skills">

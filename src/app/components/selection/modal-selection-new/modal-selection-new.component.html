@@ -9,7 +9,7 @@
 
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Nombre</mat-label>
-    <input placeholder="Nombre" formControlName="name" placeholder="Ej. Jorge" matInput #message maxlength="256" value={{newSelection.name}}
+    <input placeholder="Nombre" formControlName="name" placeholder="Ej. Java" matInput #message maxlength="256" value={{newSelection.name}}
       (input)="newSelection.name=$any($event.target).value">
     <mat-hint align="start"><strong>Nombre</strong> </mat-hint>
     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>

@@ -110,3 +110,16 @@ mat-table {
     display: block;
     font-family: Tahoma, Verdana;
 }
+
+/* ********************** */
+
+/* Interview status text color */
+.interview-planned{
+    color: #2e2bff;
+}
+.interview-cancel{
+    color: rgb(224, 0, 0);
+}
+.interview-closed{
+    color: rgb(53, 124, 3);
+}
