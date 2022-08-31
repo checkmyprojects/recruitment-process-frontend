@@ -140,7 +140,7 @@ export class ListCandidatesComponent implements OnInit {
   }
 
   // create PDF using pdfmake
-  printDoc(candidate: any){
+  async printDoc(candidate: any){
 
     var dd = {
       "content": [
@@ -165,25 +165,26 @@ export class ListCandidatesComponent implements OnInit {
                      "vcard"
                    ]
                  },
-                 {
-                  "text": "Candidatos",
-                  "nodeName": "P",
-                  "margin": [
-                    0,
-                    5,
-                    0,
-                    10
-                  ],
-                  "alignment": "center",
-                  "decoration": [
-                    "underline"
-                  ],
-                  "bold": "true",
-                  "fontSize": 25,
-                  "style": [
-                    "html-p"
-                  ]
+                {
+                  image: await this.getBase64ImageFromURL(
+                    "assets/img/Logo_Team_Project.png"
+                  ),
+                  width: 150
+
                 },
+                //  {
+                //   "text":"Datos del candidato",
+                //   "nodeName": "P",
+                //   "alignment": "center",
+                //   "decoration": [
+                //     "underline"
+                //   ],
+                //   "bold": "true",
+                //   "fontSize": 20,
+                //   "style": [
+                //     "html-p"
+                //   ]
+                // },
                 {
                   "text": [
                     {
@@ -404,12 +405,6 @@ export class ListCandidatesComponent implements OnInit {
                     },
                   ],
                   "nodeName": "P",
-                  "margin": [
-                    0,
-                    5,
-                    0,
-                    10
-                  ],
                   "style": [
                     "html-p",
                     "html-div",
@@ -447,6 +442,7 @@ export class ListCandidatesComponent implements OnInit {
 
     pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
   }
+
   Candidate = [];
   name = 'ExcelSheet.xlsx';
 
@@ -552,5 +548,31 @@ export class ListCandidatesComponent implements OnInit {
   }
   // End utility to remove columns
   // =======================================================================
+  getBase64ImageFromURL(url) {
+    return new Promise((resolve, reject) => {
+      var img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
 
+      img.onload = () => {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+
+        resolve(dataURL);
+      };
+
+      img.onerror = error => {
+        reject(error);
+      };
+
+      img.src = url;
+    });
+  }
 }
+
+
