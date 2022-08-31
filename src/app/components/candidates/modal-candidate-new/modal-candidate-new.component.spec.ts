@@ -19,7 +19,4 @@ describe('ModalCandidateNewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
