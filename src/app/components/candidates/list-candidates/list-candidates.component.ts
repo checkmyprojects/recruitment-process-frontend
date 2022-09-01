@@ -16,6 +16,7 @@ import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 import * as XLSX from 'xlsx';
+import { backgroundImage } from 'html2canvas/dist/types/css/property-descriptors/background-image';
 @Component({
   selector: 'app-list-candidates',
   templateUrl: './list-candidates.component.html',
@@ -143,52 +144,47 @@ export class ListCandidatesComponent implements OnInit {
   async printDoc(candidate: any){
 
     var dd = {
+      pageMargins: [ 40, 20, 40, 60 ],
       "content": [
         {
           "nodeName": "DIV",
           "id": "page-wrap",
           "stack": [
-             {
-               "text": " ",
-               "style": [
-                 "html-div"
-               ]
-             },
+
             {
               "nodeName": "DIV",
               "id": "contact-info",
               "stack": [
                 {
-                   "text": " ",
+                  image: await this.getBase64ImageFromURL(
+                    "assets/img/logoTeam.png"
+                  ),
+                  width: 100,
+                  alignment: "right"
+                },
+                  {
+                   "text":"Datos del candidato",
+                   "nodeName": "P",
+                   "alignment": "center",
+                   "decoration": [
+                     "underline"
+                   ],
+                   "margin":[
+                    0,
+                    21,
+                    0,
+                    10
+                   ],
+                   "bold": "true",
+                   "fontSize": 20,
                    "style": [
-                     "html-div",
-                     "vcard"
+                     "html-p"
                    ]
                  },
                 {
-                  image: await this.getBase64ImageFromURL(
-                    "assets/img/Logo_Team_Project.png"
-                  ),
-                  width: 150
-
-                },
-                //  {
-                //   "text":"Datos del candidato",
-                //   "nodeName": "P",
-                //   "alignment": "center",
-                //   "decoration": [
-                //     "underline"
-                //   ],
-                //   "bold": "true",
-                //   "fontSize": 20,
-                //   "style": [
-                //     "html-p"
-                //   ]
-                // },
-                {
                   "text": [
                     {
-                      "text": " \nNOMBRE Y APELLIDOS:",
+                      "text": " \n\n\nNOMBRE Y APELLIDO:",
                       "bold": true,
                       "fontSize": 13,
                       "margin": [
