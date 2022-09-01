@@ -186,15 +186,15 @@
 </mat-accordion>
 <div id="box" class="container" layout="row" layout-align="center center" style="border-radius: 10px 10px; margin-top: 20px; margin-bottom: 20px; background-color: rgb(255, 255, 255)">
   <mat-card *ngIf="!statsMode" style="margin-left: 30px">
-    <mat-card-subtitle style="text-align: center">Total Candidates</mat-card-subtitle>
+    <mat-card-subtitle style="text-align: center">Total de candidatos</mat-card-subtitle>
     <mat-card-title style="text-align: center">{{totalCandidates}}</mat-card-title>
   </mat-card>
   <div class="container" style="width: 40vw">
     <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType"></canvas>
   </div>
   <mat-card *ngIf="!statsMode" style="margin-right: 30px">
-    <mat-card-subtitle style="text-align: center">Average Hiring</mat-card-subtitle>
-    <mat-card-title style="text-align: center">{{averageHiring}} days</mat-card-title>
+    <mat-card-subtitle style="text-align: center">Tiempo medio de contratación</mat-card-subtitle>
+    <mat-card-title style="text-align: center">{{averageHiring}} días</mat-card-title>
   </mat-card>
 </div>
 <table *ngIf="chartType == 'line'" class="table table-responsive table-condensed">
