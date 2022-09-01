@@ -22,12 +22,19 @@
       <!-- state Column -->
       <ng-container matColumnDef="state">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="openDialog(row)"> {{row.state}} </td>
+        <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="openDialog(row)" [ngClass]="{
+          'candidate-hired': row.state === 'Contratado',
+          'candidate-validation-pending': row.state === 'Pendiente validación CV',
+          'candidate-interview-pending': row.state === 'Pendiente entrevista',
+          'candidate-offer-pending': row.state === 'Pendiente Carta Oferta',
+          'candidate-offer-accept': row.state === 'Acepta Carta Oferta',
+          'candidate-offer-reject': row.state === 'Rechaza Carta Oferta'
+          }"> {{row.state}} </td>
       </ng-container>
       <!-- name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-        <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialog(row)"> {{row.name}} </td>
+        <th style="padding-left: 10px" mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td style="padding-left: 10px" mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="openDialog(row)"> {{row.name}} </td>
       </ng-container>
       <!-- surname Column -->
       <ng-container matColumnDef="surname">

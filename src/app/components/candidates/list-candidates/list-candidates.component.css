@@ -44,3 +44,73 @@
   width: 5%;
 }
 
+/* ********************** */
+
+/* Interview status text color */
+.candidate-hired{
+  background-color: #01cc012d;
+  background: repeating-linear-gradient(
+  to right,
+  #01cc012d,
+  #01cc012d 15px,
+  #fff 15px,
+  #fff 100%
+);
+  font-weight: 500;
+}
+.candidate-validation-pending{
+  background-color: rgba(97, 97, 97, 0.205);
+  background: repeating-linear-gradient(
+  to right,
+  rgba(97, 97, 97, 0.205),
+  rgba(97, 97, 97, 0.205) 15px,
+  #fff 15px,
+  #fff 100%
+);
+  font-weight: 500;
+}
+.candidate-interview-pending{
+  background-color: rgba(7, 168, 179, 0.192);
+  background: repeating-linear-gradient(
+  to right,
+  rgba(7, 168, 179, 0.192),
+  rgba(7, 168, 179, 0.192) 15px,
+  #fff 15px,
+  #fff 100%
+);
+  font-weight: 500;
+}
+.candidate-offer-pending{
+  background-color: rgba(136, 151, 2, 0.192);
+  background: repeating-linear-gradient(
+  to right,
+  rgba(136, 151, 2, 0.192),
+  rgba(136, 151, 2, 0.192) 15px,
+  #fff 15px,
+  #fff 100%
+);
+  font-weight: 500;
+}
+.candidate-offer-accept{
+  background-color: rgba(231, 115, 7, 0.192);
+  background: repeating-linear-gradient(
+  to right,
+  rgba(231, 115, 7, 0.192),
+  rgba(231, 115, 7, 0.192) 15px,
+  #fff 15px,
+  #fff 100%
+);
+  font-weight: 500;
+}
+.candidate-offer-reject{
+  background-color: rgba(255, 7, 7, 0.164);
+  background: repeating-linear-gradient(
+  to right,
+  rgba(255, 7, 7, 0.164),
+  rgba(255, 7, 7, 0.164) 15px,
+  #fff 15px,
+  #fff 100%
+);
+  font-weight: 500;
+}
+
