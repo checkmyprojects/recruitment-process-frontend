@@ -7,3 +7,19 @@
 .mat-column-status {
     width: 12%;
 }
+
+/* ********************** */
+
+/* Interview status text color */
+.interview-planned{
+    color: #2e2bff;
+    font-weight: 500;
+}
+.interview-cancel{
+    color: rgb(224, 0, 0);
+    font-weight: 500;
+}
+.interview-closed{
+    color: rgb(53, 124, 3);
+    font-weight: 500;
+}

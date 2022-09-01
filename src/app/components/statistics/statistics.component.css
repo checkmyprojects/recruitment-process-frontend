@@ -105,3 +105,11 @@ tr.mat-row:hover {
   background-color: rgba(202, 202, 202, 0.158);
   color: rgb(172, 171, 171);
 }
+
+#box
+{
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  display: flex !important;
+}

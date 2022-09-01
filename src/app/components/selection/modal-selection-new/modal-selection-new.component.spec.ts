@@ -19,7 +19,4 @@ describe('ModalSelectionNewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

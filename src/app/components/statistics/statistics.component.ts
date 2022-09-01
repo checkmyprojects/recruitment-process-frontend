@@ -90,6 +90,12 @@ export class StatisticsComponent
   //The selected process ID
   processId = 0;
 
+  //The number of candidates
+  totalCandidates = 0;
+
+  //The average hiring time in days
+  averageHiring = 0;
+
   //The stats panel is opened
   panelOpenState = false;
 
@@ -100,7 +106,8 @@ export class StatisticsComponent
     this.stats();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit()
+  {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -187,9 +194,17 @@ export class StatisticsComponent
     return m;
   }
 
+  setProcess(name: string, id: number): void
+  {
+    this.lastStatsMode = 2;
+    this.processName = name;
+    this.processId = id;
+  }
+
   //Show stats
   stats()
   {
+    this.statsMode = this.lastStatsMode;
     switch(this.statsMode)
     {
       case 0:
@@ -198,19 +213,17 @@ export class StatisticsComponent
             next: (value)=>
             {
               this.chartType = 'doughnut';
+              this.averageHiring = value.totalAverageHiringTime;
+              this.totalCandidates = value.totalCandidates;
               this.chartData = {datasets: [
                 {
-                  data: [value.totalCandidates?value.totalCandidates:0, value.totalActiveSelections?value.totalActiveSelections:20, value.totalAverageHiringTime?value.totalAverageHiringTime:10],
+                  data: [value.totalNoActiveSelections?value.totalNoActiveSelections:0, value.totalActiveSelections?value.totalActiveSelections:0],
                   fill: 'origin'
                 }],
-                labels: ["Total Candidatos", "Procesos Activos", "Tiempo medio de proceso activo(días)"]
+                labels: ["Procesos Inactivos", "Procesos Activos"]
               };
-              this.chart?.update();
             },
-            error: ()=>
-            {
-
-            }
+            error: ()=>{}
           }
         );
       break;
@@ -238,12 +251,8 @@ export class StatisticsComponent
                   }],
                   labels: this.getMonths(from, to)
                 };
-                this.chart?.update();
               },
-              error: ()=>
-              {
-                
-              }
+              error: ()=>{}
             }
           );
         }
@@ -268,14 +277,11 @@ export class StatisticsComponent
                   }],
                   labels: value.months?value.months:[]
                 };
-                this.chart?.update();
               },
-              error: ()=>
-              {
-                
-              }
+              error: ()=>{}
           });
       break;
     }
+    this.chart?.update();
   }
 }

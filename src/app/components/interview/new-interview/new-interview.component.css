@@ -66,3 +66,22 @@ h5{
 ::ng-deep .select .mat-form-field-underline {
     display: none;
 }
+
+
+/* ********************** */
+
+/* Interview status text color */
+.interview-planned{
+    /* background-color: #2f2bff11; */
+    color: #2e2bff;
+}
+.interview-cancel{
+    /* background-color: rgba(224, 0, 0, 0.11); */
+    color: rgb(224, 0, 0);
+}
+.interview-closed{
+    /* background-color: rgba(53, 124, 3, 0.11); */
+    color: rgb(53, 124, 3);
+    /* border: 1px solid black;
+    border-width: 1px 0; */
+}

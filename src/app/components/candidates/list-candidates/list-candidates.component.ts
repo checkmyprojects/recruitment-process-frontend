@@ -16,6 +16,7 @@ import * as pdfFonts from "pdfmake/build/vfs_fonts";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 import * as XLSX from 'xlsx';
+import { backgroundImage } from 'html2canvas/dist/types/css/property-descriptors/background-image';
 @Component({
   selector: 'app-list-candidates',
   templateUrl: './list-candidates.component.html',
@@ -140,54 +141,50 @@ export class ListCandidatesComponent implements OnInit {
   }
 
   // create PDF using pdfmake
-  printDoc(candidate: any){
+  async printDoc(candidate: any){
 
     var dd = {
+      pageMargins: [ 40, 20, 40, 60 ],
       "content": [
         {
           "nodeName": "DIV",
           "id": "page-wrap",
           "stack": [
-             {
-               "text": " ",
-               "style": [
-                 "html-div"
-               ]
-             },
+
             {
               "nodeName": "DIV",
               "id": "contact-info",
               "stack": [
                 {
-                   "text": " ",
-                   "style": [
-                     "html-div",
-                     "vcard"
-                   ]
-                 },
-                 {
-                  "text": "Candidatos",
-                  "nodeName": "P",
-                  "margin": [
+                  image: await this.getBase64ImageFromURL(
+                    "assets/img/logoTeam.png"
+                  ),
+                  width: 100,
+                  alignment: "right"
+                },
+                  {
+                   "text":"Datos del candidato",
+                   "nodeName": "P",
+                   "alignment": "center",
+                   "decoration": [
+                     "underline"
+                   ],
+                   "margin":[
                     0,
-                    5,
+                    21,
                     0,
                     10
-                  ],
-                  "alignment": "center",
-                  "decoration": [
-                    "underline"
-                  ],
-                  "bold": "true",
-                  "fontSize": 25,
-                  "style": [
-                    "html-p"
-                  ]
-                },
+                   ],
+                   "bold": "true",
+                   "fontSize": 20,
+                   "style": [
+                     "html-p"
+                   ]
+                 },
                 {
                   "text": [
                     {
-                      "text": " \nNOMBRE Y APELLIDOS:",
+                      "text": " \n\n\nNOMBRE Y APELLIDO:",
                       "bold": true,
                       "fontSize": 13,
                       "margin": [
@@ -404,12 +401,6 @@ export class ListCandidatesComponent implements OnInit {
                     },
                   ],
                   "nodeName": "P",
-                  "margin": [
-                    0,
-                    5,
-                    0,
-                    10
-                  ],
                   "style": [
                     "html-p",
                     "html-div",
@@ -447,6 +438,7 @@ export class ListCandidatesComponent implements OnInit {
 
     pdfMake.createPdf(dd).download(`Datos de ${candidate.name} ${candidate.surname}`);
   }
+
   Candidate = [];
   name = 'ExcelSheet.xlsx';
 
@@ -552,5 +544,31 @@ export class ListCandidatesComponent implements OnInit {
   }
   // End utility to remove columns
   // =======================================================================
+  getBase64ImageFromURL(url) {
+    return new Promise((resolve, reject) => {
+      var img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
 
+      img.onload = () => {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+
+        resolve(dataURL);
+      };
+
+      img.onerror = error => {
+        reject(error);
+      };
+
+      img.src = url;
+    });
+  }
 }
+
+
