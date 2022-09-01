@@ -1,4 +1,3 @@
-
 <mat-accordion multi style="margin-bottom: 20px">
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
@@ -9,7 +8,7 @@
         Seleccione un filtro para desplegar sus estadísticas
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-expansion-panel (opened)="statsMode = 1">
+    <mat-expansion-panel (opened)="lastStatsMode=1">
         <mat-expansion-panel-header>
             <mat-panel-title>
               Mensualmente
@@ -26,12 +25,12 @@
               <input matEndDate formControlName="end" readonly>
             </mat-date-range-input>
             <mat-hint>MM/YYYY - MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker" (click)="statsMode = 1"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="picker" (click)="lastStatsMode = 1"></mat-datepicker-toggle>
             <mat-date-range-picker #picker color="primary" startView="multi-year"></mat-date-range-picker>
           </mat-form-field>
         </section>
     </mat-expansion-panel>
-  <mat-expansion-panel (opened)="statsMode = 2">
+  <mat-expansion-panel (opened)="lastStatsMode=2">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Candidatos
@@ -51,7 +50,7 @@
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Núm. </th>
           <!-- Apply classes conditionally asking for priority or status -->
-          <td mat-cell matTooltip="Número de proyecto" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Número de proyecto" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -63,7 +62,7 @@
         <!-- Progress Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-          <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Nombre" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -75,7 +74,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="start_date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Inicio </th>
-          <td mat-cell matTooltip="Fecha de inicio" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Fecha de inicio" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -87,7 +86,7 @@
         <!-- Fruit Column -->
         <ng-container matColumnDef="end_date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Fin </th>
-          <td mat-cell matTooltip="Fecha de fin" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Fecha de fin" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -98,7 +97,7 @@
         <!-- Fruit Column -->
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
-          <td mat-cell matTooltip="Descripción" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Descripción" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -109,7 +108,7 @@
         <!-- Fruit Column -->
         <ng-container matColumnDef="requirements">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Requisitos </th>
-          <td mat-cell matTooltip="Requisitos" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Requisitos" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -120,7 +119,7 @@
         <!-- Fruit Column -->
         <ng-container matColumnDef="location">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Ubicación </th>
-          <td mat-cell matTooltip="Ubicación" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Ubicación" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -131,7 +130,7 @@
         <!-- Fruit Column -->
         <ng-container matColumnDef="sector">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
-          <td mat-cell matTooltip="Sector" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Sector" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -142,9 +141,7 @@
         <!-- Fruit Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-          <!-- <td mat-cell matTooltip="Roles" *matCellDef="let row" > {{arrayToString(row.roles)}} </td> -->
-          <!-- <td mat-cell matTooltip={{arrayToString2(row.roles)}} *matCellDef="let row" > <div *ngFor="let role of row.roles">{{role.name}}</div> </td> -->
-          <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Estado" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -154,7 +151,7 @@
         </ng-container>
         <ng-container matColumnDef="project_id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Proyecto </th>
-          <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Nº Proyecto" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -164,7 +161,7 @@
         </ng-container>
         <ng-container matColumnDef="remote">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Remoto </th>
-          <td mat-cell matTooltip="Remoto" *matCellDef="let row" (click)="processName = row.name; processId = row.id; statsMode = 2" [ngClass]="{
+          <td mat-cell matTooltip="Remoto" *matCellDef="let row" (click)="setProcess(row.name, row.id)" [ngClass]="{
           'selection-open': row.status === 'Abierto', 
           'selection-priority-high': row.priority === 'Alta', 
           'selection-onhold': row.status === 'Parado',
@@ -183,12 +180,22 @@
   </mat-expansion-panel>
     <div style="margin-top: 10px; flex: center; align-items: center; justify-content: space-around">
       <button [disabled]="!range.valid && !processId" mat-flat-button color="primary" (click)="stats()">Mostrar</button>
-      <button style="margin-left: 10px" [disabled]="!statsMode" mat-flat-button color="accent" (click)="lastStatsMode = statsMode; statsMode = 0; stats(); statsMode = lastStatsMode">Limpiar</button>
+      <button style="margin-left: 10px" [disabled]="!statsMode" mat-flat-button color="accent" (click)="lastStatsMode = 0; stats()">Limpiar</button>
     </div>
   </mat-expansion-panel>
 </mat-accordion>
-<div class="container" style="width: 40vw; border-radius: 10px 10px; margin-top: 20px; margin-bottom: 20px; background-color: rgb(255, 255, 255);">
-  <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType"></canvas>
+<div id="box" class="container" layout="row" layout-align="center center" style="border-radius: 10px 10px; margin-top: 20px; margin-bottom: 20px; background-color: rgb(255, 255, 255)">
+  <mat-card *ngIf="!statsMode" style="margin-left: 30px">
+    <mat-card-subtitle style="text-align: center">Total de candidatos</mat-card-subtitle>
+    <mat-card-title style="text-align: center">{{totalCandidates}}</mat-card-title>
+  </mat-card>
+  <div class="container" style="width: 40vw">
+    <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType"></canvas>
+  </div>
+  <mat-card *ngIf="!statsMode" style="margin-right: 30px">
+    <mat-card-subtitle style="text-align: center">Tiempo medio de contratación</mat-card-subtitle>
+    <mat-card-title style="text-align: center">{{averageHiring}} días</mat-card-title>
+  </mat-card>
 </div>
 <table *ngIf="chartType == 'line'" class="table table-responsive table-condensed">
   <tr *ngFor="let d of chartData?.datasets; let i=index" [class]="'line-'+i">
