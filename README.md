@@ -116,10 +116,6 @@ Also, we have used Material library for the first time, which has made it much e
 
 We have used JWT in Angular to work on the security feature (registration, login and authorizations).
 
- ### License 
-
-This project is licensed under the **Entiteam** License - see the file [LICENSE.md](LICENSE.md) for details.
-
 ### Thanks 🎁
 
 * Tell others about this project 📢
